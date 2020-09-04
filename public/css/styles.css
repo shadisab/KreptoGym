@@ -3,16 +3,78 @@ body{
     height: 100vh;
     margin: 0;
     display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    background: url(../images/gym-training-exercise-with-weight-bodybuilding-dumbbell.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.navi-bar{
-    width: 100%;
-    height: 8%;
-
+.icon-div{
+    width: 6%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-div-logo{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-title{
+    color: white;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.bars-icon-cus{
+    color: white;
+    font-size: larger;
+    margin-left: 20px;
 }
 
+.dumbbell-icon-cus{
+    color: white;
+    font-size: xx-large;
+}
 header {
     width: 100%;
     height: 8%;
-    background: #112233;
+    background: transparent;
+    display: flex;
+    flex-direction: row;
+}
+
+.links-DIV{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.links{
+    width: 20%;
+    height: 100%;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.log-buttons-div{
+    width: 14%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.sign-log-btn{
+    background: transparent;
+    color: white;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

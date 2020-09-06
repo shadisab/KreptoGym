@@ -41,21 +41,19 @@ const userSchema = new mongoose.Schema({
             }
         }
     },
-    tokens: [{  //value always provided by the server
-        token: {
-            type: String,
-            required: true
-        }
-    }],
-    userType: {
-        type: String,
-        required: true,
-        enum: ['client', 'coach']
-    },
-    avatar: {
-        type: Buffer /* allow us to store the buffer with our binary image data 
-                     right in the database alongside of the user who the image belongs to.*/
-    }
+    // tokens: [{  //value always provided by the server
+    //     token: {
+    //         type: String,
+    //         required: true
+    //     }
+    // }],
+    // avatar: {
+    //     type: Buffer /* allow us to store the buffer with our binary image data 
+    //                  right in the database alongside of the user who the image belongs to.*/
+    // }
 }, {
     timestamps: true
 })
+
+const User = mongoose.model('Client', userSchema)
+module.exports = User

@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
 require('./db/mongoose')
+const clientRouter = require('./routers/client')
 const app = express()
 
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -14,6 +15,8 @@ hbs.registerPartials(partialsPath)
 
 app.use(express.json())
 app.use(express.static(publicDirectoryPath))
+app.use(clientRouter)
+
 
 app.get('', (req , res) => {
     res.render('index',{

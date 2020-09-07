@@ -24,4 +24,29 @@ app.get('', (req , res) => {
     })
 })
 
+
+
+app.get('/register', (req , res) => {
+    res.render('register',{
+
+    })
+})
+
+app.get('/login', (req , res) => {
+    res.render('login',{
+
+    })
+})
+
+app.get('/about', (req , res) => {
+    res.render('about',{
+
+    })
+})
+
+app.get('/help', (req , res) => {
+    res.render('help',{
+
+    })
+})
 module.exports = app

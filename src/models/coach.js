@@ -3,7 +3,7 @@ const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-const userSchema = new mongoose.Schema({
+const coachSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -41,19 +41,72 @@ const userSchema = new mongoose.Schema({
             }
         }
     },
-    // tokens: [{  //value always provided by the server
-    //     token: {
-    //         type: String,
-    //         required: true
-    //     }
-    // }],
-    // avatar: {
-    //     type: Buffer /* allow us to store the buffer with our binary image data 
-    //                  right in the database alongside of the user who the image belongs to.*/
-    // }
+    tokens: [{  //value always provided by the server
+        token: {
+            type: String,
+            required: true
+        }
+    }],
+    clientsID: [{ //Clients ID's with this coach
+            type: mongoose.Schema.Types.ObjectId 
+    }]
 }, {
     timestamps: true
 })
 
-const User = mongoose.model('Client', userSchema)
-module.exports = User
+coachSchema.methods.generateAuthToken = async function () {
+    const coach = this
+    const token = jwt.sign({ _id: coach._id.toString() }, process.env.JWT_SECRET)
+
+    coach.tokens = coach.tokens.concat({ token })
+    await coach.save()
+    return token
+}
+
+coachSchema.statics.findByCredentials = async (email, password) => {
+    const coach = await Coach.findOne({ email })
+    if (!coach) {
+        throw new Error('Unable to login!')
+    }
+
+    const isMAtch = await bcrypt.compare(password, coach.password)
+    if (!isMAtch) {
+        throw new Error('Unable to login')
+    }
+    return coach
+}
+
+
+// Hash the plain text password before saving
+coachSchema.pre('save', async function (next) {
+    // "This" gives us access to the individual user that's about to be saved.
+    const coach = this
+
+    if (coach.isModified('password')) {//This will be true when the user is first created.And it will also be true if the user is being updated
+        coach.password = await bcrypt.hash(coach.password, 8)
+    }
+
+    next()
+})
+
+// Delete user tasks when user is removed
+coachSchema.pre('remove', async function (next) {
+    const coach = this
+    await Task.deleteMany({ owner: coach._id })
+    next()
+})
+
+// Remove field from the profile respons
+coachSchema.methods.toJSON = function () {
+    const coach = this
+    const coachObject = coach.toObject()
+
+    delete coachObject.password
+    delete coachObject.tokens
+    delete coach.avatar
+
+    return coachObject
+}
+
+const Coach = mongoose.model('Coach', coachSchema)
+module.exports = Coach

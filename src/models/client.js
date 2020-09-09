@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const Coach = require('../models/coach')
 
 const clientSchema = new mongoose.Schema({
     name: {
@@ -42,7 +43,37 @@ const clientSchema = new mongoose.Schema({
             }
         }
     },
-    nutrition: [{
+    trainingSchedule: {
+        protine: {
+            type: String,
+            trim: true
+        },
+        sunday: {
+            type: String,
+            trim: true
+        },
+        monday: {
+            type: String,
+            trim: true
+        },
+        tuesday: {
+            type: String,
+            trim: true
+        },
+        wednesday: {
+            type: String,
+            trim: true
+        },
+        thursday: {
+            type: String,
+            trim: true
+        },
+        friday: {
+            type: String,
+            trim: true
+        }
+    },
+    nutrition: {
         protine: {
             type: Number
         },
@@ -58,14 +89,14 @@ const clientSchema = new mongoose.Schema({
             type: String,
             trim: true
         }
-    }],
+    },
     tokens: [{  //value always provided by the server
         token: {
             type: String,
             required: true
         }
     }],
-    coachID: {
+    coachID: { // Coach who train this client
         type: mongoose.Schema.Types.ObjectId
     }
 }, {
@@ -121,10 +152,22 @@ clientSchema.pre('save', async function (next) {
     next()
 })
 
-// Delete user tasks when user is removed
+// Before the client deleting itself -> Delete his ID from his coach
 clientSchema.pre('remove', async function (next) {
     const client = this
-    await Task.deleteMany({ owner: client._id })
+    try {
+        const coach = await Coach.findById(client.coachID)
+        coach.clientsID = coach.clientsID.filter(function (value, index, arr) {
+            return    !value.equals(client._id);
+        })
+        coach.save()
+        // await Coach.
+        //    findByIdAndUpdate(
+        //          client.coachID, { $pull: { 'clientsID': { _id:client._id } } })
+        //  coach.save()
+    } catch (e) {
+        console.log(e);
+    }
     next()
 })
 
@@ -135,7 +178,6 @@ clientSchema.methods.toJSON = function () {
 
     delete clientObject.password
     delete clientObject.tokens
-    delete client.avatar
 
     return clientObject
 }

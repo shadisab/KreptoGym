@@ -21,17 +21,14 @@ app.use(express.static(publicDirectoryPath))
 app.use(clientRouter)
 app.use(coachRouter)
 
-
 app.get('', (req , res) => {
-    res.render('index',{
-
-    })
+    res.render('index')
 })
 
 
 
-app.get('/register', (req , res) => {
-    res.render('register',{
+app.get('/clientRegister', (req , res) => {
+    res.render('clientRegister',{
 
     })
 })
@@ -54,12 +51,12 @@ app.get('/help', (req , res) => {
     })
 })
 
-app.get('/clients/clientHome' , (req , res) => {
+app.get('/clientHome' , (req , res) => {
     res.render('clientHome')
 })
 
-app.get('/coachHome' , (req , res) => {
-    res.render('coachHome')
+app.get('/coachClients' , (req , res) => {
+    res.render('coachClients')
 })
 
 app.get('/clientSchedule' , (req , res) => {

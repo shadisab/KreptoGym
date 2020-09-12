@@ -1,10 +1,28 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../fonts/poppins.regular.ttf'); 
+  }
+    
+  @font-face {
+    font-family: Poppins-Medium;
+    src: url('../fonts/poppins.medium.ttf'); 
+  }
+    
+  @font-face {
+    font-family: Poppins-Bold;
+    src: url('../fonts/poppins.bold.ttf'); 
+  }
+    
+  @font-face {
+    font-family: Poppins-SemiBold;
+    src: url('../fonts/poppins.semibold.ttf'); 
+  }
 body{
     width: 100%;
     height: 100vh;
     margin: 0;
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
     background: url(../images/gym-training-exercise-with-weight-bodybuilding-dumbbell.jpg);
     background-size: cover;
     background-position: center;
@@ -21,7 +39,7 @@ body{
     color: white;
     margin-left: 10px;
     font-size: 16px;
-    font-weight: bold;
+    font-family: Poppins-Bold;
 }
 .dumbbell-icon-cus{
     color: white;
@@ -47,6 +65,7 @@ header {
     height: 100%;
     color: white;
     font-weight: bold;
+    font-family: Poppins-Medium;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,12 +77,58 @@ header {
     display: flex;
     flex-direction: row;
 }
-.sign-log-btn{
+.sign-log-btn-DIV{
     background: transparent;
     color: white;
+    font-family: Poppins-Medium;
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
 }
+
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    font-family: Poppins-Medium;
+    padding-left: 17px;
+    padding-top: 13.5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    border-radius: 6px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+  }
+
+  .dropdown-content a {
+    color: black;
+    font-family: Poppins-Regular;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+      background-color: #ddd;
+      border-radius: 6px;
+    }
+  
+  .show {display:block;}

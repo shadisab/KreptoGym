@@ -217,6 +217,8 @@ body{
     position: relative;
     overflow: hidden;
     background-color: #525252;
+    outline: transparent;
+    cursor: pointer;
   }
   .R-button:before {
     content: "";

@@ -68,7 +68,7 @@ router.get('/clients/myProfile', authClient, async (req, res) => {
 
 })
 // GET all coaches
-router.get('/clients/allCoachs', authClient, async (req, res) => {
+router.get('/clients/allCoachs',  async (req, res) => {
     const coachs = await Coach.find()
     res.send(coachs)
 

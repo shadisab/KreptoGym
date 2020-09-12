@@ -24,6 +24,7 @@
   "homepage": "https://github.com/wisamwrh/KreptoGym#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.5.2",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",

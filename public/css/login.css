@@ -1,3 +1,22 @@
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins.regular.ttf'); 
+}
+  
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../fonts/poppins.medium.ttf'); 
+}
+  
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../fonts/poppins.bold.ttf'); 
+}
+  
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url('../fonts/poppins.semibold.ttf'); 
+}
 .login-page-DIV{
     height: 92%;
     width: 100%;
@@ -134,6 +153,7 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
+  outline: transparent;
   background-color: #525252;
 }
 .L-RbtnRadios{

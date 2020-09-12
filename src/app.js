@@ -51,4 +51,20 @@ app.get('/help', (req , res) => {
 
     })
 })
+
+app.get('/clients/clientHome' , (req , res) => {
+    res.render('clientHome')
+})
+
+app.get('/coachHome' , (req , res) => {
+    res.render('coachHome')
+})
+
+app.get('/clientSchedule' , (req , res) => {
+    res.render('clientSchedule')
+})
+
+app.get('/coachClients' , (req , res) => {
+    res.render('coachClients')
+})
 module.exports = app

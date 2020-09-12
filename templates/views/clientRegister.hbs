@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/register.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -140,11 +141,9 @@
                                         <div class="L-InputLabeldiv">
                                             <span class="label-input100">Select Coach:</span>
                                         </div>
-                                        <select name="cars" id="cars" class="coachSelect">
-                                            <option value="volvo">Volvo</option>
-                                            <option value="saab">Saab</option>
-                                            <option value="opel">Opel</option>
-                                            <option value="audi">Audi</option>
+                                        <select name="cars" id="coachs" class="coachSelect">
+                                            <option value="coach" selected="selected" hidden='true'>Select a coach</option>
+                                       
                                         </select>
                                     </div>
                                     <PasswordStrengthMeter pswd={this.state.Password} />
@@ -173,6 +172,7 @@
             </div>
         </div>
     </div>
+    <script src="/js/clientRegister.js"></script>
 </body>
 
 </html>

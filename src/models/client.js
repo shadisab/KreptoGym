@@ -39,15 +39,34 @@ const clientSchema = new mongoose.Schema({
         default: 0,
         validate(value) {
             if (value < 0) {
-                throw new Error('Age most a positive number')
+                throw new Error('Age most bd a positive number')
+            }
+        }
+    }, 
+    userType:{
+        type:String,
+        trim: true
+    }, 
+    weight: {
+        type: Number,
+        required: true,
+        validate(value) {
+            if (value < 0) {
+                throw new Error('Age most bd a positive number')
             }
         }
     },
+    height: {
+        type: Number,
+        required: true,
+        validate(value) {
+            if (value < 0) {
+                throw new Error('Age most bd a positive number')
+            }
+        }
+    }
+    ,
     trainingSchedule: {
-        protine: {
-            type: String,
-            trim: true
-        },
         sunday: {
             type: String,
             trim: true
@@ -75,14 +94,17 @@ const clientSchema = new mongoose.Schema({
     },
     nutrition: {
         protine: {
-            type: Number
+            type: Number,
+            default: 0
         },
         carbs: {
-            type: Number
+            type: Number,
+            default: 0
 
         },
         fats: {
-            type: Number
+            type: Number,
+            default: 0
 
         },
         notes: {
@@ -157,8 +179,8 @@ clientSchema.pre('remove', async function (next) {
     const client = this
     try {
         const coach = await Coach.findById(client.coachID)
-        coach.clientsID = coach.clientsID.filter(function (value, index, arr) {
-            return    !value.equals(client._id);
+        coach.myClients = coach.myClients.filter(function (value, index, arr) {
+            return    !value.id.equals(client._id);
         })
         coach.save()
         // await Coach.
@@ -178,7 +200,8 @@ clientSchema.methods.toJSON = function () {
 
     delete clientObject.password
     delete clientObject.tokens
-
+    delete clientObject.nutrition
+    delete clientObject.trainingSchedule
     return clientObject
 }
 const Client = mongoose.model('Client', clientSchema)

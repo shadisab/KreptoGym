@@ -10,7 +10,7 @@ router.post('/clients/signup', async (req, res) => {
     try {
         await client.save()
         const token = await client.generateAuthToken()
-        // res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
+        res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
         res.status(201).send({ client, token })
     } catch (e) {
         res.status(400).send(e)
@@ -24,13 +24,15 @@ router.post('/clients/login', async (req, res) => {
         // Self Created findByCredntials() , generateAuthToken()
         const client = await Client.findByCredentials(req.body.email, req.body.password)
         const token = await client.generateAuthToken()
+        res.cookie('Authorization', `Bearer ${token}`);
         // To delete the returned user data (for security) we have thos two methods
         //First
         // res.send({ user: user.getPublicProfile(), token })
         //second (BUT in user.js models we change the name of the upper function to .toJSON method)
         res.send({ client, token })
     } catch (e) {
-        res.status(400).send()
+        console.log(e);
+        res.status(400).send(e)
     }
 })
 
@@ -41,7 +43,7 @@ router.post('/clients/logout', authClient, async (req, res) => {
             return token.token !== req.token //if return is false than it going to remove by filter
         })
         await req.client.save()
-
+        await res.clearCookie('Authorization');
         res.send()
     } catch (e) {
         res.status(500).send()
@@ -53,6 +55,7 @@ router.post('/clients/logoutAll', authClient, async (req, res) => {
     try {
         req.client.tokens = []
         await req.client.save()
+        await res.clearCookie('Authorization');
         res.send()
     } catch (e) {
         res.status(500).send()
@@ -62,6 +65,12 @@ router.post('/clients/logoutAll', authClient, async (req, res) => {
 // Get client profile data
 router.get('/clients/myProfile', authClient, async (req, res) => {
     res.send(req.client)
+
+})
+// GET all coaches
+router.get('/clients/allCoachs', authClient, async (req, res) => {
+    const coachs = await Coach.find()
+    res.send(coachs)
 
 })
 
@@ -79,16 +88,18 @@ router.patch('/clients/chooseCoache', authClient, async (req, res) => {
         updates.forEach((update) => req.client[update] = req.body[update])// Dynamic update 
         // Adding ID of the client  to the choosed coach
         const coach = await Coach.findById(req.body.coachID)
-        coach.clientsID = coach.clientsID.concat(req.client._id)
+        coach.myClients = coach.myClients.concat({id: req.client._id, name: req.client.name, email: req.client.email, age:req.client.age})
         await req.client.save()
         await coach.save()
         res.send(req.client)
     } catch (e) {
+        console.log(e);
         res.status(400).send(e)
     }
 
 })
 
+// Updating client profile data
 router.patch('/clients/myProfile', authClient, async (req, res) => {
 
     const updates = Object.keys(req.body)
@@ -110,6 +121,7 @@ router.patch('/clients/myProfile', authClient, async (req, res) => {
     }
 })
 
+// Delete client itself
 router.delete('/clients/myProfile', authClient, async (req, res) => {
     try {
         await req.client.remove()

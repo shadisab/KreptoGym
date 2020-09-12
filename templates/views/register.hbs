@@ -7,5 +7,93 @@
     </head>
     <body>
         {{>header}}
+        <div className="R-Containingdiv">
+          <div className="R-div1">
+            <h1 className="welcome-title">Register</h1>
+            <form className="R-form-div">
+              <div className="R-column">
+                <div className="R-row">
+                  <input
+                    icon="L-Icon fas fa-user"
+                  />
+                  <Input
+                    wrap="wrap-input-register100"
+                    value={this.state.lastName}
+                    name="lastName"
+                    type="text"
+                    placeholder="Type your Last Name"
+                    icon="L-Icon fas fa-user"
+                    TPU={this.handleChange}
+                  />
+                </div>
+                <div className="R-row">
+                  <Input
+                    wrap="wrap-input-register100"
+                    value={this.state.Email}
+                    TPU={this.handleChange}
+                    name="Email"
+                    type="text"
+                    placeholder="Type your Email"
+                    icon="L-Icon fas fa-envelope"
+                  />
+                  <PasswordStrengthMeter pswd={this.state.Password} />
+                </div>
+                <div className="R-row">
+                  <Input
+                    wrap="wrap-input-register100"
+                    value={this.state.Password}
+                    TPU={this.handleChange}
+                    name="Password"
+                    type="password"
+                    placeholder="Type your Password"
+                    icon="L-Icon fas fa-lock"
+                  />
+                  <Input
+                    wrap="wrap-input-register100"
+                    value={this.state.Passwordcnfrm}
+                    TPU={this.handleChange}
+                    name="ConfirmPassword"
+                    type="password"
+                    placeholder="Type your Password Again"
+                    icon="L-Icon fas fa-lock"
+                  />
+                </div>
+              </div>
+              <div className="btn-div">
+                <p className="errtxt"> {this.state.errmsg}</p>
+                <div className="R-button-container">
+                <NavLink to={{pathname:"/MainPage",userEmail:{email:this.state.Email}}} exact onClick={this.handleRegister} className="R-button R-abtn" >
+                    Register
+                </NavLink>
+                </div>
+                <div className="R-button-container">                
+                <NavLink to="/login" exact className="R-button R-abtn" >
+                    Cancel
+                </NavLink>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div className="R-div2">
+            <div className="img__wrap">
+              <label id="profile-pic">
+                <p className="edit-text" data-symbol="&#xf206;">
+                  Edit
+                </p>
+                <img
+                  id="asd123"
+                  className="img-uplaoder"
+                  src={this.state.image}
+                  alt="asd"
+                />
+                <input
+                  className="img__input"
+                  onChange={this.imgChanger}
+                  type="file"
+                />
+              </label>
+            </div>
+          </div>
+        </div>
     </body>
 </html>

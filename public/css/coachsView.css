@@ -1,0 +1,160 @@
+
+.coach-view-DIV{
+    width: 100%;
+    height: 92%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coach-view-inner-DIV{
+    height: 90%;
+    width: 90%;
+    background: #313131;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
+}
+
+.pickCoach-title-DIV{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.pickCoach-title{
+    color: white;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.pickCoach{
+    height: 85%;
+    width: 100%;
+    background: white;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.coachDIV{
+    width: 97.5%;
+    height: 27%;
+    margin-top: 15px;
+    border-radius: 6px;
+    background: lightgrey;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.coachDIV-filler{
+    height: 15px;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.coach-profile-pic-DIV{
+    width: 13%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: dashed 1px grey ;
+}
+
+.coach-profile-pic{
+    width: 70%;
+    height: 90%;
+    background: url(../images/gym-training-exercise-with-weight-bodybuilding-dumbbell.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.coach-info-DIV{
+    width: 74%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.coach-info-name{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coach-info-numberOfClients{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coach-select-btn-DIV{
+    width: 13%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: dashed 1px grey ;
+}
+
+.coach-select-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    transition: all 0.2s ease-in;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: lightgray;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 1;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border: none;
+  }
+  .coach-select-btn:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.25);
+    top: 100%;
+    width: 140%;
+    height: 170%;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+  }
+  
+  .coach-select-btn:hover {
+    color: white;
+  }
+  .coach-select-btn:hover:before {
+    top: -35%;
+    background-color: #515151;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+  }
+  .coach-select-btn:hover:after {
+    top: -45%;
+    background-color: #515151;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+  }

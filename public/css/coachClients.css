@@ -1,5 +1,5 @@
 
-.coach-view-DIV{
+.clients-view-DIV{
     width: 100%;
     height: 92%;
     display: flex;
@@ -7,7 +7,7 @@
     justify-content: center;
 }
 
-.coach-view-inner-DIV{
+.clients-view-inner-DIV{
     height: 90%;
     width: 90%;
     background: #313131;
@@ -15,7 +15,7 @@
     border-top-left-radius: 40px;
 }
 
-.pickCoach-title-DIV{
+.clients-title-DIV{
     height: 15%;
     width: 100%;
     display: flex;
@@ -24,13 +24,13 @@
     justify-content: center;
 }
 
-.pickCoach-title{
+.clients-title{
     color: white;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.pickCoach{
+.clients{
     height: 85%;
     width: 100%;
     background: white;
@@ -41,7 +41,7 @@
     position: relative;
 }
 
-.coachDIV{
+.clientDIV{
     width: 97.5%;
     height: 27%;
     margin-top: 15px;
@@ -53,13 +53,13 @@
     align-items: center;
 }
 
-.coachDIV-filler{
+.clientDIV-filler{
     height: 15px;
     width: 100%;
     flex: 0 0 auto;
 }
 
-.coach-profile-pic-DIV{
+.pic-DIV{
     width: 13%;
     height: 100%;
     display: flex;
@@ -68,7 +68,7 @@
     border-right: dashed 1px grey ;
 }
 
-.coach-profile-pic{
+.pic{
     width: 70%;
     height: 90%;
     background: url(../images/pngguru.com.png);
@@ -78,20 +78,35 @@
     border-radius: 50%;
 }
 
-.coach-info-DIV{
-    width: 74%;
+.client-info-DIV{
+    width: 61%;
     height: 100%;
     display: flex;
+    flex-direction: column;
+}
+.client-info-row-DIV{
+    width: 100%;
+    height: 50%;
+    display: flex;
     flex-direction: row;
-    align-items: center;
 }
 
-.coach-info-name{
-    width: 50%;
+.client-info-text{
+    width: 25%;
     height: 100%;
+    font-family: Poppins-SemiBold;
+    color: darkred;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 60px;
+}
+.client-info-data{
+    width: 25%;
+    height: 100%;
+    font-family: Poppins-Regular;
+    display: flex;
+    align-items: center;
 }
 
 .coach-info-numberOfClients{
@@ -124,12 +139,13 @@
     background-color: lightgray;
     text-decoration: none;
     color: black;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Poppins-Bold;
     z-index: 1;
+    border: none;
+  }
+  .border-radius-adder{
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
-    border: none;
   }
   .coach-select-btn:before {
     content: "";

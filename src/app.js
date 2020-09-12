@@ -3,6 +3,7 @@ const express = require('express')
 const hbs = require('hbs')
 require('./db/mongoose')
 const clientRouter = require('./routers/client')
+const coachRouter = require('./routers/coach')
 const app = express()
 const cookie = require('cookie-parser')
 
@@ -18,6 +19,7 @@ app.use(cookie())
 app.use(express.json())
 app.use(express.static(publicDirectoryPath))
 app.use(clientRouter)
+app.use(coachRouter)
 
 
 app.get('', (req , res) => {

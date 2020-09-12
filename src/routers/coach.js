@@ -39,7 +39,7 @@ router.post('/coachs/logout', authCoach, async (req, res) => {
             return token.token !== req.token //if return is false than it going to remove by filter
         })
         await req.coach.save()
-
+        await res.clearCookie('Authorization');
         res.send()
     } catch (e) {
         res.status(500).send()
@@ -51,6 +51,7 @@ router.post('/coachs/logoutAll', authCoach, async (req, res) => {
     try {
         req.coach.tokens = []
         await req.coach.save()
+        await res.clearCookie('Authorization');
         res.send()
     } catch (e) {
         res.status(500).send()

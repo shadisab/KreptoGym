@@ -43,6 +43,7 @@ router.post('/clients/logout', authClient, async (req, res) => {
             return token.token !== req.token //if return is false than it going to remove by filter
         })
         await req.client.save()
+        await res.clearCookie('Authorization');
         res.send()
     } catch (e) {
         res.status(500).send()
@@ -54,6 +55,7 @@ router.post('/clients/logoutAll', authClient, async (req, res) => {
     try {
         req.client.tokens = []
         await req.client.save()
+        await res.clearCookie('Authorization');
         res.send()
     } catch (e) {
         res.status(500).send()

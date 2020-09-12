@@ -13,7 +13,7 @@ router.post('/clients/signup', async (req, res) => {
         res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
         res.status(201).send({ client, token })
     } catch (e) {
-        res.status(400).send(e)
+        res.status(400).send(e.errors)
     }
 })
 

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/register.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -41,10 +41,12 @@
                                                 <i class="L-Icon fas fa-user-tie"></i>
                                             </div>
                                             <div class="L-Inputdiv">
-                                                <input class="input100" type="text" name="firstName"
+                                                <input class="input100" type="text" id="name"
                                                     placeholder="Type your Full Name" />
                                             </div>
                                         </div>
+                                        <p id="nameREQ" style="color: red; opacity: 0; margin: 0;">Please Enter your
+                                            Name </p>
                                     </div>
                                     <div class="wrap-input-register100">
                                         <div class="L-InputLabeldiv">
@@ -55,10 +57,12 @@
                                                 <i class="L-Icon fas fa-envelope"></i>
                                             </div>
                                             <div class="L-Inputdiv">
-                                                <input class="input100" type="text" name="Email"
+                                                <input class="input100" type="text" id="email"
                                                     placeholder="Type your Email" />
                                             </div>
                                         </div>
+                                    <p id="emailREQ" style="color: red; opacity: 0; margin: 0;">Please Enter your Email
+                                    </p>
                                     </div>
                                 </div>
                                 <div class="R-row">
@@ -71,10 +75,12 @@
                                                 <i class="L-Icon fas fa-lock"></i>
                                             </div>
                                             <div class="L-Inputdiv">
-                                                <input class="input100" type="password" name="Password"
+                                                <input class="input100" type="password" id="password"
                                                     placeholder="Type your Password" />
                                             </div>
                                         </div>
+                                        <p id="passwordREQ" style="color: red; opacity: 0; margin: 0;">Please Enter your
+                                            Password</p>
                                     </div>
                                     <div class="wrap-input-register100">
                                         <div class="L-InputLabeldiv">
@@ -85,12 +91,13 @@
                                                 <i class="L-Icon fas fa-lock"></i>
                                             </div>
                                             <div class="L-Inputdiv">
-                                                <input class="input100" type="password" name="ConfirmPassword"
+                                                <input class="input100" type="password" id="confirmPassword"
                                                     placeholder="Type your Password Again" />
                                             </div>
                                         </div>
+                                    <p id="ERRmatchPASS" style="color: red; opacity: 0; margin: 0;">Passwords NOT match!
+                                    </p>
                                     </div>
-                                    <PasswordStrengthMeter pswd={this.state.Password} />
                                 </div>
                                 <div class="R-row">
                                     <div class="wrap-input-register100">
@@ -102,10 +109,12 @@
                                                 <i class="L-Icon fas fa-lock"></i>
                                             </div>
                                             <div class="L-Inputdiv">
-                                                <input class="input100" type="number" name="Age"
+                                                <input class="input100" type="number" id="age"
                                                     placeholder="Type your Age" />
                                             </div>
                                         </div>
+                                        <p id="ageREQ" style="color: red; opacity: 0; margin: 0;">Please enter your Age
+                                        </p>
                                     </div>
                                     <div class="wrap-input-register100">
                                         <div class="L-InputLabeldiv">
@@ -116,10 +125,12 @@
                                                 <i class="L-Icon fas fa-lock"></i>
                                             </div>
                                             <div class="L-Inputdiv">
-                                                <input class="input100" type="number" name="Height"
-                                                    placeholder="Type your Height" />
+                                                <input class="input100" type="number" id="height"
+                                                    placeholder="Type your Height (cm)" />
                                             </div>
                                         </div>
+                                    <p id="heightREQ" style="color: red; opacity: 0; margin: 0;">Please enter your
+                                        Height</p>
                                     </div>
                                 </div>
                                 <div class="R-row">
@@ -132,21 +143,24 @@
                                                 <i class=" L-Icon fas fa-weight-hanging"></i>
                                             </div>
                                             <div class="L-Inputdiv">
-                                                <input class="input100" type="number" name="Weight"
-                                                    placeholder="Type your Weight" />
+                                                <input class="input100" type="number" id="weight"
+                                                    placeholder="Type your Weight (KG)" />
                                             </div>
                                         </div>
+                                        <p id="weightREQ" style="color: red; opacity: 0; margin: 0;">Please enter your
+                                            Weight</p>
                                     </div>
                                     <div class="wrap-input-register100">
                                         <div class="L-InputLabeldiv">
                                             <span class="label-input100">Select Coach:</span>
                                         </div>
-                                        <select name="cars" id="coachs" class="coachSelect">
-                                            <option value="coach" selected="selected" hidden='true'>Select a coach</option>
-                                       
+                                        <select class="coachSelect" id="coachs">
+                                            <option value="coach" selected="selected" hidden='true'>Select a coach
+                                            </option>
                                         </select>
+                                        <p id="coachREQ" style="color: red; opacity: 0; margin: 0;">You have to select a
+                                            Coach!</p>
                                     </div>
-                                    <PasswordStrengthMeter pswd={this.state.Password} />
                                 </div>
                             </div>
                         </div>
@@ -159,7 +173,7 @@
                 </div>
                 <div class="btn-div">
                     <div class="R-button-container">
-                        <button class="R-button R-abtn R-button-left">
+                        <button id="clientREG" class="R-button R-abtn R-button-left">
                             Register
                         </button>
                     </div>

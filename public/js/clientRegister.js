@@ -24,7 +24,7 @@ $(document).ready(async () => {
     });
     
     $("#name").keypress(function () {
-        $('#ERRname').css('opacity', 0)
+        $('#nameREQ').css('opacity', 0)
     });
 
     $("#email").keypress(function () {

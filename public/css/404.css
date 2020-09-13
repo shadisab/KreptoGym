@@ -1,0 +1,44 @@
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('../fonts/poppins.medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../fonts/poppins.regular.ttf');
+}
+body{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Main-DIV{
+    width: 95%;
+    height: 90%;
+}
+
+.msg-404{
+    color: #515151;
+    font-family: Poppins-Medium;
+    font-size: 100px;
+    margin: 0;
+}
+
+.msg-err{
+    color: #515151;
+    font-family: Poppins-Regular;
+    font-size: 40px;
+    margin: 0;
+}
+
+.msg-err-lnk{
+    color: #515151;
+    font-family: Poppins-Regular;
+    font-size: 40px;
+    margin: 0;
+    cursor: pointer;
+}

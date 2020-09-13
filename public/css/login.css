@@ -150,6 +150,7 @@
   padding: 12px 24px;
   transition: all 0.2s ease-in;
   position: relative;
+  cursor: pointer;
   height: 100%;
   width: 100%;
   overflow: hidden;

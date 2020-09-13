@@ -38,8 +38,14 @@ app.get('/coachRegister' , (req , res) => {
     res.render('coachRegister')
 })
 
-app.get('/login', (req , res) => {
-    res.render('login',{
+app.get('/coachLogin', (req , res) => {
+    res.render('coachLogin',{
+
+    })
+})
+
+app.get('/clientLogin', (req , res) => {
+    res.render('clientLogin',{
 
     })
 })
@@ -71,5 +77,11 @@ app.get('/clientSchedule' , (req , res) => {
 app.get('/coachClients' , (req , res) => {
     res.render('coachClients')
 })
-
+app.get('*', (req,res) => {
+    res.render('404',{
+        title: '404',
+        message: 'Page not found!',
+        name: 'Wisam Halabi'
+    })
+})
 module.exports = app

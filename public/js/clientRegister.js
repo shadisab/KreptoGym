@@ -1,6 +1,6 @@
 $(document).ready(async () => {
 
-    const response = await fetch("/clients/allCoachs", {
+    const getCoachs = await fetch("/clients/allCoachs", {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -14,7 +14,7 @@ $(document).ready(async () => {
         // body data type must match "Content-Type" header
     });
 
-    response.json().then((data) => {
+    getCoachs.json().then((data) => {
         let coachsCount = data.length
         data.forEach(coach => {
             $('#coachs').append($("<option></option>")
@@ -22,6 +22,7 @@ $(document).ready(async () => {
                 .text(coach.name))
         });
     });
+    
     $("#name").keypress(function () {
         $('#ERRname').css('opacity', 0)
     });
@@ -81,7 +82,7 @@ $(document).ready(async () => {
         const coachID = $('#coachID').val()
         if (coachID === '') {  $('#coachREQ').css('opacity', 1)}
 
-        const response = await fetch("/clients/signup", {
+        const postClient = await fetch("/clients/signup", {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -102,7 +103,7 @@ $(document).ready(async () => {
                 height
             }) // body data type must match "Content-Type" header
         });
-        if(response.status === 201){
+        if(postClient.status === 201){
             window.location.replace("/clientHome")
         }
     })

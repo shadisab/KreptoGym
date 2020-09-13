@@ -13,7 +13,7 @@ router.post('/clients/signup', async (req, res) => {
         res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
         res.status(201).send({ client, token })
     } catch (e) {
-        res.status(400).send(e.errors)
+        res.status(400).send(e.message)
     }
 })
 
@@ -32,7 +32,7 @@ router.post('/clients/login', async (req, res) => {
         res.send({ client, token })
     } catch (e) {
         console.log(e);
-        res.status(400).send(e)
+        res.status(400).send(e.message)
     }
 })
 
@@ -68,7 +68,7 @@ router.get('/clients/myProfile', authClient, async (req, res) => {
 
 })
 // GET all coaches
-router.get('/clients/allCoachs',  async (req, res) => {
+router.get('/clients/allCoachs', async (req, res) => {
     const coachs = await Coach.find()
     res.send(coachs)
 
@@ -88,7 +88,13 @@ router.patch('/clients/chooseCoache', authClient, async (req, res) => {
         updates.forEach((update) => req.client[update] = req.body[update])// Dynamic update 
         // Adding ID of the client  to the choosed coach
         const coach = await Coach.findById(req.body.coachID)
-        coach.myClients = coach.myClients.concat({id: req.client._id, name: req.client.name, email: req.client.email, age:req.client.age})
+        coach.myClients = coach.myClients.concat({
+            id: req.client._id,
+            name: req.client.name,
+            age: req.client.age,
+            height: req.client.height,
+            weight: req.client.weight
+        })
         await req.client.save()
         await coach.save()
         res.send(req.client)

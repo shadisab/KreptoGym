@@ -13,8 +13,8 @@ router.post('/coachs/signup', async (req, res) => {
         res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
         res.status(201).send({ coach, token })
     } catch (e) {
-        console.log(e);
-        res.status(400).send(e)
+        console.log(e.message);
+        res.status(400).send(e.message)
     }
 })
 
@@ -58,12 +58,6 @@ router.post('/coachs/logoutAll', authCoach, async (req, res) => {
     }
 })
 
-// GET Coach profile
-router.get('/coachs/myProfile', authCoach, async (req, res) => {
-    res.send(req.coach)
-
-})
-
 // Updating Nutrition for a client
 router.patch('/coachs/client/nutrition/:id', authCoach, async (req, res) => {
 
@@ -89,6 +83,12 @@ router.patch('/coachs/client/nutrition/:id', authCoach, async (req, res) => {
         console.log(e)
         res.status(400).send(e)
     }
+})
+
+// GET Coach profile
+router.get('/coachs/myProfile', authCoach, async (req, res) => {
+    res.send(req.coach)
+
 })
 
 // Update Coach profile data

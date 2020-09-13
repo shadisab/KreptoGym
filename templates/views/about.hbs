@@ -1,15 +1,56 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+    <title>About us</title>
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-</html>
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+
 <body>
     {{>header}}
-    <h1>What is the App?</h1>
-    <p>Our application is a place where coachs and trainees could connect to each other online , 
-    clients connect and pick a coach and then the coach could provide them with their training schedule</p>
-    <h1>Why use our App?</h1>
-    <p>Our application is a place where coachs and trainees could connect to each other online , 
-    clients connect and pick a coach and then the coach could provide them with their training schedule.</p>
-
+    <div class="master-DIV">
+        <div class="about-containing-DIV">
+            <div class="title-DIV">
+                <div class="title-text">About us</div>
+            </div>
+            <div class="bar-DIV">
+                <div class="bar-items-DIV">
+                    <div id="btn1" class="bar-items-text">What is the App?</div>
+                    <div id="brdr1" class="border-full-opacity"></div>
+                </div>
+                <div class="bar-items-DIV">
+                    <div id="btn2" class="bar-items-text ">Why use our App?</div>
+                    <div id="brdr2" class="border-half-opacity"></div>
+                </div>
+                <div class="bar-items-DIV">
+                    <div id="btn3" class="bar-items-text ">Founders</div>
+                    <div id="brdr3" class="border-half-opacity"></div>
+                </div>
+            </div>
+            <div class="about-outer-text-DIV">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/about.js"></script>
 </body>
+
+</html>
+
+
+
+
+
+{{!-- <h1 class="about-text-title">What is the App?</h1>
+    <p class="about-text-p">Our application is a place where coachs and trainees could connect to each other online , 
+    clients connect and pick a coach and then the coach could provide them with their training schedule</p>
+    <h1 class="about-text-title">Why use our App?</h1>
+    <p class="about-text-p">Our application is a place where coachs and trainees could connect to each other online , 
+    clients connect and pick a coach and then the coach could provide them with their training schedule.</p> --}}

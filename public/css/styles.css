@@ -1,134 +1,143 @@
 @font-face {
-    font-family: Poppins-Regular;
-    src: url('../fonts/poppins.regular.ttf'); 
-  }
-    
-  @font-face {
-    font-family: Poppins-Medium;
-    src: url('../fonts/poppins.medium.ttf'); 
-  }
-    
-  @font-face {
-    font-family: Poppins-Bold;
-    src: url('../fonts/poppins.bold.ttf'); 
-  }
-    
-  @font-face {
-    font-family: Poppins-SemiBold;
-    src: url('../fonts/poppins.semibold.ttf'); 
-  }
-body{
-    width: 100%;
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    background: url(../images/gym-training-exercise-with-weight-bodybuilding-dumbbell.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-.icon-div-logo{
-    width: 14%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.logo-title{
-    color: white;
-    margin-left: 10px;
-    font-size: 16px;
-    font-family: Poppins-Bold;
-}
-.dumbbell-icon-cus{
-    color: white;
-    font-size: xx-large;
-}
-header {
-    width: 100%;
-    height: 8%;
-    background: transparent;
-    display: flex;
-    flex-direction: row;
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins.regular.ttf');
 }
 
-.links-DIV{
-    height: 100%;
-    width: 72%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../fonts/poppins.medium.ttf');
 }
-.links{
-    width: 25%;
-    height: 100%;
-    color: white;
-    font-weight: bold;
-    font-family: Poppins-Medium;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../fonts/poppins.bold.ttf');
 }
-.log-buttons-div{
-    width: 14%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url('../fonts/poppins.semibold.ttf');
 }
-.sign-log-btn-DIV{
-    background: transparent;
-    color: white;
-    font-family: Poppins-Medium;
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: url(../images/gym-training-exercise-with-weight-bodybuilding-dumbbell.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.icon-div-logo {
+  width: 14%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-title {
+  color: white;
+  margin-left: 10px;
+  font-size: 16px;
+  font-family: Poppins-Bold;
+}
+
+.dumbbell-icon-cus {
+  color: white;
+  font-size: xx-large;
+}
+
+header {
+  width: 100%;
+  height: 8%;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+}
+
+.links-DIV {
+  height: 100%;
+  width: 72%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.links {
+  width: 25%;
+  height: 100%;
+  color: white;
+  font-weight: bold;
+  font-family: Poppins-Medium;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.log-buttons-div {
+  width: 14%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.sign-log-btn-DIV {
+  background: transparent;
+  color: white;
+  font-family: Poppins-Medium;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .dropbtn {
-    background-color: transparent;
-    color: white;
-    font-family: Poppins-Medium;
-    padding-left: 17px;
-    padding-top: 13.5px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    outline: none;
-  }
-  
-  
-  .dropdown {
-    position: relative;
-    display: inline-block;
-    width: 50%;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    border-radius: 6px;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    right: 0;
-  }
+  background-color: transparent;
+  color: white;
+  font-family: Poppins-Medium;
+  padding-left: 17px;
+  padding-top: 13.5px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
 
-  .dropdown-content a {
-    color: black;
-    font-family: Poppins-Regular;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+}
 
-  .dropdown-content a:hover {
-      background-color: #ddd;
-      border-radius: 6px;
-    }
-  
-  .show {display:block;}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  border-radius: 6px;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0;
+}
+
+.dropdown-content a {
+  color: black;
+  font-family: Poppins-Regular;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  border-radius: 6px;
+}
+
+.show {
+  display: block;
+}

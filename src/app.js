@@ -33,6 +33,11 @@ app.get('/clientRegister', (req , res) => {
     })
 })
 
+
+app.get('/coachRegister' , (req , res) => {
+    res.render('coachRegister')
+})
+
 app.get('/login', (req , res) => {
     res.render('login',{
 
@@ -66,4 +71,5 @@ app.get('/clientSchedule' , (req , res) => {
 app.get('/coachClients' , (req , res) => {
     res.render('coachClients')
 })
+
 module.exports = app

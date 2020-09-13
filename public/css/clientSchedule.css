@@ -1,0 +1,69 @@
+.CS-main-DIV{
+    width: 100%;
+    height: 92%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CS-Container-DIV{
+    width: 90%;
+    height: 90%;
+    background: white;
+}
+
+.CS-Schedule-DIV{
+    width: 100%;
+    height: 70%;
+    border-bottom: #515151 1px solid;
+}
+
+.CS-Days-DIV{
+    width: 100%;
+    height: 20%;
+    border-bottom: #515151 1px solid;
+    display: flex;
+    flex-direction: row;
+}
+
+.CS-Day-DIV{
+    width: 14.285%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.CS-Day-Num{
+    color: #515151;
+    font-size: 25px;
+    font-family: Poppins-Regular;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.CS-Day-Name{
+    color: #515151;
+    font-size: 15px;
+    font-family: Poppins-Regular;
+}
+
+.CS-Training-Schedule-DIV{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+}
+
+.CS-Training-Schedule-Day{
+    width: 14.285%;
+    height: 100%;
+}
+
+.CS-Border-left{
+    border-left: #515151 1px solid;
+}

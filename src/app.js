@@ -78,10 +78,6 @@ app.get('/coachClients' , (req , res) => {
     res.render('coachClients')
 })
 
-app.get('/clientNutritions' , (req , res) => {
-    res.render('clientNutritions')
-})
-
 app.get('*', (req,res) => {
     res.render('404',{
         title: '404',

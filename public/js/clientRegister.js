@@ -22,35 +22,35 @@ $(document).ready(async () => {
         });
     });
 
-    $("#name").keypress(function () {
+    $("#name").keydown(function () {
         $('#nameREQ').css('opacity', 0)
     });
 
-    $("#email").keypress(function () {
+    $("#email").keydown(function () {
         $('#emailREQ').css('opacity', 0)
     });
 
-    $("#password").keypress(function () {
+    $("#password").keydown(function () {
         $('#passwordREQ').css('opacity', 0)
     });
 
-    $("#confirmPassword").keypress(function () {
+    $("#confirmPassword").keydown(function () {
         $('#ERRmatchPASS').css('opacity', 0)
     });
 
-    $("#age").keypress(function () {
+    $("#age").keydown(function () {
         $('#ageREQ').css('opacity', 0)
     });
 
-    $("#height").keypress(function () {
+    $("#height").keydown(function () {
         $('#heightREQ').css('opacity', 0)
     });
 
-    $("#weight").keypress(function () {
+    $("#weight").keydown(function () {
         $('#weightREQ').css('opacity', 0)
     });
 
-    $("#coachs").keypress(function () {
+    $("#coachs").keydown(function () {
         $('#coachREQ').css('opacity', 0)
     });
 
@@ -68,7 +68,7 @@ $(document).ready(async () => {
         const confirmPassword = $('#confirmPassword').val()
         if (password !== '' && confirmPassword !== password) { $('#ERRmatchPASS').css('opacity', 1) }
 
-        if (password === confirmPassword && password !== "") { // START IF 
+        if (password === confirmPassword) { // START IF 
             const postClient = await fetch("/clients/signup", {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin

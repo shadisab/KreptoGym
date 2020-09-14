@@ -1,9 +1,5 @@
 $(document).ready(async () => {
 
-    $("#name").keypress(function () {
-        $('#nameREQ').css('opacity', 0)
-    });
-
     $("#email").keypress(function () {
         $('#emailREQ').css('opacity', 0)
     });
@@ -12,24 +8,15 @@ $(document).ready(async () => {
         $('#passwordREQ').css('opacity', 0)
     });
 
-    $("#confirmPassword").keypress(function () {
-        $('#ERRmatchPASS').css('opacity', 0)
-    });
-
-    $('#clientREG').click(async () => {
-        const name = $('#name').val()
-        if (name === '') { $('#nameREQ').css('opacity', 1) }
-
+    $('#loginBTN').click(async () => {
+      
         const email = $('#email').val()
-        if (email === '') {$('#emailREQ').css('opacity', 1)}
+        if (email === '') {$('#emailREQ').text('Please Enter your Email').css('opacity', 1)}
 
         const password = $('#password').val()
-        if (password === '') {$('#passwordREQ').css('opacity', 1)}
+        if (password === '') {$('#passwordREQ').text('Please Enter your Password').css('opacity', 1)}
 
-        const confirmPassword = $('#confirmPassword').val()
-        if (password !== '' && confirmPassword !== password ) { $('#ERRmatchPASS').css('opacity', 1) }
-
-        const postCoach = await fetch("/coachs/signup", {
+        const postCoach = await fetch("/coachs/login", {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -41,13 +28,16 @@ $(document).ready(async () => {
             redirect: 'follow', // manual, *follow, error
             referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
             body: JSON.stringify({
-                name,
                 email,
-                password,
-                userType: "coach"
+                password
             }) // body data type must match "Content-Type" header
         });
-        if(postCoach.status === 201){
+
+        if(postCoach.status === 400 && password !== '' && email !== '' ){
+            {$('#emailREQ').text('Please Enter a valid Email address and Password').css('opacity', 1)}
+        }
+
+        if(postCoach.status === 200){
             window.location.href = ("/coachClients")
         }
     })

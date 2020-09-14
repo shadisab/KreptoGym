@@ -104,7 +104,7 @@ $(document).ready(async () => {
             }) // body data type must match "Content-Type" header
         });
         if(postClient.status === 201){
-            window.location.replace("/clientHome")
+            window.location.href = ("/clientHome")
         }
     })
 

@@ -9,61 +9,65 @@
 
 <body>
     <header>
-    <div class="icon-div-logo">
-        <i class="fas fa-dumbbell dumbbell-icon-cus"></i>
-        <p class="logo-title">Krepto Gym</p>
-    </div>
-    <div class="links-DIV">
-        <a class="links" href="/">Home</a>
-        <a class="links" href="/about">About</a>
-        <a class="links" href="/help">Help</a>
-    </div>
+        <div class="icon-div-logo">
+            <i class="fas fa-dumbbell dumbbell-icon-cus"></i>
+            <p class="logo-title">Krepto Gym</p>
+        </div>
+        <div class="links-DIV">
+            <a class="links" href="/">Home</a>
+            <a class="links" href="/about">About</a>
+            <a class="links" href="/help">Help</a>
+        </div>
     </header>
     <div class="login-page-DIV">
         <div class="L-container">
-                <div class="L-Title-div">
-                    <h1 class="welcome-title">Login</h1>
+            <div class="L-Title-div">
+                <h1 class="welcome-title">Login</h1>
+            </div>
+            <div class="L-Inputs-div">
+                <div class="wrap-input100">
+                    <div class="L-InputLabeldiv">
+                        <span class="label-input100">Email</span>
+                    </div>
+                    <div class="L-Inputandicondiv">
+                        <div class="L-Icondiv">
+                            <i class="L-Icon fas fa-envelope"></i>
+                        </div>
+                        <div class="L-Inputdiv">
+                            <input id="email" class="input100" type="text" name="Email" placeholder="Type your Email" />
+                        </div>
+                    </div>
+                    <p id="emailREQ" style="color: red; opacity: 0; margin: 0;"></p>
                 </div>
-                <div class="L-Inputs-div">
-                    <div class="wrap-input100">
-                        <div class="L-InputLabeldiv">
-                            <span class="label-input100">Email</span>
+                <div class="wrap-input100">
+                    <div class="L-InputLabeldiv">
+                        <span class="label-input100">Password</span>
+                    </div>
+                    <div class="L-Inputandicondiv">
+                        <div class="L-Icondiv">
+                            <i class="L-Icon fas fa-lock"></i>
                         </div>
-                        <div class="L-Inputandicondiv">
-                            <div class="L-Icondiv">
-                                <i class="L-Icon fas fa-envelope"></i>
-                            </div>
-                            <div class="L-Inputdiv">
-                                <input class="input100" type="text" name="Email" placeholder="Type your Email" />
-                            </div>
+                        <div class="L-Inputdiv">
+                            <input id="password" class="input100" type="password" name="Password"
+                                placeholder="Type your Password" />
                         </div>
                     </div>
-                    <div class="wrap-input100">
-                        <div class="L-InputLabeldiv">
-                            <span class="label-input100">Password</span>
-                        </div>
-                        <div class="L-Inputandicondiv">
-                            <div class="L-Icondiv">
-                                <i class="L-Icon fas fa-lock"></i>
-                            </div>
-                            <div class="L-Inputdiv">
-                                <input class="input100" type="password" name="Password"
-                                    placeholder="Type your Password" />
-                            </div>
-                        </div>
-                    </div>
+                    <p id="passwordREQ" style="color: red; opacity: 0; margin: 0;"></p>
+
                 </div>
-                <p class="errtxt"></p>
-                <div class="L-Buttons-div">
-                    <div class="L-button-container">
-                        <button class="L-button L-abtn">Login</button>
-                    </div>
-                    <div onclick="location.href='/';" class="L-button-container">
-                        <button class="L-button L-abtn L-RbtnRadios">Cancel</button>
-                    </div>
+            </div>
+            <p class="errtxt"></p>
+            <div class="L-Buttons-div">
+                <div class="L-button-container">
+                    <button id="loginBTN" class="L-button L-abtn">Login</button>
                 </div>
+                <div onclick="location.href='/';" class="L-button-container">
+                    <button class="L-button L-abtn L-RbtnRadios">Cancel</button>
+                </div>
+            </div>
         </div>
     </div>
+    <script src="/js/clientLogin.js"></script>
 </body>
 
 </html>

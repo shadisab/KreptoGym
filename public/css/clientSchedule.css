@@ -10,12 +10,20 @@
     width: 90%;
     height: 90%;
     background: white;
+    border-radius: 26px;
 }
 
 .CS-Schedule-DIV{
     width: 100%;
     height: 70%;
     border-bottom: #515151 1px solid;
+}
+
+.CS-Nutritions-msg-DIV{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
 }
 
 .CS-Days-DIV{
@@ -62,8 +70,105 @@
 .CS-Training-Schedule-Day{
     width: 14.285%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CS-Daily-Training-Text{
+    width: 90%;
+    height: 84%;
+    margin-top: 7px;
+    resize: none;
+    overflow-y: auto;
+}
+
+.CS-Daily-Training-Title{
+    color: #515151;
+    font-family: Poppins-Regular;
+}
+
+.CS-Nutritions-msg-inner-DIV{
+    border: #515151 1px solid;
+    width: 99%;
+    height: 79%;
+    border-bottom-left-radius: 26px;
+    border-bottom-right-radius: 26px;
+    display: flex;
+    flex-direction: row;
+}
+.CS-Nutritions-outer-DIV{
+    height: 100%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.CS-Msg-outer-DIV{
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.CS-Nutritions-DIV{
+    height: 78%;
+    width: 98.5%;
+    border: #515151 1px solid;
+    border-bottom-left-radius: 26px;
+    display: flex;
+    flex-direction: column;
+}
+.CS-row{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+}
+
+.CS-Nutrition-item{
+    width: 33.333333%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.CS-Nutrition-item-title{
+    color: darkred;
+    font-family: Poppins-Regular;
+    display: flex;
+    align-items: flex-end;
+}
+
+.CS-Nutrition-item-value{
+    color: #515151;
+    font-family: Poppins-Regular;
+    margin-left: 10px;
+    width: 15%;
+}
+.CS-msg-DIV{
+    height: 78%;
+    width: 97%;
+    margin-right: 4px;
+    border: #515151 1px solid;
+    border-bottom-right-radius: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CS-Msg-Text{
+    width: 94%;
+    height: 84%;
+    resize: none;
+    outline: none;
+    overflow-y: auto;
+    border-bottom-right-radius: 26px;
 }
 
 .CS-Border-left{
     border-left: #515151 1px solid;
 }
+

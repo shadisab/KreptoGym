@@ -37,9 +37,10 @@ const clientSchema = new mongoose.Schema({
     age: {
         type: Number,
         default: 0,
+        required: true,
         validate(value) {
             if (value < 0) {
-                throw new Error('Age most bd a positive number')
+                throw new Error('Age most be a positive number')
             }
         }
     }, 
@@ -52,7 +53,7 @@ const clientSchema = new mongoose.Schema({
         required: true,
         validate(value) {
             if (value < 0) {
-                throw new Error('Age most bd a positive number')
+                throw new Error('Weight most be a positive number')
             }
         }
     },
@@ -61,7 +62,7 @@ const clientSchema = new mongoose.Schema({
         required: true,
         validate(value) {
             if (value < 0) {
-                throw new Error('Age most bd a positive number')
+                throw new Error('Height most be a positive number')
             }
         }
     }
@@ -119,7 +120,8 @@ const clientSchema = new mongoose.Schema({
         }
     }],
     coachID: { // Coach who train this client
-        type: mongoose.Schema.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
     }
 }, {
     timestamps: true

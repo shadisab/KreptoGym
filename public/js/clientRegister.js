@@ -15,14 +15,13 @@ $(document).ready(async () => {
     });
 
     getCoachs.json().then((data) => {
-        let coachsCount = data.length
         data.forEach(coach => {
             $('#coachs').append($("<option></option>")
                 .attr("value", coach._id)
                 .text(coach.name))
         });
     });
-    
+
     $("#name").keypress(function () {
         $('#nameREQ').css('opacity', 0)
     });
@@ -59,53 +58,77 @@ $(document).ready(async () => {
 
     $('#clientREG').click(async () => {
         const name = $('#name').val()
-        if (name === '') { $('#nameREQ').css('opacity', 1) }
-
         const email = $('#email').val()
-        if (email === '') {$('#emailREQ').css('opacity', 1)}
-
         const password = $('#password').val()
-        if (password === '') {$('#passwordREQ').css('opacity', 1)}
+        const age = $('#age').val()
+        const height = $('#height').val()
+        const weight = $('#weight').val()
+        const coachID = $('#coachID').val()
 
         const confirmPassword = $('#confirmPassword').val()
-        if (password !== '' && confirmPassword !== password ) { $('#ERRmatchPASS').css('opacity', 1) }
+        if (password !== '' && confirmPassword !== password) { $('#ERRmatchPASS').css('opacity', 1) }
 
-        const age = $('#age').val()
-        if (age ==='') { $('#ageREQ').css('opacity', 1)}
-
-        const height = $('#height').val()
-        if (height === '') {  $('#heightREQ').css('opacity', 1) }
-
-        const weight = $('#weight').val()
-        if (weight === '') {$('#weightREQ').css('opacity', 1)}
-
-        const coachID = $('#coachID').val()
-        if (coachID === '') {  $('#coachREQ').css('opacity', 1)}
-
-        const postClient = await fetch("/clients/signup", {
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, *cors, same-origin
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, *same-origin, omit
-            headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            redirect: 'follow', // manual, *follow, error
-            referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-            body: JSON.stringify({
-                name,
-                email,
-                password,
-                age,
-                userType: "client",
-                weight,
-                height
-            }) // body data type must match "Content-Type" header
-        });
-        if(postClient.status === 201){
-            window.location.href = ("/clientHome")
-        }
+        if (password === confirmPassword && password !== "") { // START IF 
+            const postClient = await fetch("/clients/signup", {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'cors', // no-cors, *cors, same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                redirect: 'follow', // manual, *follow, error
+                referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                body: JSON.stringify({
+                    name,
+                    email,
+                    password,
+                    age,
+                    userType: "client",
+                    weight,
+                    height,
+                    coachID
+                }) // body data type must match "Content-Type" header
+            });
+            if (postClient.status === 400) {
+                postClient.json().then((body) => {
+                    console.log(body);
+                    /*     If the response message is Required           */
+                    if (body.errors["name"]) {
+                        if (body.errors["name"].kind === "required") { $('#nameREQ').css('opacity', 1) }
+                    }
+                    if (body.errors["email"]) {
+                        if (body.errors["email"].kind === "required") { $('#emailREQ').css('opacity', 1) }
+                        if (body.errors["email"].kind === "user defined") { $('#emailREQ').text('Please enter a valid Email address').css('opacity', 1) }
+                    }
+                    if (body.errors["height"]) {
+                        if (body.errors["height"].kind === "required") { $('#heightREQ').css('opacity', 1) }
+                        if (body.errors["height"].kind === "user defined") { $('#heightREQ').text('Height most be positive').css('opacity', 1) }
+                    }
+                    if (body.errors["password"]) {
+                        if (body.errors["password"].kind === "required") { $('#passwordREQ').css('opacity', 1) }
+                        if (body.errors["password"].kind === "minlength") { $('#passwordREQ').text('Passowrd length most be > 6').css('opacity', 1) }
+                        if (body.errors["password"].kind === "user defined") { $('#passwordREQ').text('Password must not contain "password"').css('opacity', 1) }
+                    }
+                    if (body.errors["weight"]) {
+                        if (body.errors["weight"].kind === "required") { $('#weightREQ').css('opacity', 1) }
+                        if (body.errors["weight"].kind === "user defined") { $('#weightREQ').text('Weight most be positive').css('opacity', 1) }
+                    }
+                    if (body.errors["age"]) {
+                        if (body.errors["age"].kind === "required") { $('#ageREQ').css('opacity', 1) }
+                        if (body.errors["age"].kind === "user defined") { $('#ageREQ').text('Age most be positive').css('opacity', 1) }
+                    }
+                    if (body.errors["coachID"]) {
+                        if (body.errors["coachID"].kind === "required") { $('#coachREQ').css('opacity', 1) }
+                    }
+                    /*     IF the response message is Must be positive        */
+                })
+            }
+            if (postClient.status === 201) {
+                window.location.href = ("/clientHome")
+            }
+        } // END IF PASSWORD === CONFIRMPASS
     })
 
 });

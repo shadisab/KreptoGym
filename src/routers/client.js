@@ -13,7 +13,7 @@ router.post('/clients/signup', async (req, res) => {
         res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
         res.status(201).send({ client, token })
     } catch (e) {
-        res.status(400).send(e.message)
+        res.status(400).send(e)
     }
 })
 
@@ -32,7 +32,7 @@ router.post('/clients/login', async (req, res) => {
         res.send({ client, token })
     } catch (e) {
         console.log(e);
-        res.status(400).send(e.message)
+        res.status(400).send(e)
     }
 })
 

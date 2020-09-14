@@ -16,7 +16,7 @@ $(document).ready(async () => {
         const password = $('#password').val()
         if (password === '') {$('#passwordREQ').text('Please Enter your Password').css('opacity', 1)}
 
-        const postCoach = await fetch("/clients/login", {
+        const postClient = await fetch("/clients/login", {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -33,11 +33,11 @@ $(document).ready(async () => {
             }) // body data type must match "Content-Type" header
         });
 
-        if(postCoach.status === 400 && password !== '' && email !== '' ){
+        if(postClient.status === 400 && password !== '' && email !== '' ){
             {$('#emailREQ').text('Please Enter a valid Email address and Password').css('opacity', 1)}
         }
 
-        if(postCoach.status === 200){
+        if(postClient.status === 200){
             window.location.href = ("/clientHome")
         }
     })

@@ -1,4 +1,4 @@
-.CS-main-DIV{
+.CSU-main-DIV{
     width: 100%;
     height: 92%;
     display: flex;
@@ -6,7 +6,7 @@
     justify-content: center;
 }
 
-.CS-Container-DIV{
+.CSU-Container-DIV{
     width: 95%;
     height: 90%;
     background: white;
@@ -14,25 +14,25 @@
     border: 1px solid #515151 ;
 }
 
-.CS-Schedule-DIV{
+.CSU-Schedule-DIV{
     width: 100%;
     height: 60%;
     border-bottom: #515151 1px solid;
 }
 
-.CS-Nutritions-msg-DIV{
+.CSU-Nutritions-msg-DIV{
     width: 100%;
     height: 25%;
     display: flex;
     flex-direction: row;
 }
-.CS-btns-DIV{
+.CSU-btns-DIV{
     width: 100%;
     height: 15%;
     display: flex;
     flex-direction: row;
 }
-.CS-Days-DIV{
+.CSU-Days-DIV{
     width: 100%;
     height: 20%;
     border-bottom: #515151 1px solid;
@@ -40,7 +40,7 @@
     flex-direction: row;
 }
 
-.CS-Day-DIV{
+.CSU-Day-DIV{
     width: 14.285%;
     height: 100%;
     display: flex;
@@ -49,7 +49,7 @@
     justify-content: center;
 }
 
-.CS-Day-Num{
+.CSU-Day-Num{
     color: #515151;
     font-size: 25px;
     font-family: Poppins-Regular;
@@ -60,20 +60,20 @@
     border-radius: 50%;
 }
 
-.CS-Day-Name{
+.CSU-Day-Name{
     color: #515151;
     font-size: 15px;
     font-family: Poppins-Regular;
 }
 
-.CS-Training-Schedule-DIV{
+.CSU-Training-Schedule-DIV{
     width: 100%;
     height: 80%;
     display: flex;
     flex-direction: row;
 }
 
-.CS-Training-Schedule-Day{
+.CSU-Training-Schedule-Day{
     width: 14.285%;
     height: 100%;
     display: flex;
@@ -81,7 +81,7 @@
     align-items: center;
 }
 
-.CS-Daily-Training-Text{
+.CSU-Daily-Training-Text{
     width: 90%;
     height: 84%;
     margin-top: 7px;
@@ -89,7 +89,7 @@
     overflow-y: auto;
 }
 
-.CS-Daily-Training-Title{
+.CSU-Daily-Training-Title{
     color: #515151;
     width: 100%;
     display: flex;
@@ -98,7 +98,7 @@
     font-family: Poppins-Regular;
 }
 
-.CS-Nutritions-msg-inner-DIV{
+.CSU-Nutritions-msg-inner-DIV{
     border: #515151 1px solid;
     width: 99%;
     height: 79%;
@@ -107,21 +107,21 @@
     display: flex;
     flex-direction: row;
 }
-.CS-Nutritions-outer-DIV{
+.CSU-Nutritions-outer-DIV{
     height: 100%;
     width: 75%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
-.CS-Msg-outer-DIV{
+.CSU-Msg-outer-DIV{
     height: 100%;
     width: 25%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.CS-Nutritions-DIV{
+.CSU-Nutritions-DIV{
     height: 80%;
     width: 100%;
     border: #515151 1px solid;
@@ -129,14 +129,14 @@
     display: flex;
     flex-direction: column;
 }
-.CS-row{
+.CSU-row{
     width: 100%;
     height: 50%;
     display: flex;
     flex-direction: row;
 }
 
-.CS-Nutrition-item{
+.CSU-Nutrition-item{
     width: 33.333333%;
     height: 100%;
     display: flex;
@@ -145,20 +145,20 @@
     flex-direction: row;
 }
 
-.CS-Nutrition-item-title{
+.CSU-Nutrition-item-title{
     color: darkred;
     font-family: Poppins-Regular;
     display: flex;
     align-items: flex-end;
 }
 
-.CS-Nutrition-item-value{
+.CSU-Nutrition-item-value{
     color: #515151;
     font-family: Poppins-Regular;
     margin-left: 10px;
     width: 15%;
 }
-.CS-msg-DIV{
+.CSU-msg-DIV{
     height: 80%;
     width: 100%;
     border: #515151 1px solid;
@@ -169,7 +169,7 @@
     justify-content: center;
 }
 
-.CS-Msg-Text{
+.CSU-Msg-Text{
     width: 94%;
     height: 84%;
     resize: none;
@@ -177,7 +177,7 @@
     overflow-y: auto;
 }
 
-.CS-Border-left{
+.CSU-Border-left{
     border-left: #515151 1px solid;
 }
 

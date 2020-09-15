@@ -7,25 +7,31 @@
 }
 
 .CS-Container-DIV{
-    width: 90%;
+    width: 95%;
     height: 90%;
     background: white;
     border-radius: 26px;
+    border: 1px solid #515151 ;
 }
 
 .CS-Schedule-DIV{
     width: 100%;
-    height: 70%;
+    height: 60%;
     border-bottom: #515151 1px solid;
 }
 
 .CS-Nutritions-msg-DIV{
     width: 100%;
-    height: 30%;
+    height: 25%;
     display: flex;
     flex-direction: row;
 }
-
+.CS-btns-DIV{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+}
 .CS-Days-DIV{
     width: 100%;
     height: 20%;
@@ -85,6 +91,10 @@
 
 .CS-Daily-Training-Title{
     color: #515151;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: Poppins-Regular;
 }
 
@@ -102,7 +112,7 @@
     width: 75%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
 }
 .CS-Msg-outer-DIV{
     height: 100%;
@@ -112,10 +122,10 @@
     align-items: center;
 }
 .CS-Nutritions-DIV{
-    height: 78%;
-    width: 98.5%;
+    height: 80%;
+    width: 100%;
     border: #515151 1px solid;
-    border-bottom-left-radius: 26px;
+    border-left: 0;
     display: flex;
     flex-direction: column;
 }
@@ -149,11 +159,11 @@
     width: 15%;
 }
 .CS-msg-DIV{
-    height: 78%;
-    width: 97%;
-    margin-right: 4px;
+    height: 80%;
+    width: 100%;
     border: #515151 1px solid;
-    border-bottom-right-radius: 26px;
+    border-left: 0;
+    border-right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -165,10 +175,81 @@
     resize: none;
     outline: none;
     overflow-y: auto;
-    border-bottom-right-radius: 26px;
 }
 
 .CS-Border-left{
     border-left: #515151 1px solid;
 }
 
+.R-abtn{
+    text-decoration: none;
+    color: #515151;
+    font-family: Poppins-Regular;
+    z-index: 1;
+  }
+  .R-button-container {
+    width: 70%;
+    height: 100%;
+    text-align: center;
+  }
+  .R-button {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    transition: all 0.2s ease-in;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    outline: transparent;
+    cursor: pointer;
+  }
+  .R-button:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.25);
+    top: 100%;
+    width: 140%;
+    height: 180%;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+  }
+  .R-button:after {
+    content: "";
+    position: absolute;
+    left: 55%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.45);
+    top: 180%;
+    width: 160%;
+    height: 190%;
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+  }
+  .R-button:hover {
+    color: white;
+    border: none;
+  }
+  .R-button:hover:before {
+    top: -35%;
+    background-color: #515151;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+  }
+  .R-button:hover:after {
+    top: -45%;
+    background-color: #515151;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+  }
+.R-button-left{
+    border-bottom-left-radius: 25px;
+}
+.R-button-right{
+    border-bottom-right-radius: 25px;
+}

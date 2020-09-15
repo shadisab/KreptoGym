@@ -53,7 +53,8 @@
     color: #515151;
     font-size: 25px;
     font-family: Poppins-Regular;
-    width: 40px;
+    width: 38px;
+    margin-top: 3px;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -161,6 +161,10 @@
     align-items: flex-end;
 }
 
+.CSU-margin-left{
+    margin-left: 5px;
+}
+
 .CSU-cal-item-title{
     color: darkred;
     font-family: Poppins-Regular;

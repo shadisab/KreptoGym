@@ -54,3 +54,20 @@
     display: flex;
     flex-direction: column;
 }
+
+.CS-cal-item{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.CS-cal-title{
+    color: darkred;
+    font-family: Poppins-Regular;
+    display: flex;
+    align-items: flex-end;
+    font-size: 30px;
+}

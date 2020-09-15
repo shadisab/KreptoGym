@@ -51,7 +51,7 @@ $(document).ready(async () => {
         $('#weightREQ').css('opacity', 0)
     });
 
-    $("#coachs").keydown(function () {
+    $("#coachs").change(function () {
         $('#coachREQ').css('opacity', 0)
     });
 
@@ -64,7 +64,7 @@ $(document).ready(async () => {
         const age = $('#age').val()
         const height = $('#height').val()
         const weight = $('#weight').val()
-        const coachID = $('#coachID').val()
+        const coachID = $( "#coachs option:selected" ).val();
 
         const confirmPassword = $('#confirmPassword').val()
         if (password !== '' && confirmPassword !== password) {
@@ -124,13 +124,13 @@ $(document).ready(async () => {
                         if (body.errors["age"].kind === "user defined") { $('#ageREQ').text('Age most be positive').css('opacity', 1) }
                     }
                     if (body.errors["coachID"]) {
-                        if (body.errors["coachID"].kind === "required") { $('#coachREQ').css('opacity', 1) }
+                        if (body.errors["coachID"].kind === "required" || body.errors["coachID"].kind === "ObjectId") { $('#coachREQ').css('opacity', 1) }
                     }
                     /*     IF the response message is Must be positive        */
                 })
             }
             if (postClient.status === 201) {
-                window.location.href = ("/clientHome")
+                window.location.href = ("/clientSchedule")
             }
         } // END IF PASSWORD === CONFIRMPASS
     })

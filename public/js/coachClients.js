@@ -19,7 +19,7 @@ $(document).ready(async () => {
     });
     $("#clientsList").on("click", "button", async (e) => {
         var clientID =  $(e.target).attr("value")
-        window.location.href = ("/clientSchedule?id="+clientID)
+        window.location.href = ("/coachScheduleUpdate?id="+clientID)
     });
 });
 

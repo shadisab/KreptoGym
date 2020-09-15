@@ -38,7 +38,8 @@ $(document).ready(async () => {
         }
 
         if(postClient.status === 200){
-            window.location.href = ("/clientHome")
+                window.location.href = ("/clientSchedule")
+          
         }
     })
 });

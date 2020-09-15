@@ -1,0 +1,92 @@
+.logout-btn-div{
+    width: 14%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.ClientP-Main-DIV{
+    height: 92%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ClientP-Container-DIV{
+    height: 85%;
+    width: 60%;
+    background-color: white;
+    border-radius: 26px;
+}
+
+.ClientP-title-DIV{
+    height: 15%;
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #515151;
+    font-family: Poppins-Medium;
+    color: #515151;
+}
+
+.ClientP-info-DIV{
+    height: 55%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ClientP-item-DIV{
+    height: 25%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.ClientP-Del-btn-DIV{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #515151;
+    cursor: pointer;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.ClientP-border-bottom-right-left-r{
+    border-bottom-left-radius: 26px;
+    border-bottom-right-radius: 26px;
+}
+
+.ClientP-Delmsg{
+    color: darkred;
+    font-family: Poppins-Medium;
+    margin-left: 10px;
+    font-size: 20px;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.ClientP-Del-icon{
+    color: darkred;
+    font-size: 20px;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.ClientP-Del-btn-DIV:hover{
+    background-color: darkred;
+}
+
+.ClientP-Del-btn-DIV:hover .ClientP-Delmsg{
+    color: white;
+}
+
+.ClientP-Del-btn-DIV:hover .ClientP-Del-icon{
+    color: white;
+}

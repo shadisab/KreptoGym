@@ -32,6 +32,7 @@ $(document).ready(async () => {
 
     $("#password").keydown(function () {
         $('#passwordREQ').css('opacity', 0)
+        $('#ERRmatchPASS').css('opacity', 0)
     });
 
     $("#confirmPassword").keydown(function () {
@@ -66,7 +67,10 @@ $(document).ready(async () => {
         const coachID = $('#coachID').val()
 
         const confirmPassword = $('#confirmPassword').val()
-        if (password !== '' && confirmPassword !== password) { $('#ERRmatchPASS').css('opacity', 1) }
+        if (password !== '' && confirmPassword !== password) {
+            $('#ERRmatchPASS').css('opacity', 1)
+            $("#confirmPassword").val("")
+        }
 
         if (password === confirmPassword) { // START IF 
             const postClient = await fetch("/clients/signup", {

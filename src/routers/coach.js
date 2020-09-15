@@ -57,6 +57,26 @@ router.post('/coachs/logoutAll', authCoach, async (req, res) => {
     }
 })
 
+// GET client Nutrition
+router.get('/coachs/client/nutrition/:id', authCoach, async(req, res) => {
+    const client = await Client.findOne({_id: req.params.id,coachID: req.coach._id })
+
+    res.status(200).send(client.nutrition)
+    if (!client) {
+        return res.status(404).send("Cant Find client")
+    }
+})
+
+// GET client TrainingSchedule
+router.get('/coachs/client/trainingSchedule/:id', authCoach, async(req, res) => {
+    const client = await Client.findOne({_id: req.params.id,coachID: req.coach._id })
+
+    res.status(200).send(client.trainingSchedule)
+    if (!client) {
+        return res.status(404).send("Cant Find client")
+    }
+})
+
 // Updating Nutrition for a client
 router.patch('/coachs/client/nutrition/:id', authCoach, async (req, res) => {
 
@@ -77,12 +97,39 @@ router.patch('/coachs/client/nutrition/:id', authCoach, async (req, res) => {
         updates.forEach((update) => client.nutrition[update] = req.body[update])// Dynamic update  
         await client.save()
 
-        res.send(req.client.nutrition)
+        res.send(client.nutrition)
     } catch (e) {
         console.log(e)
         res.status(400).send(e)
     }
 })
+
+// Updating TrainingSchedule for a client
+router.patch('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) => {
+
+    const updates = Object.keys(req.body)
+    const allowerdUpdates = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+    const isValidOperation = updates.every((update) => allowerdUpdates.includes(update))
+    if (!isValidOperation) {
+        return res.status(400).send({ error: 'Invalid updates!' })
+    }
+
+    try {
+        // bypassed more advanced features like middleware which means that if we want to use them consistently
+        // So "User.findByIdAndUpdate" will not work
+        const client = await Client.findOne({_id: req.params.id,coachID: req.coach._id })
+        if (!client) {
+            return res.status(404).send("Cant Find client")
+        }
+        updates.forEach((update) => client.trainingSchedule[update] = req.body[update])// Dynamic update  
+        await client.save()
+        res.send(client.nutrition)
+    } catch (e) {
+        console.log(e)
+        res.status(400).send(e)
+    }
+})
+
 
 // GET Coach profile
 router.get('/coachs/myProfile', authCoach, async (req, res) => {

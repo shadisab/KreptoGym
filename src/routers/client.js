@@ -10,6 +10,15 @@ router.post('/clients/signup', async (req, res) => {
     try {
         await client.save()
         const token = await client.generateAuthToken()
+        const coach = await Coach.findById(req.body.coachID)
+        coach.myClients = coach.myClients.concat({
+            id: client._id,
+            name: client.name,
+            age: client.age,
+            height: client.height,
+            weight: client.weight
+        })
+        await coach.save()
         res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
         res.status(201).send({ client, token })
     } catch (e) {
@@ -74,36 +83,37 @@ router.get('/clients/allCoachs', async (req, res) => {
 
 })
 
+/* NOW I USE CHOOSE CLIENT FROM THE SIGNUP */
 // Choosing a coach to start trining with from coach list
-router.patch('/clients/chooseCoache', authClient, async (req, res) => {
-    const updates = Object.keys(req.body)
-    const allowerdUpdates = ['coachID']
-    const isValidOperation = updates.every((update) => allowerdUpdates.includes(update))
-    if (!isValidOperation) {
-        return res.status(400).send({ error: 'Invalid updates!' })
-    }
-    try {
-        // bypassed more advanced features like middleware which means that if we want to use them consistently
-        // So "User.findByIdAndUpdate" will not work 
-        updates.forEach((update) => req.client[update] = req.body[update])// Dynamic update 
-        // Adding ID of the client  to the choosed coach
-        const coach = await Coach.findById(req.body.coachID)
-        coach.myClients = coach.myClients.concat({
-            id: req.client._id,
-            name: req.client.name,
-            age: req.client.age,
-            height: req.client.height,
-            weight: req.client.weight
-        })
-        await req.client.save()
-        await coach.save()
-        res.send(req.client)
-    } catch (e) {
-        console.log(e);
-        res.status(400).send(e)
-    }
+// router.patch('/clients/chooseCoache', authClient, async (req, res) => {
+//     const updates = Object.keys(req.body)
+//     const allowerdUpdates = ['coachID']
+//     const isValidOperation = updates.every((update) => allowerdUpdates.includes(update))
+//     if (!isValidOperation) {
+//         return res.status(400).send({ error: 'Invalid updates!' })
+//     }
+//     try {
+//         // bypassed more advanced features like middleware which means that if we want to use them consistently
+//         // So "User.findByIdAndUpdate" will not work 
+//         updates.forEach((update) => req.client[update] = req.body[update])// Dynamic update 
+//         // Adding ID of the client  to the choosed coach
+//         const coach = await Coach.findById(req.body.coachID)
+//         coach.myClients = coach.myClients.concat({
+//             id: req.client._id,
+//             name: req.client.name,
+//             age: req.client.age,
+//             height: req.client.height,
+//             weight: req.client.weight
+//         })
+//         await req.client.save()
+//         await coach.save()
+//         res.send(req.client)
+//     } catch (e) {
+//         console.log(e);
+//         res.status(400).send(e)
+//     }
 
-})
+// })
 
 // Updating client profile data
 router.patch('/clients/myProfile', authClient, async (req, res) => {

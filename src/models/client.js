@@ -70,27 +70,38 @@ const clientSchema = new mongoose.Schema({
     trainingSchedule: {
         sunday: {
             type: String,
-            trim: true
+            trim: true,
+            default:"Rest day"
         },
         monday: {
             type: String,
-            trim: true
+            trim: true,
+            default:"Rest day"
         },
         tuesday: {
             type: String,
-            trim: true
+            trim: true,
+            default:"Rest day"
         },
         wednesday: {
             type: String,
-            trim: true
+            trim: true,
+            default:"Rest day"
         },
         thursday: {
             type: String,
-            trim: true
+            trim: true,
+            default:"Rest day"
         },
         friday: {
             type: String,
-            trim: true
+            trim: true,
+            default:"Rest day"
+        }, 
+        saturday: {
+            type: String,
+            trim: true,
+            default:"Rest day"
         }
     },
     nutrition: {
@@ -110,7 +121,8 @@ const clientSchema = new mongoose.Schema({
         },
         notes: {
             type: String,
-            trim: true
+            trim: true,
+            default: "Still dont have notes ..."
         }
     },
     tokens: [{  //value always provided by the server
@@ -120,8 +132,8 @@ const clientSchema = new mongoose.Schema({
         }
     }],
     coachID: { // Coach who train this client
-        type: mongoose.Schema.Types.ObjectId,
-        required: true
+        type: mongoose.Schema.Types.ObjectId
+        
     }
 }, {
     timestamps: true

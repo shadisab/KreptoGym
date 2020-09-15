@@ -70,8 +70,8 @@ app.get('/coachClients' , (req , res) => {
     res.render('coachClients')
 })
 
-app.get('/clientSchedule' , (req , res) => {
-    res.render('clientSchedule')
+app.get('/coachScheduleUpdate' , (req , res) => {
+    res.render('coachScheduleUpdate')
 })
 
 app.get('/coachClients' , (req , res) => {

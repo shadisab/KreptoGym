@@ -117,7 +117,10 @@ const clientSchema = new mongoose.Schema({
         fats: {
             type: Number,
             default: 0
-
+        },
+        calories:{
+            type: Number,
+            default: 0
         },
         notes: {
             type: String,

@@ -81,7 +81,7 @@ router.get('/coachs/client/trainingSchedule/:id', authCoach, async(req, res) => 
 router.patch('/coachs/client/nutrition/:id', authCoach, async (req, res) => {
 
     const updates = Object.keys(req.body)
-    const allowerdUpdates = ['protine', 'carbs', 'fats', 'notes']
+    const allowerdUpdates = ['protine', 'carbs', 'fats', 'notes', 'calories']
     const isValidOperation = updates.every((update) => allowerdUpdates.includes(update))
     if (!isValidOperation) {
         return res.status(400).send({ error: 'Invalid updates!' })

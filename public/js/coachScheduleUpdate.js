@@ -17,7 +17,7 @@ $(document).ready(async () => {
     days[6] = "sat";
     $('#' + days[a.getDay()]).css("background", "#515151").css("color", "white")
 
-    const nutrition = ['protine', 'carbs', 'fats', 'notes']
+    const nutrition = ['protine', 'carbs', 'fats', 'notes', 'calories']
     const daysExercise = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
 
 
@@ -63,12 +63,18 @@ $(document).ready(async () => {
             $("#" + day).val(data[day])
         })
     })
+    //calculate Client Calories
+    $("#calculateCalories").click(async ()=>{
+        $("#calories").val(($("#protine").val() * 4) + ($("#carbs").val() * 4) + ($("#fats").val()*9) )
+    })
+
     // On Updating nutrition data
     $("#nutritionsBTN").click(async () => {
         const fats = $("#fats").val()
         const carbs = $("#carbs").val()
         const protine = $("#protine").val()
         const notes = $('#notes').val()
+        const calories = $('#calories').val()
 
         const updateNutrition = await fetch("/coachs/client/nutrition/" + id, {
             method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
@@ -85,7 +91,8 @@ $(document).ready(async () => {
                 fats,
                 carbs,
                 protine,
-                notes
+                notes,
+                calories
             }) // body data type must match "Content-Type" header
         });
 

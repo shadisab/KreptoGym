@@ -132,7 +132,8 @@ const clientSchema = new mongoose.Schema({
         }
     }],
     coachID: { // Coach who train this client
-        type: mongoose.Schema.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
         
     }
 }, {

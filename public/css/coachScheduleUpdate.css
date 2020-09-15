@@ -145,11 +145,50 @@
     flex-direction: row;
 }
 
+.CSU-cal-btn-item{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
 .CSU-Nutrition-item-title{
     color: darkred;
     font-family: Poppins-Regular;
     display: flex;
     align-items: flex-end;
+}
+
+.CSU-cal-item-title{
+    color: darkred;
+    font-family: Poppins-Regular;
+    display: flex;
+    align-items: flex-end;
+    font-size: 30px;
+}
+
+.CSU-cal-item-value{
+    color: #515151;
+    font-family: Poppins-Regular;
+    margin-left: 10px;
+    width: 30%;
+}
+
+.CSU-Calculatebtn-item{
+    height: 80%;
+    width: 60%;
+    background: white;
+    color: #515151;
+    outline: none;
+    font-family: Poppins-Regular;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.CSU-Calculatebtn-item:hover {
+    background:  #515151;
+    color: white;
 }
 
 .CSU-Nutrition-item-value{

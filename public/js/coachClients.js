@@ -15,18 +15,42 @@ $(document).ready(async () => {
     getClients.json().then((data) => {
         console.log(data.length)
         if (data.length !== 0) {
-            $('#noClientsmsg').css('display','none')
+            $('#noClientsmsg').css('display', 'none')
             data.forEach(client => {
                 $('#clientsList').append(' <div class="clientDIV"><div class="pic-DIV"><div class="pic"></div></div><div class="client-info-DIV"> <div class="client-info-row-DIV"> <div class="client-info-text">Name:</div><div class="client-info-data">' + client.name + '</div><div class="client-info-text">Age:</div> <div class="client-info-data">' + client.age + '</div></div><div class="client-info-row-DIV"> <div class="client-info-text">Weight:</div><div class="client-info-data">' + client.weight + ' KG</div><div class="client-info-text">Height:</div><div class="client-info-data">' + client.height + ' cm</div> </div> </div><div class="coach-select-btn-DIV"><button value="' + client.id + '"  class="coach-select-btn">Update Schedule & Nutritions</button></div></div><div class="clientDIV-filler"></div>')
             });
         } else {
-            $('#noClientsmsg').css('display','flex') 
+            $('#noClientsmsg').css('display', 'flex')
         }
     });
     $("#clientsList").on("click", "button", async (e) => {
         var clientID = $(e.target).attr("value")
         window.location.href = ("/coachScheduleUpdate?id=" + clientID)
     });
+
+    $('#logout').mouseover((e) => {
+        $(e.target).css('cursor', 'pointer')
+    })
+    $('#logout').click(async () => {
+        const logout = await fetch("/coachs/logout", {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+            // body data type must match "Content-Type" header
+        })
+        if (logout.status === 200) {
+            logout.json().then(() => {
+                window.location.href = ("/")
+            })
+        }
+    })
 });
 
 

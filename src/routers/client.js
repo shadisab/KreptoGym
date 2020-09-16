@@ -53,7 +53,7 @@ router.post('/clients/logout', authClient, async (req, res) => {
         })
         await req.client.save()
         await res.clearCookie('Authorization');
-        res.send()
+        res.send(req.client)
     } catch (e) {
         res.status(500).send()
     }

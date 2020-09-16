@@ -39,7 +39,7 @@ router.post('/coachs/logout', authCoach, async (req, res) => {
         })
         await req.coach.save()
         await res.clearCookie('Authorization');
-        res.send()
+        res.status(200).send(req.coach)
     } catch (e) {
         res.status(500).send()
     }

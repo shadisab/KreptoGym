@@ -13,7 +13,6 @@ $(document).ready(async () => {
         // body data type must match "Content-Type" header
     });
     getClients.json().then((data) => {
-        console.log(data.length)
         if (data.length !== 0) {
             $('#noClientsmsg').css('display', 'none')
             data.forEach(client => {

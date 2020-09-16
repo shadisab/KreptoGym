@@ -1,0 +1,380 @@
+.logout-btn-div {
+    width: 14%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.P-Main-DIV {
+    height: 92%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.P-Container-DIV {
+    height: 85%;
+    width: 60%;
+    background-color: white;
+    border-radius: 26px;
+}
+
+.P-title-DIV {
+    height: 15%;
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #515151;
+    font-family: Poppins-Medium;
+    color: #515151;
+}
+
+.P-info-DIV {
+    height: 55%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.P-item-DIV {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.ClientP-item-inner-DIV {
+    height: 70%;
+    width: 50%;
+    display: flex;
+    border: #515151 1px solid;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.CoachP-item-inner-DIV {
+    height: 70%;
+    width: 50%;
+    display: flex;
+    border: #515151 1px solid;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.P-item-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 40%;
+    color: #515151;
+    font-family: Poppins-Regular;
+}
+
+.P-item {
+    border-left: #515151 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 60%;
+    color: #515151;
+    font-family: Poppins-Regular;
+}
+
+.P-Del-btn-DIV {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #515151;
+    cursor: pointer;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.P-border-bottom-right-left-r {
+    border-bottom-left-radius: 26px;
+    border-bottom-right-radius: 26px;
+}
+
+.P-Delmsg {
+    color: darkred;
+    font-family: Poppins-Medium;
+    margin-left: 10px;
+    font-size: 20px;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.P-Del-icon {
+    color: darkred;
+    font-size: 20px;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.P-Del-btn-DIV:hover {
+    background-color: darkred;
+}
+
+.P-Del-btn-DIV:hover .P-Delmsg {
+    color: white;
+}
+
+.P-Del-btn-DIV:hover .P-Del-icon {
+    color: white;
+}
+
+.P-Confirm-popup {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(81, 81, 81, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+
+.P-Confirm-popup.is-visible {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.P-popup-container {
+    position: relative;
+    width: 40%;
+    height: 40%;
+    margin: 4em auto;
+    background: #FFF;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: translateY(-40px);
+    -moz-transform: translateY(-40px);
+    -ms-transform: translateY(-40px);
+    -o-transform: translateY(-40px);
+    transform: translateY(-40px);
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.P-Confirm-popup-text {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #515151;
+    font-family: Poppins-Regular;
+}
+
+.P-Confirm-popup-buttons {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+}
+
+.P-Confirm-popup-confirm-button {
+    width: 50%;
+    height: 100%;
+    background-color: darkred;
+    border-bottom-left-radius: 16px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    font-family: Poppins-Regular;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.P-Confirm-popup-cancel-button {
+    width: 50%;
+    height: 100%;
+    background-color: #515151;
+    color: white;
+    cursor: pointer;
+    border-bottom-right-radius: 16px;
+    outline: none;
+    font-family: Poppins-Regular;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.is-visible .P-popup-container {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.P-changepass-popup {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(81, 81, 81, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+
+.P-changepass-popup.is-visible2 {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.P-changepass-popup-container {
+    position: relative;
+    width: 50%;
+    height: 75%;
+    margin: 4em auto;
+    background: #FFF;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: translateY(-40px);
+    -moz-transform: translateY(-40px);
+    -ms-transform: translateY(-40px);
+    -o-transform: translateY(-40px);
+    transform: translateY(-40px);
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.is-visible2 .P-changepass-popup-container {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.P-changepass-popup-container .P-changepass-popup-close {
+    position: absolute;
+    top: 8px;
+    background-color: #515151;
+    color: white;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+}
+
+.P-changepass-fields {
+    height: 85%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.P-changepass-field-item{
+    width: 80%;
+}
+
+.P-changepass-InputLabeldiv {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.P-changepass-label-input100 {
+    font-family: Poppins-Regular;
+    font-size: 14px;
+    color: #515151;
+    line-height: 1.5;
+}
+
+.P-changepass-input100 {
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: #515151;
+    outline: none;
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    border: transparent;
+}
+
+.P-changepass-Inputdiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.P-changepass-Inputandicondiv {
+    display: flex;
+    flex-direction: row;
+    border: 1px #515151 solid;
+}
+
+.P-changepass-Icon {
+    color: #515151;
+    font-size: 18px;
+}
+
+.P-changepass-Icondiv {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.P-changepass-popup-buttons {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+}
+
+.P-changepass-popup-confirm-button {
+    width: 100%;
+    height: 100%;
+    background-color: darkred;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    font-family: Poppins-Regular;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}

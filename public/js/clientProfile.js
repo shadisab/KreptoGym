@@ -1,5 +1,5 @@
 $(document).ready(async () => {
-    const clientdata = ['name', 'age', 'height', 'weight']
+    const clientdata = ['name', 'age', 'height', 'weight','createdAt']
 
     // GET client Profile data
     const getClientProfile = await fetch("/clients/myProfile", {
@@ -20,6 +20,7 @@ $(document).ready(async () => {
         clientdata.forEach((elem) => {
             if (elem === 'height') $("#" + elem).append(' ' + data[elem] + ' CM')
             else if (elem === 'weight') $("#" + elem).append(' ' + data[elem] + ' KG')
+            else if (elem === 'createdAt') $("#" + elem).append(' ' + data[elem].split('T')[0])
             else $("#" + elem).append(' ' + data[elem])
         })
     })
@@ -48,5 +49,36 @@ $(document).ready(async () => {
             })
         }
     })
+    $('#P-Change-pass-btn').on('click', function(event){
+		event.preventDefault();
+		$('#cd-changepass-popup').addClass('is-visible2');
+	});
+	
+	$('#cd-changepass-popup-close').on('click', function(event){
+			event.preventDefault();
+			$('#cd-changepass-popup').removeClass('is-visible2');
+    });
+    
+	$(document).keyup(function(event){
+    	if(event.which=='27'){
+    		$('#cd-changepass-popup').removeClass('is-visible2');
+	    }
+    });
+
+    $('#P-popup-trigger').on('click', function(event){
+		event.preventDefault();
+		$('#cd-popup').addClass('is-visible');
+	});
+
+    $('#cd-popup-cancel-btn-close').on('click', function(event){
+        event.preventDefault();
+        $('#cd-popup').removeClass('is-visible');
+    });
+    
+	$(document).keyup(function(event){
+    	if(event.which=='27'){
+    		$('#cd-popup').removeClass('is-visible');
+	    }
+    });
 
 })

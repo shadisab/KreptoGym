@@ -2,6 +2,7 @@
     width: 100%;
     height: 70%;
     border-bottom: #515151 1px solid;
+    cursor: default;
 }
 
 .CS-Nutritions-msg-DIV{
@@ -16,12 +17,16 @@
     height: 84%;
     margin-top: 7px;
     border: 1px solid #515151;
+    outline: none;
+    cursor: default;
     overflow-y: auto;
 }
 
 .CS-Msg-Text{
     width: 94%;
     height: 84%;
+    outline: none;
+    cursor: default;
     border: 1px solid #515151;
     border-bottom-right-radius: 26px;
     overflow-y: auto;

@@ -74,13 +74,19 @@ router.post('/clients/logoutAll', authClient, async (req, res) => {
 // Get client profile data
 router.get('/clients/myProfile', authClient, async (req, res) => {
     res.send(req.client)
-
+})
+// GET client nutrition data
+router.get('/clients/nutrition', authClient, async (req, res) => {
+    res.send(req.client.nutrition)
+})
+//Get client Training schedule
+router.get('/clients/training', authClient, async (req, res) => {
+    res.send(req.client.trainingSchedule)
 })
 // GET all coaches
 router.get('/clients/allCoachs', async (req, res) => {
     const coachs = await Coach.find()
     res.send(coachs)
-
 })
 
 /* NOW I USE CHOOSE CLIENT FROM THE SIGNUP */

@@ -40,7 +40,6 @@ router.post('/clients/login', async (req, res) => {
         //second (BUT in user.js models we change the name of the upper function to .toJSON method)
         res.send({ client, token })
     } catch (e) {
-        console.log(e);
         res.status(400).send(e)
     }
 })

@@ -6,15 +6,16 @@ $(document).ready(async () => {
 
     $("#password").keypress(function () {
         $('#passwordREQ').css('opacity', 0)
+        $('#emailREQ').css('opacity', 0)
     });
 
     $('#loginBTN').click(async () => {
-      
+
         const email = $('#email').val()
-        if (email === '') {$('#emailREQ').text('Please Enter your Email').css('opacity', 1)}
+        if (email === '') { $('#emailREQ').text('Please Enter your Email').css('opacity', 1) }
 
         const password = $('#password').val()
-        if (password === '') {$('#passwordREQ').text('Please Enter your Password').css('opacity', 1)}
+        if (password === '') { $('#passwordREQ').text('Please Enter your Password').css('opacity', 1) }
 
         const postClient = await fetch("/clients/login", {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -33,13 +34,13 @@ $(document).ready(async () => {
             }) // body data type must match "Content-Type" header
         });
 
-        if(postClient.status === 400 && password !== '' && email !== '' ){
-            {$('#emailREQ').text('Please Enter a valid Email address and Password').css('opacity', 1)}
+        if (postClient.status === 400 && password !== '' && email !== '') {
+            { $('#emailREQ').text('Please Enter a valid Email address and Password').css('opacity', 1) }
         }
 
-        if(postClient.status === 200){
-                window.location.href = ("/clientSchedule")
-          
+        if (postClient.status === 200) {
+            window.location.href = ("/clientSchedule")
+
         }
     })
 });

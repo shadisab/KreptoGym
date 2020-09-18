@@ -37,6 +37,12 @@ body {
   background: -webkit-linear-gradient( rgb(0, 0, 0) 0%,rgba(81, 81, 81, 0) 50%, rgba(0, 0, 0) 100%);
 }
 
+.Masking-DIV-2{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.8);
+}
+
 .icon-div-logo {
   width: 30%;
   height: 100%;
@@ -152,7 +158,7 @@ header {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #b4b4b4;
+  background-color: #292929;
   align-items: center;
   flex-direction: column;
   border-radius: 6px;
@@ -177,7 +183,7 @@ header {
 .dropdown-content2 {
   display: none;
   position: absolute;
-  background-color: #b4b4b4;
+  background-color: #292929;
   align-items: center;
   flex-direction: column;
   border-radius: 6px;
@@ -190,7 +196,7 @@ header {
 .popups-button-barrier-border{
   height: 1px;
   width: 80%;
-  border-top: 1px #515151 solid;
+  border-top: 1px rgb(207, 185, 151) solid;
 }
 
 .dropdown-content2:after {
@@ -206,7 +212,7 @@ header {
 }
 
 .dropdown-content a {
-  color: black;
+  color: white;
   font-family: Poppins-Regular;
   padding: 12px 16px;
   text-decoration: none;
@@ -214,7 +220,7 @@ header {
 }
 
 .dropdown-content2 a {
-  color: black;
+  color: white;
   font-family: Poppins-Regular;
   padding: 12px 16px;
   text-decoration: none;

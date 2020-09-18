@@ -17,7 +17,8 @@
 .P-Container-DIV {
     height: 90%;
     width: 60%;
-    background-color: white;
+    background-color: #515151;
+    border: 1px rgb(207, 185, 151) solid;
     border-radius: 26px;
 }
 
@@ -28,9 +29,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid #515151;
+    border-bottom: 1px solid rgb(207, 185, 151);
     font-family: Poppins-Medium;
-    color: #515151;
+    color: white;
 }
 
 .P-info-DIV {
@@ -93,7 +94,7 @@
     height: 70%;
     width: 50%;
     display: flex;
-    border: #515151 1px solid;
+    border: rgb(207, 185, 151) 1px solid;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -103,7 +104,7 @@
     height: 70%;
     width: 50%;
     display: flex;
-    border: #515151 1px solid;
+    border: rgb(207, 185, 151) 1px solid;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -114,19 +115,61 @@
     justify-content: center;
     height: 100%;
     width: 40%;
-    color: #515151;
+    color: white;
     font-family: Poppins-Regular;
 }
 
 .P-item {
-    border-left: #515151 1px solid;
+    border-left: rgb(207, 185, 151) 1px solid;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     width: 60%;
-    color: #515151;
+    color: white;
     font-family: Poppins-Regular;
+}
+
+.P-border-bottom-right-left-r {
+    border-bottom-left-radius: 26px;
+    border-bottom-right-radius: 26px;
+}
+
+.P-changepass-btn-DIV {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgb(207, 185, 151);
+    cursor: pointer;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.P-changepass-msg {
+    color: white;
+    font-family: Poppins-Medium;
+    margin-left: 10px;
+    font-size: 20px;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.P-changepass-icon {
+    color: white;
+    font-size: 20px;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.P-changepass-btn-DIV:hover {
+    background-color: rgb(207, 185, 151);
+}
+
+.P-changepass-btn-DIV:hover .P-changepass-msg {
+    color: black;
+}
+
+.P-changepass-btn-DIV:hover .P-changepass-icon {
+    color: black;
 }
 
 .P-Del-btn-DIV {
@@ -135,18 +178,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid #515151;
+    border-top: 1px solid rgb(207, 185, 151);
     cursor: pointer;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
 }
 
-.P-border-bottom-right-left-r {
-    border-bottom-left-radius: 26px;
-    border-bottom-right-radius: 26px;
-}
-
 .P-Delmsg {
-    color: darkred;
+    color: white;
     font-family: Poppins-Medium;
     margin-left: 10px;
     font-size: 20px;
@@ -154,7 +192,7 @@
 }
 
 .P-Del-icon {
-    color: darkred;
+    color: white;
     font-size: 20px;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
 }

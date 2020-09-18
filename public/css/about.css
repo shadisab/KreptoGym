@@ -30,7 +30,7 @@
     height: 97%;
     width: 95%;
     border-radius: 24px;
-    background-color: white;
+    background-color: transparent;
     display: flex;
     flex-direction: row;
 }
@@ -64,7 +64,7 @@
 
 .title-text{
     margin-left: 15px;
-    color: #515151;
+    color: white;
     font-size: 100px;
     font-family: Poppins-Medium;
 }
@@ -86,16 +86,16 @@
 }
 
 .border-full-opacity{
-    border-bottom: 1px solid rgba(81, 81, 81);
+    border-bottom: 2px solid rgb(207, 185, 151);
     width: 100%;
 }
 
 .border-half-opacity{
-    border-bottom: 1px solid rgba(81, 81, 81, .5);
+    border-bottom: 2px solid rgb(207, 185, 151, .5);
     width: 100%;
 }
 .bar-items-text{
-    color: #515151;
+    color: white;
     font-family: Poppins-Regular;
     width: 100%;
     display: flex;
@@ -121,25 +121,25 @@
 .about-text-DIV-left{
     width: 66.666666%;
     height: 90%;
-    border-right: 1px solid #515151;
+    border-right: 1px solid rgb(207, 185, 151);;
 }
 
 .about-text-DIV-center{
     width: 66.666666%;
     height: 90%;
-    border-right: 1px solid #515151;
+    border-right: 1px solid rgb(207, 185, 151);;
     display: none;
 }
 
 .about-text-DIV-right{
     width: 66.666666%;
     height: 90%;
-    border-right: 1px solid #515151;
+    border-right: 1px solid rgb(207, 185, 151);;
     display: none;
 }
 .about-text-p {
     font-family: Poppins-Regular;
-    color: #515151;
+    color: white;
     margin-left: 10px;
 }
 

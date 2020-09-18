@@ -12,7 +12,7 @@ $(document).ready(async () => {
     days[4] = "thu";
     days[5] = "fri";
     days[6] = "sat";
-    $('#' + days[a.getDay()]).css("background", "#515151").css("color", "white")
+    $('#' + days[a.getDay()]).css("background", "rgb(207, 185, 151)").css("color", "black")
 
     // GET client nutrtion data
     const getNutritionedata = await fetch("/clients/nutrition", {

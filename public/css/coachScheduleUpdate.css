@@ -10,9 +10,9 @@
 .CSU-Container-DIV{
     width: 95%;
     height: 95%;
-    background: white;
+    background: none;
     border-radius: 26px;
-    border: 1px solid #515151 ;
+    border: 1px solid rgb(207, 185, 151) ;
 }
 
 .CSU-links-DIV {
@@ -38,7 +38,7 @@
 .CSU-Schedule-DIV{
     width: 100%;
     height: 60%;
-    border-bottom: #515151 1px solid;
+    border-bottom: rgb(207, 185, 151) 1px solid;
 }
 
 .CSU-Nutritions-msg-DIV{
@@ -56,7 +56,7 @@
 .CSU-Days-DIV{
     width: 100%;
     height: 20%;
-    border-bottom: #515151 1px solid;
+    border-bottom: rgb(207, 185, 151) 1px solid;
     display: flex;
     flex-direction: row;
 }
@@ -71,7 +71,7 @@
 }
 
 .CSU-Day-Num{
-    color: #515151;
+    color: white;
     font-size: 25px;
     font-family: Poppins-Regular;
     width: 38px;
@@ -83,8 +83,8 @@
 }
 
 .CSU-Day-Name{
-    color: #515151;
-    font-size: 15px;
+    color: white;
+    font-size: 17px;
     font-family: Poppins-Regular;
 }
 
@@ -106,14 +106,19 @@
 .CSU-Daily-Training-Text{
     width: 90%;
     height: 82%;
+    background-color: transparent;
+    border: 1px solid rgb(207, 185, 151);
+    font-size: 14px;
+    color: white;
     margin-top: 7px;
     resize: none;
     overflow-y: auto;
 }
 
 .CSU-Daily-Training-Title{
-    color: #515151;
+    color: white;
     width: 100%;
+    font-size: 17px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -121,7 +126,7 @@
 }
 
 .CSU-Nutritions-msg-inner-DIV{
-    border: #515151 1px solid;
+    border: rgb(207, 185, 151) 1px solid;
     width: 99%;
     height: 79%;
     border-bottom-left-radius: 26px;
@@ -146,7 +151,7 @@
 .CSU-Nutritions-DIV{
     height: 80%;
     width: 100%;
-    border: #515151 1px solid;
+    border: rgb(207, 185, 151) 1px solid;
     border-left: 0;
     display: flex;
     flex-direction: column;
@@ -177,7 +182,7 @@
 }
 
 .CSU-Nutrition-item-title{
-    color: darkred;
+    color: white;
     font-family: Poppins-Regular;
     display: flex;
     align-items: flex-end;
@@ -188,7 +193,7 @@
 }
 
 .CSU-cal-item-title{
-    color: darkred;
+    color: white;
     font-family: Poppins-Regular;
     display: flex;
     align-items: flex-end;
@@ -196,8 +201,11 @@
 }
 
 .CSU-cal-item-value{
-    color: #515151;
+    color: white;
     font-family: Poppins-Regular;
+    background-color: transparent;
+    border: rgb(207, 185, 151) 1px solid;
+    outline-color: rgb(207, 185, 151);
     margin-left: 10px;
     width: 30%;
 }
@@ -205,20 +213,23 @@
 .CSU-Calculatebtn-item{
     height: 80%;
     width: 60%;
-    background: white;
-    color: #515151;
+    background: transparent;
+    color: white;
     outline: none;
     font-family: Poppins-Regular;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
 }
 
 .CSU-Calculatebtn-item:hover {
-    background:  #515151;
-    color: white;
+    background:  rgb(207, 185, 151);
+    color: black;
 }
 
 .CSU-Nutrition-item-value{
-    color: #515151;
+    color: white;
+    background-color: transparent;
+    border: rgb(207, 185, 151) 1px solid;
+    outline-color: rgb(207, 185, 151);
     font-family: Poppins-Regular;
     margin-left: 10px;
     width: 15%;
@@ -226,7 +237,7 @@
 .CSU-msg-DIV{
     height: 80%;
     width: 100%;
-    border: #515151 1px solid;
+    border: rgb(207, 185, 151) 1px solid;
     border-left: 0;
     border-right: 0;
     display: flex;
@@ -237,17 +248,20 @@
 .CSU-Msg-Text{
     width: 94%;
     height: 84%;
+    color: white;
+    border: 1px solid rgb(207, 185, 151);
+    background-color: transparent;
     resize: none;
     overflow-y: auto;
 }
 
 .CSU-Border-left{
-    border-left: #515151 1px solid;
+    border-left: rgb(207, 185, 151) 1px solid;
 }
 
 .R-abtn{
     text-decoration: none;
-    color: #515151;
+    color: white;
     font-family: Poppins-Regular;
     z-index: 1;
   }
@@ -266,7 +280,7 @@
     transition: all 0.2s ease-in;
     position: relative;
     overflow: hidden;
-    background-color: white;
+    background-color:transparent;
     outline: transparent;
     cursor: pointer;
   }
@@ -298,17 +312,17 @@
     z-index: -1;
   }
   .R-button:hover {
-    color: white;
+    color: black;
     border: none;
   }
   .R-button:hover:before {
     top: -35%;
-    background-color: #515151;
+    background-color: rgb(207, 185, 151);
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
   }
   .R-button:hover:after {
     top: -45%;
-    background-color: #515151;
+    background-color: rgb(207, 185, 151);
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
   }
 .R-button-left{

@@ -108,6 +108,7 @@
     height: 82%;
     background-color: black;
     border: 1px solid rgb(207, 185, 151);
+    font-family: Poppins-Regular;
     font-size: 14px;
     color: white;
     margin-top: 7px;
@@ -250,6 +251,7 @@
     height: 84%;
     color: white;
     border: 1px solid rgb(207, 185, 151);
+    font-family: Poppins-Regular;
     background-color: black;
     resize: none;
     overflow-y: auto;

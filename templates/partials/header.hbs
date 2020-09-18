@@ -1,7 +1,7 @@
 <header>
     <div class="icon-div-logo">
         <img class="header-logo-icon-img" src="/images/header-logo-icon.png"/>
-        <p class="logo-title">Krepto Gym</p>
+        <div class="logo-title">Krepto Gym</div>
     </div>
     <div class="links-DIV">
         <a class="links" href="/">Home</a>
@@ -12,18 +12,20 @@
     </div>
     <div class="log-buttons-div">
         <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Sign up</button>
+            <button id="dropbtn" class="dropbtn">Sign up</button>
             <div id="myDropdown" class="dropdown-content">
-                <a  href="/coachRegister">Coach Sign Up</a>
-                <a  href="/clientRegister">Client Sign Up</a>
+                <a id="coach-sign-up-btn" href="/coachRegister">Coach Sign Up</a>
+                <div class="popups-button-barrier-border"></div>
+                <a id="client-sign-up-btn"  href="/clientRegister">Client Sign Up</a>
             </div>
         </div>
         <div class="dividing-slash">|</div>
         <div class="dropdown2">
-            <button onclick="myFunction2()" class="dropbtn2">Log in</button>
+            <button id="dropbtn2" class="dropbtn2">Log in</button>
             <div id="myDropdown2" class="dropdown-content2">
-                <a href="/coachLogin">Log in as Coach</a>
-                <a href="/clientLogin">Log in as Client</a>
+                <a id="coach-log-in-btn" href="/coachLogin">Log in as Coach</a>
+                <div class="popups-button-barrier-border"></div>
+                <a id="client-log-in-btn" href="/clientLogin">Log in as Client</a>
             </div>
         </div>
     </div>

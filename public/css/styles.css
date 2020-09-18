@@ -23,6 +23,7 @@ body {
   height: 100vh;
   margin: 0;
   display: flex;
+  cursor: default;
   flex-direction: column;
   background: url(../images/main-background.jpg);
   background-size: cover;
@@ -145,7 +146,9 @@ header {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #adadad;
+  background-color: #b4b4b4;
+  align-items: center;
+  flex-direction: column;
   border-radius: 6px;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -168,12 +171,20 @@ header {
 .dropdown-content2 {
   display: none;
   position: absolute;
-  background-color: #adadad;
+  background-color: #b4b4b4;
+  align-items: center;
+  flex-direction: column;
   border-radius: 6px;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   right: 0;
   top: 70px;
+}
+
+.popups-button-barrier-border{
+  height: 1px;
+  width: 80%;
+  border-top: 1px #515151 solid;
 }
 
 .dropdown-content2:after {

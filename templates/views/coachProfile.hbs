@@ -7,97 +7,99 @@
 </head>
 
 <body>
-    <header>
-        <div class="P-icon-div-logo">
-            <img class="P-header-logo-icon-img" src="/images/header-logo-icon.png"/>
-            <p class="logo-title">Krepto Gym</p>
-        </div>
-        <div class="P-links-DIV">
-            <a class="links" href="/coachClients">Clients</a>
-        </div>
-        <div class="logout-btn-div">
-            <a id="logout" class="sign-log-btn-DIV">Log out</a>
-        </div>
-    </header>
-    <div class="P-Main-DIV">
-        <div class="P-Container-DIV">
-            <div class="P-title-DIV">Profile</div>
-            <div class="CoachP-info-DIV">
-                <div class="P-item-DIV">
-                    <div class="CoachP-item-inner-DIV">
-                        <div class="P-item-title">Name</div>
-                        <div class="P-item" id="name"></div>
-                    </div>
-                </div>
-                <div class="P-item-DIV">
-                    <div class="CoachP-item-inner-DIV">
-                        <div class="P-item-title">Number of Clients</div>
-                        <div class="P-item" id="myClients"></div>
-                    </div>
-                </div>
-                <div class="P-item-DIV">
-                    <div class="CoachP-item-inner-DIV">
-                        <div class="P-item-title">Date Created</div>
-                        <div class="P-item" id="createdAt" ></div>
-                    </div>
-                </div>
+    <div class="Masking-DIV">
+        <header>
+            <div class="P-icon-div-logo">
+                <img class="P-header-logo-icon-img" src="/images/header-logo-icon.png" />
+                <p class="logo-title">Krepto Gym</p>
             </div>
-            <div id="P-Change-pass-btn" class="P-Del-btn-DIV P-border-bottom-right-left-r">
-                <i class="fas fa-edit P-Del-icon"></i>
-                <p class="P-Delmsg">Change Password</p>
+            <div class="P-links-DIV">
+                <a class="links" href="/coachClients">Clients</a>
             </div>
-            <div id="cd-changepass-popup" class="P-changepass-popup" role="alert">
-                <div class="P-changepass-popup-container">
-                    <div class="P-changepass-fields">
-                        <div class="P-changepass-field-item">
-                            <div class="P-changepass-InputLabeldiv">
-                                <span class="P-changepass-label-input100">Current Password</span>
-                            </div>
-                            <div class="P-changepass-Inputandicondiv">
-                                <div class="P-changepass-Icondiv">
-                                    <i class="P-changepass-Icon fas fa-lock"></i>
-                                </div>
-                                <div class="P-changepass-Inputdiv">
-                                    <input class="P-changepass-input100" type="password" id="old-password"
-                                        placeholder="Type your current password" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="P-changepass-field-item">
-                            <div class="P-changepass-InputLabeldiv">
-                                <span class="P-changepass-label-input100">new Password</span>
-                            </div>
-                            <div class="P-changepass-Inputandicondiv">
-                                <div class="P-changepass-Icondiv">
-                                    <i class="P-changepass-Icon fas fa-lock"></i>
-                                </div>
-                                <div class="P-changepass-Inputdiv">
-                                    <input class="P-changepass-input100" type="password" id="new-password"
-                                        placeholder="Type your new password" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="P-changepass-field-item">
-                            <div class="P-changepass-InputLabeldiv">
-                                <span class="P-changepass-label-input100">Confirm New Password</span>
-                            </div>
-                            <div class="P-changepass-Inputandicondiv">
-                                <div class="P-changepass-Icondiv">
-                                    <i class="P-changepass-Icon fas fa-lock"></i>
-                                </div>
-                                <div class="P-changepass-Inputdiv">
-                                    <input class="P-changepass-input100" type="password" id="confirm-new-password"
-                                        placeholder="Type your new password again" />
-                                </div>
-                            </div>
+            <div class="logout-btn-div">
+                <a id="logout" class="sign-log-btn-DIV">Log out</a>
+            </div>
+        </header>
+        <div class="P-Main-DIV">
+            <div class="P-Container-DIV">
+                <div class="P-title-DIV">Profile</div>
+                <div class="CoachP-info-DIV">
+                    <div class="P-item-DIV">
+                        <div class="CoachP-item-inner-DIV">
+                            <div class="P-item-title">Name</div>
+                            <div class="P-item" id="name"></div>
                         </div>
                     </div>
-                    <div class="P-changepass-popup-buttons">
-                        <button class="P-changepass-popup-confirm-button">Confirm</button>
+                    <div class="P-item-DIV">
+                        <div class="CoachP-item-inner-DIV">
+                            <div class="P-item-title">Number of Clients</div>
+                            <div class="P-item" id="myClients"></div>
+                        </div>
                     </div>
-                    <button id="cd-changepass-popup-close" class="P-changepass-popup-close">
-                        <i class="fas fa-times"></i>
-                    </button>
+                    <div class="P-item-DIV">
+                        <div class="CoachP-item-inner-DIV">
+                            <div class="P-item-title">Date Created</div>
+                            <div class="P-item" id="createdAt"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="P-Change-pass-btn" class="P-Del-btn-DIV P-border-bottom-right-left-r">
+                    <i class="fas fa-edit P-Del-icon"></i>
+                    <p class="P-Delmsg">Change Password</p>
+                </div>
+                <div id="cd-changepass-popup" class="P-changepass-popup" role="alert">
+                    <div class="P-changepass-popup-container">
+                        <div class="P-changepass-fields">
+                            <div class="P-changepass-field-item">
+                                <div class="P-changepass-InputLabeldiv">
+                                    <span class="P-changepass-label-input100">Current Password</span>
+                                </div>
+                                <div class="P-changepass-Inputandicondiv">
+                                    <div class="P-changepass-Icondiv">
+                                        <i class="P-changepass-Icon fas fa-lock"></i>
+                                    </div>
+                                    <div class="P-changepass-Inputdiv">
+                                        <input class="P-changepass-input100" type="password" id="old-password"
+                                            placeholder="Type your current password" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="P-changepass-field-item">
+                                <div class="P-changepass-InputLabeldiv">
+                                    <span class="P-changepass-label-input100">new Password</span>
+                                </div>
+                                <div class="P-changepass-Inputandicondiv">
+                                    <div class="P-changepass-Icondiv">
+                                        <i class="P-changepass-Icon fas fa-lock"></i>
+                                    </div>
+                                    <div class="P-changepass-Inputdiv">
+                                        <input class="P-changepass-input100" type="password" id="new-password"
+                                            placeholder="Type your new password" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="P-changepass-field-item">
+                                <div class="P-changepass-InputLabeldiv">
+                                    <span class="P-changepass-label-input100">Confirm New Password</span>
+                                </div>
+                                <div class="P-changepass-Inputandicondiv">
+                                    <div class="P-changepass-Icondiv">
+                                        <i class="P-changepass-Icon fas fa-lock"></i>
+                                    </div>
+                                    <div class="P-changepass-Inputdiv">
+                                        <input class="P-changepass-input100" type="password" id="confirm-new-password"
+                                            placeholder="Type your new password again" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="P-changepass-popup-buttons">
+                            <button class="P-changepass-popup-confirm-button">Confirm</button>
+                        </div>
+                        <button id="cd-changepass-popup-close" class="P-changepass-popup-close">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

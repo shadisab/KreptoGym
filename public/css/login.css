@@ -18,7 +18,7 @@
   src: url('../fonts/poppins.semibold.ttf'); 
 }
 .login-page-DIV{
-    height: 92%;
+    height: 85%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -79,7 +79,7 @@
 .L-container{
     background-color: #313131;
     width: 50%;  
-    height: 70%;
+    height: 77%;
     align-items: center;
     border-radius: 25px;
     display: flex;

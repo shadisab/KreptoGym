@@ -7,7 +7,7 @@
 }
 
 .P-Main-DIV {
-    height: 92%;
+    height: 85%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -15,7 +15,7 @@
 }
 
 .P-Container-DIV {
-    height: 85%;
+    height: 90%;
     width: 60%;
     background-color: white;
     border-radius: 26px;
@@ -41,6 +41,35 @@
     justify-content: center;
     flex-direction: column;
 }
+
+.P-links-DIV {
+    height: 100%;
+    width: 72%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.P-links {
+    width: 20%;
+    height: 100%;
+    color: white;
+    font-family: Poppins-Regular;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+.P-icon-div-logo {
+    width: 14%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.P-header-logo-icon-img{
+    width: 21.43%;
+    height: 43.71%;
+  }
 
 .CoachP-info-DIV{
     height: 70%;

@@ -1,14 +1,14 @@
 
 .clients-view-DIV{
     width: 100%;
-    height: 92%;
+    height: 85%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .clients-view-inner-DIV{
-    height: 90%;
+    height: 95%;
     width: 90%;
     background: #313131;
     border-top-right-radius: 40px;

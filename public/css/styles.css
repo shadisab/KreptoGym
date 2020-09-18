@@ -40,7 +40,7 @@ body {
 .Masking-DIV-2{
   width: 100%;
   height: 100%;
-  background-color: rgb(0, 0, 0, 0.8);
+  background-color: rgb(0, 0, 0, 0.1);
 }
 
 .icon-div-logo {
@@ -93,6 +93,8 @@ header {
   text-decoration: none;
 }
 
+.links:hover { text-shadow: 0 0 10px white; }
+
 .log-buttons-div {
   width: 14%;
   height: 100%;
@@ -112,6 +114,7 @@ header {
   text-decoration: none;
 }
 
+.sign-log-btn-DIV:hover { text-shadow: 0 0 10px white; }
 .dividing-slash {
   display: flex;
   font-size: 30px;
@@ -129,6 +132,8 @@ header {
   outline: none;
 }
 
+.dropbtn:hover { text-shadow: 0 0 10px white; }
+
 .dropbtn2 {
   background-color: transparent;
   color: white;
@@ -138,6 +143,8 @@ header {
   cursor: pointer;
   outline: none;
 }
+
+.dropbtn2:hover { text-shadow: 0 0 10px white; }
 
 .dropdown {
   position: relative;

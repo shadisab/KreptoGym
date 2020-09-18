@@ -60,6 +60,8 @@
     justify-content: center;
     text-decoration: none;
   }
+
+  .P-links:hover { text-shadow: 0 0 10px white; }
 .P-icon-div-logo {
     width: 14%;
     height: 100%;

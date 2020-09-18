@@ -17,7 +17,7 @@
     height: 84%;
     margin-top: 7px;
     border: 1px solid rgb(207, 185, 151);
-    background-color: transparent;
+    background-color: black;
     font-size: 14px;
     color: white;
     outline: none;
@@ -33,7 +33,7 @@
     border: 1px solid rgb(207, 185, 151);
     font-size: 14px;
     color: white;
-    background-color: transparent;
+    background-color: black;
     border-bottom-right-radius: 26px;
     overflow-y: auto;
 }

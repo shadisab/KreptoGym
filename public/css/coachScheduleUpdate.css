@@ -106,7 +106,7 @@
 .CSU-Daily-Training-Text{
     width: 90%;
     height: 82%;
-    background-color: transparent;
+    background-color: black;
     border: 1px solid rgb(207, 185, 151);
     font-size: 14px;
     color: white;
@@ -250,7 +250,7 @@
     height: 84%;
     color: white;
     border: 1px solid rgb(207, 185, 151);
-    background-color: transparent;
+    background-color: black;
     resize: none;
     overflow-y: auto;
 }

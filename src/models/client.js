@@ -197,7 +197,7 @@ clientSchema.pre('remove', async function (next) {
     const client = this
     try {
         const coach = await Coach.findById(client.coachID)
-        coach.myClients = coach.myClients.filter(function (value, index, arr) {
+        coach.myClients = await coach.myClients.filter(function (value, index, arr) {
             return    !value.id.equals(client._id);
         })
         coach.save()

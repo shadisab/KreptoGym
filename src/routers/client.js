@@ -2,6 +2,7 @@ const express = require('express')
 const Client = require('../models/client')
 const Coach = require('../models/coach')
 const { authClient } = require('../middleware/auth')
+const auth = require('../middleware/auth')
 const router = new express.Router()
 
 // Sign up
@@ -142,11 +143,26 @@ router.patch('/clients/myProfile', authClient, async (req, res) => {
     }
 })
 
+
+// Updating client Password
+router.patch('/clients/password', authClient, async (req, res) => {
+    const allowerdUpdates = 'password'
+    try {
+        const client = await Client.findByCredentials(req.client.email, req.body.password)
+        client[allowerdUpdates] = req.body.newPassword
+        await client.save()
+        res.status(200).send(client)
+    } catch (e) {
+        res.status(400).send(e)
+    }
+})
+
 // Delete client itself
 router.delete('/clients/myProfile', authClient, async (req, res) => {
     try {
         await req.client.remove()
-        res.send(req.client)
+        await res.clearCookie('Authorization');
+        res.status(200).send(req.client)
     } catch (e) {
         res.status(500).send(e)
     }

@@ -64,6 +64,7 @@
                                                 placeholder="Type your current password" />
                                         </div>
                                     </div>
+                                    <p id="passwordREQ" style="color: red; opacity: 1; margin: 0;"></p>
                                 </div>
                                 <div class="P-changepass-field-item">
                                     <div class="P-changepass-InputLabeldiv">
@@ -78,6 +79,7 @@
                                                 placeholder="Type your new password" />
                                         </div>
                                     </div>
+                                    <p id="newPasswordREQ" style="color: red; opacity: 1; margin: 0;"></p>
                                 </div>
                                 <div class="P-changepass-field-item">
                                     <div class="P-changepass-InputLabeldiv">
@@ -93,9 +95,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                <p id="successfullyREQ"
+                                    style="color: rgb(21, 219, 21); opacity: 0; margin: 2; font-weight: 900;">Password successfully changed</p>
+
                             </div>
                             <div class="P-changepass-popup-buttons">
-                                <button class="P-changepass-popup-confirm-button">Confirm</button>
+                                <button id="popupConfirmBTN" class="P-changepass-popup-confirm-button">Confirm</button>
                             </div>
                             <button id="cd-changepass-popup-close" class="P-changepass-popup-close">
                                 <i class="fas fa-times"></i>

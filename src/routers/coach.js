@@ -141,7 +141,7 @@ router.get('/coachs/myProfile', authCoach, async (req, res) => {
 router.patch('/coachs/myProfile', authCoach, async (req, res) => {
 
     const updates = Object.keys(req.body)
-    const allowerdUpdates = ['name', 'email', 'password', 'age']
+    const allowerdUpdates = ['name', 'email', 'age']
     const isValidOperation = updates.every((update) => allowerdUpdates.includes(update))
     if (!isValidOperation) {
         return res.status(400).send({ error: 'Invalid updates!' })
@@ -154,6 +154,21 @@ router.patch('/coachs/myProfile', authCoach, async (req, res) => {
         await req.coach.save()
 
         res.send(req.coach)
+    } catch (e) {
+        res.status(400).send(e)
+    }
+})
+// Updating client Password
+router.patch('/coachs/password', authCoach, async (req, res) => {
+    const allowerdUpdates = 'password'
+    try {
+        const coach = await Coach.findByCredentials(req.coach.email, req.body.password)
+        if(req.body.password === req.body.newPassword ){
+            throw new Error('New password must not be the same as old password')
+        }
+        coach[allowerdUpdates] = req.body.newPassword
+        await coach.save()
+        res.status(200).send(coach)
     } catch (e) {
         res.status(400).send(e)
     }

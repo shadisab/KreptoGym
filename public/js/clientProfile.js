@@ -107,6 +107,8 @@ $(document).ready(async () => {
             return
         }
 
+        
+
         if (newPassword !== "" && newPassword === confirmPassword && password !== "") {
             const updatePassword = await fetch("/clients/password", {
                 method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
@@ -125,8 +127,15 @@ $(document).ready(async () => {
                 }) // body data type must match "Content-Type" header
             });
             if (updatePassword.status === 400) {
+                if(newPassword === password){
+                    $('#newPasswordREQ').css('opacity', 1).text("New password must not be the same as old password")
+                    return
+                }
                 updatePassword.json().then((body) => {
-                    if (Object.keys(body).length === 0) $('#passwordREQ').css('opacity', 1).text("The old password you have entered is incorrect!")
+                    if (Object.keys(body).length === 0) {
+                        $('#passwordREQ').css('opacity', 1).text("The old password you have entered is incorrect!")
+                        return
+                    }
                     switch (body.errors["password"].kind) {
                         case "minlength":
                             $('#newPasswordREQ').css('opacity', 1).text("Passowrd length most be > 6")
@@ -150,8 +159,6 @@ $(document).ready(async () => {
                 }, 1500);
             }
         }
-
-
     })
     /***************************************************************/
 
@@ -173,7 +180,7 @@ $(document).ready(async () => {
     });
 
     $('#deleteBTN').click(async () => {
-        const deleteREQ = await fetch('/clients/myProfile',{
+        const deleteREQ = await fetch('/clients/myProfile', {
             method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -186,7 +193,7 @@ $(document).ready(async () => {
             referrerPolicy: 'no-referrer' // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         })
 
-        if(deleteREQ.status === 200){
+        if (deleteREQ.status === 200) {
             $('#cd-popup').removeClass('is-visible');
             window.location.replace("/")
         }

@@ -149,6 +149,9 @@ router.patch('/clients/password', authClient, async (req, res) => {
     const allowerdUpdates = 'password'
     try {
         const client = await Client.findByCredentials(req.client.email, req.body.password)
+        if(req.body.password === req.body.newPassword ){
+            throw new Error('New password must not be the same as old password')
+        }
         client[allowerdUpdates] = req.body.newPassword
         await client.save()
         res.status(200).send(client)

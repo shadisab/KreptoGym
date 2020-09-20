@@ -1,0 +1,147 @@
+.H-main-DIV {
+    height: 85%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.H-container-DIV {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.H-client-container-DIV {
+    height: 90%;
+    width: 70%;
+    border: 2px rgb(207, 185, 151) solid;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    flex-direction: column;
+}
+
+.disp-flex {
+    display: flex;
+}
+
+.disp-none {
+    display: none;
+}
+
+.H-arrow-icon-div {
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.H-arrow-icon {
+    color: rgb(207, 185, 151);
+    opacity: 1;
+    font-size: 200px;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.H-arrow-icon:hover {
+    opacity: 0.5;
+}
+
+.H-client-container-inner {
+    height: 85%;
+    width: 100%;
+    display: flex;
+    background: black;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.H-card-title {
+    font-family: Poppins-Regular;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+    background-color: rgb(207, 185, 151);
+    color: black;
+}
+
+.H-card-text {
+    font-family: Poppins-Regular;
+    font-size: 30px;
+    color: white;
+    margin-left: 20px;
+}
+
+.H-card-steps {
+    font-family: Poppins-Regular;
+    font-size: 20px;
+    color: white;
+    margin-left: 160px;
+}
+
+.help-img-DIV {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.help-img {
+    width: 65%;
+    height: 90%;
+    border: 1px rgb(207, 185, 151) solid;
+}
+
+.H-title-DIV {
+    color: white;
+    font-size: 70px;
+    height: 18%;
+    font-family: Poppins-Regular;
+}
+
+.H-title-sec {
+    color: white;
+    font-size: 30px;
+    height: 10%;
+    font-family: Poppins-Regular;
+}
+
+.H-Buttons-DIV {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.H-Button {
+    width: 20%;
+    height: 30%;
+    border: 2px solid rgb(207, 185, 151);
+    background-color: black;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    color: rgb(207, 185, 151);
+    font-family: Poppins-Regular;
+    font-size: 20px;
+    transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.H-Button:hover {
+    color: black;
+    background-color: rgb(207, 185, 151);
+    border-color: black;
+}
+
+.H-margin-between-btns {
+    margin-left: 100px;
+}

@@ -62,6 +62,18 @@ app.get('/help', (req , res) => {
     })
 })
 
+app.get('/clientHelp', (req , res) => {
+    res.render('clientHelp',{
+
+    })
+})
+
+app.get('/coachHelp', (req , res) => {
+    res.render('coachHelp',{
+
+    })
+})
+
 app.get('/clientHome' , (req , res) => {
     res.render('clientHome')
 })

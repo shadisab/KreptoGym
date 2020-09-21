@@ -23,6 +23,7 @@ body {
   height: 100vh;
   margin: 0;
   display: fixed;
+  cursor: default;
   background: url(../images/main-background.jpg);
   background-size: cover;
   background-position: center;

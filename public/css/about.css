@@ -121,25 +121,28 @@
 .about-text-DIV-left{
     width: 66.666666%;
     height: 90%;
-    border-right: 1px solid rgb(207, 185, 151);;
+    background-color: black;
+    border: 1px solid rgb(207, 185, 151);
 }
 
 .about-text-DIV-center{
     width: 66.666666%;
     height: 90%;
-    border-right: 1px solid rgb(207, 185, 151);;
+    background-color: black;
+    border: 1px solid rgb(207, 185, 151);
     display: none;
 }
 
 .about-text-DIV-right{
     width: 66.666666%;
     height: 90%;
-    border-right: 1px solid rgb(207, 185, 151);;
+    background-color: black;
+    border: 1px solid rgb(207, 185, 151);
     display: none;
 }
 .about-text-p {
     font-family: Poppins-Regular;
-    color: white;
+    color: rgb(207, 185, 151);
     margin-left: 10px;
 }
 

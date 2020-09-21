@@ -1,182 +1,182 @@
-const express = require('express')
-const Coach = require('../models/coach')
-const Client = require('../models/client')
-const { authCoach } = require('../middleware/auth')
-const router = new express.Router()
+const express = require('express');
+const Coach = require('../models/coach');
+const Client = require('../models/client');
+const { authCoach } = require('../middleware/auth');
+const router = new express.Router();
 
 // Sign up
 router.post('/coachs/signup', async (req, res) => {
-    const coach = new Coach(req.body)
-    try {
-        await coach.save()
-        const token = await coach.generateAuthToken()
-        res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
-        res.status(201).send({ coach, token })
-    } catch (e) {
-        res.status(400).send(e)
-    }
-})
+	const coach = new Coach(req.body);
+	try {
+		await coach.save();
+		const token = await coach.generateAuthToken();
+		res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
+		res.status(201).send({ coach, token });
+	} catch (e) {
+		res.status(400).send(e);
+	}
+});
 
 
 // Login
 router.post('/coachs/login', async (req, res) => {
-    try {
-        // Self Created findByCredntials() , generateAuthToken()
-        const coach = await Coach.findByCredentials(req.body.email, req.body.password)
-        const token = await coach.generateAuthToken()
-        res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
-        res.send({ coach, token })
-    } catch (e) {
-        res.status(400).send(e)
-    }
-})
+	try {
+		// Self Created findByCredntials() , generateAuthToken()
+		const coach = await Coach.findByCredentials(req.body.email, req.body.password);
+		const token = await coach.generateAuthToken();
+		res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
+		res.send({ coach, token });
+	} catch (e) {
+		res.status(400).send(e);
+	}
+});
 
 //Single logout from specific login coach
 router.post('/coachs/logout', authCoach, async (req, res) => {
-    try {
-        req.coach.tokens = req.coach.tokens.filter((token) => {
-            return token.token !== req.token //if return is false than it going to remove by filter
-        })
-        await req.coach.save()
-        await res.clearCookie('Authorization');
-        res.status(200).send(req.coach)
-    } catch (e) {
-        res.status(500).send()
-    }
-})
+	try {
+		req.coach.tokens = req.coach.tokens.filter((token) => {
+			return token.token !== req.token; //if return is false than it going to remove by filter
+		});
+		await req.coach.save();
+		await res.clearCookie('Authorization');
+		res.status(200).send(req.coach);
+	} catch (e) {
+		res.status(500).send();
+	}
+});
 
 //logout from all sessions (from all auth tokens that are loged in for real time) for a specific coach
 router.post('/coachs/logoutAll', authCoach, async (req, res) => {
-    try {
-        req.coach.tokens = []
-        await req.coach.save()
-        await res.clearCookie('Authorization');
-        res.send()
-    } catch (e) {
-        res.status(500).send()
-    }
-})
+	try {
+		req.coach.tokens = [];
+		await req.coach.save();
+		await res.clearCookie('Authorization');
+		res.send();
+	} catch (e) {
+		res.status(500).send();
+	}
+});
 
 // GET client Nutrition
 router.get('/coachs/client/nutrition/:id', authCoach, async(req, res) => {
-    const client = await Client.findOne({_id: req.params.id,coachID: req.coach._id })
+	const client = await Client.findOne({_id: req.params.id,coachID: req.coach._id });
 
-    res.status(200).send(client.nutrition)
-    if (!client) {
-        return res.status(404).send("Cant Find client")
-    }
-})
+	res.status(200).send(client.nutrition);
+	if (!client) {
+		return res.status(404).send('Cant Find client');
+	}
+});
 
 // GET client TrainingSchedule
 router.get('/coachs/client/trainingSchedule/:id', authCoach, async(req, res) => {
-    const client = await Client.findOne({_id: req.params.id,coachID: req.coach._id })
+	const client = await Client.findOne({_id: req.params.id,coachID: req.coach._id });
 
-    res.status(200).send(client.trainingSchedule)
-    if (!client) {
-        return res.status(404).send("Cant Find client")
-    }
-})
+	res.status(200).send(client.trainingSchedule);
+	if (!client) {
+		return res.status(404).send('Cant Find client');
+	}
+});
 
 // Updating Nutrition for a client
 router.patch('/coachs/client/nutrition/:id', authCoach, async (req, res) => {
 
-    const updates = Object.keys(req.body)
-    const allowerdUpdates = ['protine', 'carbs', 'fats', 'notes', 'calories']
-    const isValidOperation = updates.every((update) => allowerdUpdates.includes(update))
-    if (!isValidOperation) {
-        return res.status(400).send({ error: 'Invalid updates!' })
-    }
+	const updates = Object.keys(req.body);
+	const allowerdUpdates = ['protine', 'carbs', 'fats', 'notes', 'calories'];
+	const isValidOperation = updates.every((update) => allowerdUpdates.includes(update));
+	if (!isValidOperation) {
+		return res.status(400).send({ error: 'Invalid updates!' });
+	}
 
-    try {
-        // bypassed more advanced features like middleware which means that if we want to use them consistently
-        // So "User.findByIdAndUpdate" will not work
-        const client = await Client.findOne({_id: req.params.id,coachID: req.coach._id })
-        if (!client) {
-            return res.status(404).send("Cant Find client")
-        }
-        updates.forEach((update) => client.nutrition[update] = req.body[update])// Dynamic update  
-        await client.save()
+	try {
+		// bypassed more advanced features like middleware which means that if we want to use them consistently
+		// So "User.findByIdAndUpdate" will not work
+		const client = await Client.findOne({_id: req.params.id,coachID: req.coach._id });
+		if (!client) {
+			return res.status(404).send('Cant Find client');
+		}
+		updates.forEach((update) => client.nutrition[update] = req.body[update]);// Dynamic update  
+		await client.save();
 
-        res.send(client.nutrition)
-    } catch (e) {
-        console.log(e)
-        res.status(400).send(e)
-    }
-})
+		res.send(client.nutrition);
+	} catch (e) {
+		console.log(e);
+		res.status(400).send(e);
+	}
+});
 
 // Updating TrainingSchedule for a client
 router.patch('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) => {
 
-    const updates = Object.keys(req.body)
-    const allowerdUpdates = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
-    const isValidOperation = updates.every((update) => allowerdUpdates.includes(update))
-    if (!isValidOperation) {
-        return res.status(400).send({ error: 'Invalid updates!' })
-    }
+	const updates = Object.keys(req.body);
+	const allowerdUpdates = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+	const isValidOperation = updates.every((update) => allowerdUpdates.includes(update));
+	if (!isValidOperation) {
+		return res.status(400).send({ error: 'Invalid updates!' });
+	}
 
-    try {
-        // bypassed more advanced features like middleware which means that if we want to use them consistently
-        // So "User.findByIdAndUpdate" will not work
-        const client = await Client.findOne({_id: req.params.id,coachID: req.coach._id })
-        if (!client) {
-            return res.status(404).send("Cant Find client")
-        }
-        updates.forEach((update) => client.trainingSchedule[update] = req.body[update])// Dynamic update  
-        await client.save()
-        res.send(client.nutrition)
-    } catch (e) {
-        console.log(e)
-        res.status(400).send(e)
-    }
-})
+	try {
+		// bypassed more advanced features like middleware which means that if we want to use them consistently
+		// So "User.findByIdAndUpdate" will not work
+		const client = await Client.findOne({_id: req.params.id,coachID: req.coach._id });
+		if (!client) {
+			return res.status(404).send('Cant Find client');
+		}
+		updates.forEach((update) => client.trainingSchedule[update] = req.body[update]);// Dynamic update  
+		await client.save();
+		res.send(client.nutrition);
+	} catch (e) {
+		console.log(e);
+		res.status(400).send(e);
+	}
+});
 
 
 // GET Coach profile
 router.get('/coachs/myProfile', authCoach, async (req, res) => {
-    res.send(req.coach)
+	res.send(req.coach);
 
-})
+});
 
 // Update Coach profile data
 router.patch('/coachs/myProfile', authCoach, async (req, res) => {
 
-    const updates = Object.keys(req.body)
-    const allowerdUpdates = ['name', 'email', 'age']
-    const isValidOperation = updates.every((update) => allowerdUpdates.includes(update))
-    if (!isValidOperation) {
-        return res.status(400).send({ error: 'Invalid updates!' })
-    }
+	const updates = Object.keys(req.body);
+	const allowerdUpdates = ['name', 'email', 'age'];
+	const isValidOperation = updates.every((update) => allowerdUpdates.includes(update));
+	if (!isValidOperation) {
+		return res.status(400).send({ error: 'Invalid updates!' });
+	}
 
-    try {
-        // bypassed more advanced features like middleware which means that if we want to use them consistently
-        // So "User.findByIdAndUpdate" will not work 
-        updates.forEach((update) => req.coach[update] = req.body[update])// Dynamic update  
-        await req.coach.save()
+	try {
+		// bypassed more advanced features like middleware which means that if we want to use them consistently
+		// So "User.findByIdAndUpdate" will not work 
+		updates.forEach((update) => req.coach[update] = req.body[update]);// Dynamic update  
+		await req.coach.save();
 
-        res.send(req.coach)
-    } catch (e) {
-        res.status(400).send(e)
-    }
-})
+		res.send(req.coach);
+	} catch (e) {
+		res.status(400).send(e);
+	}
+});
 // Updating client Password
 router.patch('/coachs/password', authCoach, async (req, res) => {
-    const allowerdUpdates = 'password'
-    try {
-        const coach = await Coach.findByCredentials(req.coach.email, req.body.password)
-        if(req.body.password === req.body.newPassword ){
-            throw new Error('New password must not be the same as old password')
-        }
-        coach[allowerdUpdates] = req.body.newPassword
-        await coach.save()
-        res.status(200).send(coach)
-    } catch (e) {
-        res.status(400).send(e)
-    }
-})
+	const allowerdUpdates = 'password';
+	try {
+		const coach = await Coach.findByCredentials(req.coach.email, req.body.password);
+		if(req.body.password === req.body.newPassword ){
+			throw new Error('New password must not be the same as old password');
+		}
+		coach[allowerdUpdates] = req.body.newPassword;
+		await coach.save();
+		res.status(200).send(coach);
+	} catch (e) {
+		res.status(400).send(e);
+	}
+});
 
 // GET all Claints of this coach 
 router.get('/coaches/myClients', authCoach, (req, res) => {
-   //get array of id's of all clients that this coach is train
-  res.send(req.coach.myClients)
-})
-module.exports = router
+	//get array of id's of all clients that this coach is train
+	res.send(req.coach.myClients);
+});
+module.exports = router;

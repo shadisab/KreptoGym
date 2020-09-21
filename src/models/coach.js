@@ -1,111 +1,104 @@
-const mongoose = require('mongoose')
-const validator = require('validator')
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const mongoose = require('mongoose');
+const validator = require('validator');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const coachSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-        lowercase: true,
-        validate(value) {
-            if (!validator.isEmail(value)) {
-                throw new Error('Email is not invalid')
-            }
-        }
-    },
-    password: {
-        type: String,
-        required: true,
-        minlength: 7,
-        trim: true,
-        validate(value) {
-            if (value.toLowerCase().includes('password')) {
-                throw new Error('Password cannot contain "password"')
-            }
-        }
-    }, 
-    userType:{
-        type:String,
-        trim: true
-    },
-    tokens: [{  //value always provided by the server
-        token: {
-            type: String,
-            required: true
-        }
-    }],
-    myClients: [{ //Clients ID's with this
-        id: { type: mongoose.Schema.Types.ObjectId },
-        name: { type: String, trime: true },
-        age: { type: Number, validate(value) { if (value < 0) { throw new Error('Age most be a positive number') } } },
-        height: {type: Number, validate(value) { if (value < 0) { throw new Error('Age most be a positive number') } } },
-        weight: {type: Number, validate(value) { if (value < 0) { throw new Error('Age most be a positive number') } } }
-    }]
+	name: {
+		type: String,
+		required: true,
+		trim: true
+	},
+	email: {
+		type: String,
+		required: true,
+		unique: true,
+		trim: true,
+		lowercase: true,
+		validate(value) {
+			if (!validator.isEmail(value)) {
+				throw new Error('Email is not invalid');
+			}
+		}
+	},
+	password: {
+		type: String,
+		required: true,
+		minlength: 7,
+		trim: true,
+		validate(value) {
+			if (value.toLowerCase().includes('password')) {
+				throw new Error('Password cannot contain "password"');
+			}
+		}
+	}, 
+	userType:{
+		type:String,
+		trim: true
+	},
+	tokens: [{  //value always provided by the server
+		token: {
+			type: String,
+			required: true
+		}
+	}],
+	myClients: [{ //Clients ID's with this
+		id: { type: mongoose.Schema.Types.ObjectId },
+		name: { type: String, trime: true },
+		age: { type: Number, validate(value) { if (value < 0) { throw new Error('Age most be a positive number'); } } },
+		height: {type: Number, validate(value) { if (value < 0) { throw new Error('Age most be a positive number'); } } },
+		weight: {type: Number, validate(value) { if (value < 0) { throw new Error('Age most be a positive number'); } } }
+	}]
 }, {
-    timestamps: true
-})
+	timestamps: true
+});
 
 coachSchema.methods.generateAuthToken = async function () {
-    const coach = this
-    const token = jwt.sign({ _id: coach._id.toString() }, process.env.JWT_SECRET)
+	const coach = this;
+	const token = jwt.sign({ _id: coach._id.toString() }, process.env.JWT_SECRET);
 
-    coach.tokens = coach.tokens.concat({ token })
-    await coach.save()
-    return token
-}
+	coach.tokens = coach.tokens.concat({ token });
+	await coach.save();
+	return token;
+};
 
 coachSchema.statics.findByCredentials = async (email, password) => {
-    const coach = await Coach.findOne({ email })
-    if (!coach) {
-        throw new Error('Unable to login!')
-    }
+	const coach = await Coach.findOne({ email });
+	if (!coach) {
+		throw new Error('Unable to login!');
+	}
 
-    const isMAtch = await bcrypt.compare(password, coach.password)
-    if (!isMAtch) {
-        throw new Error('Unable to login')
-    }
-    return coach
-}
+	const isMAtch = await bcrypt.compare(password, coach.password);
+	if (!isMAtch) {
+		throw new Error('Unable to login');
+	}
+	return coach;
+};
 
 
 // Hash the plain text password before saving
 coachSchema.pre('save', async function (next) {
-    // "This" gives us access to the individual user that's about to be saved.
-    const coach = this
+	// "This" gives us access to the individual user that's about to be saved.
+	const coach = this;
 
-    if (coach.isModified('password')) {//This will be true when the user is first created.And it will also be true if the user is being updated
-        coach.password = await bcrypt.hash(coach.password, 8)
-    }
+	if (coach.isModified('password')) {//This will be true when the user is first created.And it will also be true if the user is being updated
+		coach.password = await bcrypt.hash(coach.password, 8);
+	}
 
-    next()
-})
-
-// Delete user tasks when user is removed
-coachSchema.pre('remove', async function (next) {
-    const coach = this
-    await Task.deleteMany({ owner: coach._id })
-    next()
-})
+	next();
+});
 
 // Remove field from the profile respons
 coachSchema.methods.toJSON = function () {
-    const coach = this
-    const coachObject = coach.toObject()
+	const coach = this;
+	const coachObject = coach.toObject();
 
-    delete coachObject.password
-    delete coachObject.tokens
-    delete coachObject.myClients
+	delete coachObject.password;
+	delete coachObject.tokens;
+	delete coachObject.myClients;
 
-    return coachObject
-}
+	return coachObject;
+};
 
-const Coach = mongoose.model('Coach', coachSchema)
-module.exports = Coach
+const Coach = mongoose.model('Coach', coachSchema);
+module.exports = Coach;

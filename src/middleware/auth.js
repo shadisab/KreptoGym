@@ -18,7 +18,6 @@ const authClient = async (req, res, next) => {
 		req.client = client;
 		next(); // Letting the root handler run
 	} catch (e) {
-		console.log(e);
 		res.status(401).send({error: 'Please autheticate'});
 	}
 };
@@ -37,7 +36,6 @@ const authCoach = async (req, res, next) => {
 		req.coach = coach;
 		next(); // Letting the root handler run
 	} catch (e) {
-		console.log(e);
 		res.status(401).send({error: 'Please autheticate'});
 	}
 };

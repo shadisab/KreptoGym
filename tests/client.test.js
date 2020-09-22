@@ -3,6 +3,7 @@ const app = require('../src/app');
 const Client = require('../src/models/client');
 const Coach = require('../src/models/coach');
 const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose')
 
 const {
 	coachOneID,

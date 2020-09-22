@@ -102,3 +102,7 @@ module.exports = {
 	clientThirdID,
 	setupDatabase
 };
+
+afterAll( async () => {
+	await mongoose.disconnect();
+});

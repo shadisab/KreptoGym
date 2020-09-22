@@ -80,8 +80,9 @@ test('Should get profile of the user', async () => {
 });
 
 // Getting coach profile while not authenticated
-test('Should Not get profile for unauthenticated user', async () => {
+test('Should Not get profile for unauthenticated user', async function (done)  {
 	await request(app)
 		.get('/coachs/myProfile')
 		.expect(401);
+	done();
 });

@@ -1,0 +1,24 @@
+name: Test krypto
+
+on:
+ push:
+  branches: [master]
+ pull_request: 
+  branches: [master]
+
+ 
+jobs:
+  test: 
+    runs-on: windows-latest
+    steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-node@v1
+          with:
+                versoin: 14.7.0
+        - run: npm ci
+        - run: npm test  $PORT $MONGODB_URL $JWT_SECRET
+          env: 
+           PORT: 3000
+           MONGODB_URL: mongodb://127.0.0.1:27017/krepto-gym-api-test  
+           JWT_SECRET: thisisasecretformyapptl7stizi
+

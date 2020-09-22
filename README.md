@@ -1,0 +1,1 @@
+![Test krypto](https://github.com/wisamwrh/KreptoGym/workflows/Test%20krypto/badge.svg?branch=master)

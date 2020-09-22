@@ -16,7 +16,7 @@ jobs:
           with:
                 versoin: 14.7.0
         - run: npm ci
-        - run: npm $PORT $MONGODB_URL $JWT_SECRET jest --watch --runInBand
+        - run: npm jest $PORT $MONGODB_URL $JWT_SECRET  --watch --runInBand
           env: 
            PORT: 3000
            MONGODB_URL: mongodb://127.0.0.1:27017/krepto-gym-api-test  

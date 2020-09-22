@@ -7,7 +7,7 @@
     "start": "node src/index.js",
     "dev": "env-cmd -f ./config/dev.env nodemon src/index.js -e js,hbs",
     "test:jest": "jest .",
-    "test": "npm run test:jest"
+    "test": "npm run test:jest --detectOpenHandles"
   },
   "jest": {
     "testEnvironment": "node"

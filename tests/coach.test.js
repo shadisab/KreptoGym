@@ -83,6 +83,5 @@ test('Should get profile of the user', async () => {
 test('Should Not get profile for unauthenticated user', async () => {
 	await request(app)
 		.get('/coachs/myProfile')
-		.send()
 		.expect(401);
 });

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "env-cmd -f ./config/dev.env nodemon src/index.js -e js,hbs",
-    "test": "jest --watch --runInBand"
+    "test": "jest --watchAll --runInBand"
   },
   "jest": {
     "testEnvironment": "node"

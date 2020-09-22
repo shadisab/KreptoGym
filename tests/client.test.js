@@ -3,7 +3,6 @@ const app = require('../src/app');
 const Client = require('../src/models/client');
 const Coach = require('../src/models/coach');
 const bcrypt = require('bcryptjs');
-const mongoose = require('mongoose')
 
 const {
 	coachOneID,
@@ -17,7 +16,7 @@ const {
 beforeEach(setupDatabase); /* this function runs before each test case in this test suite.  */
 
 
-test('Should signup a new client', async (d) => {
+test('Should signup a new client', async () => {
 	const response = await request(app).post('/clients/signup').send({
 		name: 'clientsignup',
 		email: 'clientsign@example.com',
@@ -55,13 +54,12 @@ test('Should signup a new client', async (d) => {
 		}
 	});
 	expect(temp).toBe(true);
-	d();
 });
 
 
 
 // Login Test
-test('Should login existing client', async (d) => {
+test('Should login existing client', async () => {
 	const response = await request(app).post('/clients/login').send({
 		email: clientOne.email,
 		password: clientOne.password
@@ -70,11 +68,10 @@ test('Should login existing client', async (d) => {
 	// Assertions
 	const client = await Client.findById(clientOneID);
 	expect(response.body.token).toBe(client.tokens[1].token);
-	d();
 });
 
 // Testing change password
-test('Should update valid user Password', async (d) => {
+test('Should update valid user Password', async () => {
 	await request(app)
 		.patch('/clients/password')
 		.set('Cookie','Authorization=Bearer '+`${clientTwo.tokens[0].token}`)
@@ -85,10 +82,9 @@ test('Should update valid user Password', async (d) => {
 		.expect(200);
 	const client = await Client.findById(clientTwoID);
 	expect(await bcrypt.compare('123456789', client.password)).toBe(true);
-	d();
 });
 
-test('Should not update invalid user fields', async (d) => {
+test('Should not update invalid user fields', async () => {
 	await request(app)
 		.patch('/clients/password')
 		.set('Cookie','Authorization=Bearer '+`${clientTwo.tokens[0].token}`)
@@ -97,19 +93,17 @@ test('Should not update invalid user fields', async (d) => {
 			newPassword: '456987123'
 		})
 		.expect(400);
-	d();
 });
 
 //Delete user while not authenticated
-test('Should not delete a client', async (d) => {
+test('Should not delete a client', async () => {
 	await request(app)
 		.delete('/clients/myProfile')
 		.send()
 		.expect(401);
-	d();
 });
 //Delete user while authenticated
-test('Should delete user', async (d) => {
+test('Should delete user', async () => {
 	await request(app)
 		.delete('/clients/myProfile')
 		.set('Cookie','Authorization=Bearer '+`${clientTwo.tokens[0].token}`)
@@ -125,25 +119,21 @@ test('Should delete user', async (d) => {
 		}
 	});
 	expect(temp).toBe(false);
-	d();
 });
 
 //Getting client profile
-test('Should get profile of the user', async (d) => {
+test('Should get profile of the user', async () => {
 	await request(app)
 		.get('/clients/myProfile')
 		.set('Cookie','Authorization=Bearer '+`${clientTwo.tokens[0].token}`)
 		.send()
 		.expect(200);
-	d();
 });
 
 // Getting client profile while not authenticated
-test('Should Not get profile for unauthenticated user', async (d) => {
+test('Should Not get profile for unauthenticated user', async () => {
 	await request(app)
 		.get('/clients/myProfile')
 		.send()
 		.expect(401);
-	d();
 });
-

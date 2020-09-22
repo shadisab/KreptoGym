@@ -10,7 +10,7 @@ const {
 
 beforeEach(setupDatabase); /* this function runs before each test case in this test suite.  */
 
-test('Should signup a new coach', async () => {
+test('Should signup a new coach', async (d) => {
 	const response = await request(app).post('/coachs/signup').send({
 		name: 'Shadi',
 		email: 'shadi12345@example.com',
@@ -30,11 +30,12 @@ test('Should signup a new coach', async () => {
 		token: coach.tokens[0].token
 	});
 	expect(coach.password).not.toBe('MyPass123123'); // Checking the hashing
+	d();
 });
 
 
 // Login Test
-test('Should login existing coach', async () => {
+test('Should login existing coach', async (d) => {
 	const response = await request(app).post('/coachs/login').send({
 		email: coachOne.email,
 		password: coachOne.password
@@ -43,10 +44,11 @@ test('Should login existing coach', async () => {
 	// Assertions
 	const coach = await Coach.findById(coachOneID);
 	expect(response.body.token).toBe(coach.tokens[1].token);
+	d();
 });
 
 // Testing change password
-test('Should update valid user Password', async () => {
+test('Should update valid user Password', async (d) => {
 	await request(app)
 		.patch('/coachs/password')
 		.set('Cookie','Authorization=Bearer '+`${coachOne.tokens[0].token}`)
@@ -57,9 +59,10 @@ test('Should update valid user Password', async () => {
 		.expect(200);
 	const coach = await Coach.findById(coachOneID);
 	expect(await bcrypt.compare('123456789', coach.password)).toBe(true);
+	d();
 });
 
-test('Should not update invalid user fields', async () => {
+test('Should not update invalid user fields', async (d) => {
 	await request(app)
 		.patch('/coachs/password')
 		.set('Cookie','Authorization=Bearer '+`${coachOne.tokens[0].token}`)
@@ -68,15 +71,17 @@ test('Should not update invalid user fields', async () => {
 			newPassword: '456987123'
 		})
 		.expect(400);
+	d();
 });
 
 //Getting coach profile
-test('Should get profile of the user', async () => {
+test('Should get profile of the user', async (d) => {
 	await request(app)
 		.get('/coachs/myProfile')
 		.set('Cookie','Authorization=Bearer '+`${coachOne.tokens[0].token}`)
 		.send()
 		.expect(200);
+	d();
 });
 
 // Getting coach profile while not authenticated

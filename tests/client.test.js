@@ -137,3 +137,7 @@ test('Should Not get profile for unauthenticated user', async () => {
 		.send()
 		.expect(401);
 });
+
+afterAll((done) => {
+	done();
+});

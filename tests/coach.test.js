@@ -91,7 +91,3 @@ test('Should Not get profile for unauthenticated user', async function (done)  {
 		.expect(401);
 	done();
 });
-
-afterAll((done) => {
-	done();
-});

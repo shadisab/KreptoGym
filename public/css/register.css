@@ -233,6 +233,18 @@ body{
     color: white;
     outline: none;
 }
+.icon-img-container{
+  height: 25px;
+  width: 25px;
+}
+
+select option{
+  background-color: #313131;
+  color: rgb(207, 185, 151);
+  font-size: 15px;
+  height: 20px;
+  font-family: Poppins-Regular;
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

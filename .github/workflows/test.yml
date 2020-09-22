@@ -1,0 +1,12 @@
+name: Test krypto
+
+on:
+ push:
+ branches: [master]
+ pull_request: 
+ branches: [master]
+
+ jobs:
+  test: 
+    runs-on: win
+

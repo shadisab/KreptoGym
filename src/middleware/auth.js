@@ -18,7 +18,7 @@ const authClient = async (req, res, next) => {
 		req.client = client;
 		next(); // Letting the root handler run
 	} catch (e) {
-		res.status(401).send({error: 'Please autheticate'});
+		res.status(401).send('<!DOCTYPE html><html><head><title>401</title><link rel="stylesheet" href="/css/404.css"></head><body><div class="Main-DIV"><div class="msg-404">401 <p class="msg-err">You are not Authorized</p></div><p class="msg-err">Please press the back button to return to the previous page</p></div></body></html>');
 	}
 };
 
@@ -36,7 +36,7 @@ const authCoach = async (req, res, next) => {
 		req.coach = coach;
 		next(); // Letting the root handler run
 	} catch (e) {
-		res.status(401).send({error: 'Please autheticate'});
+		res.status(401).send('<!DOCTYPE html><html><head><title>401</title><link rel="stylesheet" href="/css/404.css"></head><body><div class="Main-DIV"><div class="msg-404">401 <p class="msg-err">You are not Authorized</p></div><p class="msg-err">Please press the back button to return to the previous page</p></div></body></html>');
 	}
 };
 module.exports = {authClient, authCoach};

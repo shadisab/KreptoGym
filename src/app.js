@@ -6,6 +6,7 @@ const clientRouter = require('./routers/client');
 const coachRouter = require('./routers/coach');
 const app = express();
 const cookie = require('cookie-parser');
+const {authClient , authCoach} = require('./middleware/auth');
 
 const publicDirectoryPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
@@ -74,31 +75,27 @@ app.get('/coachHelp', (req , res) => {
 	});
 });
 
-app.get('/clientHome' , (req , res) => {
-	res.render('clientHome');
-});
-
-app.get('/coachClients' , (req , res) => {
+app.get('/coachClients', authCoach , (req , res) => {
 	res.render('coachClients');
 });
 
-app.get('/coachScheduleUpdate' , (req , res) => {
+app.get('/coachScheduleUpdate' , authCoach , (req , res) => {
 	res.render('coachScheduleUpdate');
 });
 
-app.get('/clientSchedule' , (req , res) => {
+app.get('/clientSchedule', authClient, (req , res) => {
 	res.render('clientSchedule');
 });
 
-app.get('/coachClients' , (req , res) => {
+app.get('/coachClients' , authCoach , (req , res) => {
 	res.render('coachClients');
 });
 
-app.get('/clientProfile' , (req , res) => {
+app.get('/clientProfile', authClient , (req , res) => {
 	res.render('clientProfile');
 });
 
-app.get('/coachProfile' , (req , res) => {
+app.get('/coachProfile', authCoach , (req , res) => {
 	res.render('coachProfile');
 });
 

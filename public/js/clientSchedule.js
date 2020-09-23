@@ -34,6 +34,9 @@ $(document).ready(async () => {
 			$('#' + elem).text(data[elem]);
 		});
 	});
+	// if(getNutritionedata.status === 401){
+	// 	window.location.href = ('/');
+	// }
 
 	// get client training data
 	const getScheduledata = await fetch('/clients/training', {

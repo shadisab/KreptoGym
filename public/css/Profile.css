@@ -49,7 +49,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}
+
 .P-links {
     width: 20%;
     height: 100%;
@@ -59,22 +60,26 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-  }
+}
 
-  .P-links:hover { text-shadow: 0 0 10px white; }
+.P-links:hover {
+    text-shadow: 0 0 10px white;
+}
+
 .P-icon-div-logo {
     width: 14%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-.P-header-logo-icon-img{
+}
+
+.P-header-logo-icon-img {
     width: 21.43%;
     height: 43.71%;
-  }
+}
 
-.CoachP-info-DIV{
+.CoachP-info-DIV {
     height: 70%;
     width: 100%;
     display: flex;
@@ -111,7 +116,8 @@
     align-items: center;
     justify-content: space-between;
 }
-.P-item-title{
+
+.P-item-title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -386,7 +392,7 @@
     align-items: center;
 }
 
-.P-changepass-field-item{
+.P-changepass-field-item {
     width: 80%;
 }
 

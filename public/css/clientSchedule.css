@@ -1,18 +1,18 @@
-.CS-Schedule-DIV{
+.CS-Schedule-DIV {
     width: 100%;
     height: 70%;
     border-bottom: rgb(207, 185, 151) 1px solid;
     cursor: default;
 }
 
-.CS-Nutritions-msg-DIV{
+.CS-Nutritions-msg-DIV {
     width: 100%;
     height: 30%;
     display: flex;
     flex-direction: row;
 }
 
-.CS-Daily-Training-Text{
+.CS-Daily-Training-Text {
     width: 90%;
     height: 84%;
     margin-top: 7px;
@@ -26,7 +26,7 @@
     overflow-y: auto;
 }
 
-.CS-Msg-Text{
+.CS-Msg-Text {
     width: 94%;
     height: 84%;
     outline: none;
@@ -40,13 +40,13 @@
     overflow-y: auto;
 }
 
-.CS-Nutrition-item-value{
+.CS-Nutrition-item-value {
     color: white;
     font-family: Poppins-Regular;
     margin-left: 10px;
 }
 
-.CS-msg-DIV{
+.CS-msg-DIV {
     height: 82%;
     width: 100%;
     border: rgb(207, 185, 151) 1px solid;
@@ -58,7 +58,7 @@
     justify-content: center;
 }
 
-.CS-Nutritions-DIV{
+.CS-Nutritions-DIV {
     height: 82%;
     width: 100%;
     border: rgb(207, 185, 151) 1px solid;
@@ -68,7 +68,7 @@
     flex-direction: column;
 }
 
-.CS-cal-item{
+.CS-cal-item {
     width: 100%;
     height: 100%;
     display: flex;
@@ -77,7 +77,7 @@
     flex-direction: row;
 }
 
-.CS-cal-title{
+.CS-cal-title {
     color: white;
     font-family: Poppins-Regular;
     display: flex;

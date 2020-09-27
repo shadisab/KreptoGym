@@ -31,13 +31,15 @@ body {
   min-width: 1366px;
   min-height: 625px;
 }
+
 ::-webkit-scrollbar {
   width: 15px;
 }
 
 /* Track */
+
 ::-webkit-scrollbar-track {
-  background: black; 
+  background: black;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -45,19 +47,19 @@ body {
   border-radius: 16px;
 }
 
-.Main{
+.Main {
   width: 100%;
   height: 100vh;
   display: fixed;
 }
 
-.Masking-DIV{
+.Masking-DIV {
   width: 100%;
   height: 100%;
-  background: -webkit-linear-gradient( rgb(0, 0, 0) 0%,rgba(81, 81, 81, 0) 50%, rgba(0, 0, 0) 100%);
+  background: -webkit-linear-gradient( rgb(0, 0, 0) 0%, rgba(81, 81, 81, 0) 50%, rgba(0, 0, 0) 100%);
 }
 
-.Masking-DIV-2{
+.Masking-DIV-2 {
   width: 100%;
   height: 100%;
   background-color: rgb(0, 0, 0, 0.5);
@@ -91,7 +93,6 @@ header {
   display: flex;
   flex-direction: row;
   background: -webkit-linear-gradient( rgb(0, 0, 0) 0%, rgba(81, 81, 81, 0) 100%);
-  
 }
 
 .links-DIV {
@@ -113,7 +114,9 @@ header {
   text-decoration: none;
 }
 
-.links:hover { text-shadow: 0 0 10px white; }
+.links:hover {
+  text-shadow: 0 0 10px white;
+}
 
 .log-buttons-div {
   width: 14%;
@@ -134,7 +137,10 @@ header {
   text-decoration: none;
 }
 
-.sign-log-btn-DIV:hover { text-shadow: 0 0 10px white; }
+.sign-log-btn-DIV:hover {
+  text-shadow: 0 0 10px white;
+}
+
 .dividing-slash {
   display: flex;
   font-size: 30px;
@@ -152,7 +158,9 @@ header {
   outline: none;
 }
 
-.dropbtn:hover { text-shadow: 0 0 10px white; }
+.dropbtn:hover {
+  text-shadow: 0 0 10px white;
+}
 
 .dropbtn2 {
   background-color: transparent;
@@ -164,7 +172,9 @@ header {
   outline: none;
 }
 
-.dropbtn2:hover { text-shadow: 0 0 10px white; }
+.dropbtn2:hover {
+  text-shadow: 0 0 10px white;
+}
 
 .dropdown {
   position: relative;
@@ -220,7 +230,7 @@ header {
   top: 70px;
 }
 
-.popups-button-barrier-border{
+.popups-button-barrier-border {
   height: 1px;
   width: 80%;
   border-top: 1px rgb(207, 185, 151) solid;

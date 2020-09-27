@@ -1,5 +1,4 @@
-
-.clients-view-DIV{
+.clients-view-DIV {
     width: 100%;
     height: 85%;
     display: flex;
@@ -7,7 +6,7 @@
     justify-content: center;
 }
 
-.clients-view-inner-DIV{
+.clients-view-inner-DIV {
     height: 95%;
     width: 90%;
     background: transparent;
@@ -16,7 +15,7 @@
     border-top-left-radius: 40px;
 }
 
-.clients-title-DIV{
+.clients-title-DIV {
     height: 15%;
     width: 100%;
     display: flex;
@@ -28,19 +27,20 @@
     background-color: rgb(207, 185, 151);
 }
 
-.clients-title-icon-DIV{
+.clients-title-icon-DIV {
     width: 25%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.clients-title-icon{
+
+.clients-title-icon {
     color: black;
     font-size: 70px;
 }
 
-.clients-title{
+.clients-title {
     color: black;
     font-weight: bold;
     width: 50%;
@@ -52,7 +52,7 @@
     font-family: Poppins-Medium;
 }
 
-.clients{
+.clients {
     height: 85%;
     width: 100%;
     border-top: 2px rgb(207, 185, 151) solid;
@@ -64,7 +64,7 @@
     position: relative;
 }
 
-.clientDIV{
+.clientDIV {
     width: 97.5%;
     height: 27%;
     margin-top: 15px;
@@ -77,22 +77,22 @@
     align-items: center;
 }
 
-.clientDIV-filler{
+.clientDIV-filler {
     height: 15px;
     width: 100%;
     flex: 0 0 auto;
 }
 
-.pic-DIV{
+.pic-DIV {
     width: 13%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: dashed 1px rgb(207, 185, 151) ;
+    border-right: dashed 1px rgb(207, 185, 151);
 }
 
-.pic{
+.pic {
     width: 110px;
     height: 110px;
     background: url(../images/icon5.png);
@@ -101,20 +101,21 @@
     background-position: center;
 }
 
-.client-info-DIV{
+.client-info-DIV {
     width: 74%;
     height: 100%;
     display: flex;
     flex-direction: column;
 }
-.client-info-row-DIV{
+
+.client-info-row-DIV {
     width: 100%;
     height: 50%;
     display: flex;
     flex-direction: row;
 }
 
-.client-info-text{
+.client-info-text {
     width: 25%;
     height: 100%;
     font-family: Poppins-SemiBold;
@@ -124,7 +125,8 @@
     justify-content: center;
     margin-left: 60px;
 }
-.client-info-data{
+
+.client-info-data {
     width: 25%;
     height: 100%;
     font-family: Poppins-Regular;
@@ -132,7 +134,8 @@
     display: flex;
     align-items: center;
 }
-.noClientsMsg{
+
+.noClientsMsg {
     color: rgb(207, 185, 151);
     font-family: Poppins-Regular;
     font-size: 50px;
@@ -143,7 +146,8 @@
     width: 100%;
     height: 100%;
 }
-.coach-info-numberOfClients{
+
+.coach-info-numberOfClients {
     width: 50%;
     height: 100%;
     display: flex;
@@ -151,13 +155,13 @@
     justify-content: center;
 }
 
-.coach-select-btn-DIV{
+.coach-select-btn-DIV {
     width: 13%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: dashed 1px rgb(207, 185, 151) ;
+    border-left: dashed 1px rgb(207, 185, 151);
 }
 
 .coach-select-btn {
@@ -177,12 +181,14 @@
     font-family: Poppins-Bold;
     z-index: 1;
     border: none;
-  }
-  .border-radius-adder{
+}
+
+.border-radius-adder {
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
-  }
-  .coach-select-btn:before {
+}
+
+.coach-select-btn:before {
     content: "";
     position: absolute;
     left: 50%;
@@ -194,18 +200,20 @@
     border-radius: 50%;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
     z-index: -1;
-  }
-  
-  .coach-select-btn:hover {
+}
+
+.coach-select-btn:hover {
     color: black;
-  }
-  .coach-select-btn:hover:before {
+}
+
+.coach-select-btn:hover:before {
     top: -35%;
     background-color: rgb(207, 185, 151);
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
-  .coach-select-btn:hover:after {
+}
+
+.coach-select-btn:hover:after {
     top: -45%;
     background-color: rgb(207, 185, 151);
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
+}

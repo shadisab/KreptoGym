@@ -1,58 +1,57 @@
-.main-DIV{
-    width: 100%;
-    height: 85%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.main-DIV {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.container-DIV{
-    width: 65%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+.container-DIV {
+  width: 65%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.welcome-title{
-    color: white;
-    font-size: 100px;
-    height: 80%;
-    font-family: Poppins-Regular;
+.welcome-title {
+  color: white;
+  font-size: 100px;
+  height: 80%;
+  font-family: Poppins-Regular;
 }
 
-.welcome-title-sec{
-    color: rgb(207, 185, 151);
-    font-size: 40px;
-    margin-left: 30px;
-    font-family: Poppins-Regular;
+.welcome-title-sec {
+  color: rgb(207, 185, 151);
+  font-size: 40px;
+  margin-left: 30px;
+  font-family: Poppins-Regular;
 }
 
+.welcome-title-DIV {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
 
-.welcome-title-DIV{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-  }
+.motive-text-DIV {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
-  .motive-text-DIV{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .motive-text{
-    color: white;
-    font-size: 40px;
-    font-family: Poppins-Regular;
-  }
+.motive-text {
+  color: white;
+  font-size: 40px;
+  font-family: Poppins-Regular;
+}
 
-  .motive-text-big{
-    margin-left: 30px;
-    display: inline-block;
-    line-height: 80%;
-    color: rgb(207, 185, 151);
-    font-size: 100px;
-    height: 60%;
-    font-family: Poppins-Regular;
-    padding: 0;
-  }
+.motive-text-big {
+  margin-left: 30px;
+  display: inline-block;
+  line-height: 80%;
+  color: rgb(207, 185, 151);
+  font-size: 100px;
+  height: 60%;
+  font-family: Poppins-Regular;
+  padding: 0;
+}

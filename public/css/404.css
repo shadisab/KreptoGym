@@ -7,7 +7,8 @@
     font-family: Poppins-Regular;
     src: url('../fonts/poppins.regular.ttf');
 }
-body{
+
+body {
     width: 100%;
     height: 100vh;
     margin: 0;
@@ -16,26 +17,26 @@ body{
     justify-content: center;
 }
 
-.Main-DIV{
+.Main-DIV {
     width: 95%;
     height: 90%;
 }
 
-.msg-404{
+.msg-404 {
     color: #515151;
     font-family: Poppins-Medium;
     font-size: 100px;
     margin: 0;
 }
 
-.msg-err{
+.msg-err {
     color: #515151;
     font-family: Poppins-Regular;
     font-size: 40px;
     margin: 0;
 }
 
-.msg-err-lnk{
+.msg-err-lnk {
     color: #515151;
     font-family: Poppins-Regular;
     font-size: 40px;

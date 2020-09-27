@@ -143,19 +143,6 @@ const clientSchema = new mongoose.Schema({
 	timestamps: true
 });
 
-/* Bring the task of the user */
-/* Well what we're not going to do is actually create a tasks array on the User model so up above for example
-we do create a tokens array to store those tokens.
-We're not going to do the same thing for tasks the tasks live in a separate collection.
-Instead what we're going to do is set up what's known as a virtual property a virtual property is not
-actual data stored in the database.It's a relationship between two entities. */
-// clientSchema.virtual('tasks', { //This is not stored in the database It is just for Mongoose to be able to figure out who owns what and how they're related.
-//     ref: 'Task',
-//     localField: '_id', // local field is that is where that local data is stored.
-//     foreignField: 'owner' //foreign field is the name of the field on the other thing 
-
-// })
-
 clientSchema.methods.generateAuthToken = async function () {
 	const client = this;
 	const token = jwt.sign({ _id: client._id.toString() }, process.env.JWT_SECRET);
@@ -201,10 +188,6 @@ clientSchema.pre('remove', async function (next) {
 			return    !value.id.equals(client._id);
 		});
 		coach.save();
-		// await Coach.
-		//    findByIdAndUpdate(
-		//          client.coachID, { $pull: { 'clientsID': { _id:client._id } } })
-		//  coach.save()
 	} catch (e) {
 		console.log(e);
 	}

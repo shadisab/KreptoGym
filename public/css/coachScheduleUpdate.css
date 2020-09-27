@@ -1,4 +1,4 @@
-.CSU-main-DIV{
+.CSU-main-DIV {
     width: 100%;
     height: 85%;
     display: flex;
@@ -7,12 +7,12 @@
     cursor: default;
 }
 
-.CSU-Container-DIV{
+.CSU-Container-DIV {
     width: 95%;
     height: 95%;
     background: none;
     border-radius: 26px;
-    border: 1px solid rgb(207, 185, 151) ;
+    border: 1px solid rgb(207, 185, 151);
 }
 
 .CSU-links-DIV {
@@ -21,39 +21,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}
 
-  .CSU-icon-div-logo {
+.CSU-icon-div-logo {
     width: 14%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .CSU-header-logo-icon-img{
+}
+
+.CSU-header-logo-icon-img {
     width: 21.43%;
     height: 43.71%;
-  }
+}
 
-.CSU-Schedule-DIV{
+.CSU-Schedule-DIV {
     width: 100%;
     height: 60%;
     border-bottom: rgb(207, 185, 151) 1px solid;
 }
 
-.CSU-Nutritions-msg-DIV{
+.CSU-Nutritions-msg-DIV {
     width: 100%;
     height: 25%;
     display: flex;
     flex-direction: row;
 }
-.CSU-btns-DIV{
+
+.CSU-btns-DIV {
     width: 100%;
     height: 15%;
     display: flex;
     flex-direction: row;
 }
-.CSU-Days-DIV{
+
+.CSU-Days-DIV {
     width: 100%;
     height: 20%;
     border-bottom: rgb(207, 185, 151) 1px solid;
@@ -61,7 +64,7 @@
     flex-direction: row;
 }
 
-.CSU-Day-DIV{
+.CSU-Day-DIV {
     width: 14.285%;
     height: 100%;
     display: flex;
@@ -70,7 +73,7 @@
     justify-content: center;
 }
 
-.CSU-Day-Num{
+.CSU-Day-Num {
     color: white;
     font-size: 25px;
     font-family: Poppins-Regular;
@@ -82,20 +85,20 @@
     border-radius: 50%;
 }
 
-.CSU-Day-Name{
+.CSU-Day-Name {
     color: white;
     font-size: 17px;
     font-family: Poppins-Regular;
 }
 
-.CSU-Training-Schedule-DIV{
+.CSU-Training-Schedule-DIV {
     width: 100%;
     height: 80%;
     display: flex;
     flex-direction: row;
 }
 
-.CSU-Training-Schedule-Day{
+.CSU-Training-Schedule-Day {
     width: 14.285%;
     height: 100%;
     display: flex;
@@ -103,7 +106,7 @@
     align-items: center;
 }
 
-.CSU-Daily-Training-Text{
+.CSU-Daily-Training-Text {
     width: 90%;
     height: 82%;
     background-color: black;
@@ -116,13 +119,12 @@
     overflow-y: auto;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-.CSU-Daily-Training-Title{
+.CSU-Daily-Training-Title {
     color: white;
     width: 100%;
     font-size: 17px;
@@ -132,7 +134,7 @@ input::-webkit-inner-spin-button {
     font-family: Poppins-Regular;
 }
 
-.CSU-Nutritions-msg-inner-DIV{
+.CSU-Nutritions-msg-inner-DIV {
     border: rgb(207, 185, 151) 1px solid;
     width: 99%;
     height: 79%;
@@ -141,21 +143,24 @@ input::-webkit-inner-spin-button {
     display: flex;
     flex-direction: row;
 }
-.CSU-Nutritions-outer-DIV{
+
+.CSU-Nutritions-outer-DIV {
     height: 100%;
     width: 75%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
-.CSU-Msg-outer-DIV{
+
+.CSU-Msg-outer-DIV {
     height: 100%;
     width: 25%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.CSU-Nutritions-DIV{
+
+.CSU-Nutritions-DIV {
     height: 80%;
     width: 100%;
     border: rgb(207, 185, 151) 1px solid;
@@ -163,14 +168,15 @@ input::-webkit-inner-spin-button {
     display: flex;
     flex-direction: column;
 }
-.CSU-row{
+
+.CSU-row {
     width: 100%;
     height: 50%;
     display: flex;
     flex-direction: row;
 }
 
-.CSU-Nutrition-item{
+.CSU-Nutrition-item {
     width: 33.333333%;
     height: 100%;
     display: flex;
@@ -179,7 +185,7 @@ input::-webkit-inner-spin-button {
     flex-direction: row;
 }
 
-.CSU-cal-btn-item{
+.CSU-cal-btn-item {
     width: 50%;
     height: 100%;
     display: flex;
@@ -188,18 +194,18 @@ input::-webkit-inner-spin-button {
     flex-direction: row;
 }
 
-.CSU-Nutrition-item-title{
+.CSU-Nutrition-item-title {
     color: white;
     font-family: Poppins-Regular;
     display: flex;
     align-items: flex-end;
 }
 
-.CSU-margin-left{
+.CSU-margin-left {
     margin-left: 5px;
 }
 
-.CSU-cal-item-title{
+.CSU-cal-item-title {
     color: white;
     font-family: Poppins-Regular;
     display: flex;
@@ -207,7 +213,7 @@ input::-webkit-inner-spin-button {
     font-size: 30px;
 }
 
-.CSU-cal-item-value{
+.CSU-cal-item-value {
     color: white;
     font-family: Poppins-Regular;
     background-color: transparent;
@@ -217,7 +223,7 @@ input::-webkit-inner-spin-button {
     width: 30%;
 }
 
-.CSU-Calculatebtn-item{
+.CSU-Calculatebtn-item {
     height: 80%;
     width: 60%;
     background: transparent;
@@ -228,11 +234,11 @@ input::-webkit-inner-spin-button {
 }
 
 .CSU-Calculatebtn-item:hover {
-    background:  rgb(207, 185, 151);
+    background: rgb(207, 185, 151);
     color: black;
 }
 
-.CSU-Nutrition-item-value{
+.CSU-Nutrition-item-value {
     color: white;
     background-color: transparent;
     border: rgb(207, 185, 151) 1px solid;
@@ -241,7 +247,8 @@ input::-webkit-inner-spin-button {
     margin-left: 10px;
     width: 15%;
 }
-.CSU-msg-DIV{
+
+.CSU-msg-DIV {
     height: 80%;
     width: 100%;
     border: rgb(207, 185, 151) 1px solid;
@@ -252,7 +259,7 @@ input::-webkit-inner-spin-button {
     justify-content: center;
 }
 
-.CSU-Msg-Text{
+.CSU-Msg-Text {
     width: 94%;
     height: 84%;
     color: white;
@@ -263,22 +270,24 @@ input::-webkit-inner-spin-button {
     overflow-y: auto;
 }
 
-.CSU-Border-left{
+.CSU-Border-left {
     border-left: rgb(207, 185, 151) 1px solid;
 }
 
-.R-abtn{
+.R-abtn {
     text-decoration: none;
     color: white;
     font-family: Poppins-Regular;
     z-index: 1;
-  }
-  .R-button-container {
+}
+
+.R-button-container {
     width: 70%;
     height: 100%;
     text-align: center;
-  }
-  .R-button {
+}
+
+.R-button {
     display: flex;
     width: 100%;
     height: 100%;
@@ -288,11 +297,12 @@ input::-webkit-inner-spin-button {
     transition: all 0.2s ease-in;
     position: relative;
     overflow: hidden;
-    background-color:transparent;
+    background-color: transparent;
     outline: transparent;
     cursor: pointer;
-  }
-  .R-button:before {
+}
+
+.R-button:before {
     content: "";
     position: absolute;
     left: 50%;
@@ -305,8 +315,9 @@ input::-webkit-inner-spin-button {
     display: block;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
     z-index: -1;
-  }
-  .R-button:after {
+}
+
+.R-button:after {
     content: "";
     position: absolute;
     left: 55%;
@@ -318,24 +329,29 @@ input::-webkit-inner-spin-button {
     display: block;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
     z-index: -1;
-  }
-  .R-button:hover {
+}
+
+.R-button:hover {
     color: black;
     border: none;
-  }
-  .R-button:hover:before {
+}
+
+.R-button:hover:before {
     top: -35%;
     background-color: rgb(207, 185, 151);
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
-  .R-button:hover:after {
+}
+
+.R-button:hover:after {
     top: -45%;
     background-color: rgb(207, 185, 151);
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
-.R-button-left{
+}
+
+.R-button-left {
     border-bottom-left-radius: 25px;
 }
-.R-button-right{
+
+.R-button-right {
     border-bottom-right-radius: 25px;
 }

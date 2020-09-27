@@ -18,7 +18,7 @@
     src: url('../fonts/poppins.semibold.ttf');
 }
 
-.master-DIV{
+.master-DIV {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,7 +26,7 @@
     height: 85%;
 }
 
-.about-containing-DIV{
+.about-containing-DIV {
     height: 97%;
     width: 95%;
     border-radius: 24px;
@@ -35,26 +35,26 @@
     flex-direction: row;
 }
 
-.about-icons-DIV{
+.about-icons-DIV {
     width: 10%;
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.about-icon{
+.about-icon {
     width: 100%;
     height: 25%;
 }
 
-.about-containing-Inner-DIV{
+.about-containing-Inner-DIV {
     display: flex;
     width: 80%;
     flex-direction: column;
     align-items: center;
 }
 
-.title-DIV{
+.title-DIV {
     margin-left: 200px;
     width: 100%;
     height: 20%;
@@ -62,21 +62,21 @@
     align-items: center;
 }
 
-.title-text{
+.title-text {
     margin-left: 15px;
     color: white;
     font-size: 100px;
     font-family: Poppins-Medium;
 }
 
-.bar-DIV{
+.bar-DIV {
     width: 100%;
     height: 20%;
     display: flex;
     flex-direction: row;
 }
 
-.bar-items-DIV{
+.bar-items-DIV {
     height: 100%;
     width: 33.33333%;
     display: flex;
@@ -85,16 +85,17 @@
     justify-content: center;
 }
 
-.border-full-opacity{
+.border-full-opacity {
     border-bottom: 2px solid rgb(207, 185, 151);
     width: 100%;
 }
 
-.border-half-opacity{
+.border-half-opacity {
     border-bottom: 2px solid rgb(207, 185, 151, .5);
     width: 100%;
 }
-.bar-items-text{
+
+.bar-items-text {
     color: white;
     font-family: Poppins-Regular;
     width: 100%;
@@ -104,28 +105,26 @@
     cursor: pointer;
 }
 
-.about-outer-text-DIV{
+.about-outer-text-DIV {
     width: 100%;
     height: 50%;
     display: flex;
     flex-direction: row;
 }
 
-
-
 .about-text-title {
     color: white;
     font-family: Poppins-Bold;
 }
 
-.about-text-DIV-left{
+.about-text-DIV-left {
     width: 66.666666%;
     height: 90%;
     background-color: black;
     border: 1px solid rgb(207, 185, 151);
 }
 
-.about-text-DIV-center{
+.about-text-DIV-center {
     width: 66.666666%;
     height: 90%;
     background-color: black;
@@ -133,20 +132,21 @@
     display: none;
 }
 
-.about-text-DIV-right{
+.about-text-DIV-right {
     width: 66.666666%;
     height: 90%;
     background-color: black;
     border: 1px solid rgb(207, 185, 151);
     display: none;
 }
+
 .about-text-p {
     font-family: Poppins-Regular;
     color: rgb(207, 185, 151);
     margin-left: 10px;
 }
 
-.img-slider{
+.img-slider {
     width: 33.33333%;
     height: 90%;
     margin-left: 20px;

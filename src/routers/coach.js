@@ -44,19 +44,6 @@ router.post('/coachs/logout', authCoach, async (req, res) => {
 		res.status(500).send();
 	}
 });
-
-//logout from all sessions (from all auth tokens that are loged in for real time) for a specific coach
-router.post('/coachs/logoutAll', authCoach, async (req, res) => {
-	try {
-		req.coach.tokens = [];
-		await req.coach.save();
-		await res.clearCookie('Authorization');
-		res.send();
-	} catch (e) {
-		res.status(500).send();
-	}
-});
-
 // GET client Nutrition
 router.get('/coachs/client/nutrition/:id', authCoach, async(req, res) => {
 	const client = await Client.findOne({_id: req.params.id,coachID: req.coach._id });
@@ -88,8 +75,6 @@ router.patch('/coachs/client/nutrition/:id', authCoach, async (req, res) => {
 	}
 
 	try {
-		// bypassed more advanced features like middleware which means that if we want to use them consistently
-		// So "User.findByIdAndUpdate" will not work
 		const client = await Client.findOne({_id: req.params.id,coachID: req.coach._id });
 		if (!client) {
 			return res.status(404).send('Cant Find client');
@@ -115,8 +100,6 @@ router.patch('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) 
 	}
 
 	try {
-		// bypassed more advanced features like middleware which means that if we want to use them consistently
-		// So "User.findByIdAndUpdate" will not work
 		const client = await Client.findOne({_id: req.params.id,coachID: req.coach._id });
 		if (!client) {
 			return res.status(404).send('Cant Find client');
@@ -136,28 +119,6 @@ router.get('/coachs/myProfile', authCoach, async (req, res) => {
 	res.send(req.coach);
 
 });
-
-// Update Coach profile data
-router.patch('/coachs/myProfile', authCoach, async (req, res) => {
-
-	const updates = Object.keys(req.body);
-	const allowerdUpdates = ['name', 'email', 'age'];
-	const isValidOperation = updates.every((update) => allowerdUpdates.includes(update));
-	if (!isValidOperation) {
-		return res.status(400).send({ error: 'Invalid updates!' });
-	}
-
-	try {
-		// bypassed more advanced features like middleware which means that if we want to use them consistently
-		// So "User.findByIdAndUpdate" will not work 
-		updates.forEach((update) => req.coach[update] = req.body[update]);// Dynamic update  
-		await req.coach.save();
-
-		res.send(req.coach);
-	} catch (e) {
-		res.status(400).send(e);
-	}
-});
 // Updating client Password
 router.patch('/coachs/password', authCoach, async (req, res) => {
 	const allowerdUpdates = 'password';
@@ -174,9 +135,4 @@ router.patch('/coachs/password', authCoach, async (req, res) => {
 	}
 });
 
-// GET all Claints of this coach 
-router.get('/coaches/myClients', authCoach, (req, res) => {
-	//get array of id's of all clients that this coach is train
-	res.send(req.coach.myClients);
-});
 module.exports = router;

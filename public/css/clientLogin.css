@@ -1,0 +1,318 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('/fonts/poppins.regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('/fonts/poppins.medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('/fonts/poppins.bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('/fonts/poppins.semibold.ttf');
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    font-size: 14px;
+    user-select: none;
+}
+
+.Main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    height: 15%;
+}
+
+.back-option-header {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-option-header-text {
+    font-size: 14px;
+    font-family: Poppins-Regular;
+    letter-spacing: 0.10em;
+}
+
+.back-option-header-inner {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    outline: none;
+    color: black;
+    text-decoration: none;
+}
+
+.back-option-header-inner:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 50%;
+    background: black;
+    position: absolute;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.back-option-header-inner:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.header-filler {
+    height: 100%;
+    width: 75%;
+}
+
+.sign-up-btn-option {
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-up-text {
+    font-size: 14px;
+    font-family: Poppins-Regular;
+    cursor: pointer;
+    letter-spacing: 0.10em;
+    display: inline-block;
+    position: relative;
+    color: black;
+    text-decoration: none;
+}
+
+.sign-up-text:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 50%;
+    background: black;
+    position: absolute;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.sign-up-text:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.log-in-main-div {
+    margin-top: 2.5%;
+    width: 100%;
+    height: 72.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-div-outer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 65%;
+    height: 90%;
+    position: relative;
+}
+
+
+.wrong-login-info-div{
+    position: absolute;
+    opacity: 0;
+    width: 50%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;   
+    top: 5%;
+    transition: all 0.4s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.wrong-login-info-msg{
+    color: black;
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    text-align: center;
+}
+
+.little-arrow{
+    border-top: 10px solid white;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    bottom: -10px;
+    left: 47%;
+}
+
+.login-title {
+    font-family: Poppins-Regular;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
+    transition: all 0.4s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.login-title-text {
+    margin-top: 10px;
+    font-size: 20px;
+    cursor: default;
+    user-select: none;
+}
+
+.login-inner-box {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-box {
+    width: 69.5%;
+    height: 30%;
+    border: solid 2px black;
+}
+
+.login-btn-off {
+    width: 69.5%;
+    height: 28%;
+    background-color: white;
+    color: #333;
+    border: #333 2px solid;
+    opacity: 0.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Poppins-Regular;
+    letter-spacing: 0.12em;
+}
+
+.login-btn {
+    width: 70%;
+    height: 30%;
+    background-color: #554f4f;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: Poppins-Regular;
+    letter-spacing: 0.12em;
+}
+
+.login-btn:hover {
+    background-color: black;
+    transition: all 0.4s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.forgot-pass-btn {
+    height: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.forgot-pass-btn-text {
+    font-family: Poppins-Regular;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.forgot-pass-btn-text:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 50%;
+    background: black;
+    position: absolute;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.forgot-pass-btn-text:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.L-Inputandicondiv {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.L-Icon {
+    color: black;
+    font-size: 18px;
+}
+
+.L-Icondiv {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: solid 1px #515151;
+    height: 80%;
+}
+
+.input100 {
+    font-family: Poppins-regular;
+    margin-left: 10px;
+    font-size: 16px;
+    color: black;
+    outline: none;
+    width: 80%;
+    height: 40px;
+    background: transparent;
+    border: transparent;
+}
+
+.L-Inputdiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.footer{
+    font-family: Poppins-regular;
+    color: #999;
+}

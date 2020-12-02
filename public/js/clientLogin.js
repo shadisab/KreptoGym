@@ -1,22 +1,34 @@
 $(document).ready(async () => {
-
-	$('#email').keypress(function () {
-		$('#emailREQ').css('opacity', 0);
+	$('#email').keyup(function () {
+		$('#WLInfo').css('opacity', '0');
+		$('#L-title').css('opacity', '1');
+		var email = $('#email').val();
+		var password = $('#password').val();
+		if (email != '' && password != '') {
+			$('#loginBTN').removeClass('login-btn-off');
+			$('#loginBTN').addClass('login-btn');
+		} else{
+			$('#loginBTN').removeClass('login-btn');
+			$('#loginBTN').addClass('login-btn-off');
+		}
 	});
-
-	$('#password').keypress(function () {
-		$('#passwordREQ').css('opacity', 0);
-		$('#emailREQ').css('opacity', 0);
+	$('#password').keyup(function () {
+		$('#WLInfo').css('opacity', '0');
+		$('#L-title').css('opacity', '1');
+		var email = $('#email').val();
+		var password = $('#password').val();
+		if (email != '' && password != '') {
+			$('#loginBTN').removeClass('login-btn-off');
+			$('#loginBTN').addClass('login-btn');
+		} else{
+			$('#loginBTN').removeClass('login-btn');
+			$('#loginBTN').addClass('login-btn-off');
+		}
 	});
 
 	$('#loginBTN').click(async () => {
-
-		const email = $('#email').val();
-		if (email === '') { $('#emailREQ').text('Please Enter your Email').css('opacity', 1); }
-
-		const password = $('#password').val();
-		if (password === '') { $('#passwordREQ').text('Please Enter your Password').css('opacity', 1); }
-
+		var email = $('#email').val();
+		var password = $('#password').val();
 		const postClient = await fetch('/clients/login', {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, *cors, same-origin
@@ -35,7 +47,8 @@ $(document).ready(async () => {
 		});
 
 		if (postClient.status === 400 && password !== '' && email !== '') {
-			{ $('#emailREQ').text('Please Enter a valid Email address and Password').css('opacity', 1); }
+			$('#WLInfo').css('opacity', '1');
+			$('#L-title').css('opacity', '0');
 		}
 
 		if (postClient.status === 200) {

@@ -2,76 +2,67 @@
 <html>
 
 <head>
-    <title>Client Login</title>
-    <link rel="stylesheet" href="./css/login.css">
-    {{>links}}
+    <link rel="stylesheet" href="/css/clientLogin.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-
 <body>
-    <div class="Masking-DIV">
-        <div class="Masking-DIV-2">
-            <header>
-                <div class="icon-div-logo">
-                    <img class="header-logo-icon-img" src="/images/header-logo-icon.png" />
-                    <p class="logo-title">Krepto Gym</p>
+    <div class="Main">
+        <div class="header">
+            <div class="back-option-header">
+                <a href="/" class="back-option-header-inner">
+                <i class="fas fa-chevron-left" style="margin-right: 10px; height: 100%;"></i>
+                <div class="back-option-header-text" >Back</div>
+                </a>
+            </div>
+            <div class="header-filler"></div>
+            <div class="sign-up-btn-option">
+                <a href="/clientRegister" class="sign-up-text">
+                    CREATE ACCOUNT
+                </a>
+            </div>
+        </div>
+        <div class="log-in-main-div">
+            <div class="login-div-outer">
+                <div id="L-title" class="login-title">
+                    <i class="fab fa-korvue" style="font-size: 50px;"></i>
+                    <div class="login-title-text">Log Into Krypto Gym</div>
                 </div>
-                <div class="links-DIV">
-                    <a class="links" href="/">Home</a>
-                    <div class="dividing-slash">|</div>
-                    <a class="links" href="/about">About</a>
-                    <div class="dividing-slash">|</div>
-                    <a class="links" href="/help">Help</a>
+                <div id="WLInfo" class="wrong-login-info-div">
+                    <p class="wrong-login-info-msg">Your login credentials don't match</br> an account in our system.</p>
+                    <div class="little-arrow"></div>
                 </div>
-            </header>
-            <div class="login-page-DIV">
-                <div class="L-container">
-                    <div class="L-Title-div">
-                        <h1 class="welcome-title">Login</h1>
-                    </div>
-                    <div class="L-Inputs-div">
-                        <div class="wrap-input100">
-                            <div class="L-InputLabeldiv">
-                                <span class="label-input100">Email</span>
+                <div class="login-inner-box">
+                    <div class="input-box">
+                        <div class="L-Inputandicondiv">
+                            <div class="L-Icondiv">
+                                <i class="L-Icon fas fa-envelope"></i>
                             </div>
-                            <div class="L-Inputandicondiv">
-                                <div class="L-Icondiv">
-                                    <i class="L-Icon fas fa-envelope"></i>
-                                </div>
-                                <div class="L-Inputdiv">
-                                    <input id="email" class="input100" type="text" name="Email"
-                                        placeholder="Type your Email" />
-                                </div>
+                            <div class="L-Inputdiv">
+                                <input id="email" class="input100" type="text" name="Email"
+                                    placeholder="Type your Email" />
                             </div>
-                            <p id="emailREQ" style="color: red; opacity: 0; margin: 0;"></p>
-                        </div>
-                        <div class="wrap-input100">
-                            <div class="L-InputLabeldiv">
-                                <span class="label-input100">Password</span>
-                            </div>
-                            <div class="L-Inputandicondiv">
-                                <div class="L-Icondiv">
-                                    <i class="L-Icon fas fa-lock"></i>
-                                </div>
-                                <div class="L-Inputdiv">
-                                    <input id="password" class="input100" type="password" name="Password"
-                                        placeholder="Type your Password" />
-                                </div>
-                            </div>
-                            <p id="passwordREQ" style="color: red; opacity: 0; margin: 0;"></p>
-
                         </div>
                     </div>
-                    <p class="errtxt"></p>
-                    <div class="L-Buttons-div">
-                        <div class="L-button-container">
-                            <button id="loginBTN" class="L-button L-abtn">Login</button>
-                        </div>
-                        <div onclick="location.href='/';" class="L-button-container">
-                            <button class="L-button L-abtn L-RbtnRadios">Cancel</button>
+                    <div class="input-box" style="margin-top: 5px;">
+                        <div class="L-Inputandicondiv">
+                            <div class="L-Icondiv">
+                                <i class="L-Icon fas fa-lock"></i>
+                            </div>
+                            <div class="L-Inputdiv">
+                                <input id="password" class="input100" type="password" name="Password"
+                                    placeholder="Type your Password" />
+                            </div>
                         </div>
                     </div>
+                    <div id="loginBTN" class="login-btn-off" style="margin-top: 5px;">LOG IN</div>
+                </div>
+                <div class="forgot-pass-btn">
+                    <div class="forgot-pass-btn-text">FORGOT PASSWORD?</div>
                 </div>
             </div>
+            <footer class="footer">&copy; Copyright 2020 </footer>
         </div>
     </div>
     <script src="/js/clientLogin.js"></script>

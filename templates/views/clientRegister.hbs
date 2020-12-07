@@ -2,203 +2,207 @@
 <html>
 
 <head>
-    <title>Client Signup</title>
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/register.css">
-    {{>links}}
+    <link rel="stylesheet" href="/css/register-test.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-
 <body>
-    <div class="Masking-DIV">
-        <div class="Masking-DIV-2">
-            <header>
-                <div class="icon-div-logo">
-                    <img class="header-logo-icon-img" src="/images/header-logo-icon.png" />
-                    <p class="logo-title">Krepto Gym</p>
+    <div class="R-Main">
+        <div class="R-header">
+            <div class="R-cancel-option-header">
+                <a href="/" class="R-cancel-option-header-inner">
+                    <i class="fas fa-chevron-left" style="margin-right: 10px; height: 100%;"></i>
+                    <div class="R-cancel-option-header-text">Cancel</div>
+                </a>
+            </div>
+            <div class="R-header-filler"></div>
+            <div class="R-log-in-btn-option">
+                <a href="/clientLogin" class="R-log-in-text">
+                    LOG IN
+                </a>
+            </div>
+        </div>
+        <div class="R-register-main-div">
+            <div id="R-P1" class="R-register-div-outer-P1">
+                <div id="reg-title" class="R-register-title">
+                    <div class="R-register-title-text">Create Your Account</div>
                 </div>
-                <div class="links-DIV">
-                    <a class="links" href="/">Home</a>
-                    <div class="dividing-slash">|</div>
-                    <a class="links" href="/about">About</a>
-                    <div class="dividing-slash">|</div>
-                    <a class="links" href="/help">Help</a>
+                <div id="c-wrong-msg" class="wrong-credentials-input-div">
+                    <p class="wrong-credentials-input-msg">Invalid Inputs , please try again.</p>
+                    <div class="little-arrow"></div>
                 </div>
-            </header>
-            <div class="login-page-DIV">
-                <div class="R-Containingdiv">
-                    <div class="R-column">
-                        <h1 class="welcome-title">Client Register</h1>
-                        <div class="R-row">
-                            <div class="R-div1">
-                                <div class="R-form-div">
-                                    <div class="R-column">
-                                        <div class="R-row">
-                                            <div class="wrap-input-register100">
-                                                <div class="L-InputLabeldiv">
-                                                    <span class="label-input100">Full Name</span>
-                                                </div>
-                                                <div class="L-Inputandicondiv">
-                                                    <div class="L-Icondiv">
-                                                        <i class="L-Icon fas fa-user-tie"></i>
-                                                    </div>
-                                                    <div class="L-Inputdiv">
-                                                        <input class="input100" type="text" id="name"
-                                                            placeholder="Type your Full Name" />
-                                                    </div>
-                                                </div>
-                                                <p id="nameREQ" style="color: red; opacity: 0; margin: 0;">Please Enter
-                                                    your
-                                                    Name </p>
-                                            </div>
-                                            <div class="wrap-input-register100">
-                                                <div class="L-InputLabeldiv">
-                                                    <span class="label-input100">Email</span>
-                                                </div>
-                                                <div class="L-Inputandicondiv">
-                                                    <div class="L-Icondiv">
-                                                        <i class="L-Icon fas fa-envelope"></i>
-                                                    </div>
-                                                    <div class="L-Inputdiv">
-                                                        <input class="input100" type="text" id="email"
-                                                            placeholder="Type your Email" />
-                                                    </div>
-                                                </div>
-                                                <p id="emailREQ" style="color: red; opacity: 0; margin: 0;">Please Enter
-                                                    your Email</p>
-                                            </div>
-                                        </div>
-                                        <div class="R-row">
-                                            <div class="wrap-input-register100">
-                                                <div class="L-InputLabeldiv">
-                                                    <span class="label-input100">Password</span>
-                                                </div>
-                                                <div class="L-Inputandicondiv">
-                                                    <div class="L-Icondiv">
-                                                        <i class="L-Icon fas fa-lock"></i>
-                                                    </div>
-                                                    <div class="L-Inputdiv">
-                                                        <input class="input100" type="password" id="password"
-                                                            placeholder="Type your Password" />
-                                                    </div>
-                                                </div>
-                                                <p id="passwordREQ" style="color: red; opacity: 0; margin: 0;">Please
-                                                    Enter
-                                                    your Password</p>
-                                            </div>
-                                            <div class="wrap-input-register100">
-                                                <div class="L-InputLabeldiv">
-                                                    <span class="label-input100">ConfirmPassword</span>
-                                                </div>
-                                                <div class="L-Inputandicondiv">
-                                                    <div class="L-Icondiv">
-                                                        <i class="L-Icon fas fa-lock"></i>
-                                                    </div>
-                                                    <div class="L-Inputdiv">
-                                                        <input class="input100" type="password" id="confirmPassword"
-                                                            placeholder="Type your Password Again" />
-                                                    </div>
-                                                </div>
-                                                <p id="ERRmatchPASS" style="color: red; opacity: 0; margin: 0;">
-                                                    Passwords
-                                                    NOT match!</p>
-                                            </div>
-                                        </div>
-                                        <div class="R-row">
-                                            <div class="wrap-input-register100">
-                                                <div class="L-InputLabeldiv">
-                                                    <span class="label-input100">Age</span>
-                                                </div>
-                                                <div class="L-Inputandicondiv">
-                                                    <div class="L-Icondiv">
-                                                        <img class="L-Icon icon-img-container"
-                                                            src="/images/circular-line-with-word-age-in-the-center.png" />
-                                                    </div>
-                                                    <div class="L-Inputdiv">
-                                                        <input class="input100" type="number" id="age"
-                                                            placeholder="Type your Age" />
-                                                    </div>
-                                                </div>
-                                                <p id="ageREQ" style="color: red; opacity: 0; margin: 0;">Please enter
-                                                    your
-                                                    Age </p>
-                                            </div>
-                                            <div class="wrap-input-register100">
-                                                <div class="L-InputLabeldiv">
-                                                    <span class="label-input100">Height</span>
-                                                </div>
-                                                <div class="L-Inputandicondiv">
-                                                    <div class="L-Icondiv">
-                                                        <img class="L-Icon icon-img-container"
-                                                            src="/images/height.png" />
-                                                    </div>
-                                                    <div class="L-Inputdiv">
-                                                        <input class="input100" type="number" id="height"
-                                                            placeholder="Type your Height (cm)" />
-                                                    </div>
-                                                </div>
-                                                <p id="heightREQ" style="color: red; opacity: 0; margin: 0;">Please
-                                                    enter
-                                                    your Height</p>
-                                            </div>
-                                        </div>
-                                        <div class="R-row">
-                                            <div class="wrap-input-register100">
-                                                <div class="L-InputLabeldiv">
-                                                    <span class="label-input100">Weight</span>
-                                                </div>
-                                                <div class="L-Inputandicondiv">
-                                                    <div class="L-Icondiv">
-                                                        <i class=" L-Icon fas fa-weight-hanging"></i>
-                                                    </div>
-                                                    <div class="L-Inputdiv">
-                                                        <input class="input100" type="number" id="weight"
-                                                            placeholder="Type your Weight (KG)" />
-                                                    </div>
-                                                </div>
-                                                <p id="weightREQ" style="color: red; opacity: 0; margin: 0;">Please
-                                                    enter
-                                                    your Weight</p>
-                                            </div>
-                                            <div class="wrap-input-register100">
-                                                <div class="L-InputLabeldiv">
-                                                    <span class="label-input100">Select Coach:</span>
-                                                </div>
-                                                <select value="coach" class="coachSelect" id="coachs">
-                                                    <option value="" selected="selected" hidden='true'>
-                                                        Select a coach
-                                                    </option>
-                                                </select>
-                                                <p id="coachREQ" style="color: red; opacity: 0; margin: 0;">You have to
-                                                    select a Coach!</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="R-register-inner-box ">
+                    <div class="R-input-box">
+                        <div class="R-input-icon-div">
+                            <div class="R-icon-div">
+                                <i class="R-icon fas fa-envelope"></i>
                             </div>
-                            <div class="R-div2">
-                                <div class="img__wrap">
-                                    <i class="fas fa-dumbbell img-uplaoder"></i>
+                            <div class="R-input-div">
+                                <input id="email" class="R-input" type="text" name="Email"
+                                    placeholder="Enter your Email Address" />
+                            </div>
+                        </div>
+                    </div>
+                    <i id="email-validation-icon" class="R-validation-icon fas fa-times" style="top:12.5%;"></i>
+                    <div id="email-wrong-msg-div" class="wrong-email-msg-div" style="top:1.4%;">
+                        <p class="invaild-email-msg">Email format must be:</br> example@example.domain</p>
+                        <div class="little-arrow-left"></div>
+                    </div>
+                    <div class="R-input-box" style="margin-top: 5px;">
+                        <div class="R-input-icon-div">
+                            <div class="R-icon-div">
+                                <i class="R-icon fas fa-lock"></i>
+                            </div>
+                            <div class="R-input-div">
+                                <input id="password" class="R-input" type="password" name="Password"
+                                    placeholder="Enter your Password" />
+                            </div>
+                        </div>
+                    </div>
+                    <i id="password-validation-icon" class="R-validation-icon fas fa-times"></i>
+                    <div id="password-wrong-msg-div" class="wrong-email-msg-div" style="top:35%;">
+                        <p id="password-wrong-msg" class="invaild-email-msg"></p>
+                        <div class="little-arrow-left"></div>
+                    </div>
+                    <div class="R-input-box" style="margin-top: 5px;">
+                        <div class="R-input-icon-div">
+                            <div class="R-icon-div">
+                                <i class="R-icon fas fa-lock"></i>
+                                <i class="R-icon-2 fas fa-redo-alt"></i>
+                            </div>
+                            <div class="R-input-div">
+                                <input id="confirmPassword" class="R-input" type="password" name="Password"
+                                    placeholder="Confirm your Password" />
+                            </div>
+                        </div>
+                    </div>
+                    <i id="Confirmpassword-validation-icon" class="R-validation-icon fas fa-times" style="top:80%;"></i>
+                    <div id="CPassword-wrong-msg-div" class="wrong-email-msg-div" style="bottom:1.4%;">
+                        <p class="invaild-email-msg">Passwords don't match!</p>
+                        <div class="little-arrow-left"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="R-P2" class="R-register-div-outer-P2">
+                <div class="R-register-title">
+                    <div class="R-register-title-text">Tell us about you</div>
+                </div>
+                <div class="R-register-inner-box-P2">
+                    <div class="R-register-inner-left">
+                        <div class="R-input-box-P2">
+                            <div class="R-input-icon-div">
+                                <div class="R-icon-div">
+                                    <i class="R-icon fas fa-user-tie"></i>
+                                </div>
+                                <div class="R-input-div">
+                                    <input id="Fname" class="R-input" type="text" name="FirstName"
+                                        placeholder="Enter your full name" />
                                 </div>
                             </div>
                         </div>
-                        <div class="btn-div">
-                            <div class="R-button-container">
-                                <button id="clientREG" class="R-button R-abtn R-button-left">
-                                    Register
-                                </button>
+                        <div class="R-input-box-P2" style="margin-top: 5px;">
+                            <div class="R-input-icon-div">
+                                <div class="R-icon-div">
+                                    <i class="R-icon fas fa-restroom"></i>
+                                </div>
+                                <div class="R-input-div">
+                                    <select id="Gender" class="R-input" >
+                                        <option  value="" disabled selected>Select Gender</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="R-button-container">
-                                <button onclick="location.href='/';" class="R-button R-abtn R-button-right">
-                                    Cancel
-                                </button>
+                        </div>
+                        <div class="R-input-box-P2" style="margin-top: 5px;">
+                            <div class="R-input-icon-div">
+                                <div class="R-icon-div">
+                                    <i class="R-icon fas fa-birthday-cake"></i>
+                                </div>
+                                <div class="R-input-div">
+                                    <input id="Birthdate" class="R-input" type="text" 
+                                        placeholder="Select birth date" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="R-register-inner-right">
+                        <div class="R-input-box-P2">
+                            <div class="R-input-icon-div">
+                                <div class="R-icon-div">
+                                    <i class="R-icon fas fa-flag"></i>
+                                </div>
+                                <div class="R-input-div">
+                                    <input id="password" class="R-input" type="password" name="Password"
+                                        placeholder="Select country" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="R-input-box-P2" style="margin-top: 5px;">
+                            <div class="R-input-icon-div">
+                                <div class="R-icon-div">
+                                    <i class="R-icon fas fa-ruler-vertical"></i>
+                                </div>
+                                <div class="R-input-div">
+                                    <input id="password" class="R-input" type="password" name="Password"
+                                        placeholder="Enter your height" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="R-input-box-P2" style="margin-top: 5px;">
+                            <div class="R-input-icon-div">
+                                <div class="R-icon-div">
+                                    <i class="R-icon fas fa-weight-hanging"></i>
+                                </div>
+                                <div class="R-input-div">
+                                    <input id="password" class="R-input" type="password" name="Password"
+                                        placeholder="Enter your weight" />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div id="R-P3" class="R-register-div-outer-P2">
+                <div class="R-register-title">
+                    <div class="R-register-title-text">Upload a profile picture(optional):</div>
+                </div>
+                <div class="img__wrap">
+                    <p id="edit-text" class="edit-text" data-symbol="&#xf206;">Edit</p>
+                    <img id="profile-img" class="img-uplaoder" src="/images/png-transparent-user-profile-computer-icons-login-user-avatars.png"/>
+                    <input id="img-upload" class="img__input" type="file" />
+                </div>
+            </div>
+            <div id="R-P4" class="R-register-div-outer-P2"></div>
+            <div class="R-next-btn-div" style="margin-top: 5px;">
+                <div id="back-btn" class="R-back-btn-inner-div">
+                    <i class="R-back-btn-icon far fa-caret-square-left"></i>
+                    <div class="R-back-btn-text">BACK</div>
+                </div>
+                <div id="next-btn" class="R-next-btn-inner-div">
+                    <div class="R-next-btn-text">NEXT</div>
+                    <i class="R-next-btn-icon far fa-caret-square-right"></i>
+                </div>
+                <div id="skip-btn" class="R-skip-btn-inner-div">
+                    <div class="R-next-btn-text">SKIP</div>
+                    <i class="R-next-btn-icon far fa-caret-square-right"></i>
+                </div>
+                <div id="finish-btn" class="R-finish-btn-inner-div">
+                    <div class="R-next-btn-text">FINISH</div>
+                    <i class="R-next-btn-icon far fa-caret-square-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="R-dots-div">
+            <div id="dot1" class="R-selected-dot">.</div>
+            <div id="dot2" class="R-other-dots">.</div>
+            <div id="dot3" class="R-other-dots">.</div>
+            <div id="dot4" class="R-other-dots">.</div>
         </div>
     </div>
-    <script src="/js/clientRegister.js"></script>
+    <script src="/js/register-test.js"></script>
 </body>
 
 </html>

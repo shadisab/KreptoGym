@@ -1,0 +1,489 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('/fonts/poppins.regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('/fonts/poppins.medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('/fonts/poppins.bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('/fonts/poppins.semibold.ttf');
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    font-size: 14px;
+    user-select: none;
+}
+
+.R-Main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.R-header {
+    display: flex;
+    flex-direction: row;
+    height: 15%;
+    width: 100%;
+}
+
+.R-cancel-option-header {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.R-cancel-option-header-text {
+    font-size: 14px;
+    font-family: Poppins-Regular;
+    letter-spacing: 0.10em;
+}
+
+.R-cancel-option-header-inner {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    color: black;
+    text-decoration: none;
+}
+
+.R-cancel-option-header-inner:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 50%;
+    background: black;
+    position: absolute;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+
+
+.R-cancel-option-header-inner:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.R-header-filler {
+    height: 100%;
+    width: 80%;
+}
+
+.R-log-in-btn-option {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.R-log-in-text {
+    font-size: 14px;
+    font-family: Poppins-Regular;
+    cursor: pointer;
+    letter-spacing: 0.10em;
+    display: inline-block;
+    position: relative;
+    color: black;
+    text-decoration: none;
+}
+
+.R-log-in-text:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 50%;
+    background: black;
+    position: absolute;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.R-log-in-text:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.R-register-main-div {
+    margin-top: 2.5%;
+    width: 100%;
+    height: 72.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.R-register-div-outer-P1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 65%;
+    height: 90%;
+    opacity: 1;
+    transition: all 0.4s ease;
+}
+
+.wrong-credentials-input-div{
+    position: absolute;
+    opacity: 0;
+    width: 30%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;   
+    top: 0%;
+    transition: all 0.4s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.wrong-credentials-input-msg{
+    color: black;
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    text-align: center;
+}
+
+.little-arrow{
+    border-top: 10px solid white;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    bottom: -10px;
+    left: 47%;
+}
+
+
+.R-register-title {
+    font-family: Poppins-Regular;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.R-register-title-text {
+    margin-top: 10px;
+    font-size: 20px;
+    cursor: default;
+    user-select: none;
+}
+
+.R-register-inner-box {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.R-validation-icon{
+    position: absolute;
+    left: 87%;
+    font-size: 20px;
+    color: red;
+    opacity: 0;
+    transition: all 0.4s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.wrong-email-msg-div{
+    position: absolute;
+    opacity: 0;
+    width: 30%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: -9px 1px 42px 0px rgba(0,0,0,0.75);
+    left: 91%;
+    transition: all 0.4s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.invaild-email-msg{
+    color: black;
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    text-align: center;
+}
+
+.little-arrow-left{
+    border-right: 10px solid white;
+    border-bottom: 10px solid transparent;
+    border-top: 10px solid transparent;
+    position: absolute;
+    top:37%;
+    left: -10px;
+}
+
+.R-register-inner-box-P2 {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.R-register-inner-left{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    margin-right: 10px;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.R-register-inner-right{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.R-input-box-P2 {
+    width: 100%;
+    height: 30%;
+    border: solid 2px black;
+}
+
+.R-input-box {
+    width: 69.5%;
+    height: 30%;
+    border: solid 2px black;
+}
+
+.R-input-icon-div {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.R-icon {
+    color: black;
+    font-size: 18px;
+}
+
+.R-icon-div {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: solid 1px #515151;
+    height: 80%;
+    position: relative;
+}
+
+.R-icon-2{
+    position: absolute;
+    z-index: 0;
+    font-size: 10px;
+    top:30%;
+    left: 30%;
+}
+
+.R-input {
+    font-family: Poppins-regular;
+    margin-left: 10px;
+    font-size: 16px;
+    color: black;
+    outline: none;
+    width: 90%;
+    height: 40px;
+    background: transparent;
+    border: transparent;
+}
+
+.R-input-div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.R-register-div-outer-P2{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    opacity: 0;
+    height: 90%;
+    transition: all 0.4s ease;
+}
+
+.R-next-btn-div{
+    width: 70%;
+    height: 30%;
+    color: black;
+    transition: all 0.4s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.R-next-btn-inner-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 10%;
+    opacity: 1;
+    transition: all 0.4s linear;
+}
+
+.R-finish-btn-inner-div{
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 0;
+    opacity: 0;
+    transition: all 0.4s linear;
+}
+
+.R-skip-btn-inner-div{
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 0;
+    opacity: 0;
+    transition: all 0.4s linear;   
+}
+
+
+.R-next-btn-text{
+    font-family: Poppins-bold;
+    font-size: 20px;
+    letter-spacing: 00.10em;
+}
+
+.R-next-btn-icon{
+    margin-left: 10px;
+    font-size: 40px;
+}
+
+.R-back-btn-inner-div{
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    display: none;
+    width: 0;
+    opacity: 0;
+    cursor: pointer;
+    transition: all 0.4s linear;
+}
+
+.R-back-btn-text{
+    font-family: Poppins-bold;
+    font-size: 20px;
+    letter-spacing: 00.10em;
+}
+
+.R-back-btn-icon{
+    margin-right: 10px;
+    font-size: 40px;
+}
+
+.R-dots-div{
+    display: flex;
+    justify-content: center;
+}
+
+.R-selected-dot{
+    color: black;
+    line-height: 2px;
+    display: flex;
+    justify-content: center;
+    width: 20px;
+    font-size: 40px;
+    letter-spacing: 0;
+}
+
+.R-other-dots{
+    color: #999;
+    line-height: 2px;
+    display: flex;
+    justify-content: center;
+    width: 20px;
+    font-size: 40px;
+    letter-spacing: 0;
+}
+
+.profile-pic-upload{
+    width: 300px;
+    height: 300px;
+}
+
+.edit-text{
+    font-family: Poppins-Medium;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    color: white;
+    font-size: 20px;
+    transition: .5s ease;
+    cursor: pointer;
+  }
+  .img__input[type="file"]{
+    display: none;
+  }
+  .img__wrap {
+    position: relative;
+    height: 250px;
+    width: 250px;
+    transition: .5s ease;
+  }
+  .img__wrap:hover .edit-text {
+    opacity: 1;
+  }
+  
+  .img-uplaoder{
+    opacity: 1;
+    border-radius: 50%;
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    transition: .5s ease;
+    cursor:pointer;
+  }

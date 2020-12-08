@@ -134,5 +134,9 @@ router.patch('/coachs/password', authCoach, async (req, res) => {
 		res.status(400).send(e);
 	}
 });
-
+// GET all Claints of this coach 
+router.get('/coaches/myClients', authCoach, (req, res) => {
+	//get array of id's of all clients that this coach is train
+	res.send(req.coach.myClients);
+});
 module.exports = router;

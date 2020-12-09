@@ -129,6 +129,22 @@ $(document).ready(async () => {
 		}
 	});
 
+	$('#height').keyup(async () =>{
+		var H = $('#height').val();
+		H = parseInt(H);
+		if(H < 0){
+			console.log('no');
+		}
+	});
+
+	$('#weight').keyup(async () =>{
+		var W = $('#weight').val();
+		W = parseInt(W);
+		if(W < 0){
+			console.log('no');
+		}
+	});
+
 
 	$('#next-btn').click(async () => {
 		if ($('#R-P1').css('display') === 'flex') {

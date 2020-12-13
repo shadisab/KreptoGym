@@ -1,5 +1,4 @@
 $(document).ready(async () => {
-
 	const getCoachs = await fetch('/clients/allCoachs', {
 		method: 'GET', // *GET, POST, PUT, DELETE, etc.
 		mode: 'cors', // no-cors, *cors, same-origin
@@ -22,117 +21,285 @@ $(document).ready(async () => {
 		});
 	});
 
-	$('#name').keydown(function () {
-		$('#nameREQ').css('opacity', 0);
-	});
+	if ($('#R-P1').css('display') === 'flex') {
+		$('#back-btn').css('display', 'none');
+	}
 
-	$('#email').keydown(function () {
-		$('#emailREQ').css('opacity', 0);
-	});
-
-	$('#password').keydown(function () {
-		$('#passwordREQ').css('opacity', 0);
-		$('#ERRmatchPASS').css('opacity', 0);
-	});
-
-	$('#confirmPassword').keydown(function () {
-		$('#ERRmatchPASS').css('opacity', 0);
-	});
-
-	$('#age').keydown(function () {
-		$('#ageREQ').css('opacity', 0);
-	});
-
-	$('#height').keydown(function () {
-		$('#heightREQ').css('opacity', 0);
-	});
-
-	$('#weight').keydown(function () {
-		$('#weightREQ').css('opacity', 0);
-	});
-
-	$('#coachs').change(function () {
-		$('#coachREQ').css('opacity', 0);
-	});
-
-
-
-	$('#clientREG').click(async () => {
-		const name = $('#name').val();
+	$('#email').keyup(async () => {
+		$('#c-wrong-msg').css('opacity', '0');
+		$('#reg-title').css('opacity', '1');
 		const email = $('#email').val();
-		const password = $('#password').val();
-		const age = $('#age').val();
-		const height = $('#height').val();
-		const weight = $('#weight').val();
-		const coachID = $( '#coachs option:selected' ).val();
-
-		const confirmPassword = $('#confirmPassword').val();
-		if (password !== '' && confirmPassword !== password) {
-			$('#ERRmatchPASS').css('opacity', 1);
-			$('#confirmPassword').val('');
+		var mailformat = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+		if(email == ''){
+			$('#email-validation-icon').css('opacity','0');
+			$('#email-wrong-msg-div').css('opacity','0');
+		} else if (!email.match(mailformat)){
+			$('#email-validation-icon').css('opacity','1');
+			$('#email-wrong-msg-div').css('opacity','1');
+			$('#email-validation-icon').css('color','red');
+			$('#email-validation-icon').removeClass('fa-check');
+			$('#email-validation-icon').addClass('fa-times');
+		} else {
+			$('#email-validation-icon').removeClass('fa-times');
+			$('#email-validation-icon').addClass('fa-check');
+			$('#email-wrong-msg-div').css('opacity','0');
+			setTimeout(function(){
+				$('#email-validation-icon').css('color','green');
+			},20);
 		}
-
-		if (password === confirmPassword) { // START IF 
-			const postClient = await fetch('/clients/signup', {
-				method: 'POST', // *GET, POST, PUT, DELETE, etc.
-				mode: 'cors', // no-cors, *cors, same-origin
-				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-				credentials: 'same-origin', // include, *same-origin, omit
-				headers: {
-					'Content-Type': 'application/json'
-					// 'Content-Type': 'application/x-www-form-urlencoded',
-				},
-				redirect: 'follow', // manual, *follow, error
-				referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-				body: JSON.stringify({
-					name,
-					email,
-					password,
-					age,
-					userType: 'client',
-					weight,
-					height,
-					coachID
-				}) // body data type must match "Content-Type" header
-			});
-			if (postClient.status === 400) {
-				postClient.json().then((body) => {
-					console.log(body);
-					/*     If the response message is Required           */
-					if (body.errors['name']) {
-						if (body.errors['name'].kind === 'required') { $('#nameREQ').css('opacity', 1); }
-					}
-					if (body.errors['email']) {
-						if (body.errors['email'].kind === 'required') { $('#emailREQ').css('opacity', 1); }
-						if (body.errors['email'].kind === 'user defined') { $('#emailREQ').text('Please enter a valid Email address').css('opacity', 1); }
-					}
-					if (body.errors['height']) {
-						if (body.errors['height'].kind === 'required') { $('#heightREQ').css('opacity', 1); }
-						if (body.errors['height'].kind === 'user defined') { $('#heightREQ').text('Height most be positive').css('opacity', 1); }
-					}
-					if (body.errors['password']) {
-						if (body.errors['password'].kind === 'required') { $('#passwordREQ').css('opacity', 1); }
-						if (body.errors['password'].kind === 'minlength') { $('#passwordREQ').text('Passowrd length most be > 6').css('opacity', 1); }
-						if (body.errors['password'].kind === 'user defined') { $('#passwordREQ').text('Password must not contain "password"').css('opacity', 1); }
-					}
-					if (body.errors['weight']) {
-						if (body.errors['weight'].kind === 'required') { $('#weightREQ').css('opacity', 1); }
-						if (body.errors['weight'].kind === 'user defined') { $('#weightREQ').text('Weight most be positive').css('opacity', 1); }
-					}
-					if (body.errors['age']) {
-						if (body.errors['age'].kind === 'required') { $('#ageREQ').css('opacity', 1); }
-						if (body.errors['age'].kind === 'user defined') { $('#ageREQ').text('Age most be positive').css('opacity', 1); }
-					}
-					if (body.errors['coachID']) {
-						if (body.errors['coachID'].kind === 'required' || body.errors['coachID'].kind === 'ObjectId') { $('#coachREQ').css('opacity', 1); }
-					}
-					/*     IF the response message is Must be positive        */
-				});
-			}
-			if (postClient.status === 201) {
-				window.location.href = ('/clientSchedule');
-			}
-		} // END IF PASSWORD === CONFIRMPASS
 	});
 
+	$('#password').keyup(async () => {
+		$('#c-wrong-msg').css('opacity', '0');
+		$('#reg-title').css('opacity', '1');
+		const password = $('#password').val();
+		var number = /([0-9])/;
+		var alphabets = /([a-zA-Z])/;
+		var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
+		if(password == ''){
+			$('#password-validation-icon').css('opacity','0');
+			$('#password-wrong-msg-div').css('opacity','0');
+		}else if(password.length >= 6 && password.match(number) && password.match(alphabets) && password.match(special_characters)) {
+			$('#password-wrong-msg-div').css('opacity','0');
+			$('#password-validation-icon').removeClass('fa-times');
+			$('#password-validation-icon').addClass('fa-check');
+			$('#password-validation-icon').css('color','green');
+		} else if(password.length >= 6 && password.match(number) && password.match(alphabets)) {
+			$('#password-wrong-msg-div').css('opacity','0');
+			$('#password-validation-icon').removeClass('fa-times');
+			$('#password-validation-icon').addClass('fa-check');
+			$('#password-validation-icon').css('color','green');
+		} else if(password.length >= 6 && password.match(special_characters) && password.match(alphabets)) {
+			$('#password-wrong-msg-div').css('opacity','0');
+			$('#password-validation-icon').removeClass('fa-times');
+			$('#password-validation-icon').addClass('fa-check');
+			$('#password-validation-icon').css('color','green');
+		} else if(password.length < 6){
+			$('#password-wrong-msg-div').css('opacity','1');
+			var obj = $('#password-wrong-msg').text('Password too short! \n Length must be 6 or above.');
+			obj.html(obj.html().replace(/\n/g,'<br/>'));
+			$('#password-validation-icon').css('opacity','1');
+			$('#password-validation-icon').removeClass('fa-check');
+			$('#password-validation-icon').addClass('fa-times');
+			$('#password-validation-icon').css('color','red');
+		} else {
+			$('#password-wrong-msg-div').css('opacity','1');
+			$('#password-wrong-msg').text('Password must contain letters and numbers/special characters!');
+			$('#password-validation-icon').css('opacity','1');
+			$('#password-validation-icon').removeClass('fa-check');
+			$('#password-validation-icon').addClass('fa-times');
+			$('#password-validation-icon').css('color','red');
+		}
+		const confirmPassword = $('#confirmPassword').val();
+		if(password == confirmPassword) {
+			$('#Confirmpassword-validation-icon').removeClass('fa-times');
+			$('#Confirmpassword-validation-icon').addClass('fa-check');
+			$('#Confirmpassword-validation-icon').css('color','green');
+			$('#CPassword-wrong-msg-div').css('opacity','0');
+		} else if(password != confirmPassword && confirmPassword != '') {
+			$('#Confirmpassword-validation-icon').css('opacity','1');
+			$('#CPassword-wrong-msg-div').css('opacity','1');
+			$('#Confirmpassword-validation-icon').removeClass('fa-check');
+			$('#Confirmpassword-validation-icon').addClass('fa-times');
+			$('#Confirmpassword-validation-icon').css('color','red');
+		}
+	});
+
+
+	$('#confirmPassword').keyup(async () => {
+		$('#c-wrong-msg').css('opacity', '0');
+		$('#reg-title').css('opacity', '1');
+		const password = $('#password').val();
+		const confirmPassword = $('#confirmPassword').val();
+		if(confirmPassword == ''){
+			$('#Confirmpassword-validation-icon').css('opacity','0');
+			$('#CPassword-wrong-msg-div').css('opacity','0');
+		} else if(password == confirmPassword) {
+			$('#Confirmpassword-validation-icon').removeClass('fa-times');
+			$('#Confirmpassword-validation-icon').addClass('fa-check');
+			$('#Confirmpassword-validation-icon').css('color','green');
+			$('#CPassword-wrong-msg-div').css('opacity','0');
+		}
+		else {
+			$('#Confirmpassword-validation-icon').css('opacity','1');
+			$('#CPassword-wrong-msg-div').css('opacity','1');
+			$('#Confirmpassword-validation-icon').removeClass('fa-check');
+			$('#Confirmpassword-validation-icon').addClass('fa-times');
+			$('#Confirmpassword-validation-icon').css('color','red');
+		}
+	});
+
+	$('#height').keyup(async () =>{
+		var H = $('#height').val();
+		H = parseInt(H);
+		if(H < 0){
+			console.log('no');
+		}
+	});
+
+	$('#weight').keyup(async () =>{
+		var W = $('#weight').val();
+		W = parseInt(W);
+		if(W < 0){
+			console.log('no');
+		}
+	});
+
+
+	$('#next-btn').click(async () => {
+		if ($('#R-P1').css('display') === 'flex') {
+			if($('#email-validation-icon').hasClass('fa-times') ||
+			$('#Confirmpassword-validation-icon').hasClass('fa-times') ||
+			$('#password-validation-icon').hasClass('fa-times')){
+				$('#c-wrong-msg').css('opacity','1');
+				$('#reg-title').css('opacity', '0');
+				$('#email').val('');
+				$('#password').val('');
+				$('#confirmPassword').val('');
+				$('#Confirmpassword-validation-icon').css('opacity','0');
+				$('#CPassword-wrong-msg-div').css('opacity','0');
+				$('#password-validation-icon').css('opacity','0');
+				$('#password-wrong-msg-div').css('opacity','0');
+				$('#email-validation-icon').css('opacity','0');
+				$('#email-wrong-msg-div').css('opacity','0');
+				setTimeout(function(){
+					$('#c-wrong-msg').css('opacity','0');
+					$('#reg-title').css('opacity', '1');
+				},3000);
+			} else {
+				$('#R-P1').css('width', '30%');
+				$('#R-P1').css('opacity', '0');
+				setTimeout(function () {
+					$('#R-P1').css('display', 'none');
+					$('#R-P2').css('display', 'flex');
+					$('#back-btn').css('display', 'flex');
+				}, 400);
+				setTimeout(function () {
+					$('#back-btn').css('width', '10%');
+					$('#back-btn').css('opacity', '1');
+					$('#back-btn').css('margin-right', '100px');
+					$('#dot1').css('color', '#999');
+					$('#dot2').css('color', 'black');
+					$('#R-P2').css('opacity', '1');
+					$('#R-P2').css('width', '65%');
+				}, 420);
+			}
+		} else if ($('#R-P2').css('display') === 'flex') {
+			$('#R-P2').css('width', '30%');
+			$('#R-P2').css('opacity', '0');
+			setTimeout(function () {
+				$('#R-P2').css('display', 'none');
+				$('#R-P3').css('display', 'flex');
+			}, 400);
+			setTimeout(function () {
+				$('#dot2').css('color', '#999');
+				$('#dot3').css('color', 'black');
+				$('#R-P3').css('opacity', '1');
+				$('#R-P3').css('width', '65%');
+			}, 420);
+		} else if ($('#R-P3').css('display') === 'flex') {
+			$('#R-P3').css('width', '30%');
+			$('#R-P3').css('opacity', '0');
+			setTimeout(function () {
+				$('#R-P3').css('display', 'none');
+				$('#R-P4').css('display', 'flex');
+			}, 400);
+			setTimeout(function () {
+				$('#next-btn').css('width', '0');
+				$('#next-btn').css('opacity', '0');
+				$('#back-btn').css('margin-right', '0');
+				$('#dot3').css('color', '#999');
+				$('#dot4').css('color', 'black');
+				$('#R-P4').css('opacity', '1');
+				$('#R-P4').css('width', '65%');
+			}, 420);
+			setTimeout(function () {
+				$('#next-btn').css('display', 'none');
+				$('#finish-btn').css('display', 'flex');
+				$('#back-btn').css('margin-right', '100px');
+			}, 820);
+			setTimeout(function () {
+				$('#finish-btn').css('opacity', '1');
+				$('#finish-btn').css('width', '10%');
+			}, 1200);
+		}
+	});
+	$('#back-btn').click(async () => {
+		if ($('#R-P2').css('display') === 'flex') {
+			$('#R-P2').css('width', '30%');
+			$('#R-P2').css('opacity', '0');
+			setTimeout(function () {
+				$('#R-P2').css('display', 'none');
+				$('#R-P1').css('display', 'flex');
+			}, 400);
+			setTimeout(function () {
+				$('#back-btn').css('width', '0');
+				$('#back-btn').css('opacity', '0');
+				$('#back-btn').css('margin-right', '20px');
+				$('#dot1').css('color', 'black');
+				$('#dot2').css('color', '#999');
+				$('#R-P1').css('opacity', '1');
+				$('#R-P1').css('width', '65%');
+			}, 420);
+			setTimeout(function () {
+				$('#back-btn').css('display', 'none');
+			}, 820);
+		} else if ($('#R-P3').css('display') === 'flex') {
+			$('#R-P3').css('width', '30%');
+			$('#R-P3').css('opacity', '0');
+			setTimeout(function () {
+				$('#R-P3').css('display', 'none');
+				$('#R-P2').css('display', 'flex');
+			}, 400);
+			setTimeout(function () {
+				$('#dot2').css('color', 'black');
+				$('#dot3').css('color', '#999');
+				$('#R-P2').css('opacity', '1');
+				$('#R-P2').css('width', '65%');
+			}, 420);
+		} else if ($('#R-P4').css('display') === 'flex') {
+			$('#R-P4').css('width', '30%');
+			$('#R-P4').css('opacity', '0');
+			setTimeout(function () {
+				$('#R-P4').css('display', 'none');
+				$('#R-P3').css('display', 'flex');
+			}, 400);
+			setTimeout(function () {
+				$('#finish-btn').css('width', '0');
+				$('#finish-btn').css('opacity', '0');
+				$('#back-btn').css('margin-right', '0');
+				$('#dot3').css('color', 'black');
+				$('#dot4').css('color', '#999');
+				$('#R-P3').css('opacity', '1');
+				$('#R-P3').css('width', '65%');
+			}, 420);
+			setTimeout(function () {
+				$('#finish-btn').css('display', 'none');
+				$('#next-btn').css('display', 'flex');
+				$('#back-btn').css('margin-right', '100px');
+			}, 820);
+			setTimeout(function () {
+				$('#next-btn').css('opacity', '1');
+				$('#next-btn').css('width', '10%');
+			}, 1200);
+		}
+	});
+	$('#profile-img').click(async () => {
+		$('#img-upload').click();
+	});
+
+	$('#edit-text').click(async () => {
+		$('#img-upload').click();
+	});
+
+	function fasterPreview(uploader) {
+		if (uploader.files && uploader.files[0]) {
+			$('#profile-img').attr('src',
+				window.URL.createObjectURL(uploader.files[0]));
+		}
+	}
+
+	$('#img-upload').change(function () {
+		fasterPreview(this);
+	});
 });

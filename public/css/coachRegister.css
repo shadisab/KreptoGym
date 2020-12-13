@@ -1,0 +1,281 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('/fonts/poppins.regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('/fonts/poppins.medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('/fonts/poppins.bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('/fonts/poppins.semibold.ttf');
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    font-size: 14px;
+    user-select: none;
+}
+
+.CR-Main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.CR-header {
+    display: flex;
+    flex-direction: row;
+    height: 15%;
+    width: 100%;
+}
+
+.CR-cancel-option-header {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CR-cancel-option-header-text {
+    font-size: 14px;
+    font-family: Poppins-Regular;
+    letter-spacing: 0.10em;
+}
+
+.CR-cancel-option-header-inner {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    color: black;
+    text-decoration: none;
+}
+
+.CR-cancel-option-header-inner:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 50%;
+    background: black;
+    position: absolute;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+
+
+.CR-cancel-option-header-inner:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.CR-header-filler {
+    height: 100%;
+    width: 80%;
+}
+
+.CR-log-in-btn-option {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CR-log-in-text {
+    font-size: 14px;
+    font-family: Poppins-Regular;
+    cursor: pointer;
+    letter-spacing: 0.10em;
+    display: inline-block;
+    position: relative;
+    color: black;
+    text-decoration: none;
+}
+
+.CR-log-in-text:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 50%;
+    background: black;
+    position: absolute;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.CR-log-in-text:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.CR-register-outer-div{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CR-register-box{
+    width: 65%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CR-title{
+    font-family: Poppins-medium;
+    height: 18%;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    cursor: default;
+    user-select: none;
+}
+
+.CR-inputs-div{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 80%;
+}
+
+.CR-input-box{
+    width: 99.4%;
+    height: 20%;
+    border: solid 2px black;
+}
+
+.CR-input-icon-div {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.CR-icon-div {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: solid 1px #515151;
+    height: 80%;
+    position: relative;
+}
+
+.CR-icon {
+    color: black;
+    font-size: 18px;
+}
+
+.CR-input-div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.CR-input {
+    font-family: Poppins-regular;
+    margin-left: 10px;
+    font-size: 16px;
+    color: black;
+    outline: none;
+    width: 90%;
+    height: 40px;
+    background: transparent;
+    border: transparent;
+}
+
+.CR-resume-upload-div{
+    margin-top: 1%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.CR-resume-upload-title{
+    margin-top: 5px;
+    font-size: 20px;
+    font-family: Poppins-regular;
+}
+
+.CR-file-icon{
+    margin-top: 10px;
+    color: lightgreen;
+    font-size: 100px;
+    z-index: 0;
+    cursor: pointer;
+    transition: all 0.2s linear;
+}
+
+.CR-file-icon:hover{
+    opacity: 0.4;
+}
+
+.CR-resume-upload[type="file"]{
+    display: none;
+}
+
+.CR-file-uploaded-name{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.CR-footer{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CR-register-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 5px solid black;
+    border-radius: 10px;
+    transition: all 0.4s linear;
+    cursor: pointer;
+}
+
+.CR-register-btn-icon{
+    color: black;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.CR-register-btn:hover{
+    background-color: black;
+}
+
+.CR-register-btn:hover .CR-register-btn-icon{
+    color: white;
+}
+

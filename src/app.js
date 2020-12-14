@@ -75,6 +75,12 @@ app.get('/coachHelp', (req , res) => {
 	});
 });
 
+app.get('/coachHome', (req , res) => {
+	res.render('clientRegister',{
+	});
+});
+
+
 app.get('/coachClients', authCoach , (req , res) => {
 	res.render('coachClients');
 });

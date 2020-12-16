@@ -1,4 +1,5 @@
 $(document).ready(async () => {
+	
 	$('#file-upload-icon').click(async () => {
 		$('#resume-upload').click();
 	});

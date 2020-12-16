@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<title>Backoffice/Users</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<Head>
+    <link rel="stylesheet" href="./css/backoffice.css">
+  <ul class="topnav">
+  <li><a class="active" href="#home">Coaches</a></li>
+  <li class="right" id="logoutBTN">
+      <a>Logout</a></li>
+            <li class="search" style=" margin-left: 5%; margin-right: 5%;">
+                <input id="searchInput" type="text" placeholder="Search..">
+            </li>
+</ul>
+</Head>
+
+<body>
+
+    
+       
+
+    <div style="margin: auto; width: 60%; padding: 10px; ">
+        <p id="Not-fnd-msg"
+            style="opacity: 0; padding: 2px; font-family: 'Courier New', Courier, monospace; font-size: 150%; background-color: silver; border-radius: 8px;">
+            No users founded...
+        </p>
+    </div>
+    <div id="divTable">
+        <table id="newClients" style="opacity: 1; margin: auto; width: 60%; padding: 10px;  ">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>View coach details</th>
+            </tr>
+        </table>
+    </div>
+    <script src="/js/backofficeHome.js"></script>
+</body>
+
+</html>

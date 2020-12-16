@@ -1,0 +1,76 @@
+body {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#newClients {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 50px;
+}
+
+#newClients td,
+#newClients th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#newClients tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#newClients tr:nth-child(odd) {
+    background-color: white;
+}
+
+
+#newClients th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #03b8bb;
+    color: white;
+}
+
+.search input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 2px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+.search::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+/************************  Header bar   *********/
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  ul.topnav li {float: left;}
+  
+  ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  ul.topnav li a:hover:not(.active) {background-color: #111;cursor: pointer;}
+  
+  ul.topnav li a.active {background-color: #4CAF50;}
+  
+  ul.topnav li.right {float: right;}
+  /***************************************************************************/

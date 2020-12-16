@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<title>BOCoaches</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<Head>
+    <link rel="stylesheet" href="./css/BOCoachView.css">
+</Head>
+
+
+<body>
+    <div style="border: springgreen;border-style: groove; padding: 1%; text-align: start;">
+        <p style="margin-left: 40%;margin-right: 40%;font-size: 30px;">Coach Profile</p>
+        <div class="in-row-textarea">
+            <div class="text-area-div" style="width: 30%;">
+                <p style="margin: 1px;">Name</p>
+                <textarea id="name" readonly style="resize: none; margin: 1%;"></textarea>
+            </div>
+            <div class="text-area-div" style="width: 70%;">
+                <P style="margin: 1px;">Email</P>
+                <textarea id="email" readonly style="resize: none; margin: 1%;"></textarea>
+            </div>
+        </div>
+        <div class="in-row-textarea">
+            <div class="text-area-div" style="width: 30%;">
+                <P style="margin: 1px;">Date of join</P>
+                <textarea id="date" readonly style="resize: none; margin: 1%;"></textarea>
+            </div>
+            <div class="text-area-div" style="width: 70%;">
+                <P style="margin: 1px;">Coach Status</P>
+                <textarea id="status" readonly style="resize: none; margin: 1%;"></textarea>
+            </div>
+        </div>
+        <div style="width: 10%; margin-top: 20px;">
+            <p id="ExplainMSG" style="width: max-content; height: max-content;margin: 1px; padding: initial;">Click to
+                view coach
+                Termination Certificate</p>
+            <button id="Termination-Certificate" type="button"
+                style="margin: 1%; width: ; height: fit-content;text-align: center; border-radius:10mm;">Certificate</button>
+        </div>
+
+        <div id="BTNSConfirmation" style="margin-top: 5%;margin-right: 5%; margin-left: 5%;">
+            <div class="Accept-Coach-Div">
+                <button id="AcceptBTN" class="Accept-div-btns" style="background-color:#58D68D;">Accept</button>
+                <button id="RejectBTN" class="Accept-div-btns" style="background-color: #EC7063;">Reject</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Termination-Certificate Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content" id="IDmodal-content">
+            <span class="close" id="closeX">&times;</span>
+            <img id="Terimg" src="">
+        </div>
+    </div>
+
+    <!-- The Confrimation user Modal -->
+    <div id="myModal-confirm" class="modal-confirm">
+        <!-- Modal content -->
+        <div class="modal-content-confirm">
+            <div class="modal-header-confirm">
+                <span class="close-confirm" id="closeX-confirm">&times;</span>
+            </div>
+            <div class="modal-body-confirm">
+                <p>Are you sure you want to add this coach to your database?</p>
+            </div>
+            <div class="modal-footer-confirm">
+                <button id="yesBTN-confirm" class="Accept-div-btns" style="background-color:#5cb85c;">Yes</button>
+                <button id="notBTN-confirm" class="Accept-div-btns" style="background-color: #9c483f;">No</button>
+            </div>
+        </div>
+    </div>
+
+      <!-- The Rejection user Modal -->
+    <div id="myModal-reject" class="modal-confirm">
+        <!-- Modal content -->
+        <div class="modal-content-confirm">
+            <div class="modal-header-confirm">
+                <span class="close-confirm" id="closeX-reject">&times;</span>
+            </div>
+            <div class="modal-body-confirm">
+                <p>After you reject this coach, his request will be deleted from your database! Are you sure?</p>
+            </div>
+            <div class="modal-footer-confirm">
+                <button id="yesBTN-reject" class="Accept-div-btns" style="background-color:#5cb85c;">Yes</button>
+                <button id="notBTN-reject" class="Accept-div-btns" style="background-color: #9c483f;">No</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <P>Coach Clients</P>
+    </div>
+    <script src="/js/BOcoachView.js"></script>
+</body>
+
+</html>

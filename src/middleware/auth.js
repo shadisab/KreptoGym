@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const Client = require('../models/client');
 const Coach = require('../models/coach');
+const Admin = require('../models/admin');
 
 
 const authClient = async (req, res, next) => {
@@ -37,4 +38,20 @@ const authCoach = async (req, res, next) => {
 		res.status(401).send('<!DOCTYPE html><html><head><title>401</title><link rel="stylesheet" href="/css/404.css"></head><body><div class="Main-DIV"><div class="msg-404">401 <p class="msg-err">You are not Authorized</p></div><p class="msg-err">Please press the back button to return to the previous page</p></div></body></html>');
 	}
 };
-module.exports = {authClient, authCoach};
+
+const authAdmin = async (req, res, next) => {
+	try {
+		const token = req.cookies['Authorization'].replace('Bearer ', '');// looking to the token in the cookies after login
+		const decoded = jwt.verify(token, process.env.JWT_SECRET);//validates that token
+		const admin = await Admin.findOne({ _id: decoded._id, 'tokens.token': token }); // finds the associated user
+		if (!admin) {
+			throw new Error('');
+		}
+		req.token = token;
+		req.admin = admin;
+		next(); // Letting the root handler run
+	} catch (e) {
+		res.status(401).send('<!DOCTYPE html><html><head><title>401</title><link rel="stylesheet" href="/css/404.css"></head><body><div class="Main-DIV"><div class="msg-404">401 <p class="msg-err">You are not Authorized</p></div><p class="msg-err">Please press the back button to return to the previous page</p></div></body></html>');
+	}
+};
+module.exports = {authClient, authCoach, authAdmin};

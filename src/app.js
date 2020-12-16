@@ -64,6 +64,11 @@ app.get('/coachLogin', (req , res) => {
 	});
 });
 
+app.get('/coachHome', (req , res) => {
+	res.render('coachHome',{
+	});
+});
+
 app.get('/clientLogin', (req , res) => {
 	res.render('clientLogin',{
 

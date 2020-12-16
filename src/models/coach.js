@@ -23,7 +23,6 @@ const coachSchema = new mongoose.Schema({
 	},
 	password: {
 		type: String,
-		required: true,
 		minlength: 7,
 		trim: true,
 		validate(value) {
@@ -31,6 +30,11 @@ const coachSchema = new mongoose.Schema({
 				throw new Error('Password cannot contain "password"');
 			}
 		}
+	},
+	status:{
+		type:String,
+		trim: true,
+		default: 'Testing'
 	}, 
 	userType:{
 		type:String,
@@ -42,12 +46,16 @@ const coachSchema = new mongoose.Schema({
 			required: true
 		}
 	}],
+	TerminationCertificate:{
+		type: Buffer,
+		// required: true
+	},
 	myClients: [{ //Clients ID's with this
 		id: { type: mongoose.Schema.Types.ObjectId },
 		name: { type: String, trime: true },
 		age: { type: Number, validate(value) { if (value < 0) { throw new Error('Age most be a positive number'); } } },
-		height: {type: Number, validate(value) { if (value < 0) { throw new Error('Age most be a positive number'); } } },
-		weight: {type: Number, validate(value) { if (value < 0) { throw new Error('Age most be a positive number'); } } }
+		height: {type: Number, validate(value) { if (value < 0) { throw new Error('height most be a positive number'); } } },
+		weight: {type: Number, validate(value) { if (value < 0) { throw new Error('weight most be a positive number'); } } }
 	}]
 }, {
 	timestamps: true
@@ -96,6 +104,7 @@ coachSchema.methods.toJSON = function () {
 	delete coachObject.password;
 	delete coachObject.tokens;
 	delete coachObject.myClients;
+	delete coachObject.TerminationCertificate;
 
 	return coachObject;
 };

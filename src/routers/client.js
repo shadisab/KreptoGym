@@ -3,6 +3,7 @@ const Client = require('../models/client');
 const Coach = require('../models/coach');
 const { authClient } = require('../middleware/auth');
 const router = new express.Router();
+const {sendmsg} = require('../db/Mails');
 
 // Sign up
 router.post('/clients/signup', async (req, res) => {
@@ -19,6 +20,8 @@ router.post('/clients/signup', async (req, res) => {
 			weight: client.weight
 		});
 		await coach.save();
+		await sendmsg(client.email, `Welcome ${client.name}`, 'We wish you have a great day, we sent a message to your chosen coach, let us know if you' + 'didn\'t' + 'receive any update in the next 3 days.');
+		await sendmsg(coach.email, `A new client request form ${client.name}`, `Hey ${coach.name}, you got a new client request, please check your account.`);
 		res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
 		res.status(201).send({ client, token });
 	} catch (e) {
@@ -68,7 +71,7 @@ router.get('/clients/training', authClient, async (req, res) => {
 });
 // GET all coaches
 router.get('/clients/allCoachs', async (req, res) => {
-	const coachs = await Coach.find();
+	const coachs = await Coach.find({status:'Accepted'});
 	res.send(coachs);
 });
 

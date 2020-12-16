@@ -4,9 +4,10 @@ const hbs = require('hbs');
 require('./db/mongoose');
 const clientRouter = require('./routers/client');
 const coachRouter = require('./routers/coach');
+const backofficeRouter = require('./routers/Backoffice');
 const app = express();
 const cookie = require('cookie-parser');
-const {authClient , authCoach} = require('./middleware/auth');
+const {authClient , authCoach, authAdmin} = require('./middleware/auth');
 
 const publicDirectoryPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
@@ -21,11 +22,29 @@ app.use(express.json());
 app.use(express.static(publicDirectoryPath));
 app.use(clientRouter);
 app.use(coachRouter);
+app.use(backofficeRouter);
 
 app.get('', (req , res) => {
 	res.render('index');
 });
 
+app.get('/adminLogin', (req,res) => {
+	res.render('adminLogin', {
+		
+	});
+});
+
+app.get('/backoffice', authAdmin, (req , res) => {
+	res.render('backoffice',{
+
+	});
+});
+
+app.get('/BOcoachView', authAdmin, (req, res)=>{
+	res.render('BOcoachView', {
+
+	});
+});
 
 
 app.get('/clientRegister', (req , res) => {

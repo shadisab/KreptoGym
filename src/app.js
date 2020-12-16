@@ -76,7 +76,7 @@ app.get('/coachHelp', (req , res) => {
 });
 
 app.get('/coachHome', (req , res) => {
-	res.render('coachHome',{
+	res.render('clientRegister',{
 	});
 });
 

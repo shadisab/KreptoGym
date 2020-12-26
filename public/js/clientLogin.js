@@ -29,7 +29,7 @@ $(document).ready(async () => {
 	$('#loginBTN').click(async () => {
 		var email = $('#email').val();
 		var password = $('#password').val();
-		const postClient = await fetch('/clients/login', {
+		const postClient = await fetch('usersLogin', {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, *cors, same-origin
 			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -47,12 +47,13 @@ $(document).ready(async () => {
 		});
 
 		if (postClient.status === 400 && password !== '' && email !== '') {
+			console.log(postClient);
 			$('#WLInfo').css('opacity', '1');
 			$('#L-title').css('opacity', '0');
 		}
 
 		if (postClient.status === 200) {
-			window.location.href = ('/clientSchedule');
+			console.log('Login success');
 
 		}
 	});

@@ -32,6 +32,8 @@ router.post('/coachsignup', upload.single('upload'), async (req, res) => {
 	coach.TerminationCertificate = req.file.buffer;
 	try {
 		await coach.save();
+		await sendmsg(coach.email, `Welcome to our team ${coach.name}`, `Hey ${coach.name},\nGlad to see you on our team, your request has been sent, we will check your uploaded resume and update you as soon as we can.\nThanks have a good day.`);
+		await sendmsg('kreptogym@gmail.com', `A new request from ${coach.name}`, 'You have a new request waiting for your review');
 		res.status(201).send();
 	} catch (error) {
 		res.status(400).send({ error: error.message });
@@ -51,31 +53,17 @@ router.post('/coachsignup', upload.single('upload'), async (req, res) => {
 // 	}
 // });
 
-//Coach generate Login code
-router.post('/coachLogincode', async (req, res) => {
-	try {
-		const firstPass = Math.floor(1000 + Math.random() * 9000);
-		const email = req.body.email;
-		const coach = await Coach.findOne({ email });
-		coach.password = firstPass;
-		await coach.save();
-		await sendmsg(email, 'KreptoGym Login code', `Your login code ${firstPass}`);
-		res.status(201).send({ firstPass });
-	} catch (e) {
-		res.status(400).send(e);
-	}
-});
-
 
 // Login
 router.post('/coachs/login', async (req, res) => {
 	try {
 		// Self Created findByCredntials() , generateAuthToken()
-		console.log(req.body.loginCode);
-		const coach = await Coach.findByCredentials(req.body.email, req.body.loginCode);
-		const token = await coach.generateAuthToken();
-		res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
-		res.send({ coach, token });
+		const coach = await Coach.findByCredentials(req.body.email, req.body.password);
+		const client = await Client.findByCredentials(req.body.email, req.body.password);
+		console.log('client:', client, 'coach is:', coach);
+		// const token = await coach.generateAuthToken();
+		// res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
+		res.send();
 	} catch (e) {
 		console.log(e);
 		res.status(400).send(e);

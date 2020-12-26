@@ -83,13 +83,14 @@ router.get('/BOcoachView/:id/profile',authAdmin, async(req, res) => {
 
 // Updating Coach From BackOffice
 router.patch('/coachs/:id', authAdmin, async (req, res) => {
-
+	const firstPass = Math.floor(1000000 + Math.random() * 9999999);
 	const update = 'status';
 	try {
 		const coach = await Coach.findById(req.params.id);
 		coach[update] = req.body[update];
+		coach.password = firstPass;
 		await coach.save();
-		await sendmsg(coach.email, `Updating status to ${coach.name}`,`Hey ${coach.name},\nWe read your uploaded resume, we see you gonna make a good progress with us.\n Welcome to our team, Wish you all the best.` );
+		await sendmsg(coach.email, `Updating status to ${coach.name}`,`Hey ${coach.name},\nWe read your uploaded resume, we see you gonna make a good progress with us Your login code ${firstPass} please maek your first log in and change your password.\n Welcome to our team, Wish you all the best.` );
 		res.status(200).send(coach);
 	} catch (e) {
 		res.status(400).send(e);

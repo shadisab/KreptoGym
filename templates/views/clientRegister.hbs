@@ -47,8 +47,6 @@
                     </div>
                     <i id="email-validation-icon" class="R-validation-icon fas fa-times" style="top:12.5%;"></i>
                     <div id="email-wrong-msg-div" class="wrong-email-msg-div" style="top:1.4%;">
-                        <p class="invaild-email-msg">Email format must be:</br> example@example.domain</p>
-                        <div class="little-arrow-left"></div>
                     </div>
                     <div class="R-input-box" style="margin-top: 5px;">
                         <div class="R-input-icon-div">
@@ -89,6 +87,8 @@
                 <div class="R-register-title">
                     <div class="R-register-title-text">Tell us about you</div>
                 </div>
+                <p id="FillAll" style="color: red;  margin: 5; display: none;">Please fill all the data</p>
+                <p id="AgeValidation" style="color: red;  margin: 5; display: none;">Age most be > 18</p>
                 <div class="R-register-inner-box-P2">
                     <div class="R-register-inner-left">
                         <div class="R-input-box-P2">
@@ -123,7 +123,8 @@
                                     <i class="R-icon fas fa-birthday-cake"></i>
                                 </div>
                                 <div class="R-input-div">
-                                    <input id="Birthdate" class="R-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Select birth date" />
+                                    <input id="Birthdate" class="R-input" type="text" onfocus="(this.type='date')"
+                                        onblur="(this.type='text')" placeholder="Select birth date" />
                                 </div>
                             </div>
                         </div>
@@ -423,7 +424,13 @@
                     <input id="img-upload" class="img__input" type="file" accept="image/*" />
                 </div>
             </div>
-            <div id="R-P4" class="R-register-div-outer-P2"></div>
+            <div id="R-P4" class="R-register-div-outer-P2">
+                <div class="R-register-title">
+                    <div class="R-register-title-text">Choose your coach that you want to see your progress with </div>
+                </div>
+                <div id="CoachesList" style="overflow-y:auto">
+                </div>
+            </div>
             <div class="R-next-btn-div" style="margin-top: 5px;">
                 <div id="back-btn" class="R-back-btn-inner-div">
                     <i class="R-back-btn-icon far fa-caret-square-left"></i>

@@ -51,11 +51,7 @@ const coachSchema = new mongoose.Schema({
 		// required: true
 	},
 	myClients: [{ //Clients ID's with this
-		id: { type: mongoose.Schema.Types.ObjectId },
-		name: { type: String, trime: true },
-		age: { type: Number, validate(value) { if (value < 0) { throw new Error('Age most be a positive number'); } } },
-		height: {type: Number, validate(value) { if (value < 0) { throw new Error('height most be a positive number'); } } },
-		weight: {type: Number, validate(value) { if (value < 0) { throw new Error('weight most be a positive number'); } } }
+		id: { type: mongoose.Schema.Types.ObjectId }
 	}]
 }, {
 	timestamps: true

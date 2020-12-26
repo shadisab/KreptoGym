@@ -3,21 +3,39 @@ const Client = require('../models/client');
 const Coach = require('../models/coach');
 const { authClient } = require('../middleware/auth');
 const router = new express.Router();
-const {sendmsg} = require('../db/Mails');
+const { sendmsg } = require('../db/Mails');
+const multer = require('multer');
 
+const upload = multer({
+	limits: { fileSize: 2000000 },
+	fileFilter(req, file, cb) {
+		if (!file.originalname.match(/\.(jpg|PNG|png)$/)) {
+			return cb(new Error('Please upload a image'));
+		}
+		cb(undefined, true);
+	}
+});
+
+router.post('/ClientsCoachesCheck', async (req, res) => {
+	try {
+		const client = await Client.findOne({ email: req.body.email });
+		const coach = await Coach.findOne({  email: req.body.email });
+		if(!client && !coach) res.status(200).send('OK');
+		else throw new Error('Used email address');
+	} catch (error) {
+		res.status(409).send(error.message); // Email already exists
+	}
+});
 // Sign up
-router.post('/clients/signup', async (req, res) => {
+router.post('/clients/signup', upload.single('upload'), async (req, res) => {
 	const client = new Client(req.body);
+	client.profilePic = req.file.buffer;
 	try {
 		await client.save();
 		const token = await client.generateAuthToken();
 		const coach = await Coach.findById(req.body.coachID);
 		coach.myClients = coach.myClients.concat({
-			id: client._id,
-			name: client.name,
-			age: client.age,
-			height: client.height,
-			weight: client.weight
+			id: client._id
 		});
 		await coach.save();
 		await sendmsg(client.email, `Welcome ${client.name}`, 'We wish you have a great day, we sent a message to your chosen coach, let us know if you' + 'didn\'t' + 'receive any update in the next 3 days.');
@@ -31,15 +49,29 @@ router.post('/clients/signup', async (req, res) => {
 
 
 // Login
-router.post('/clients/login', async (req, res) => {
+router.post('/usersLogin', async (req, res) => {
 	try {
 		// Self Created findByCredntials() , generateAuthToken()
-		const client = await Client.findByCredentials(req.body.email, req.body.password);
-		const token = await client.generateAuthToken();
-		res.cookie('Authorization', `Bearer ${token}`);
-		res.send({ client, token });
+		let token = undefined;
+		let client = await Client.findOne({ email: req.body.email });
+		let coach = await Coach.findOne({  email: req.body.email });
+	
+		if(client){
+			client = await Client.findByCredentials(req.body.email, req.body.password);
+			token = await client.generateAuthToken();
+			res.cookie('Authorization', `Bearer ${token}`);
+			res.send({ client, token });
+
+		} else if(coach){
+			coach = await Coach.findByCredentials(req.body.email, req.body.password);
+			token = await coach.generateAuthToken();
+			res.cookie('Authorization', `Bearer ${token}`);
+			res.send({ coach, token });
+		}
+		throw new Error('Wrong login');
 	} catch (e) {
-		res.status(400).send(e);
+		console.log(e);
+		res.status(400).send(e.error);
 	}
 });
 
@@ -71,7 +103,7 @@ router.get('/clients/training', authClient, async (req, res) => {
 });
 // GET all coaches
 router.get('/clients/allCoachs', async (req, res) => {
-	const coachs = await Coach.find({status:'Accepted'});
+	const coachs = await Coach.find({ status: 'Accepted' });
 	res.send(coachs);
 });
 
@@ -80,7 +112,7 @@ router.patch('/clients/password', authClient, async (req, res) => {
 	const allowerdUpdates = 'password';
 	try {
 		const client = await Client.findByCredentials(req.client.email, req.body.password);
-		if(req.body.password === req.body.newPassword ){
+		if (req.body.password === req.body.newPassword) {
 			throw new Error('New password must not be the same as old password');
 		}
 		client[allowerdUpdates] = req.body.newPassword;

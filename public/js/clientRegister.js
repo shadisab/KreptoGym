@@ -13,39 +13,33 @@ $(document).ready(async () => {
 		// body data type must match "Content-Type" header
 	});
 
-	getCoachs.json().then((data) => {
-		data.forEach(coach => {
-			$('#coachs').append($('<option></option>')
-				.attr('value', coach._id)
-				.text(coach.name));
-		});
-	});
-
 	if ($('#R-P1').css('display') === 'flex') {
 		$('#back-btn').css('display', 'none');
 	}
 
 	$('#email').keyup(async () => {
+		$('#UsedEmailaddress').css('opacity', 0).hide();
 		$('#c-wrong-msg').css('opacity', '0');
 		$('#reg-title').css('opacity', '1');
 		const email = $('#email').val();
-		var mailformat = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
-		if(email == ''){
-			$('#email-validation-icon').css('opacity','0');
-			$('#email-wrong-msg-div').css('opacity','0');
-		} else if (!email.match(mailformat)){
-			$('#email-validation-icon').css('opacity','1');
-			$('#email-wrong-msg-div').css('opacity','1');
-			$('#email-validation-icon').css('color','red');
+		// eslint-disable-next-line no-useless-escape
+		var mailformat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		if (email == '') {
+			$('#email-validation-icon').css('opacity', '0');
+			$('#email-wrong-msg-div').css('opacity', '0');
+		} else if (!email.match(mailformat)) {
+			$('#email-validation-icon').css('opacity', '1');
+			$('#email-wrong-msg-div').css('opacity', '1').html('<p class="invaild-email-msg">Email format must be:</br> example@example.domain</p><div class="little-arrow-left"></div>');
+			$('#email-validation-icon').css('color', 'red');
 			$('#email-validation-icon').removeClass('fa-check');
 			$('#email-validation-icon').addClass('fa-times');
 		} else {
 			$('#email-validation-icon').removeClass('fa-times');
 			$('#email-validation-icon').addClass('fa-check');
-			$('#email-wrong-msg-div').css('opacity','0');
-			setTimeout(function(){
-				$('#email-validation-icon').css('color','green');
-			},20);
+			$('#email-wrong-msg-div').css('opacity', '0');
+			setTimeout(function () {
+				$('#email-validation-icon').css('color', 'green');
+			}, 20);
 		}
 	});
 
@@ -56,52 +50,52 @@ $(document).ready(async () => {
 		var number = /([0-9])/;
 		var alphabets = /([a-zA-Z])/;
 		var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
-		if(password == ''){
-			$('#password-validation-icon').css('opacity','0');
-			$('#password-wrong-msg-div').css('opacity','0');
-		}else if(password.length >= 6 && password.match(number) && password.match(alphabets) && password.match(special_characters)) {
-			$('#password-wrong-msg-div').css('opacity','0');
+		if (password == '') {
+			$('#password-validation-icon').css('opacity', '0');
+			$('#password-wrong-msg-div').css('opacity', '0');
+		} else if (password.length >= 6 && password.match(number) && password.match(alphabets) && password.match(special_characters)) {
+			$('#password-wrong-msg-div').css('opacity', '0');
 			$('#password-validation-icon').removeClass('fa-times');
 			$('#password-validation-icon').addClass('fa-check');
-			$('#password-validation-icon').css('color','green');
-		} else if(password.length >= 6 && password.match(number) && password.match(alphabets)) {
-			$('#password-wrong-msg-div').css('opacity','0');
+			$('#password-validation-icon').css('color', 'green');
+		} else if (password.length >= 6 && password.match(number) && password.match(alphabets)) {
+			$('#password-wrong-msg-div').css('opacity', '0');
 			$('#password-validation-icon').removeClass('fa-times');
 			$('#password-validation-icon').addClass('fa-check');
-			$('#password-validation-icon').css('color','green');
-		} else if(password.length >= 6 && password.match(special_characters) && password.match(alphabets)) {
-			$('#password-wrong-msg-div').css('opacity','0');
+			$('#password-validation-icon').css('color', 'green');
+		} else if (password.length >= 6 && password.match(special_characters) && password.match(alphabets)) {
+			$('#password-wrong-msg-div').css('opacity', '0');
 			$('#password-validation-icon').removeClass('fa-times');
 			$('#password-validation-icon').addClass('fa-check');
-			$('#password-validation-icon').css('color','green');
-		} else if(password.length < 6){
-			$('#password-wrong-msg-div').css('opacity','1');
+			$('#password-validation-icon').css('color', 'green');
+		} else if (password.length < 6) {
+			$('#password-wrong-msg-div').css('opacity', '1');
 			var obj = $('#password-wrong-msg').text('Password too short! \n Length must be 6 or above.');
-			obj.html(obj.html().replace(/\n/g,'<br/>'));
-			$('#password-validation-icon').css('opacity','1');
+			obj.html(obj.html().replace(/\n/g, '<br/>'));
+			$('#password-validation-icon').css('opacity', '1');
 			$('#password-validation-icon').removeClass('fa-check');
 			$('#password-validation-icon').addClass('fa-times');
-			$('#password-validation-icon').css('color','red');
+			$('#password-validation-icon').css('color', 'red');
 		} else {
-			$('#password-wrong-msg-div').css('opacity','1');
+			$('#password-wrong-msg-div').css('opacity', '1');
 			$('#password-wrong-msg').text('Password must contain letters and numbers/special characters!');
-			$('#password-validation-icon').css('opacity','1');
+			$('#password-validation-icon').css('opacity', '1');
 			$('#password-validation-icon').removeClass('fa-check');
 			$('#password-validation-icon').addClass('fa-times');
-			$('#password-validation-icon').css('color','red');
+			$('#password-validation-icon').css('color', 'red');
 		}
 		const confirmPassword = $('#confirmPassword').val();
-		if(password == confirmPassword) {
+		if (password == confirmPassword) {
 			$('#Confirmpassword-validation-icon').removeClass('fa-times');
 			$('#Confirmpassword-validation-icon').addClass('fa-check');
-			$('#Confirmpassword-validation-icon').css('color','green');
-			$('#CPassword-wrong-msg-div').css('opacity','0');
-		} else if(password != confirmPassword && confirmPassword != '') {
-			$('#Confirmpassword-validation-icon').css('opacity','1');
-			$('#CPassword-wrong-msg-div').css('opacity','1');
+			$('#Confirmpassword-validation-icon').css('color', 'green');
+			$('#CPassword-wrong-msg-div').css('opacity', '0');
+		} else if (password != confirmPassword && confirmPassword != '') {
+			$('#Confirmpassword-validation-icon').css('opacity', '1');
+			$('#CPassword-wrong-msg-div').css('opacity', '1');
 			$('#Confirmpassword-validation-icon').removeClass('fa-check');
 			$('#Confirmpassword-validation-icon').addClass('fa-times');
-			$('#Confirmpassword-validation-icon').css('color','red');
+			$('#Confirmpassword-validation-icon').css('color', 'red');
 		}
 	});
 
@@ -111,96 +105,148 @@ $(document).ready(async () => {
 		$('#reg-title').css('opacity', '1');
 		const password = $('#password').val();
 		const confirmPassword = $('#confirmPassword').val();
-		if(confirmPassword == ''){
-			$('#Confirmpassword-validation-icon').css('opacity','0');
-			$('#CPassword-wrong-msg-div').css('opacity','0');
-		} else if(password == confirmPassword) {
+		if (confirmPassword == '') {
+			$('#Confirmpassword-validation-icon').css('opacity', '0');
+			$('#CPassword-wrong-msg-div').css('opacity', '0');
+		} else if (password == confirmPassword) {
 			$('#Confirmpassword-validation-icon').removeClass('fa-times');
 			$('#Confirmpassword-validation-icon').addClass('fa-check');
-			$('#Confirmpassword-validation-icon').css('color','green');
-			$('#CPassword-wrong-msg-div').css('opacity','0');
+			$('#Confirmpassword-validation-icon').css('color', 'green');
+			$('#CPassword-wrong-msg-div').css('opacity', '0');
 		}
 		else {
-			$('#Confirmpassword-validation-icon').css('opacity','1');
-			$('#CPassword-wrong-msg-div').css('opacity','1');
+			$('#Confirmpassword-validation-icon').css('opacity', '1');
+			$('#CPassword-wrong-msg-div').css('opacity', '1');
 			$('#Confirmpassword-validation-icon').removeClass('fa-check');
 			$('#Confirmpassword-validation-icon').addClass('fa-times');
-			$('#Confirmpassword-validation-icon').css('color','red');
+			$('#Confirmpassword-validation-icon').css('color', 'red');
 		}
 	});
 
-	$('#height').keyup(async () =>{
+	$('#height').keyup(async () => {
 		var H = $('#height').val();
 		H = parseInt(H);
-		if(H < 0){
-			console.log('no');
+		if (H < 0) {
+			console.error('height must be pos');
 		}
 	});
 
-	$('#weight').keyup(async () =>{
+	$('#weight').keyup(async () => {
 		var W = $('#weight').val();
 		W = parseInt(W);
-		if(W < 0){
-			console.log('no');
+		if (W < 0) {
+			console.error('weight must be pos');
 		}
 	});
 
 
 	$('#next-btn').click(async () => {
 		if ($('#R-P1').css('display') === 'flex') {
-			if($('#email-validation-icon').hasClass('fa-times') ||
-			$('#Confirmpassword-validation-icon').hasClass('fa-times') ||
-			$('#password-validation-icon').hasClass('fa-times')){
-				$('#c-wrong-msg').css('opacity','1');
+			if ($('#email-validation-icon').hasClass('fa-times') ||
+				$('#Confirmpassword-validation-icon').hasClass('fa-times') ||
+				$('#password-validation-icon').hasClass('fa-times')) {
+				$('#c-wrong-msg').css('opacity', '1');
 				$('#reg-title').css('opacity', '0');
 				$('#email').val('');
 				$('#password').val('');
 				$('#confirmPassword').val('');
-				$('#Confirmpassword-validation-icon').css('opacity','0');
-				$('#CPassword-wrong-msg-div').css('opacity','0');
-				$('#password-validation-icon').css('opacity','0');
-				$('#password-wrong-msg-div').css('opacity','0');
-				$('#email-validation-icon').css('opacity','0');
-				$('#email-wrong-msg-div').css('opacity','0');
-				setTimeout(function(){
-					$('#c-wrong-msg').css('opacity','0');
+				$('#Confirmpassword-validation-icon').css('opacity', '0');
+				$('#CPassword-wrong-msg-div').css('opacity', '0');
+				$('#password-validation-icon').css('opacity', '0');
+				$('#password-wrong-msg-div').css('opacity', '0');
+				$('#email-validation-icon').css('opacity', '0');
+				$('#email-wrong-msg-div').css('opacity', '0');
+				setTimeout(function () {
+					$('#c-wrong-msg').css('opacity', '0');
 					$('#reg-title').css('opacity', '1');
-				},3000);
+				}, 3000);
 			} else {
-				$('#R-P1').css('width', '30%');
-				$('#R-P1').css('opacity', '0');
-				setTimeout(function () {
-					$('#R-P1').css('display', 'none');
-					$('#R-P2').css('display', 'flex');
-					$('#back-btn').css('display', 'flex');
-				}, 400);
-				setTimeout(function () {
-					$('#back-btn').css('width', '10%');
-					$('#back-btn').css('opacity', '1');
-					$('#back-btn').css('margin-right', '100px');
-					$('#dot1').css('color', '#999');
-					$('#dot2').css('color', 'black');
-					$('#R-P2').css('opacity', '1');
-					$('#R-P2').css('width', '65%');
-				}, 420);
+				$('#email-validation-icon').removeClass('fa-check');
+				$('#email-validation-icon').addClass('loader');
+				setTimeout(async () => {
+					let email = $('#email').val();
+					/*********** Testing if the email exist in the DB  **********/
+					const CheckEmailAddress = await fetch('/ClientsCoachesCheck', {
+						method: 'POST', // *GET, POST, PUT, DELETE, etc.
+						mode: 'cors', // no-cors, *cors, same-origin
+						cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+						credentials: 'same-origin', // include, *same-origin, omit
+						redirect: 'follow', // manual, *follow, error
+						referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+						headers: {
+							'Content-Type': 'application/json'
+							// 'Content-Type': 'application/x-www-form-urlencoded',
+						},
+						body: JSON.stringify(
+							{
+								email
+							})
+					});
+					if (CheckEmailAddress.status === 200) {
+						$('#email-validation-icon').removeClass('loader');
+						$('#email-validation-icon').addClass('fa-check');
+						$('#R-P1').css('width', '30%');
+						$('#R-P1').css('opacity', '0');
+						setTimeout(function () {
+							$('#R-P1').css('display', 'none');
+							$('#R-P2').css('display', 'flex');
+							$('#back-btn').css('display', 'flex');
+						}, 400);
+						setTimeout(function () {
+							$('#back-btn').css('width', '10%');
+							$('#back-btn').css('opacity', '1');
+							$('#back-btn').css('margin-right', '100px');
+							$('#dot1').css('color', '#999');
+							$('#dot2').css('color', 'black');
+							$('#R-P2').css('opacity', '1');
+							$('#R-P2').css('width', '65%');
+						}, 420);
+					}
+					else if (CheckEmailAddress.status === 409) {
+						$('#email-validation-icon').removeClass('loader');
+						$('#email-validation-icon').addClass('fa-times');
+						$('#email-validation-icon').css('color', 'red');
+						$('#email-wrong-msg-div').css('opacity', '1').html('<p class="invaild-email-msg">Used Email addrees, Please try another one.</p><div class="little-arrow-left"></div>');
+						$('#UsedEmailaddress').css('opacity', 1).show();
+					}
+				}, 1800);
 			}
+
 		} else if ($('#R-P2').css('display') === 'flex') {
-			$('#R-P2').css('width', '30%');
-			$('#R-P2').css('opacity', '0');
-			setTimeout(function () {
-				$('#R-P2').css('display', 'none');
-				$('#R-P3').css('display', 'flex');
-			}, 400);
-			setTimeout(function () {
-				$('#dot2').css('color', '#999');
-				$('#dot3').css('color', 'black');
-				$('#R-P3').css('opacity', '1');
-				$('#R-P3').css('width', '65%');
-			}, 420);
+			// Check if all the inputs is filled
+			$('#AgeValidation').hide();
+			if (!$('#Fname').val() || !$('#Gender').val() || !$('#Birthdate').val() || !$('#height').val() || !$('#weight').val() || !$('#country-select').val()) {
+				$('#FillAll').show();
+			}
+			else {
+				$('#FillAll').hide();
+				if (diff_years($('#Birthdate').val()) < parseInt(18)) {
+					$('#AgeValidation').show();
+				}
+				else {
+					$('#R-P2').css('width', '30%');
+					$('#R-P2').css('opacity', '0');
+					setTimeout(function () {
+						$('#R-P2').css('display', 'none');
+						$('#R-P3').css('display', 'flex');
+					}, 400);
+					setTimeout(function () {
+						$('#dot2').css('color', '#999');
+						$('#dot3').css('color', 'black');
+						$('#R-P3').css('opacity', '1');
+						$('#R-P3').css('width', '65%');
+					}, 420);
+				}
+			}
 		} else if ($('#R-P3').css('display') === 'flex') {
 			$('#R-P3').css('width', '30%');
 			$('#R-P3').css('opacity', '0');
 			setTimeout(function () {
+				getCoachs.json().then((data) => {
+					data.forEach(coach => {
+						$('#CoachesList').append('<div style="opacity: 0.6;transition: 0.8s;" class="column" id="' + coach._id + '"><h2 id="' + coach._id + '">' + coach.name + '</h2><p id="' + coach._id + '">' + coach.email + '</p></div>');
+					});
+				});
 				$('#R-P3').css('display', 'none');
 				$('#R-P4').css('display', 'flex');
 			}, 400);
@@ -224,6 +270,23 @@ $(document).ready(async () => {
 			}, 1200);
 		}
 	});
+	let chosedCoachID = undefined;
+	$('#CoachesList').click(async function (e) {
+		if (chosedCoachID === undefined) {
+			chosedCoachID = e.target.id;
+			$('#' + e.target.id).css('opacity', '1');
+		} else if (chosedCoachID === e.target.id) {
+			$('#' + e.target.id).css('opacity', '0.6');
+			chosedCoachID = undefined;
+		}
+		else {
+			$('#' + chosedCoachID).css('opacity', '0.6');
+			chosedCoachID = e.target.id;
+			$('#' + e.target.id).css('opacity', '1');
+		}
+	});
+
+
 	$('#back-btn').click(async () => {
 		if ($('#R-P2').css('display') === 'flex') {
 			$('#R-P2').css('width', '30%');
@@ -284,6 +347,7 @@ $(document).ready(async () => {
 			}, 1200);
 		}
 	});
+
 	$('#profile-img').click(async () => {
 		$('#img-upload').click();
 	});
@@ -291,15 +355,83 @@ $(document).ready(async () => {
 	$('#edit-text').click(async () => {
 		$('#img-upload').click();
 	});
-
-	function fasterPreview(uploader) {
-		if (uploader.files && uploader.files[0]) {
-			$('#profile-img').attr('src',
-				window.URL.createObjectURL(uploader.files[0]));
-		}
-	}
-
+	// let temp = false;
+	let file = undefined;
 	$('#img-upload').change(function () {
-		fasterPreview(this);
+		$('#profile-img').attr('src', window.URL.createObjectURL(this.files[0]));
+		file = this.files[0];
+		// temp = this.files !== undefined;
 	});
+
+	let formData = new FormData();
+	$('#finish-btn').click(async () => {
+
+		if (chosedCoachID === undefined) {
+			console.log('You must choose a coach!');
+		} else {
+			
+			formData.append('upload', file);
+			formData.append('email', $('#email').val());
+			formData.append('password', $('#password').val());
+			formData.append('name', $('#Fname').val());
+			formData.append('country', $('#country-select').val());
+			formData.append('gender', $('#Gender').val());
+			formData.append('weight', $('#weight').val());
+			formData.append('height', $('#height').val());
+			formData.append('coachID', chosedCoachID);
+			formData.append('birthDate', $('#Birthdate').val());
+
+			const regClient = await fetch('/clients/signup', {
+				method: 'POST', // *GET, POST, PUT, DELETE, etc.
+				mode: 'cors', // no-cors, *cors, same-origin
+				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+				credentials: 'same-origin', // include, *same-origin, omit
+				redirect: 'follow', // manual, *follow, error
+				referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+				body: formData
+			});
+			formData.delete('upload');
+			formData.delete('email');
+			formData.delete('password');
+			formData.delete('name');
+			formData.delete('country');
+			formData.delete('gender');
+			formData.delete('weight');
+			formData.delete('height');
+			formData.delete('coachID');
+			formData.delete('birthDate');
+
+			if(regClient.status === 201){
+				window.location.replace('/');
+			} else {
+				console.log('Wrong REG');
+			}		
+			// console.log('email ' + $('#email').val() + '\n', 'password' + $('#password').val() + '\n', 'Full Name:' + $('#Fname').val() + '\n',
+			// 	'country: ' + $('#country-select').val() + '\n', 'Gender: ' + $('#Gender').val() + '\n', 'height: ' + $('#height').val() + '\n',
+			// 	'Birthdate:' + $('#Birthdate').val() + '\n', 'weight: ' + $('#weight').val() + '\n', 'file: ' + file + '\n',
+			// 	'Coach: ' + chosedCoachID + '\n');
+		}
+	});
+
+	function diff_years(dt2) {
+		let dt1 = new Date();
+		let dt3 = new Date(dt2);
+		let dd = dt1.getDate();
+		let mm = dt1.getMonth() + 1;
+
+		let yyyy = dt1.getFullYear();
+		if (dd < 10) {
+			dd = '0' + dd;
+		}
+		if (mm < 10) {
+			mm = '0' + mm;
+		}
+		let today = yyyy + '-' + mm + '-' + dd;
+		dt1 = new Date(today);
+
+		let diff = (dt1.getTime() - dt3.getTime()) / 1000;
+		diff /= (60 * 60 * 24);
+		return Math.floor(((diff / 365.25)));
+	}
 });
+

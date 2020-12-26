@@ -34,20 +34,44 @@ const clientSchema = new mongoose.Schema({
 			}
 		}
 	},
-	age: {
-		type: Number,
-		default: 0,
+	birthDate: {
+		type: Date,
 		required: true,
 		validate(value) {
-			if (value < 0) {
-				throw new Error('Age most be a positive number');
+			let dt1 = new Date();
+			let dt3 = new Date(value);
+			let dd = dt1.getDate();
+			let mm = dt1.getMonth() + 1;
+
+			var yyyy = dt1.getFullYear();
+			if (dd < 10) {
+				dd = '0' + dd;
+			}
+			if (mm < 10) {
+				mm = '0' + mm;
+			}
+			var today = yyyy + '-' + mm + '-' + dd;
+			dt1 = new Date(today);
+
+			var diff = (dt1.getTime() - dt3.getTime()) / 1000;
+			diff /= (60 * 60 * 24);
+			if (Math.floor(((diff / 365.25))) < 18) {
+				throw new Error('Age most be a > 18');
 			}
 		}
-	}, 
-	userType:{
-		type:String,
+	},
+	country: {
+		type: String,
 		trim: true
-	}, 
+	},
+	userType: {
+		type: String,
+		trim: true
+	},
+	gender: {
+		type: String,
+		trim: true
+	},
 	weight: {
 		type: Number,
 		required: true,
@@ -65,43 +89,46 @@ const clientSchema = new mongoose.Schema({
 				throw new Error('Height most be a positive number');
 			}
 		}
-	}
-	,
+	},
+	profilePic: {
+		type: Buffer,
+		// required: true
+	},
 	trainingSchedule: {
 		sunday: {
 			type: String,
 			trim: true,
-			default:'Rest day'
+			default: 'Rest day'
 		},
 		monday: {
 			type: String,
 			trim: true,
-			default:'Rest day'
+			default: 'Rest day'
 		},
 		tuesday: {
 			type: String,
 			trim: true,
-			default:'Rest day'
+			default: 'Rest day'
 		},
 		wednesday: {
 			type: String,
 			trim: true,
-			default:'Rest day'
+			default: 'Rest day'
 		},
 		thursday: {
 			type: String,
 			trim: true,
-			default:'Rest day'
+			default: 'Rest day'
 		},
 		friday: {
 			type: String,
 			trim: true,
-			default:'Rest day'
-		}, 
+			default: 'Rest day'
+		},
 		saturday: {
 			type: String,
 			trim: true,
-			default:'Rest day'
+			default: 'Rest day'
 		}
 	},
 	nutrition: {
@@ -118,7 +145,7 @@ const clientSchema = new mongoose.Schema({
 			type: Number,
 			default: 0
 		},
-		calories:{
+		calories: {
 			type: Number,
 			default: 0
 		},
@@ -137,7 +164,7 @@ const clientSchema = new mongoose.Schema({
 	coachID: { // Coach who train this client
 		type: mongoose.Schema.Types.ObjectId,
 		required: true
-        
+
 	}
 }, {
 	timestamps: true
@@ -185,7 +212,7 @@ clientSchema.pre('remove', async function (next) {
 	try {
 		const coach = await Coach.findById(client.coachID);
 		coach.myClients = await coach.myClients.filter(function (value) {
-			return    !value.id.equals(client._id);
+			return !value.id.equals(client._id);
 		});
 		coach.save();
 	} catch (e) {

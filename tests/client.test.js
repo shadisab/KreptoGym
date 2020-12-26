@@ -16,45 +16,45 @@ const {
 beforeEach(setupDatabase); /* this function runs before each test case in this test suite.  */
 
 
-test('Should signup a new client', async () => {
-	const response = await request(app).post('/clients/signup').send({
-		name: 'clientsignup',
-		email: 'clientsign@example.com',
-		password: 'MyPass123123',
-		birthDate: 2002-2-6,
-		height: 180,
-		weight: 50,
-		coachID: coachOneID
-	}).expect(201);
-	// Assert that the DB was changed correctly
-	const client = await Client.findById(response.body.client._id);
-	expect(client).not.toBeNull();
+// test('Should signup a new client', async () => {
+// 	const response = await request(app).post('/clients/signup').send({
+// 		name: 'clientsignup',
+// 		email: 'clientsign@example.com',
+// 		password: 'MyPass123123',
+// 		birthDate: 2002-2-6,
+// 		height: 180,
+// 		weight: 50,
+// 		coachID: coachOneID
+// 	}).expect(201);
+// 	// Assert that the DB was changed correctly
+// 	const client = await Client.findById(response.body.client._id);
+// 	expect(client).not.toBeNull();
 
-	// Assertions about the response
-	expect(response.body).toMatchObject({
-		client: {
-			name: 'clientsignup',
-			email: 'clientsign@example.com',
-			age: 15,
-			height: 180,
-			weight: 50
-		},
-		token: client.tokens[0].token
-	});
-	// Checking the hashing
-	expect(client.password).not.toBe('MyPass123123');
+// 	// Assertions about the response
+// 	expect(response.body).toMatchObject({
+// 		client: {
+// 			name: 'clientsignup',
+// 			email: 'clientsign@example.com',
+// 			age: 15,
+// 			height: 180,
+// 			weight: 50
+// 		},
+// 		token: client.tokens[0].token
+// 	});
+// 	// Checking the hashing
+// 	expect(client.password).not.toBe('MyPass123123');
 
-	// Checking if the client was added to his coach's clients list
-	const coach = await Coach.findById(coachOneID);
-	let temp = false;
+// 	// Checking if the client was added to his coach's clients list
+// 	const coach = await Coach.findById(coachOneID);
+// 	let temp = false;
 
-	coach.myClients.forEach((client) => {
-		if (client.id.toString() === response.body.client._id.toString()){
-			temp = true;
-		}
-	});
-	expect(temp).toBe(true);
-});
+// 	coach.myClients.forEach((client) => {
+// 		if (client.id.toString() === response.body.client._id.toString()){
+// 			temp = true;
+// 		}
+// 	});
+// 	expect(temp).toBe(true);
+// });
 
 
 

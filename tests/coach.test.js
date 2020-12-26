@@ -1,14 +1,15 @@
-// const request = require('supertest');
-// const app = require('../src/app');
-// const Coach = require('../src/models/coach');
+const request = require('supertest');
+const app = require('../src/app');
+const Coach = require('../src/models/coach');
+// const Client = require('../src/models/client');
 // const bcrypt = require('bcryptjs');
-// const {
-// 	coachOne,
-// 	coachOneID,
-// 	setupDatabase
-// } = require('./fixtures/db');
+const {
+	coachOne,
+	coachOneID,
+	setupDatabase
+} = require('./fixtures/db');
 
-// beforeEach(setupDatabase); /* this function runs before each test case in this test suite.  */
+beforeEach(setupDatabase); /* this function runs before each test case in this test suite.  */
 
 // test('Should signup a new coach', async () => {
 // 	const response = await request(app).post('/coachs/signup').send({
@@ -33,19 +34,19 @@
 // });
 
 
-// // Login Test
-// test('Should login existing coach', async () => {
-// 	const response = await request(app).post('/coachs/login').send({
-// 		email: coachOne.email,
-// 		password: coachOne.password
-// 	}).expect(200);
+// Login Test
+test('Should login existing coach', async () => {
+	const response = await request(app).post('/usersLogin').send({
+		email: coachOne.email,
+		password: coachOne.password
+	}).expect(200);
 
-// 	// Assertions
-// 	const coach = await Coach.findById(coachOneID);
-// 	expect(response.body.token).toBe(coach.tokens[1].token);
-// });
+	// Assertions
+	const coach = await Coach.findById(coachOneID);
+	expect(response.body.token).toBe(coach.tokens[1].token);
+});
 
-// // Testing change password
+// Testing change password
 // test('Should update valid user Password', async () => {
 // 	await request(app)
 // 		.patch('/coachs/password')
@@ -70,7 +71,7 @@
 // 		.expect(400);
 // });
 
-// //Getting coach profile
+//Getting coach profile
 // test('Should get profile of the user', async () => {
 // 	await request(app)
 // 		.get('/coachs/myProfile')
@@ -79,7 +80,7 @@
 // 		.expect(200);
 // });
 
-// // Getting coach profile while not authenticated
+// Getting coach profile while not authenticated
 // test('Should Not get profile for unauthenticated user', async () => {
 // 	await request(app)
 // 		.get('/coachs/myProfile')

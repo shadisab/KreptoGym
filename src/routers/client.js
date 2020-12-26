@@ -29,8 +29,11 @@ router.post('/ClientsCoachesCheck', async (req, res) => {
 // Sign up
 router.post('/clients/signup', upload.single('upload'), async (req, res) => {
 	const client = new Client(req.body);
-	client.profilePic = req.file.buffer;
+	if(req.file){
+		client.profilePic = req.file.buffer;
+	} 
 	try {
+		console.log(client.profilePic);
 		await client.save();
 		const token = await client.generateAuthToken();
 		const coach = await Coach.findById(req.body.coachID);

@@ -37,7 +37,7 @@ router.post('/clients/signup', upload.single('upload'), async (req, res) => {
 		await client.save();
 		const token = await client.generateAuthToken();
 		const coach = await Coach.findById(req.body.coachID);
-		coach.myClients = coach.myClients.concat({
+		coach.NewClientsREQ = coach.NewClientsREQ.concat({
 			id: client._id
 		});
 		await coach.save();

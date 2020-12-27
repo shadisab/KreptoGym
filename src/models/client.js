@@ -56,7 +56,7 @@ const clientSchema = new mongoose.Schema({
 			var diff = (dt1.getTime() - dt3.getTime()) / 1000;
 			diff /= (60 * 60 * 24);
 			if (Math.floor(((diff / 365.25))) < 18) {
-				throw new Error('Age most be a > 18');
+				throw new Error('Age most be a >= 18');
 			}
 		}
 	},
@@ -164,7 +164,6 @@ const clientSchema = new mongoose.Schema({
 	coachID: { // Coach who train this client
 		type: mongoose.Schema.Types.ObjectId,
 		required: true
-
 	}
 }, {
 	timestamps: true

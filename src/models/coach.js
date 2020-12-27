@@ -52,6 +52,9 @@ const coachSchema = new mongoose.Schema({
 	},
 	myClients: [{ //Clients ID's with this
 		id: { type: mongoose.Schema.Types.ObjectId }
+	}],
+	NewClientsREQ: [{ //Clients ID's with this
+		id: { type: mongoose.Schema.Types.ObjectId }
 	}]
 }, {
 	timestamps: true

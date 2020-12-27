@@ -99,10 +99,6 @@ app.get('/coachHelp', (req , res) => {
 	});
 });
 
-app.get('/coachClients', authCoach , (req , res) => {
-	res.render('coachClients');
-});
-
 app.get('/coachScheduleUpdate' , authCoach , (req , res) => {
 	res.render('coachScheduleUpdate');
 });
@@ -111,7 +107,7 @@ app.get('/clientSchedule', authClient, (req , res) => {
 	res.render('clientSchedule');
 });
 
-app.get('/coachClients' , authCoach , (req , res) => {
+app.get('/coachClients', (req , res) => {
 	res.render('coachClients');
 });
 

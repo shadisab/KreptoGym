@@ -2,44 +2,105 @@
 <html>
 
 <head>
-    <title>Coach's Clients</title>
-    <link rel="stylesheet" href="./css/coachClients.css">
-    {{>links}}
+    <link rel="stylesheet" href="/css/coachClients.css">
+    <link rel="stylesheet" href="/css/coachNavbarSidebar.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body>
-    <div class="Masking-DIV">
-        <div class="Masking-DIV-2">
-            <header>
-                <div class="icon-div-logo">
-                    <img class="header-logo-icon-img" src="/images/header-logo-icon.png" />
-                    <p class="logo-title">Krepto Gym</p>
-                </div>
-                <div class="links-DIV">
-                </div>
-                <div class="log-buttons-div">
-                    <a class="sign-log-btn-DIV" href="/coachProfile">Profile</a>
-                    <div class="dividing-slash">|</div>
-                    <a id="logout" class="sign-log-btn-DIV">Log out</a>
-                </div>
-            </header>
-            <div class="clients-view-DIV">
-                <div class="clients-view-inner-DIV">
-                    <div class="clients-title-DIV">
-                        <div class="clients-title-icon-DIV">
-                            <i class="fas fa-arrow-alt-circle-down clients-title-icon"></i>
+<body class="body">
+    {{>coachNavbarSidebar}}
+    <div class="CC-main-window">
+        <div class="CC-search-DIV">
+            <input class="CC-search-input" placeholder="Search" />
+            <div class="CC-search-btn">
+                <i class="CC-search-icon fas fa-search"></i>
+            </div>
+        </div>
+        <div class="CC-sortClients-div">
+        </div>
+        <div class="CC-clients-DIV">
+            <div class="CC-client-card">
+                <div class="CC-client-card-inner">
+                    <div class="CC-client-card-front">
+                        <div class="CC-client-name-div">
+                            <div class="CC-client-name">Katarina Nora</div>
                         </div>
-                        <p class="clients-title">Here are your clients</p>
-                        <div class="clients-title-icon-DIV">
-                            <i class="fas fa-arrow-alt-circle-down clients-title-icon"></i>
-                        </div>
+                        <img src="/images/client5.jpg" alt="Avatar" class="CC-client-card-photo">
                     </div>
-                    <div id="clientsList" class="clients">
-                        <div id="noClientsmsg" class="noClientsMsg">You currently have no clients</div>
+                    <div class="CC-client-card-back">
+                        <div class="CC-client-card-back-info-text">Edit Schedule</div>
+                    </div>
+                </div>
+            </div>
+            <div class="CC-client-card">
+                <div class="CC-client-card-inner">
+                    <div class="CC-client-card-front">
+                        <div class="CC-client-name-div">
+                            <div class="CC-client-name">Emily Smith</div>
+                        </div>
+                        <img src="/images/f0a64e32194d341befecc80458707565.jpg" alt="Avatar" class="CC-client-card-photo">
+                    </div>
+                    <div class="CC-client-card-back">
+                        <div class="CC-client-card-back-info-text">Edit Schedule</div>
+                    </div>
+                </div>
+            </div>
+            <div class="CC-client-card">
+                <div class="CC-client-card-inner">
+                    <div class="CC-client-card-front">
+                        <div class="CC-client-name-div">
+                            <div class="CC-client-name">Mark Wilson</div>
+                        </div>
+                        <img src="/images/client4.jpg" alt="Avatar" class="CC-client-card-photo">
+                    </div>
+                    <div class="CC-client-card-back">
+                        <div class="CC-client-card-back-info-text">Edit Schedule</div>
+                    </div>
+                </div>
+            </div>
+            <div class="CC-client-card">
+                <div class="CC-client-card-inner">
+                    <div class="CC-client-card-front">
+                        <div class="CC-client-name-div">
+                            <div class="CC-client-name">Janna White</div>
+                        </div>
+                        <img src="/images/client3.jpg" alt="Avatar" class="CC-client-card-photo">
+                    </div>
+                    <div class="CC-client-card-back">
+                        <div class="CC-client-card-back-info-text">Edit Schedule</div>
+                    </div>
+                </div>
+            </div>
+            <div class="CC-client-card">
+                <div class="CC-client-card-inner">
+                    <div class="CC-client-card-front">
+                        <div class="CC-client-name-div">
+                            <div class="CC-client-name">Jayce Jackson</div>
+                        </div>
+                        <img src="/images/client2.jpg" alt="Avatar" class="CC-client-card-photo">
+                    </div>
+                    <div class="CC-client-card-back">
+                        <div class="CC-client-card-back-info-text">Edit Schedule</div>
+                    </div>
+                </div>
+            </div>
+            <div class="CC-client-card">
+                <div class="CC-client-card-inner">
+                    <div class="CC-client-card-front">
+                        <div class="CC-client-name-div">
+                            <div class="CC-client-name">Jon Taylor</div>
+                        </div>
+                        <img src="/images/client1.jpg" alt="Avatar" class="CC-client-card-photo">
+                    </div>
+                    <div class="CC-client-card-back">
+                        <div class="CC-client-card-back-info-text">Edit Schedule</div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="CC-footer"></div>
     </div>
     <script src="/js/coachClients.js"></script>
 </body>

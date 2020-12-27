@@ -1,0 +1,349 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('/fonts/poppins.regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('/fonts/poppins.medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('/fonts/poppins.bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('/fonts/poppins.semibold.ttf');
+}
+
+.CNS-header {
+    width: 100%;
+    height: 56px;
+    background-color: #333;
+    display: flex;
+    flex-direction: row;
+}
+
+.CNS-logo-hamburger-icons-div {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+}
+
+.CNS-sidebar-icon-div {
+    width: 27%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CNS-sidebar-icon {
+    width: 20px;
+    height: 20px;
+    font-family: Poppins-Regular;
+    cursor: pointer;
+}
+
+.CNS-logo-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.CNS-logo-icon {
+    font-size: 50px;
+    color: #CFB997;
+}
+
+.CNS-logo-text-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin-left: 10px;
+}
+
+.CNS-logo-text1 {
+    font-family: Poppins-Regular;
+    line-height: 0.8;
+    font-size: 20px;
+    height: 21px;
+    margin-top: 4px;
+    color: white;
+}
+
+.CNS-logo-text2 {
+    font-family: Poppins-Regular;
+    letter-spacing: 1.15em;
+    height: 15px;
+    line-height: 0.8;
+    color: #CFB997;
+}
+
+.CNS-header-filler {
+    width: 60%;
+    height: 100%;
+}
+
+.CNS-account-settings {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.CNS-account-settings-icon-div {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: 0.5s;
+    cursor: pointer;
+    border-top-left-radius: 6px;
+    transition-property: background-color;
+}
+
+.CNS-notification-icon {
+    color: white;
+    font-size: 20px;
+}
+
+.CNS-notifcations-number {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    font-size: 9px;
+    left: 45px;
+    top: 6px;
+    line-height: 17px;
+    color: white;
+    text-align: center;
+    font-family: Poppins-Regular;
+    background-color: rgb(196, 62, 0);
+    border-radius: 50%;
+}
+
+.CNS-notification-icon-div {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: 0.5s;
+    transition-property: background-color;
+    cursor: pointer;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.CNS-account-settings-icon {
+    color: white;
+    font-size: 35px;
+}
+
+.CNS-sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 56px;
+    left: 0;
+    background-color: rgb(66, 66, 66);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.CNS-sidenav-links {
+    width: 100%;
+    height: 82%;
+}
+
+.CNS-sidenav-link {
+    width: 100%;
+    height: 56px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.CNS-sidenav-link:hover {
+    background-color: rgb(92, 92, 92);
+}
+
+.CNS-sidenav-logout-link {
+    width: 100%;
+    height: 56px;
+    text-decoration: none;
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    background-color: #ca3e47;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.CNS-sidenav-logout-link:hover {
+    background-color: #86141c;
+}
+
+.CNS-sidenav-link-icon {
+    color: white;
+    margin-right: 15px;
+    width: 30%;
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+}
+
+.CNS-sidenav-link-text {
+    font-family: Poppins-Regular;
+    color: white;
+}
+
+.CNS-dropdown-div {
+    position: absolute;
+    background-color: rgb(39, 38, 38);
+    border-bottom-left-radius: 10px;
+    border-left: 1px #666 solid;
+    border-bottom: 1px #666 solid;
+    border-right: 1px #666 solid;
+    display: none;
+    top: 56px;
+    right: 0px;
+    width: 300px;
+    height: 0px;
+    z-index: 5;
+    overflow: auto;
+}
+
+.CNS-profile-dropdown-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.CNS-profile-custom-top-border {
+    width: 72.62%;
+    height: 0px;
+    border-bottom: 1px solid #666;
+}
+
+.CNS-display-account-info {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px #666 solid;
+}
+
+.CNS-account-features {
+    height: 65%;
+    width: 100%;
+    border-bottom: 1px #666 solid;
+}
+
+.CNS-notification-dropdown-content-div {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.CNS-notifictions-custom-top-border {
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    width: 100%;
+    height: 0;
+}
+
+.CNS-notifictions-custom-top-border1 {
+    border-bottom: 1px solid #666;
+    height: 0;
+    width: 236.08px;
+}
+
+.CNS-notifictions-custom-top-border-filler {
+    height: 0;
+    width: 81.96px;
+}
+
+.CNS-notifictions-custom-top-border2 {
+    border-bottom: 1px solid #666;
+    height: 0;
+    width: 81.96px;
+}
+
+.CNS-notification-dropdown-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.CNS-notification-dropdown-content::-webkit-scrollbar {
+    width: 12px;
+    position: absolute;
+}
+
+.CNS-notification-dropdown-content::-webkit-scrollbar-track {
+    background: #222;
+    transition: 0.5s;
+}
+
+.CNS-notification-dropdown-content::-webkit-scrollbar-thumb {
+    background-color: #BBB;
+    height: 20%;
+    border-radius: 20px;
+}
+
+.CNS-notifiction-div {
+    width: 99.8%;
+    height: 20%;
+    flex: 0 0 auto;
+    border-bottom: 1px solid #666;
+    border-right: 1px solid #666;
+}
+
+.CNS-profile-dropdown-image-div{
+    height: 100%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CNS-profile-dropdown-image{
+    width: 50px;
+    height: 50px;
+}
+
+.CNS-name-account-div{
+    height: 100%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.CNS-user-name-display{
+    color: white;
+    font-family: Poppins-Regular;
+    font-size: 15px;
+}
+
+.CNS-account-name-display{
+    color: white;
+    font-family: Poppins-Regular;
+    font-size: 15px;
+}

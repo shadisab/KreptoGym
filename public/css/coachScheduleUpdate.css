@@ -1,357 +1,589 @@
-.CSU-main-DIV {
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('/fonts/poppins.regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('/fonts/poppins.medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('/fonts/poppins.bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('/fonts/poppins.semibold.ttf');
+}
+
+.CSU-body {
+    background-color: white;
+    margin: 0;
+    height: 100vh;
     width: 100%;
-    height: 85%;
+    font-size: 14px;
+    user-select: none;
+}
+
+.CSU-main-window {
+    height: 91.04%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.CSU-inner-window {
+    height: fit-content;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: default;
 }
 
-.CSU-Container-DIV {
-    width: 95%;
-    height: 95%;
-    background: none;
-    border-radius: 26px;
-    border: 1px solid rgb(207, 185, 151);
+.CSU-schedule-outer-div {
+    height: fit-content;
+    width: 93%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: rgb(204, 201, 201);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
-.CSU-links-DIV {
-    height: 100%;
-    width: 72%;
+.CSU-client-name-div {
+    height: 50px;
+    margin-top: 100px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.CSU-icon-div-logo {
-    width: 14%;
-    height: 100%;
+.CSU-client-name {
+    font-family: Poppins-Medium;
+    font-size: 30px;
+    color: slateblue;
+}
+
+.CSU-schedule-client-profile {
+    width: 99%;
+    height: 350px;
+    background-color: white;
+    margin-top: 130px;
+    border: 1px solid #888;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
-.CSU-header-logo-icon-img {
-    width: 21.43%;
-    height: 43.71%;
-}
-
-.CSU-Schedule-DIV {
+.CSU-client-info {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 60%;
-    border-bottom: rgb(207, 185, 151) 1px solid;
-}
-
-.CSU-Nutritions-msg-DIV {
-    width: 100%;
-    height: 25%;
+    height: 100px;
     display: flex;
     flex-direction: row;
 }
 
-.CSU-btns-DIV {
+.CSU-client-info-text-div {
+    display: flex;
+    width: 33.33333%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.CSU-client-info-text-title {
+    color: firebrick;
+    font-family: Poppins-Regular;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.CSU-client-info-text {
+    color: black;
+    font-family: Poppins-Regular;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.CSU-client-msg {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100px;
+}
+
+.CSU-client-msg-title {
+    color: firebrick;
+    font-family: Poppins-Regular;
+    font-size: 20px;
+    margin-right: 10px;
+    margin-left: 50px;
+}
+
+.CSU-client-msg-text {
+    color: black;
+    font-family: Poppins-Regular;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.CSU-client-profile-picture {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 30px;
+    border-radius: 50%;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.CSU-schedule-div {
+    height: 70.758%;
+    width: 99%;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    border: 1px solid #888;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CSU-schedule-title {
+    font-size: 30px;
+    font-family: Poppins-Medium;
+    margin-top: 20px;
+}
+
+.CSU-schedule {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 90%;
+    height: 90%;
+}
+
+.CSU-day-outer-div {
+    width: 100%;
+    height: fit-content;
+    border-left: #333 1px solid;
+    border-right: #333 1px solid;
+}
+
+.CSU-day-bar-div {
+    width: 100%;
+    height: 50px;
+    background-color: #999;
+    border-bottom: #333 1px solid;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.CSU-day-exercises {
+    width: 100%;
+    height: 0px;
+    background-color: #333;
+    transition: 0.5s;
+    overflow: auto;
+}
+
+.CSU-day-exercises::-webkit-scrollbar {
+    width: 12px;
+    position: absolute;
+}
+
+.CSU-day-exercises::-webkit-scrollbar-track {
+    background: #555;
+    transition: 0.5s;
+    border-left: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.CSU-day-exercises::-webkit-scrollbar-thumb {
+    background-color: #BBB;
+    height: 20%;
+    border-radius: 20px;
+}
+
+.CSU-day-name {
+    position: absolute;
+    left: 20px;
+    font-size: 20px;
+    color: white;
+    font-family: Poppins-Regular;
+}
+
+.CSU-day-dropdown-icon {
+    position: absolute;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    text-align: center;
+}
+
+.CSU-day-add-exercise-icon {
+    display: none;
+    position: absolute;
+    right: 70px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.CSU-exercise {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: row;
+    background-color: #555;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.CSU-exercise-img-div{
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CSU-exercise-img{
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.CSU-exercise-img-icon{
+    font-size: 30px;
+    color: rgb(0, 185, 0);
+}
+
+.CSU-exercise-info{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.CSU-exercise-info-row-div{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+    position: relative;
+}
+
+.CSU-exercise-info-piece-div{
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
+
+.CSU-exercise-info-piece-title{
+    color: #CFB997;
+    font-family: Poppins-Regular;
+    font-size: 20px;
+    margin-right: 15px;
+    line-height: 0.7;
+}
+
+.CSU-exercise-info-piece{
+    color: white;
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    line-height: 1.2;
+}
+
+.CSU-add-exercise-popup {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(81, 81, 81, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+
+.CSU-add-exercise-popup.is-visible {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.CSU-add-exercise-popup-container {
+    width: 70%;
+    height: 80%;
+    margin: 4em auto;
+    background: #FFF;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: translateY(-40px);
+    -moz-transform: translateY(-40px);
+    -ms-transform: translateY(-40px);
+    -o-transform: translateY(-40px);
+    transform: translateY(-40px);
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.CSU-add-muscle-building-exercise-div{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.CSU-add-cardio-exercise-div{
+    width: 100%;
+    height: 70%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.CSU-add-exercise-popup-buttons {
     width: 100%;
     height: 15%;
     display: flex;
     flex-direction: row;
 }
 
-.CSU-Days-DIV {
-    width: 100%;
-    height: 20%;
-    border-bottom: rgb(207, 185, 151) 1px solid;
-    display: flex;
-    flex-direction: row;
-}
-
-.CSU-Day-DIV {
-    width: 14.285%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.CSU-Day-Num {
-    color: white;
-    font-size: 25px;
-    font-family: Poppins-Regular;
-    width: 38px;
-    margin-top: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-}
-
-.CSU-Day-Name {
-    color: white;
-    font-size: 17px;
-    font-family: Poppins-Regular;
-}
-
-.CSU-Training-Schedule-DIV {
-    width: 100%;
-    height: 80%;
-    display: flex;
-    flex-direction: row;
-}
-
-.CSU-Training-Schedule-Day {
-    width: 14.285%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.CSU-Daily-Training-Text {
-    width: 90%;
-    height: 82%;
-    background-color: black;
-    border: 1px solid rgb(207, 185, 151);
-    font-family: Poppins-Regular;
-    font-size: 14px;
-    color: white;
-    margin-top: 7px;
-    resize: none;
-    overflow-y: auto;
-}
-
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.CSU-Daily-Training-Title {
-    color: white;
-    width: 100%;
-    font-size: 17px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Poppins-Regular;
-}
-
-.CSU-Nutritions-msg-inner-DIV {
-    border: rgb(207, 185, 151) 1px solid;
-    width: 99%;
-    height: 79%;
-    border-bottom-left-radius: 26px;
-    border-bottom-right-radius: 26px;
-    display: flex;
-    flex-direction: row;
-}
-
-.CSU-Nutritions-outer-DIV {
-    height: 100%;
-    width: 75%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.CSU-Msg-outer-DIV {
-    height: 100%;
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.CSU-Nutritions-DIV {
-    height: 80%;
-    width: 100%;
-    border: rgb(207, 185, 151) 1px solid;
-    border-left: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.CSU-row {
-    width: 100%;
-    height: 50%;
-    display: flex;
-    flex-direction: row;
-}
-
-.CSU-Nutrition-item {
-    width: 33.333333%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
-
-.CSU-cal-btn-item {
+.CSU-add-exercise-popup-confirm-button {
     width: 50%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
-
-.CSU-Nutrition-item-title {
+    background-color: teal;
     color: white;
-    font-family: Poppins-Regular;
-    display: flex;
-    align-items: flex-end;
-}
-
-.CSU-margin-left {
-    margin-left: 5px;
-}
-
-.CSU-cal-item-title {
-    color: white;
-    font-family: Poppins-Regular;
-    display: flex;
-    align-items: flex-end;
-    font-size: 30px;
-}
-
-.CSU-cal-item-value {
-    color: white;
-    font-family: Poppins-Regular;
-    background-color: transparent;
-    border: rgb(207, 185, 151) 1px solid;
-    outline-color: rgb(207, 185, 151);
-    margin-left: 10px;
-    width: 30%;
-}
-
-.CSU-Calculatebtn-item {
-    height: 80%;
-    width: 60%;
-    background: transparent;
-    color: white;
+    font-size: 20px;
+    cursor: pointer;
     outline: none;
     font-family: Poppins-Regular;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
 }
 
-.CSU-Calculatebtn-item:hover {
-    background: rgb(207, 185, 151);
-    color: black;
-}
-
-.CSU-Nutrition-item-value {
-    color: white;
-    background-color: transparent;
-    border: rgb(207, 185, 151) 1px solid;
-    outline-color: rgb(207, 185, 151);
-    font-family: Poppins-Regular;
-    margin-left: 10px;
-    width: 15%;
-}
-
-.CSU-msg-DIV {
-    height: 80%;
-    width: 100%;
-    border: rgb(207, 185, 151) 1px solid;
-    border-left: 0;
-    border-right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.CSU-Msg-Text {
-    width: 94%;
-    height: 84%;
-    color: white;
-    border: 1px solid rgb(207, 185, 151);
-    font-family: Poppins-Regular;
-    background-color: black;
-    resize: none;
-    overflow-y: auto;
-}
-
-.CSU-Border-left {
-    border-left: rgb(207, 185, 151) 1px solid;
-}
-
-.R-abtn {
-    text-decoration: none;
-    color: white;
-    font-family: Poppins-Regular;
-    z-index: 1;
-}
-
-.R-button-container {
-    width: 70%;
+.CSU-add-exercise-popup-cancel-button {
+    width: 50%;
     height: 100%;
-    text-align: center;
+    background-color: #515151;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    outline: none;
+    font-family: Poppins-Regular;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
 }
 
-.R-button {
-    display: flex;
+.is-visible .CSU-add-exercise-popup {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.CSU-add-exercise-type-buttons {
     width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 24px;
-    transition: all 0.2s ease-in;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
     position: relative;
-    overflow: hidden;
-    background-color: transparent;
-    outline: transparent;
+}
+
+.CSU-add-exercise-buttons-border-slider{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #999;
+}
+.CSU-add-exercise-buttons-border{
+    position: absolute;
+    bottom: 0;
+    width: 33.3333%;
+    height: 3px;
+    background-color: #333;
+    transition: 0.4s;
+    left: 0;
+}
+
+.CSU-add-exercise-type-button {
+    width: 33.33%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
-.R-button:before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%) scaleY(1) scaleX(1.25);
-    top: 100%;
-    width: 140%;
-    height: 180%;
-    background-color: rgba(0, 0, 0, 0.05);
-    border-radius: 50%;
-    display: block;
-    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-    z-index: -1;
+.CSU-add-exercise-type-button-text {
+    font-family: Poppins-Regular;
+    font-size: 15px;
 }
 
-.R-button:after {
-    content: "";
-    position: absolute;
-    left: 55%;
-    transform: translateX(-50%) scaleY(1) scaleX(1.45);
-    top: 180%;
-    width: 160%;
-    height: 190%;
-    border-radius: 50%;
-    display: block;
-    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-    z-index: -1;
+.CSU-add-muscle-building-exercise-fields {
+    height: 90%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s;
 }
 
-.R-button:hover {
-    color: black;
-    border: none;
+.CSU-add-cardio-exercise-fields {
+    height: 90%;
+    width: 50%;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s;
 }
 
-.R-button:hover:before {
-    top: -35%;
-    background-color: rgb(207, 185, 151);
-    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+.CSU-add-other-exercise-fields {
+    height: 90%;
+    width: 50%;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s;
 }
 
-.R-button:hover:after {
-    top: -45%;
-    background-color: rgb(207, 185, 151);
-    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+.CSU-flex-in-row-div{
+    display: flex;
+    flex-direction: row;
 }
 
-.R-button-left {
-    border-bottom-left-radius: 25px;
+.CSU-add-exercise-field-item-in-row{
+    width: 45%;
 }
 
-.R-button-right {
-    border-bottom-right-radius: 25px;
+.CSU-add-exercise-field-item {
+    width: 100%;
+}
+
+.CSU-add-exercise-InputLabeldiv {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.CSU-add-exercise-label-input100 {
+    font-family: Poppins-Regular;
+    font-size: 14px;
+    color: #515151;
+    line-height: 1.5;
+}
+
+.CSU-add-exercise-input100 {
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: #515151;
+    outline: none;
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    border: transparent;
+}
+
+.CSU-add-exercise-numberinput100 {
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: #515151;
+    outline: none;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    border: transparent;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.CSU-add-exercise-description-input100{
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: #515151;
+    outline: none;
+    width: 100%;
+    height: 155px;
+    resize: none;
+    background: transparent;
+    border: transparent;
+}
+
+.CSU-add-other-exercise-description-input100{
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: #515151;
+    outline: none;
+    width: 100%;
+    height: 220px;
+    resize: none;
+    background: transparent;
+    border: transparent;
+}
+
+.CSU-add-exercise-Inputdiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.CSU-add-exercise-Inputandicondiv {
+    display: flex;
+    flex-direction: row;
+    border: 1px #515151 solid;
+}
+
+.CSU-add-exercise-Icon {
+    color: #515151;
+    font-size: 18px;
+}
+
+.CSU-add-exercise-Icondiv {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #515151;
+}
+
+.CSU-add-exercise-Icondiv-in-row{
+    width: 41%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #515151;
 }

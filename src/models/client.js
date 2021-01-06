@@ -66,7 +66,8 @@ const clientSchema = new mongoose.Schema({
 	},
 	userType: {
 		type: String,
-		trim: true
+		trim: true,
+		default: 'Client'
 	},
 	gender: {
 		type: String,

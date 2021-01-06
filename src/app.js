@@ -1,13 +1,67 @@
 const path = require('path');
 const express = require('express');
+const http = require('http');
 const hbs = require('hbs');
 require('./db/mongoose');
 const clientRouter = require('./routers/client');
 const coachRouter = require('./routers/coach');
 const backofficeRouter = require('./routers/Backoffice');
-const app = express();
 const cookie = require('cookie-parser');
 const {authClient , authCoach, authAdmin} = require('./middleware/auth');
+const socketio = require('socket.io');
+const Filter = require('bad-words');
+const {generateMessage} = require('./utils/messages');
+
+const app = express();
+const server = http.createServer(app); // If we don't do this, The express library does 
+//this behind the since, We just need to do refactoring. just to make it easier to set up a socket.io.
+//in this way we have access to pass our server to web sockets
+const io = socketio(server); 
+
+
+io.on('connection', (socket) => { //This method will run for each Client that connect to the "Chat" in a differents ways
+	console.log('New WebSocket Connectented');
+
+	socket.on('join', ({username, room})=>{
+		socket.join(room);
+		socket.emit('message',generateMessage('Welcome!','KryptoGym Service')); //Every single new connected client will receive this message from the server
+		socket.broadcast.to(room).emit('message',generateMessage(`${username} has joined`,'KryptoGym Service')); //Send to everybody except the current client( current socket)
+
+
+		//socket.emit -> sends an event to a specific client.
+		//io.emit -> which sends an event to every connected client.
+		//socket.broadcast.emit -> which sends an event to every connected client except to the current client( current socket)
+		//io.to.emit -> emits an event to everybody in a specific room.
+		//socket.broadcast.to.emit -> This is sending an event to everyone except for the specific client but it's limiting it to a specific chat room.
+	});
+
+
+	socket.on('sendMessage', ({text,username,room}, callback)=>{
+		const filter = new Filter();
+		if(filter.isProfane(text)){
+			return callback('Not allowed to use bad words!');
+		}
+		io.to(room).emit('message',generateMessage(text,username));
+		callback();
+	});
+
+	socket.on('sendLocation', ({username,room,coords}, callback)=>{
+		io.to(room).emit('locationMessage',generateMessage(`https://google.com/maps?q=${coords.latitude},${coords.longitude}`,username));
+		callback();
+	});
+
+	// socket.on('increment', ()=>{
+	// 	count++;
+	// 	//socket.emit('countUpdated', count); //Scoket.emit is emited to a single connection (emites and event to a specifc connection )
+	// 	io.emit('countUpdated', count); //emited event to every single connection thats currnelty avaible
+	// });
+	// Socket.emit is to send 
+
+	socket.on('disconnect', ()=>{ //When ever a clint get disconnected
+		io.emit('message',generateMessage('A user has left','KryptoGym Service'));
+	});
+});
+
 
 const publicDirectoryPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
@@ -16,7 +70,7 @@ const partialsPath = path.join(__dirname, '../templates/partials');
 app.set('view engine','hbs');
 app.set('views', viewsPath);
 hbs.registerPartials(partialsPath);
-
+ 
 app.use(cookie());
 app.use(express.json());
 app.use(express.static(publicDirectoryPath));
@@ -26,6 +80,18 @@ app.use(backofficeRouter);
 
 app.get('', (req , res) => {
 	res.render('index');
+});
+
+app.get('/chat', (req,res) => {
+	res.render('chat', {
+		
+	});
+});
+
+app.get('/joinChat', (req,res) => {
+	res.render('joinChat', {
+		
+	});
 });
 
 app.get('/adminLogin', (req,res) => {
@@ -126,4 +192,4 @@ app.get('*', (req,res) => {
 		name: 'Wisam Halabi'
 	});
 });
-module.exports = app;
+module.exports = server;

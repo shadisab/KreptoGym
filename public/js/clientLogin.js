@@ -53,7 +53,11 @@ $(document).ready(async () => {
 		}
 
 		if (postClient.status === 200) {
-			console.log('Login success');
+			var userType;
+			await postClient.json().then((data) => {
+				userType = (Object.keys(data)[0]);
+			});
+			window.location.replace(`/${userType}Home`);
 
 		}
 	});

@@ -63,15 +63,15 @@ router.post('/usersLogin', async (req, res) => {
 			client = await Client.findByCredentials(req.body.email, req.body.password);
 			token = await client.generateAuthToken();
 			res.cookie('Authorization', `Bearer ${token}`);
-			res.send({ client, token });
+			res.status(200).send({ client, token });
 
 		} else if(coach){
 			coach = await Coach.findByCredentials(req.body.email, req.body.password);
 			token = await coach.generateAuthToken();
 			res.cookie('Authorization', `Bearer ${token}`);
-			res.send({ coach, token });
-		}
-		throw new Error('Wrong login');
+			res.status(200).send({coach, token });
+		} 
+		else throw new Error('Wrong login');
 	} catch (e) {
 		console.log(e);
 		res.status(400).send(e.error);

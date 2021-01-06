@@ -38,7 +38,8 @@ const coachSchema = new mongoose.Schema({
 	}, 
 	userType:{
 		type:String,
-		trim: true
+		trim: true,
+		default: 'Coach'
 	},
 	tokens: [{  //value always provided by the server
 		token: {

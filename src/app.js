@@ -20,13 +20,13 @@ const io = socketio(server);
 
 
 io.on('connection', (socket) => { //This method will run for each Client that connect to the "Chat" in a differents ways
-	console.log('New WebSocket Connectented');
-
+	
+	var user;
 	socket.on('join', ({username, room})=>{
+		user = username;
 		socket.join(room);
 		socket.emit('message',generateMessage('Welcome!','KryptoGym Service')); //Every single new connected client will receive this message from the server
 		socket.broadcast.to(room).emit('message',generateMessage(`${username} has joined`,'KryptoGym Service')); //Send to everybody except the current client( current socket)
-
 
 		//socket.emit -> sends an event to a specific client.
 		//io.emit -> which sends an event to every connected client.
@@ -58,7 +58,7 @@ io.on('connection', (socket) => { //This method will run for each Client that co
 	// Socket.emit is to send 
 
 	socket.on('disconnect', ()=>{ //When ever a clint get disconnected
-		io.emit('message',generateMessage('A user has left','KryptoGym Service'));
+		io.emit('message',generateMessage(`${user} has left`,'KryptoGym Service'));
 	});
 });
 
@@ -165,7 +165,7 @@ app.get('/coachHelp', (req , res) => {
 	});
 });
 
-app.get('/coachScheduleUpdate' , authCoach , (req , res) => {
+app.get('/coachScheduleUpdate' ,   (req , res) => {
 	res.render('coachScheduleUpdate');
 });
 

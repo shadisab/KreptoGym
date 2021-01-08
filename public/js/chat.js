@@ -39,6 +39,7 @@ $(document).ready(async ()=> {
     
 	socket.on('locationMessage', (url)=>{
 		$('#messages').append(`<div class="message"><p><span class="message__name">${url.username} </span><span class="message__meta">${moment(url.createdAt).format('h:mm a')}</span></p><a href=${url.text} target="_blank">My cuurent location</a></p></div>`);
+		autoscroll();
 	});
     
 	$('#message-form').on('submit', (e)=> {

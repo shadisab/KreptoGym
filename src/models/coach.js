@@ -31,13 +31,13 @@ const coachSchema = new mongoose.Schema({
 			}
 		}
 	},
-	status:{
-		type:String,
+	status: {
+		type: String,
 		trim: true,
 		default: 'Testing'
-	}, 
-	userType:{
-		type:String,
+	},
+	userType: {
+		type: String,
 		trim: true,
 		default: 'Coach'
 	},
@@ -47,18 +47,27 @@ const coachSchema = new mongoose.Schema({
 			required: true
 		}
 	}],
-	TerminationCertificate:{
+	TerminationCertificate: {
 		type: Buffer,
 		// required: true
 	},
-	myClients: [{ //Clients ID's with this
-		id: { type: mongoose.Schema.Types.ObjectId }
-	}],
-	NewClientsREQ: [{ //Clients ID's with this
-		id: { type: mongoose.Schema.Types.ObjectId }
-	}]
+	// myClients: [{ //Clients ID's with this
+	// 	id: { type: mongoose.Schema.Types.ObjectId }
+	// }],
+	// NewClientsREQ: [{ //Clients ID's with this
+	// 	id: { type: mongoose.Schema.Types.ObjectId },
+	// 	name: { type: String },
+	// 	email: { type: String }
+	// }]
 }, {
 	timestamps: true
+});
+
+coachSchema.virtual('myClients', { //This is not stored in the database It is just for Mongoose to be able to figure out who owns what and how they're related.
+	ref: 'Client',
+	localField: '_id', // local field is that is where that local data is stored.
+	foreignField: 'coachID' //foreign field is the name of the field on the other thing 
+
 });
 
 coachSchema.methods.generateAuthToken = async function () {

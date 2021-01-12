@@ -126,11 +126,10 @@ app.get('/coachRegister' , (req , res) => {
 
 app.get('/coachLogin', (req , res) => {
 	res.render('coachLogin',{
-
 	});
 });
 
-app.get('/coachHome', (req , res) => {
+app.get('/coachHome', authCoach, (req , res) => {
 	res.render('coachHome',{
 	});
 });

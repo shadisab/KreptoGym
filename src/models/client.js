@@ -34,6 +34,10 @@ const clientSchema = new mongoose.Schema({
 			}
 		}
 	},
+	status:{
+		type: String,
+		default: 'pending'
+	},
 	birthDate: {
 		type: Date,
 		required: true,
@@ -164,7 +168,8 @@ const clientSchema = new mongoose.Schema({
 	}],
 	coachID: { // Coach who train this client
 		type: mongoose.Schema.Types.ObjectId,
-		required: true
+		required: true,
+		ref: 'Coach'
 	}
 }, {
 	timestamps: true

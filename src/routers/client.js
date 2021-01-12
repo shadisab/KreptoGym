@@ -5,6 +5,7 @@ const { authClient } = require('../middleware/auth');
 const router = new express.Router();
 const { sendmsg } = require('../db/Mails');
 const multer = require('multer');
+const sharp = require('sharp');
 
 const upload = multer({
 	limits: { fileSize: 2000000 },
@@ -30,23 +31,23 @@ router.post('/ClientsCoachesCheck', async (req, res) => {
 router.post('/clients/signup', upload.single('upload'), async (req, res) => {
 	const client = new Client(req.body);
 	if(req.file){
-		client.profilePic = req.file.buffer;
-	} 
+		const buffer = await sharp(req.file.buffer).resize({ width:250 ,height:250 }).png().toBuffer(); //output from sharp
+		client.profilePic = buffer;
+	}
 	try {
-		console.log(client.profilePic);
-		await client.save();
-		const token = await client.generateAuthToken();
 		const coach = await Coach.findById(req.body.coachID);
-		coach.NewClientsREQ = coach.NewClientsREQ.concat({
-			id: client._id
-		});
-		await coach.save();
-		await sendmsg(client.email, `Welcome ${client.name}`, 'We wish you have a great day, we sent a message to your chosen coach, let us know if you' + 'didn\'t' + 'receive any update in the next 3 days.');
-		await sendmsg(coach.email, `A new client request form ${client.name}`, `Hey ${coach.name}, you got a new client request, please check your account.`);
+		if(!coach){
+			throw new Error('Cant finde coach');
+		}
+		const token = await client.generateAuthToken();
+		await client.save();
+		sendmsg(client.email, `Welcome ${client.name}`, 'We wish you have a great day, we sent a message to your chosen coach, let us know if you' + 'didn\'t' + 'receive any update in the next 3 days.');
+		sendmsg(coach.email, `A new client request form ${client.name}`, `Hey ${coach.name}, you got a new client request, please check your account.`);
 		res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
 		res.status(201).send({ client, token });
 	} catch (e) {
-		res.status(400).send(e);
+		console.log(e);
+		res.status(400).send(e.message);
 	}
 });
 
@@ -74,7 +75,7 @@ router.post('/usersLogin', async (req, res) => {
 		else throw new Error('Wrong login');
 	} catch (e) {
 		console.log(e);
-		res.status(400).send(e.error);
+		res.status(400).send(e.message);
 	}
 });
 

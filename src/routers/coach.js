@@ -172,7 +172,7 @@ router.get('/coachs/myProfile', authCoach, async (req, res) => {
 
 });
 // Updating coach Password
-router.patch('/coachs/password', authCoach, async (req, res) => {
+router.patch('/coachs/password', async (req, res) => {
 	const allowerdUpdates = 'password';
 	try {
 		const coach = await Coach.findByCredentials(req.coach.email, req.body.password);
@@ -187,9 +187,31 @@ router.patch('/coachs/password', authCoach, async (req, res) => {
 	}
 });
 
-// GET all Claints of this coach
-router.get('/coaches/myClients', authCoach, (req, res) => {
+// GET all Clients of this coach
+router.get('/coaches/myClients', authCoach, async (req, res) => {
 	//get array of id's of all clients that this coach is train
+	const match = {};
+	match.status = 'accepted';
+	await req.coach.populate({
+		path: 'myClients',
+		match,
+		options:{
+			limit:6,
+			skip:parseInt(req.query.skip)
+		}
+	}).execPopulate();
+	res.send(req.coach.myClients);
+});
+
+// GET all the requested clients
+router.get('/coaches/reqClients', authCoach, async (req, res) => {
+	//get array of id's of all clients that this coach is train
+	const match = {};
+	match.status = 'pending';
+	await req.coach.populate({
+		path: 'myClients',
+		match
+	}).execPopulate();
 	res.send(req.coach.myClients);
 });
 module.exports = router;

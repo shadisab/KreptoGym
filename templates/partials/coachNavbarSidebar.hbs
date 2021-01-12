@@ -14,7 +14,7 @@
     <div class="CNS-header-filler"></div>
     <div class="CNS-account-settings">
         <div id="notification-btn" class="CNS-notification-icon-div">
-            <div id="notifications-icon-numbers" class="CNS-notifcations-number">5</div>
+            <div id="notifications-icon-numbers" class="CNS-notifcations-number"></div>
             <i id="notifications-icon-bell" class="CNS-notification-icon fas fa-bell"></i>
         </div>
         <div id="acc-settings-btn-div" class="CNS-account-settings-icon-div">
@@ -28,8 +28,8 @@
                         <img class="CNS-profile-dropdown-image" src="images/default-pp.png"/>
                     </div>
                     <div class="CNS-name-account-div">
-                        <div class="CNS-user-name-display">Knight Artorias</div>
-                        <div class="CNS-account-name-display">wisamwrh@gmail.com</div>
+                        <div id="name" class="CNS-user-name-display"></div>
+                        <div id="email" class="CNS-account-name-display"></div>
                     </div>
                 </div>
                 <div class="CNS-account-features"></div>
@@ -42,15 +42,6 @@
                     <div class="CNS-notifictions-custom-top-border2"></div>
                 </div>
                 <div id="notification-dd-content" class="CNS-notification-dropdown-content">
-                    <div class="CNS-notifiction-div"></div>
-                    <div class="CNS-notifiction-div"></div>
-                    <div class="CNS-notifiction-div"></div>
-                    <div class="CNS-notifiction-div"></div>
-                    <div class="CNS-notifiction-div"></div>
-                    <div class="CNS-notifiction-div"></div>
-                    <div class="CNS-notifiction-div"></div>
-                    <div class="CNS-notifiction-div"></div>
-                    <div class="CNS-notifiction-div"></div>
                 </div>
             </div>
         </div>
@@ -70,14 +61,14 @@
             <i class="CNS-sidenav-link-icon fas fa-utensils"></i>
             <div class="CNS-sidenav-link-text">Meals</div>
         </div>
-        <div class="CNS-sidenav-link">
+        <div id="chat" class="CNS-sidenav-link">
             <i class="CNS-sidenav-link-icon fas fa-comments"></i>
             <div class="CNS-sidenav-link-text">Chat</div>
         </div>
     </div>
-    <a href="/" class="CNS-sidenav-logout-link">
+    <div id="logout" class="CNS-sidenav-logout-link">
         <i class="CNS-sidenav-link-icon fas fa-sign-out-alt"></i>
         <div class="CNS-sidenav-link-text">LOG OUT</div>
-    </a>
+    </div>
 </div>
 <script src="/js/coachNavbarSidebar.js"></script>

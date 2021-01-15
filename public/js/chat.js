@@ -32,7 +32,6 @@ $(document).ready(async ()=> {
 
 
 	socket.on('message', (message) => {
-		console.log(message);
 		$('#messages').append(`<div class="message"><p><span class="message__name">${message.username} </span><span class="message__meta">${moment(message.createdAt).format('h:mm a')}</span></p><p>${message.text} </p></div>`);
 		autoscroll();
 	});

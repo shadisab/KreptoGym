@@ -90,7 +90,7 @@
     background-color: white;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 300px 300px;
+    grid-template-rows: repeat(2, 1fr);
 }
 
 .CC-footer {
@@ -102,8 +102,8 @@
 
 .CC-client-card{
     background-color: transparent;
-    width: 50%;
-    height: 50%;
+    width: 90%;
+    height: 90%;
     align-self: center;
     justify-self: center;
     cursor: pointer;

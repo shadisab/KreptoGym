@@ -107,6 +107,39 @@ router.get('/coachs/client/nutrition/:id', authCoach, async (req, res) => {
 	}
 });
 
+// GET specific client TrainingSchedule
+router.get('/coachs/client/:id', authCoach, async (req, res) => {
+	try {
+		const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
+		if (!client) {
+			throw new Error('Cant Find client');
+		}else{
+			res.status(200).send(client);
+		}
+	}
+	catch (e) {
+		res.status(400).send(e.message);
+	}
+
+});
+
+// Post TrainingSchedule for a client
+router.post('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) => {
+	try {
+		const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
+		if (!client) {
+			return res.status(404).send('Cant Find client');
+		}
+		client.trainingSchedule[req.body.day][req.body.type].push(req.body.data);
+		await client.save();
+		
+		res.send(client);
+	} catch (e) {
+		console.log(e);
+		res.status(400).send(e.message);
+	}
+});
+
 // GET client TrainingSchedule
 router.get('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) => {
 	const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
@@ -117,53 +150,54 @@ router.get('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) =>
 });
 
 // Updating Nutrition for a client
-router.patch('/coachs/client/nutrition/:id', authCoach, async (req, res) => {
-	const allowerdUpdates = ['protine', 'carbs', 'fats', 'notes', 'calories'];
-	const updates = Object.keys(req.body);
-	const isValidOperation = updates.every((update) => allowerdUpdates.includes(update));
-	if (!isValidOperation) {
-		return res.status(400).send({ error: 'Invalid updates!' });
-	}
+// router.patch('/coachs/client/nutrition/:id', authCoach, async (req, res) => {
+// 	const allowerdUpdates = ['protine', 'carbs', 'fats', 'notes', 'calories'];
+// 	const updates = Object.keys(req.body);
+// 	const isValidOperation = updates.every((update) => allowerdUpdates.includes(update));
+// 	if (!isValidOperation) {
+// 		return res.status(400).send({ error: 'Invalid updates!' });
+// 	}
 
-	try {
-		const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
-		if (!client) {
-			return res.status(404).send('Cant Find client');
-		}
-		updates.forEach((update) => client.nutrition[update] = req.body[update]);// Dynamic update
-		await client.save();
-		await sendmsg(client.email, 'A new updates', `Hey ${client.name},\nwe are happy to let you know that your coach has been made some updates to your nutrition values,\nplease check it for better results.\nKrepto Gym team.`);
-		res.send(client.nutrition);
-	} catch (e) {
-		console.log(e);
-		res.status(400).send(e);
-	}
-});
+// 	try {
+// 		const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
+// 		if (!client) {
+// 			return res.status(404).send('Cant Find client');
+// 		}
+// 		updates.forEach((update) => client.nutrition[update] = req.body[update]);// Dynamic update
+// 		await client.save();
+// 		await sendmsg(client.email, 'A new updates', `Hey ${client.name},\nwe are happy to let you know that your coach has been made some updates to your nutrition values,\nplease check it for better results.\nKrepto Gym team.`);
+// 		res.send(client.nutrition);
+// 	} catch (e) {
+// 		console.log(e);
+// 		res.status(400).send(e);
+// 	}
+// });
+
 
 // Updating TrainingSchedule for a client
-router.patch('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) => {
+// router.patch('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) => {
 
-	const updates = Object.keys(req.body);
-	const allowerdUpdates = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-	const isValidOperation = updates.every((update) => allowerdUpdates.includes(update));
-	if (!isValidOperation) {
-		return res.status(400).send({ error: 'Invalid updates!' });
-	}
+// 	const updates = Object.keys(req.body);
+// 	const allowerdUpdates = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+// 	const isValidOperation = updates.every((update) => allowerdUpdates.includes(update));
+// 	if (!isValidOperation) {
+// 		return res.status(400).send({ error: 'Invalid updates!' });
+// 	}
 
-	try {
-		const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
-		if (!client) {
-			return res.status(404).send('Cant Find client');
-		}
-		updates.forEach((update) => client.trainingSchedule[update] = req.body[update]);// Dynamic update
-		await client.save();
+// 	try {
+// 		const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
+// 		if (!client) {
+// 			return res.status(404).send('Cant Find client');
+// 		}
+// 		updates.forEach((update) => client.trainingSchedule[update] = req.body[update]);// Dynamic update
+// 		await client.save();
 
-		res.send(client.nutrition);
-	} catch (e) {
-		console.log(e);
-		res.status(400).send(e);
-	}
-});
+// 		res.send(client.nutrition);
+// 	} catch (e) {
+// 		console.log(e);
+// 		res.status(400).send(e);
+// 	}
+// });
 
 
 // GET Coach profile
@@ -195,9 +229,9 @@ router.get('/coaches/myClients', authCoach, async (req, res) => {
 	await req.coach.populate({
 		path: 'myClients',
 		match,
-		options:{
-			limit:6,
-			skip:parseInt(req.query.skip)
+		options: {
+			limit: 6,
+			skip: parseInt(req.query.skip)
 		}
 	}).execPopulate();
 	res.send(req.coach.myClients);

@@ -14,23 +14,23 @@
     <div class="CSU-main-window">
         <div class="CSU-inner-window">
             <div class="CSU-schedule-outer-div">
-                <img class="CSU-client-profile-picture" src="/images/f0a64e32194d341befecc80458707565.jpg" />
+                <img id="image" class="CSU-client-profile-picture"/>
                 <div class="CSU-schedule-client-profile">
                     <div class="CSU-client-name-div">
-                        <div class="CSU-client-name">Kate Upton</div>
+                        <div id="name" class="CSU-client-name"></div>
                     </div>
                     <div class="CSU-client-info">
                         <div class="CSU-client-info-text-div">
                             <div class="CSU-client-info-text-title" style="margin-left: 50px;">Age:</div>
-                            <div class="CSU-client-info-text">27</div>
+                            <div id="age" class="CSU-client-info-text" ></div>
                         </div>
                         <div class="CSU-client-info-text-div">
                             <div class="CSU-client-info-text-title" style="margin-left: 150px;">Height:</div>
-                            <div class="CSU-client-info-text">160</div>
+                            <div id="height" class="CSU-client-info-text"></div>
                         </div>
                         <div class="CSU-client-info-text-div">
                             <div class="CSU-client-info-text-title" style="margin-left: 245px;">Weight:</div>
-                            <div class="CSU-client-info-text">60</div>
+                            <div id="weight" class="CSU-client-info-text"></div>
                         </div>
                     </div>
                     <div class="CSU-client-msg">
@@ -45,81 +45,15 @@
                         <div class="CSU-day-outer-div">
                             <div class="CSU-day-bar-div" style="border-top: #333 1px solid;">
                                 <div class="CSU-day-name">Sunday</div>
-                                <div id="sunday-add-exercise-btn" class="CSU-day-add-exercise-icon fas"></div>
+                                <div id="sunday" class="CSU-day-add-exercise-icon fas"></div>
                                 <i id="sunday-open-icon" class="CSU-day-dropdown-icon fas fa-caret-down"></i>
                             </div>
-                            <div id="sunday-exercises-div" class="CSU-day-exercises">
-                                <div class="CSU-exercise">
-                                    <div class="CSU-exercise-img-div">
-                                        <img class="CSU-exercise-img" src="/images/weight.png" />
-                                    </div>
-                                    <div class="CSU-exercise-info">
-                                        <div class="CSU-exercise-info-row-div">
-                                            <div class="CSU-exercise-info-piece-div">
-                                                <div class="CSU-exercise-info-piece-title">Exercise:</div>
-                                                <div class="CSU-exercise-info-piece">Chest muscles</div>
-                                            </div>
-                                            <div class="CSU-exercise-info-piece-div" style="left: 40%;">
-                                                <div class="CSU-exercise-info-piece-title">Reps:</div>
-                                                <div class="CSU-exercise-info-piece">45</div>
-                                            </div>
-                                            <div class="CSU-exercise-info-piece-div" style="right: 10px;">
-                                                <div class="CSU-exercise-info-piece-title">Recommended weight:</div>
-                                                <div class="CSU-exercise-info-piece">20</div>
-                                                <div class="CSU-exercise-info-piece">Kg</div>
-                                            </div>
-                                        </div>
-                                        <div class="CSU-exercise-info-row-div">
-                                            <div class="CSU-exercise-info-piece-title">Description:</div>
-                                            <div class="CSU-exercise-info-piece">Pictures, abstract symbols, materials, and colors are among the ingredients with which a designer or engineer works Pictures, abstract symbols, materials, and colors are among the ingredients</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="CSU-exercise">
-                                    <div class="CSU-exercise-img-div">
-                                        <img class="CSU-exercise-img" src="/images/treadmill.png" />
-                                    </div>
-                                    <div class="CSU-exercise-info">
-                                        <div class="CSU-exercise-info-row-div">
-                                            <div class="CSU-exercise-info-piece-div">
-                                                <div class="CSU-exercise-info-piece-title">Exercise:</div>
-                                                <div class="CSU-exercise-info-piece">Treadmill running</div>
-                                            </div>
-                                            <div class="CSU-exercise-info-piece-div" style="left: 40%;">
-                                                <div class="CSU-exercise-info-piece-title">Exercise time:</div>
-                                                <div class="CSU-exercise-info-piece">20</div>
-                                                <div class="CSU-exercise-info-piece" style="margin-left: 5px;">Minutes</div>
-                                            </div>
-                                        </div>
-                                        <div class="CSU-exercise-info-row-div">
-                                            <div class="CSU-exercise-info-piece-title">Description:</div>
-                                            <div class="CSU-exercise-info-piece">Pictures, abstract symbols, materials, and colors are among the ingredients with which a designer or engineer works Pictures, abstract symbols, materials, and colors are among the ingredients</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="CSU-exercise">
-                                    <div class="CSU-exercise-img-div">
-                                        <i class="CSU-exercise-img-icon fas fa-walking"></i>
-                                    </div>
-                                    <div class="CSU-exercise-info">
-                                        <div class="CSU-exercise-info-row-div">
-                                            <div class="CSU-exercise-info-piece-div">
-                                                <div class="CSU-exercise-info-piece-title">Exercise:</div>
-                                                <div class="CSU-exercise-info-piece">Stretching</div>
-                                            </div>
-                                        </div>
-                                        <div class="CSU-exercise-info-row-div">
-                                            <div class="CSU-exercise-info-piece-title">Description:</div>
-                                            <div class="CSU-exercise-info-piece">Pictures, abstract symbols, materials, and colors are among the ingredients with which a designer or engineer works Pictures, abstract symbols, materials, and colors are among the ingredients</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div id="sunday-exercises-div" class="CSU-day-exercises"></div>
                         </div>
                         <div class="CSU-day-outer-div">
                             <div class="CSU-day-bar-div" style="border-top: #333 1px solid;">
                                 <div class="CSU-day-name">Monday</div>
-                                <div id="monday-add-exercise-btn" class="CSU-day-add-exercise-icon fas"></div>
+                                <div id="monday" class="CSU-day-add-exercise-icon fas"></div>
                                 <i id="monday-open-icon" class="CSU-day-dropdown-icon fas fa-caret-down"></i>
                             </div>
                             <div id="monday-exercises-div" class="CSU-day-exercises">
@@ -129,7 +63,7 @@
                         <div class="CSU-day-outer-div">
                             <div class="CSU-day-bar-div" style="border-top: #333 1px solid;">
                                 <div class="CSU-day-name">Tuesday</div>
-                                <div id="tuesday-add-exercise-btn" class="CSU-day-add-exercise-icon fas"></div>
+                                <div id="tuesday" class="CSU-day-add-exercise-icon fas"></div>
                                 <i id="tuesday-open-icon" class="CSU-day-dropdown-icon fas fa-caret-down"></i>
                             </div>
                             <div id="tuesday-exercises-div" class="CSU-day-exercises">
@@ -139,7 +73,7 @@
                         <div class="CSU-day-outer-div">
                             <div class="CSU-day-bar-div" style="border-top: #333 1px solid;">
                                 <div class="CSU-day-name">Wednesday</div>
-                                <div id="wednesday-add-exercise-btn" class="CSU-day-add-exercise-icon fas"></div>
+                                <div id="wednesday" class="CSU-day-add-exercise-icon fas"></div>
                                 <i id="wednesday-open-icon" class="CSU-day-dropdown-icon fas fa-caret-down"></i>
                             </div>
                             <div id="wednesday-exercises-div" class="CSU-day-exercises">
@@ -149,7 +83,7 @@
                         <div class="CSU-day-outer-div">
                             <div class="CSU-day-bar-div" style="border-top: #333 1px solid;">
                                 <div class="CSU-day-name">Thursday</div>
-                                <div id="thursday-add-exercise-btn" class="CSU-day-add-exercise-icon fas"></div>
+                                <div id="thursday" class="CSU-day-add-exercise-icon fas"></div>
                                 <i id="thursday-open-icon" class="CSU-day-dropdown-icon fas fa-caret-down"></i>
                             </div>
                             <div id="thursday-exercises-div" class="CSU-day-exercises">
@@ -159,7 +93,7 @@
                         <div class="CSU-day-outer-div">
                             <div class="CSU-day-bar-div" style="border-top: #333 1px solid;">
                                 <div class="CSU-day-name">Friday</div>
-                                <div id="friday-add-exercise-btn" class="CSU-day-add-exercise-icon fas"></div>
+                                <div id="friday" class="CSU-day-add-exercise-icon fas"></div>
                                 <i id="friday-open-icon" class="CSU-day-dropdown-icon fas fa-caret-down"></i>
                             </div>
                             <div id="friday-exercises-div" class="CSU-day-exercises">
@@ -169,7 +103,7 @@
                         <div class="CSU-day-outer-div">
                             <div class="CSU-day-bar-div" style="border-top: #333 1px solid;">
                                 <div class="CSU-day-name">Saturday</div>
-                                <div id="saturday-add-exercise-btn" class="CSU-day-add-exercise-icon fas"></div>
+                                <div id="saturday" class="CSU-day-add-exercise-icon fas"></div>
                                 <i id="saturday-open-icon" class="CSU-day-dropdown-icon fas fa-caret-down"></i>
                             </div>
                             <div id="saturday-exercises-div" class="CSU-day-exercises">
@@ -204,38 +138,36 @@
                                                     <i class="CSU-add-exercise-Icon fas fa-dumbbell"></i>
                                                 </div>
                                                 <div class="CSU-add-exercise-Inputdiv">
-                                                    <input class="CSU-add-exercise-input100" type="text"
-                                                        id="new-password" />
+                                                    <input id="muscleExerciseName" class="CSU-add-exercise-input100" type="text"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="CSU-flex-in-row-div">
                                             <div class="CSU-add-exercise-field-item-in-row">
                                                 <div class="CSU-add-exercise-InputLabeldiv">
-                                                    <span class="CSU-add-exercise-label-input100">Number of reps</span>
+                                                    <span class="CSU-add-exercise-label-input100">Number of sets</span>
                                                 </div>
                                                 <div class="CSU-add-exercise-Inputandicondiv">
                                                     <div class="CSU-add-exercise-Icondiv-in-row">
                                                         <i class="CSU-add-exercise-Icon fas fa-hashtag"></i>
                                                     </div>
                                                     <div class="CSU-add-exercise-Inputdiv">
-                                                        <input class="CSU-add-exercise-numberinput100" type="number"
-                                                            min="0" maxlength="3" id="new-password" />
+                                                        <input id="numberOfsets" class="CSU-add-exercise-numberinput100" type="number"
+                                                            min="0" max="999"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="CSU-add-exercise-field-item-in-row" style="margin-left: 10%;">
                                                 <div class="CSU-add-exercise-InputLabeldiv">
-                                                    <span class="CSU-add-exercise-label-input100">Recommended
-                                                        weight</span>
+                                                    <span class="CSU-add-exercise-label-input100">Recommended weight</span>
                                                 </div>
                                                 <div class="CSU-add-exercise-Inputandicondiv">
                                                     <div class="CSU-add-exercise-Icondiv-in-row">
                                                         <i class="CSU-add-exercise-Icon fas fa-weight-hanging"></i>
                                                     </div>
                                                     <div class="CSU-add-exercise-Inputdiv">
-                                                        <input class="CSU-add-exercise-numberinput100" type="number"
-                                                            min="0" maxlength="3" id="new-password" />
+                                                        <input id="RecommendedWeight" class="CSU-add-exercise-numberinput100" type="number"
+                                                            min="0" max="999"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -246,7 +178,7 @@
                                             </div>
                                             <div class="CSU-add-exercise-Inputandicondiv">
                                                 <div class="CSU-add-exercise-Inputdiv">
-                                                    <textarea class="CSU-add-exercise-description-input100"></textarea>
+                                                    <textarea id="muscleDes" class="CSU-add-exercise-description-input100"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -263,23 +195,20 @@
                                                     <i class="CSU-add-exercise-Icon fas fa-dumbbell"></i>
                                                 </div>
                                                 <div class="CSU-add-exercise-Inputdiv">
-                                                    <input class="CSU-add-exercise-input100" type="text"
-                                                        id="new-password" />
+                                                    <input id="cardioExerciseName" class="CSU-add-exercise-input100" type="text"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="CSU-add-exercise-field-item">
                                             <div class="CSU-add-exercise-InputLabeldiv">
-                                                <span class="CSU-add-exercise-label-input100">Exercise time in
-                                                    minutes</span>
+                                                <span class="CSU-add-exercise-label-input100">Exercise time in minutes</span>
                                             </div>
                                             <div class="CSU-add-exercise-Inputandicondiv">
                                                 <div class="CSU-add-exercise-Icondiv">
                                                     <i class="CSU-add-exercise-Icon fas fa-clock"></i>
                                                 </div>
                                                 <div class="CSU-add-exercise-Inputdiv">
-                                                    <input class="CSU-add-exercise-numberinput100" type="number"
-                                                        id="new-password" />
+                                                    <input id="cardioTime" class="CSU-add-exercise-numberinput100" type="number"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -289,7 +218,7 @@
                                             </div>
                                             <div class="CSU-add-exercise-Inputandicondiv">
                                                 <div class="CSU-add-exercise-Inputdiv">
-                                                    <textarea class="CSU-add-exercise-description-input100"></textarea>
+                                                    <textarea id="cardioDes" class="CSU-add-exercise-description-input100"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -306,8 +235,7 @@
                                                     <i class="CSU-add-exercise-Icon fas fa-dumbbell"></i>
                                                 </div>
                                                 <div class="CSU-add-exercise-Inputdiv">
-                                                    <input class="CSU-add-exercise-input100" type="text"
-                                                        id="new-password" />
+                                                    <input id="stretchesExerciseName" class="CSU-add-exercise-input100" type="text"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -317,8 +245,7 @@
                                             </div>
                                             <div class="CSU-add-exercise-Inputandicondiv">
                                                 <div class="CSU-add-exercise-Inputdiv">
-                                                    <textarea
-                                                        class="CSU-add-other-exercise-description-input100"></textarea>
+                                                    <textarea id="stretchesDes" class="CSU-add-other-exercise-description-input100"></textarea>
                                                 </div>
                                             </div>
                                         </div>

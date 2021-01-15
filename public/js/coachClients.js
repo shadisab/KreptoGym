@@ -8,7 +8,6 @@ $(document).ready(async () => {
 		referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
 	});
 	MyClients.json().then((data) => {
-		console.log(data);
 		$('#back').hide();
 		data.forEach((client) => {
 			$('.CC-clients-DIV').append(

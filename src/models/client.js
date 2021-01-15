@@ -34,7 +34,7 @@ const clientSchema = new mongoose.Schema({
 			}
 		}
 	},
-	status:{
+	status: {
 		type: String,
 		default: 'pending'
 	},
@@ -96,70 +96,153 @@ const clientSchema = new mongoose.Schema({
 		}
 	},
 	profilePic: {
-		type: Buffer,
-		// required: true
+		type: Buffer
 	},
 	trainingSchedule: {
 		sunday: {
-			type: String,
-			trim: true,
-			default: 'Rest day'
+			Muscle: [{
+				Exercise_name: { type: String, trim: true },
+				Number_of_reps: { type: String, trim: true },
+				Recommended_weight: { type: String, trim: true },
+				Description: { type: String, trim: true }
+			}],
+			Cardio: [{
+				Exercise_name: { type: String, trim: true },
+				Exercise_time_in_minutes: { type: String, trim: true },
+				Description: { type: String, trim: true }
+			}],
+			Stretches: [{ 
+				Exercise_name: { type: String, trim: true },
+				Description: { type: String, trim: true } 
+			}]
 		},
 		monday: {
-			type: String,
-			trim: true,
-			default: 'Rest day'
+			Muscle: [{
+				Exercise_name: { type: String, trim: true },
+				Number_of_reps: { type: String, trim: true },
+				Recommended_weight: { type: String, trim: true },
+				Description: { type: String, trim: true }
+			}],
+			Cardio: [{
+				Exercise_name: { type: String, trim: true },
+				Exercise_time_in_minutes: { type: String, trim: true },
+				Description: { type: String, trim: true }
+			}],
+			Stretches:[ { 
+				Exercise_name: { type: String, trim: true },
+				Description: { type: String, trim: true } 
+			}]
 		},
 		tuesday: {
-			type: String,
-			trim: true,
-			default: 'Rest day'
+			Muscle: [{
+				Exercise_name: { type: String, trim: true },
+				Number_of_reps: { type: String, trim: true },
+				Recommended_weight: { type: String, trim: true },
+				Description: { type: String, trim: true }
+			}],
+			Cardio: [{
+				Exercise_name: { type: String, trim: true },
+				Exercise_time_in_minutes: { type: String, trim: true },
+				Description: { type: String, trim: true }
+			}],
+			Stretches: [{ 
+				Exercise_name: { type: String, trim: true },
+				Description: { type: String, trim: true } 
+			}]
 		},
 		wednesday: {
-			type: String,
-			trim: true,
-			default: 'Rest day'
+			Muscle: [{
+				Exercise_name: { type: String, trim: true },
+				Number_of_reps: { type: String, trim: true },
+				Recommended_weight: { type: String, trim: true },
+				Description: { type: String, trim: true }
+			}],
+			Cardio: [{
+				Exercise_name: { type: String, trim: true },
+				Exercise_time_in_minutes: { type: String, trim: true },
+				Description: { type: String, trim: true }
+			}],
+			Stretches: [{ 
+				Exercise_name: { type: String, trim: true },
+				Description: { type: String, trim: true } 
+			}]
 		},
 		thursday: {
-			type: String,
-			trim: true,
-			default: 'Rest day'
+			Muscle: [{
+				Exercise_name: { type: String, trim: true },
+				Number_of_reps: { type: String, trim: true },
+				Recommended_weight: { type: String, trim: true },
+				Description: { type: String, trim: true }
+			}],
+			Cardio: [{
+				Exercise_name: { type: String, trim: true },
+				Exercise_time_in_minutes: { type: String, trim: true },
+				Description: { type: String, trim: true }
+			}],
+			Stretches: [{ 
+				Exercise_name: { type: String, trim: true },
+				Description: { type: String, trim: true } 
+			}]
 		},
 		friday: {
-			type: String,
-			trim: true,
-			default: 'Rest day'
+			Muscle: [{
+				Exercise_name: { type: String, trim: true },
+				Number_of_reps: { type: String, trim: true },
+				Recommended_weight: { type: String, trim: true },
+				Description: { type: String, trim: true }
+			}],
+			Cardio: [{
+				Exercise_name: { type: String, trim: true },
+				Exercise_time_in_minutes: { type: String, trim: true },
+				Description: { type: String, trim: true }
+			}],
+			Stretches: [{ 
+				Exercise_name: { type: String, trim: true },
+				Description: { type: String, trim: true } 
+			}]
 		},
 		saturday: {
-			type: String,
-			trim: true,
-			default: 'Rest day'
+			Muscle: [{
+				Exercise_name: { type: String, trim: true },
+				Number_of_reps: { type: String, trim: true },
+				Recommended_weight: { type: String, trim: true },
+				Description: { type: String, trim: true }
+			}],
+			Cardio: [{
+				Exercise_name: { type: String, trim: true },
+				Exercise_time_in_minutes: { type: String, trim: true },
+				Description: { type: String, trim: true }
+			}],
+			Stretches: [{ 
+				Exercise_name: { type: String, trim: true },
+				Description: { type: String, trim: true } 
+			}]
 		}
 	},
-	nutrition: {
-		protine: {
-			type: Number,
-			default: 0
-		},
-		carbs: {
-			type: Number,
-			default: 0
+	// nutrition: {
+	// 	protine: {
+	// 		type: Number,
+	// 		default: 0
+	// 	},
+	// 	carbs: {
+	// 		type: Number,
+	// 		default: 0
 
-		},
-		fats: {
-			type: Number,
-			default: 0
-		},
-		calories: {
-			type: Number,
-			default: 0
-		},
-		notes: {
-			type: String,
-			trim: true,
-			default: 'Still dont have notes ...'
-		}
-	},
+	// 	},
+	// 	fats: {
+	// 		type: Number,
+	// 		default: 0
+	// 	},
+	// 	calories: {
+	// 		type: Number,
+	// 		default: 0
+	// 	},
+	// 	notes: {
+	// 		type: String,
+	// 		trim: true,
+	// 		default: 'Still dont have notes ...'
+	// 	}
+	// },
 	tokens: [{  //value always provided by the server
 		token: {
 			type: String,

@@ -1,0 +1,151 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('/fonts/poppins.regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('/fonts/poppins.medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('/fonts/poppins.bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('/fonts/poppins.semibold.ttf');
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    font-size: 14px;
+    user-select: none;
+}
+
+
+.clientH-maindiv{
+    height: 91.04%;
+    width: 100%;
+}
+
+.clientH-picture-slider{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.clientH-slide{
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    overflow: hidden;
+}
+
+.clientH-bckground-picture{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    background-repeat: no-repeat;
+}
+
+.display-none{
+    display: none;
+}
+
+.clientH-Section{
+    width: 100%;
+    height: 100%;
+}
+
+.title1{
+    color: white;
+    font-family: Poppins-Bold;
+    font-size: 100px;
+    line-height: 1;
+    position: absolute;
+    left: 55%;
+    top: 10%;
+    text-shadow: 2px 2px 5px black;
+}
+
+.text1{
+    color: white;
+    font-family: Poppins-Regular;
+    font-size: 50px;
+    position: absolute;
+    left: 55%;
+    top: 25%;
+    text-shadow: 2px 2px 5px black;
+}
+
+.title2{
+    color: black;
+    font-family: Poppins-Bold;
+    font-size: 100px;
+    line-height: 1;
+    position: absolute;
+    left: 5%;
+    top: 35%;
+    text-shadow: 2px 2px 5px black;
+}
+
+.text2{
+    color: black;
+    font-family: Poppins-Regular;
+    font-size: 50px;
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    text-shadow: 2px 2px 5px black;
+}
+
+.title3{
+    color: white;
+    font-family: Poppins-Bold;
+    font-size: 100px;
+    line-height: 1;
+    position: absolute;
+    left: 55%;
+    top: 25%;
+    text-shadow: 2px 2px 5px black;
+}
+
+.text3{
+    color: white;
+    font-family: Poppins-Regular;
+    font-size: 50px;
+    position: absolute;
+    left: 55%;
+    top: 40%;
+    line-height: 1.3;
+    text-shadow: 2px 2px 5px black;
+}
+
+.title4{
+    color: black;
+    font-family: Poppins-Bold;
+    font-size: 100px;
+    line-height: 1;
+    position: absolute;
+    left: 5%;
+    top: 10%;
+    text-shadow: 2px 2px 5px black;
+}
+
+.text4{
+    color: black;
+    font-family: Poppins-Regular;
+    font-size: 50px;
+    position: absolute;
+    left: 5%;
+    top: 25%;
+    text-shadow: 2px 2px 5px black;
+}

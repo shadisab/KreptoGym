@@ -1,86 +1,349 @@
-.CS-Schedule-DIV {
-    width: 100%;
-    height: 70%;
-    border-bottom: rgb(207, 185, 151) 1px solid;
-    cursor: default;
-}
-
-.CS-Nutritions-msg-DIV {
-    width: 100%;
-    height: 30%;
-    display: flex;
-    flex-direction: row;
-}
-
-.CS-Daily-Training-Text {
-    width: 90%;
-    height: 84%;
-    margin-top: 7px;
-    border: 1px solid rgb(207, 185, 151);
+@font-face {
     font-family: Poppins-Regular;
-    background-color: black;
+    src: url('/fonts/poppins.regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('/fonts/poppins.medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('/fonts/poppins.bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('/fonts/poppins.semibold.ttf');
+}
+
+.clientSchedule-body {
+    background-color: white;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
     font-size: 14px;
-    color: white;
-    outline: none;
-    cursor: default;
-    overflow-y: auto;
+    user-select: none;
 }
 
-.CS-Msg-Text {
-    width: 94%;
-    height: 84%;
-    outline: none;
-    cursor: default;
-    border: 1px solid rgb(207, 185, 151);
-    font-family: Poppins-Regular;
-    font-size: 14px;
-    color: white;
-    background-color: black;
-    border-bottom-right-radius: 26px;
-    overflow-y: auto;
-}
-
-.CS-Nutrition-item-value {
-    color: white;
-    font-family: Poppins-Regular;
-    margin-left: 10px;
-}
-
-.CS-msg-DIV {
-    height: 82%;
+.clientSchedule-mainWindow {
+    height: 91.04%;
     width: 100%;
-    border: rgb(207, 185, 151) 1px solid;
-    border-bottom-right-radius: 26px;
-    border-left: 0;
-    border-right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.CS-Nutritions-DIV {
-    height: 82%;
+.clientSchedule-innerWindow {
+    height: 90%;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+}
+
+.clientSchedule-training-Schedule-div {
+    height: 100%;
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.clientSchedule-training-Schedule-inner-div{
+    width: 98%;
+    height: 95%;
+    border: 1px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #333;
+    position: relative;
+}
+
+.clientSchedule-training-Schedule-day-change-btn-left{
+    color: white;
+    font-size: 50px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.clientSchedule-training-Schedule-day-change-btn-right{
+    color: white;
+    font-size: 50px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.clientSchedule-training-Schedule-day-div{
     width: 100%;
-    border: rgb(207, 185, 151) 1px solid;
-    border-bottom-left-radius: 26px;
-    border-left: 0;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+}
+
+.clientSchedule-training-Schedule-day-view-div{
+    height: 15%;
+    width: 100%;
+    border-bottom: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clientSchedule-training-Schedule-day-view{
+    color: white;
+    font-size: 50px;
+    font-family: Poppins-Medium;
+}
+
+.clientSchedule-other-activites-div {
+    height: 100%;
+    width: 25%;
     display: flex;
     flex-direction: column;
 }
 
-.CS-cal-item {
+.clientSchedule-activity-card-div {
+    height: 50%;
     width: 100%;
-    height: 100%;
+    perspective: 1000px;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
 }
 
-.CS-cal-title {
+.clientSchedule-activity-card-inner {
+    position: relative;
+    cursor: pointer;
+    width: 90%;
+    height: 90%;
+    transition: transform 0.6s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.clientSchedule-activity-card-title-icon-div{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    bottom: 0;
+    width: 100%;
+    height: 25%;
+    background-color: rgba(51, 51, 51,0.7);
+    transition: 0.3s;
+}
+
+.clientSchedule-activity-card-icon-div{
+    height: 100%;
+    width: 20%;
+    background-color: rgb(8, 235, 204);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clientSchedule-activity-card-icon{
+    font-size: 20px;
+    color: white;
+}
+
+.clientSchedule-activity-card-title-div{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.clientSchedule-activity-card-title {
+    color: white;
+    font-size: 20px;
+    font-family: Poppins-Regular;
+    margin-left: 5%;
+}
+
+.clientSchedule-activity-card-text{
+    color: white;
+    display: none;
+    opacity: 0;
+    font-size: 14px;
+    font-family: Poppins-Regular;
+    margin-left: 5%;
+}
+
+.clientSchedule-activity-card{
+    background-color: #bbb;
+    color: black;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.clientSchedule-activity-card-photo {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.clientSchedule-activity-card1-text {
+    color: white;
+    font-size: 15px;
+    font-family: Poppins-Regular;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.6), 2px 2px 1px rgba(0, 0, 0, 0.5), 0px 0px 1px rgba(0, 0, 0, .2);
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+}
+
+.clientSchedule-activity-card2-title {
+    color: white;
+    font-size: 30px;
+    font-family: Poppins-Regular;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.6), 2px 2px 1px rgba(0, 0, 0, 0.5), 0px 0px 1px rgba(0, 0, 0, .2);
+    position: absolute;
+    left: 10%;
+    top: 10%;
+}
+
+.clientSchedule-activity-card2-text {
+    color: white;
+    font-size: 15px;
+    font-family: Poppins-Regular;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.6), 2px 2px 1px rgba(0, 0, 0, 0.5), 0px 0px 1px rgba(0, 0, 0, .2);
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+}
+
+.display-flex{
+    display: flex;
+}
+
+.clientSchedule-day-exercises{
+    width: 95%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.clientSchedule-day-exercises::-webkit-scrollbar {
+    width: 14px;
+    position: absolute;
+}
+
+.clientSchedule-day-exercises::-webkit-scrollbar-track {
+    background: #555;
+    transition: 0.5s;
+}
+
+.clientSchedule-day-exercises::-webkit-scrollbar-thumb {
+    background-color: #BBB;
+    height: 20%;
+    border-radius: 20px;
+}
+
+.clientSchedule-day-exercises-div{
+    width: 100%;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clientSchedule-empty-exercises-msg{
+    position: absolute;
+    top: 45%;
+    left: 40%;
+    color: black;
+    opacity: 0.6;
+    font-family: Poppins-Regular;
+    font-size: 20px;
+}
+
+.clientSchedule-day-exercises-div-inner{
+    width: 95%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white ;
+}
+
+.CSU-exercise {
+    flex: 0 0 auto;
+    width: 99.9%;
+    height: 40%;
+    display: flex;
+    flex-direction: row;
+    background-color: #555;
+    border-right: 1px solid rgba(255, 255, 255, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.CSU-exercise-img-div{
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CSU-exercise-img{
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.CSU-exercise-img-icon{
+    font-size: 30px;
+    color: rgb(0, 185, 0);
+}
+
+.CSU-exercise-info{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.CSU-exercise-info-row-div{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+    position: relative;
+}
+
+.CSU-exercise-info-piece-div{
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
+
+.CSU-exercise-info-piece-title{
+    color: #CFB997;
+    font-family: Poppins-Regular;
+    font-size: 20px;
+    margin-right: 15px;
+    line-height: 0.7;
+}
+
+.CSU-exercise-info-piece{
     color: white;
     font-family: Poppins-Regular;
-    display: flex;
-    align-items: flex-end;
-    font-size: 30px;
+    font-size: 15px;
+    line-height: 1.2;
 }

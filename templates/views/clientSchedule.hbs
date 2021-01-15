@@ -2,133 +2,251 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="./css/coachScheduleUpdate.css">
-    <link rel="stylesheet" href="./css/clientSchedule.css">
-    {{>links}}
+    <link rel="stylesheet" href="/css/clientSchedule.css">
+    <link rel="stylesheet" href="/css/clientNavbarSidebar.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body>
-    <div class="Masking-DIV">
-        <div class="Masking-DIV-2">
-            <header>
-                <div class="icon-div-logo">
-                    <img class="header-logo-icon-img" src="/images/header-logo-icon.png" />
-                    <p class="logo-title">Krepto Gym</p>
-                </div>
-                <div class="links-DIV">
-                </div>
-                <div class="log-buttons-div">
-                    <a class="sign-log-btn-DIV" href="/clientProfile">Profile</a>
-                    <div class="dividing-slash">|</div>
-                    <a id="logout" class="sign-log-btn-DIV">Log out</a>
-                </div>
-            </header>
-            <div class="CSU-main-DIV">
-                <div class="CSU-Container-DIV">
-                    <div class="CS-Schedule-DIV">
-                        <div class="CSU-Days-DIV">
-                            <div class="CSU-Day-DIV">
-                                <div id="sun" class="CSU-Day-Num">1</div>
-                                <div class="CSU-Day-Name">Sunday</div>
-                            </div>
-                            <div class="CSU-Day-DIV CSU-Border-left">
-                                <div id="mon" class="CSU-Day-Num">2</div>
-                                <div class="CSU-Day-Name">Monday</div>
-                            </div>
-                            <div class="CSU-Day-DIV CSU-Border-left">
-                                <div id="tue" class="CSU-Day-Num">3</div>
-                                <div class="CSU-Day-Name">Tuesday</div>
-                            </div>
-                            <div class="CSU-Day-DIV CSU-Border-left">
-                                <div id="wed" class="CSU-Day-Num">4</div>
-                                <div class="CSU-Day-Name">Wednesday</div>
-                            </div>
-                            <div class="CSU-Day-DIV CSU-Border-left">
-                                <div id="thu" class="CSU-Day-Num">5</div>
-                                <div class="CSU-Day-Name">Thursday</div>
-                            </div>
-                            <div class="CSU-Day-DIV CSU-Border-left">
-                                <div id="fri" class="CSU-Day-Num">6</div>
-                                <div class="CSU-Day-Name">Friday</div>
-                            </div>
-                            <div class="CSU-Day-DIV CSU-Border-left">
-                                <div id="sat" class="CSU-Day-Num">7</div>
-                                <div class="CSU-Day-Name">Saturday</div>
-                            </div>
+<body class="clientSchedule-body">
+    {{>clientNavbarSidebar}}
+    <div class="clientSchedule-mainWindow">
+        <div class="clientSchedule-innerWindow">
+            <div class="clientSchedule-training-Schedule-div">
+                <div class="clientSchedule-training-Schedule-inner-div">
+                    <i id="schedule-left-btn"
+                        class="clientSchedule-training-Schedule-day-change-btn-left fas fa-chevron-left"></i>
+                    <i id="schedule-right-btn"
+                        class="clientSchedule-training-Schedule-day-change-btn-right fas fa-chevron-right"></i>
+                    <div id="day-sunday" class="clientSchedule-training-Schedule-day-div display-flex">
+                        <div class="clientSchedule-training-Schedule-day-view-div">
+                            <div class="clientSchedule-training-Schedule-day-view">Sunday</div>
                         </div>
-                        <div class="CSU-Training-Schedule-DIV">
-                            <div class="CSU-Training-Schedule-Day">
-                                <div class="CSU-Daily-Training-Title">Exercise</div>
-                                <textarea id="sunday" class="CS-Daily-Training-Text" style="resize: none;"
-                                    readonly></textarea>
-                            </div>
-                            <div class="CSU-Training-Schedule-Day CSU-Border-left">
-                                <div class="CSU-Daily-Training-Title">Exercise</div>
-                                <textarea id="monday" class="CS-Daily-Training-Text" style="resize: none;"
-                                    readonly></textarea>
-                            </div>
-                            <div class="CSU-Training-Schedule-Day CSU-Border-left">
-                                <div class="CSU-Daily-Training-Title">Exercise</div>
-                                <textarea id="tuesday" class="CS-Daily-Training-Text" style="resize: none;"
-                                    readonly></textarea>
-                            </div>
-                            <div class="CSU-Training-Schedule-Day CSU-Border-left">
-                                <div class="CSU-Daily-Training-Title">Exercise</div>
-                                <textarea id="wednesday" class="CS-Daily-Training-Text" style="resize: none;"
-                                    readonly></textarea>
-                            </div>
-                            <div class="CSU-Training-Schedule-Day CSU-Border-left">
-                                <div class="CSU-Daily-Training-Title">Exercise</div>
-                                <textarea id="thursday" class="CS-Daily-Training-Text" style="resize: none;"
-                                    readonly></textarea>
-                            </div>
-                            <div class="CSU-Training-Schedule-Day CSU-Border-left">
-                                <div class="CSU-Daily-Training-Title">Exercise</div>
-                                <textarea id="friday" class="CS-Daily-Training-Text" style="resize: none;"
-                                    readonly></textarea>
-                            </div>
-                            <div class="CSU-Training-Schedule-Day CSU-Border-left">
-                                <div class="CSU-Daily-Training-Title">Exercise</div>
-                                <textarea id="saturday" class="CS-Daily-Training-Text" style="resize: none;"
-                                    readonly></textarea>
+                        <div class="clientSchedule-day-exercises-div">
+                            <div class="clientSchedule-day-exercises-div-inner">
+                                <div id="sunday-exercises-div" class="clientSchedule-day-exercises">
+                                    <div class="CSU-exercise">
+                                        <div class="CSU-exercise-img-div">
+                                            <img class="CSU-exercise-img" src="/images/weight.png" />
+                                        </div>
+                                        <div class="CSU-exercise-info">
+                                            <div class="CSU-exercise-info-row-div">
+                                                <div class="CSU-exercise-info-piece-div">
+                                                    <div class="CSU-exercise-info-piece-title">Exercise:</div>
+                                                    <div class="CSU-exercise-info-piece">Chest muscles</div>
+                                                </div>
+                                                <div class="CSU-exercise-info-piece-div" style="left: 40%;">
+                                                    <div class="CSU-exercise-info-piece-title">Reps:</div>
+                                                    <div class="CSU-exercise-info-piece">45</div>
+                                                </div>
+                                                <div class="CSU-exercise-info-piece-div" style="right: 10px;">
+                                                    <div class="CSU-exercise-info-piece-title">Recommended weight:</div>
+                                                    <div class="CSU-exercise-info-piece">20</div>
+                                                    <div class="CSU-exercise-info-piece">Kg</div>
+                                                </div>
+                                            </div>
+                                            <div class="CSU-exercise-info-row-div">
+                                                <div class="CSU-exercise-info-piece-title">Description:</div>
+                                                <div class="CSU-exercise-info-piece">Pictures, abstract symbols,
+                                                    materials,
+                                                    and
+                                                    colors are among the ingredients with which a designer or engineer
+                                                    works
+                                                    Pictures, abstract symbols, materials, and colors are among the
+                                                    ingredients
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="CSU-exercise">
+                                        <div class="CSU-exercise-img-div">
+                                            <img class="CSU-exercise-img" src="/images/treadmill.png" />
+                                        </div>
+                                        <div class="CSU-exercise-info">
+                                            <div class="CSU-exercise-info-row-div">
+                                                <div class="CSU-exercise-info-piece-div">
+                                                    <div class="CSU-exercise-info-piece-title">Exercise:</div>
+                                                    <div class="CSU-exercise-info-piece">Treadmill running</div>
+                                                </div>
+                                                <div class="CSU-exercise-info-piece-div" style="left: 40%;">
+                                                    <div class="CSU-exercise-info-piece-title">Exercise time:</div>
+                                                    <div class="CSU-exercise-info-piece">20</div>
+                                                    <div class="CSU-exercise-info-piece" style="margin-left: 5px;">
+                                                        Minutes
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="CSU-exercise-info-row-div">
+                                                <div class="CSU-exercise-info-piece-title">Description:</div>
+                                                <div class="CSU-exercise-info-piece">Pictures, abstract symbols,
+                                                    materials,
+                                                    and colors are among the ingredients with which a designer or
+                                                    engineer
+                                                    works Pictures, abstract symbols, materials, and colors are among
+                                                    the
+                                                    ingredients</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="CSU-exercise">
+                                        <div class="CSU-exercise-img-div">
+                                            <i class="CSU-exercise-img-icon fas fa-walking"></i>
+                                        </div>
+                                        <div class="CSU-exercise-info">
+                                            <div class="CSU-exercise-info-row-div">
+                                                <div class="CSU-exercise-info-piece-div">
+                                                    <div class="CSU-exercise-info-piece-title">Exercise:</div>
+                                                    <div class="CSU-exercise-info-piece">Stretching</div>
+                                                </div>
+                                            </div>
+                                            <div class="CSU-exercise-info-row-div">
+                                                <div class="CSU-exercise-info-piece-title">Description:</div>
+                                                <div class="CSU-exercise-info-piece">Pictures, abstract symbols,
+                                                    materials,
+                                                    and colors are among the ingredients with which a designer or
+                                                    engineer
+                                                    works Pictures, abstract symbols, materials, and colors are among
+                                                    the
+                                                    ingredients</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="CSU-exercise">
+                                        <div class="CSU-exercise-img-div">
+                                            <i class="CSU-exercise-img-icon fas fa-walking"></i>
+                                        </div>
+                                        <div class="CSU-exercise-info">
+                                            <div class="CSU-exercise-info-row-div">
+                                                <div class="CSU-exercise-info-piece-div">
+                                                    <div class="CSU-exercise-info-piece-title">Exercise:</div>
+                                                    <div class="CSU-exercise-info-piece">Stretching</div>
+                                                </div>
+                                            </div>
+                                            <div class="CSU-exercise-info-row-div">
+                                                <div class="CSU-exercise-info-piece-title">Description:</div>
+                                                <div class="CSU-exercise-info-piece">Pictures, abstract symbols,
+                                                    materials,
+                                                    and colors are among the ingredients with which a designer or
+                                                    engineer
+                                                    works Pictures, abstract symbols, materials, and colors are among
+                                                    the
+                                                    ingredients</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="CS-Nutritions-msg-DIV">
-                        <div class="CSU-Nutritions-outer-DIV">
-                            <div class="CSU-Daily-Training-Title">Nutritions</div>
-                            <div class="CS-Nutritions-DIV">
-                                <div class="CSU-row">
-                                    <div class="CSU-Nutrition-item">
-                                        <div class="CSU-Nutrition-item-title">Proteins:</div>
-                                        <div id="protine" class="CS-Nutrition-item-value">0</div>
-                                        <div class="CSU-Nutrition-item-title CSU-margin-left">g</div>
-                                    </div>
-                                    <div class="CSU-Nutrition-item">
-                                        <div class="CSU-Nutrition-item-title">Fats:</div>
-                                        <div id="fats" class="CS-Nutrition-item-value">0</div>
-                                        <div class="CSU-Nutrition-item-title CSU-margin-left">g</div>
-                                    </div>
-                                    <div class="CSU-Nutrition-item">
-                                        <div class="CSU-Nutrition-item-title">Carbohydrates:</div>
-                                        <div id="carbs" class="CS-Nutrition-item-value">0</div>
-                                        <div class="CSU-Nutrition-item-title CSU-margin-left">g</div>
-                                    </div>
-                                </div>
-                                <div class="CSU-row">
-                                    <div class="CS-cal-item">
-                                        <div class="CS-cal-title">Calories:</div>
-                                        <div id="calories" class="CS-Nutrition-item-value">0</div>
-                                        <div class="CSU-Nutrition-item-title CSU-margin-left">kcal</div>
-                                    </div>
+                    <div id="day-monday" class="clientSchedule-training-Schedule-day-div">
+                        <div class="clientSchedule-training-Schedule-day-view-div">
+                            <div class="clientSchedule-training-Schedule-day-view">Monday</div>
+                        </div>
+                        <div class="clientSchedule-day-exercises-div">
+                            <div class="clientSchedule-day-exercises-div-inner">
+                                <div id="sunday-exercises-div" class="clientSchedule-day-exercises">
+                                    <div class="clientSchedule-empty-exercises-msg">No exercises yet.</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="CSU-Msg-outer-DIV">
-                            <div class="CSU-Daily-Training-Title">Messages</div>
-                            <div class="CS-msg-DIV">
-                                <textarea id="notes" class="CS-Msg-Text" style="resize: none;" readonly></textarea>
+                    </div>
+                    <div id="day-tuesday" class="clientSchedule-training-Schedule-day-div">
+                        <div class="clientSchedule-training-Schedule-day-view-div">
+                            <div class="clientSchedule-training-Schedule-day-view">Tuesday</div>
+                        </div>
+                        <div class="clientSchedule-day-exercises-div">
+                            <div class="clientSchedule-day-exercises-div-inner">
+                                <div id="sunday-exercises-div" class="clientSchedule-day-exercises">
+                                    <div class="clientSchedule-empty-exercises-msg">No exercises yet.</div>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                    <div id="day-wedensday" class="clientSchedule-training-Schedule-day-div">
+                        <div class="clientSchedule-training-Schedule-day-view-div">
+                            <div class="clientSchedule-training-Schedule-day-view">Wedensday</div>
+                        </div>
+                        <div class="clientSchedule-day-exercises-div">
+                            <div class="clientSchedule-day-exercises-div-inner">
+                                <div id="sunday-exercises-div" class="clientSchedule-day-exercises">
+                                    <div class="clientSchedule-empty-exercises-msg">No exercises yet.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="day-thursday" class="clientSchedule-training-Schedule-day-div">
+                        <div class="clientSchedule-training-Schedule-day-view-div">
+                            <div class="clientSchedule-training-Schedule-day-view">Thursday</div>
+                        </div>
+                        <div class="clientSchedule-day-exercises-div">
+                            <div class="clientSchedule-day-exercises-div-inner">
+                                <div id="sunday-exercises-div" class="clientSchedule-day-exercises">
+                                    <div class="clientSchedule-empty-exercises-msg">No exercises yet.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="day-friday" class="clientSchedule-training-Schedule-day-div">
+                        <div class="clientSchedule-training-Schedule-day-view-div">
+                            <div class="clientSchedule-training-Schedule-day-view">Friday</div>
+                        </div>
+                        <div class="clientSchedule-day-exercises-div">
+                            <div class="clientSchedule-day-exercises-div-inner">
+                                <div id="sunday-exercises-div" class="clientSchedule-day-exercises">
+                                    <div class="clientSchedule-empty-exercises-msg">No exercises yet.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="day-saturday" class="clientSchedule-training-Schedule-day-div">
+                        <div class="clientSchedule-training-Schedule-day-view-div">
+                            <div class="clientSchedule-training-Schedule-day-view">Saturday</div>
+                        </div>
+                        <div class="clientSchedule-day-exercises-div">
+                            <div class="clientSchedule-day-exercises-div-inner">
+                                <div id="sunday-exercises-div" class="clientSchedule-day-exercises">
+                                    <div class="clientSchedule-empty-exercises-msg">No exercises yet.</div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="clientSchedule-other-activites-div">
+                <div class="clientSchedule-activity-card-div">
+                    <a href="/clientHome" id="card1" class="clientSchedule-activity-card-inner">
+                        <div class="clientSchedule-activity-card">
+                            <div id="card1-title-icon-div" class="clientSchedule-activity-card-title-icon-div">
+                                <div class="clientSchedule-activity-card-icon-div">
+                                    <i class="clientSchedule-activity-card-icon fas fa-utensils"></i>
+                                </div>
+                                <div class="clientSchedule-activity-card-title-div">
+                                    <div class="clientSchedule-activity-card-title">Meals</div>
+                                    <div id="card1-text" class="clientSchedule-activity-card-text">Check out your
+                                        coach's meal menu, pick out the meals that matches your goals!</div>
+                                </div>
+                            </div>
+                            <img src="/images/bckgroundNum3.jpg" alt="Avatar"
+                                class="clientSchedule-activity-card-photo">
+                        </div>
+                    </a>
+                </div>
+                <div class="clientSchedule-activity-card-div">
+                    <div id="card2" class="clientSchedule-activity-card-inner">
+                        <div class="clientSchedule-activity-card">
+                            <div id="card2-title-icon-div" class="clientSchedule-activity-card-title-icon-div">
+                                <div class="clientSchedule-activity-card-icon-div">
+                                    <i class="clientSchedule-activity-card-icon fas fa-utensils"></i>
+                                </div>
+                                <div class="clientSchedule-activity-card-title-div">
+                                    <div class="clientSchedule-activity-card-title">Chat</div>
+                                    <div id="card2-text" class="clientSchedule-activity-card-text">Contact your coach,
+                                        ask him about your training schedule and your meals!</div>
+                                </div>
+                            </div>
+                            <img src="/images/bckgroundNum5.jpg" alt="Avatar"
+                                class="clientSchedule-activity-card-photo">
                         </div>
                     </div>
                 </div>

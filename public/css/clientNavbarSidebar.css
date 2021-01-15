@@ -1,0 +1,449 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('/fonts/poppins.regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('/fonts/poppins.medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('/fonts/poppins.bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('/fonts/poppins.semibold.ttf');
+}
+
+.ClientNS-header {
+    width: 100%;
+    height: 56px;
+    background-color: #333;
+    display: flex;
+    flex-direction: row;
+}
+
+.ClientNS-logo-hamburger-icons-div {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+}
+
+.ClientNS-sidebar-icon-div {
+    width: 27%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ClientNS-sidebar-icon {
+    width: 20px;
+    height: 20px;
+    font-family: Poppins-Regular;
+    cursor: pointer;
+}
+
+.ClientNS-logo-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ClientNS-logo-icon {
+    font-size: 50px;
+    color: #CFB997;
+}
+
+.ClientNS-logo-text-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin-left: 10px;
+}
+
+.ClientNS-logo-text1 {
+    font-family: Poppins-Regular;
+    line-height: 0.8;
+    font-size: 20px;
+    height: 21px;
+    margin-top: 4px;
+    color: white;
+}
+
+.ClientNS-logo-text2 {
+    font-family: Poppins-Regular;
+    letter-spacing: 1.15em;
+    height: 15px;
+    line-height: 0.8;
+    color: #CFB997;
+}
+
+.ClientNS-header-filler {
+    width: 60%;
+    height: 100%;
+}
+
+.ClientNS-account-settings {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.ClientNS-account-settings-icon-div {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: 0.5s;
+    cursor: pointer;
+    border-top-left-radius: 6px;
+    transition-property: background-color;
+}
+
+.ClientNS-notification-icon {
+    color: white;
+    font-size: 20px;
+}
+
+.ClientNS-notifcations-number {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    font-size: 9px;
+    left: 45px;
+    top: 6px;
+    line-height: 17px;
+    color: white;
+    text-align: center;
+    font-family: Poppins-Regular;
+    background-color: rgb(196, 62, 0);
+    border-radius: 50%;
+}
+
+.ClientNS-notification-icon-div {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: 0.5s;
+    transition-property: background-color;
+    cursor: pointer;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.ClientNS-account-settings-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.ClientNS-sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 56px;
+    left: 0;
+    background-color: rgb(66, 66, 66);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.ClientNS-sidenav-links {
+    width: 100%;
+    height: 82%;
+}
+
+.ClientNS-sidenav-link {
+    width: 100%;
+    height: 56px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.ClientNS-sidenav-link:hover {
+    background-color: rgb(92, 92, 92);
+}
+
+.ClientNS-sidenav-logout-link {
+    width: 100%;
+    height: 56px;
+    text-decoration: none;
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    background-color: #ca3e47;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.ClientNS-sidenav-logout-link:hover {
+    background-color: #86141c;
+}
+
+.ClientNS-sidenav-link-icon {
+    color: white;
+    margin-right: 15px;
+    width: 30%;
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+}
+
+.ClientNS-sidenav-link-text {
+    font-family: Poppins-Regular;
+    color: white;
+}
+
+.ClientNS-dropdown-div {
+    position: absolute;
+    background-color: rgb(39, 38, 38);
+    border-bottom-left-radius: 10px;
+    border-left: 1px #666 solid;
+    border-bottom: 1px #666 solid;
+    border-right: 1px #666 solid;
+    display: none;
+    top: 56px;
+    right: 0px;
+    width: 300px;
+    height: 0px;
+    z-index: 5;
+    overflow: auto;
+}
+
+.ClientNS-profile-dropdown-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ClientNS-profile-custom-top-border {
+    width: 72.62%;
+    height: 0px;
+    border-bottom: 1px solid #666;
+}
+
+.ClientNS-display-account-info {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px #666 solid;
+}
+
+.ClientNS-account-features {
+    height: 65%;
+    width: 100%;
+    border-bottom: 1px #666 solid;
+}
+
+.ClientNS-dropdown-footer{
+    height: 15%;
+    width: 100%;
+}
+
+.ClientNS-notification-dropdown-content-div {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.ClientNS-notifictions-custom-top-border {
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    width: 100%;
+    height: 0;
+}
+
+.ClientNS-notifictions-custom-top-border1 {
+    border-bottom: 1px solid #666;
+    height: 0;
+    width: 236.08px;
+}
+
+.ClientNS-notifictions-custom-top-border-filler {
+    height: 0;
+    width: 81.96px;
+}
+
+.ClientNS-notifictions-custom-top-border2 {
+    border-bottom: 1px solid #666;
+    height: 0;
+    width: 81.96px;
+}
+
+.ClientNS-notification-dropdown-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.ClientNS-notification-dropdown-content::-webkit-scrollbar {
+    width: 12px;
+    position: absolute;
+}
+
+.ClientNS-notification-dropdown-content::-webkit-scrollbar-track {
+    background: #222;
+    transition: 0.5s;
+}
+
+.ClientNS-notification-dropdown-content::-webkit-scrollbar-thumb {
+    background-color: #BBB;
+    height: 20%;
+    border-radius: 20px;
+}
+
+.ClientNS-notifiction-div {
+    width: 99.8%;
+    height: 20%;
+    flex: 0 0 auto;
+    border-bottom: 1px solid #666;
+    border-right: 1px solid #666;
+}
+
+.ClientNS-profile-dropdown-image-div {
+    height: 100%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ClientNS-profile-dropdown-image {
+    width: 50px;
+    height: 50px;
+}
+
+.ClientNS-name-account-div {
+    height: 100%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ClientNS-user-name-display {
+    color: white;
+    font-family: Poppins-Regular;
+    font-size: 15px;
+}
+
+.ClientNS-account-name-display {
+    color: white;
+    font-family: Poppins-Regular;
+    font-size: 15px;
+}
+
+.ClientNS-profile-item-display {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ClientNS-profile-item-data-div {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ClientNS-profile-item-data {
+    color: white;
+    font-family: Poppins-Regular;
+    font-size: 15px;
+}
+
+.ClientNS-profile-item-data-addtion {
+    color: rgb(206, 206, 206);
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.ClientNS-profile-item-icon-div {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ClientNS-profile-item-icon {
+    color: white;
+    font-size: 20px;
+}
+
+.ClientNS-edit-profile-btn {
+    background: #222;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.ClientNS-edit-profile-btn:hover  {
+    background: white;
+    transition: all 0.5s;
+}
+
+.Client-edit-profile-btn-text{
+    color: white;
+    font-family: Poppins-Regular;
+    font-size: 20px;
+    transition: all 0.5s;
+}
+
+.Client-edit-profile-btn-icon{
+    color: white;
+    font-size: 25px;
+    position: absolute;
+    left: 80%;
+    top: 54%;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: translate(-90%, -50%);
+    transition: all 0.5s;
+}
+
+.ClientNS-edit-profile-btn:hover .Client-edit-profile-btn-icon{
+    opacity: 1;
+    transition: all 0.5s;
+    color: #444;
+    transform: translate(-70%, -50%);
+}
+
+
+
+.ClientNS-edit-profile-btn:hover .Client-edit-profile-btn-text{
+    transform: translate(-20%, 0%);
+    transition: all 0.5s;
+    color: #444;
+}

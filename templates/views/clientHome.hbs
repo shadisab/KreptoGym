@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/css/clientHome.css">
+    <link rel="stylesheet" href="/css/clientNavbarSidebar.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    {{>clientNavbarSidebar}}
+    <div class="clientH-maindiv">
+        <div id="slideshow" class="clientH-picture-slider">
+            <div id="pic-1" class="clientH-slide">
+                <img class="clientH-bckground-picture" src="/images/bckgroundNum1.jpg">
+                <div id="title1" class="title1"> Welcome </div>
+                <div id="text1" class="text1"> to your fitness helper! </div>
+            </div>
+            <div id="pic-2" class="clientH-slide display-none">
+                <img class="clientH-bckground-picture" src="/images/bckgroundNum2.jpg">
+                <div id="title2" class="title2 "> Train hard! </div>
+                <div id="text2" class="text2">Enjoy having a training schedule </br> all of the time.</div>
+            </div>
+            <div id="pic-3" class="clientH-slide display-none">
+                <img class="clientH-bckground-picture" src="/images/bckgroundNum3.jpg">
+                <div class="title3">Nutritions!</div>
+                <div class="text3">You can check out your </br> coach food examples.</div>
+            </div>
+            <div id="pic-4" class="clientH-slide display-none">
+                <img class="clientH-bckground-picture" src="/images/bckgroundNum5.jpg">
+                <div class="title4"> Chatting! </div>
+                <div class="text4">You and your coach can have </br> a way to contact each other.</div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/clientHome.js"></script>
+</body>
+
+</html>

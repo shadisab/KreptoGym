@@ -1,0 +1,493 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('/fonts/poppins.regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('/fonts/poppins.medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('/fonts/poppins.bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('/fonts/poppins.semibold.ttf');
+}
+
+.clientProfile-body {
+    background-color: white;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    font-size: 14px;
+    user-select: none;
+}
+
+.clientProfile-mainWindow {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.clientProfile-header {
+    display: flex;
+    flex-direction: row;
+    height: 15%;
+    width: 100%;
+}
+
+.clientProfile-header-cancel-option {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clientProfile-cancel-option-header-text {
+    font-size: 14px;
+    font-family: Poppins-Regular;
+    letter-spacing: 0.10em;
+}
+
+.clientProfile-cancel-option-header-inner {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    color: black;
+    text-decoration: none;
+}
+
+.clientProfile-cancel-option-header-inner:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 50%;
+    background: black;
+    position: absolute;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.clientProfile-cancel-option-header-inner:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.clientProfile-header-filler {
+    height: 100%;
+    width: 80%;
+}
+
+.clientProfile-saveChanges-btn-option {
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clientProfile-saveChanges-btn-option-inner {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    color: black;
+    text-decoration: none;
+}
+
+.clientProfile-saveChanges-btn-option-inner:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 50%;
+    background: black;
+    position: absolute;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.clientProfile-saveChanges-btn-option-inner:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.clientProfile-saveChanges-text {
+    font-size: 14px;
+    font-family: Poppins-Regular;
+    cursor: pointer;
+    letter-spacing: 0.10em;
+    display: inline-block;
+    position: relative;
+    color: black;
+    text-decoration: none;
+}
+
+.clientProfile-innerMain {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+}
+
+.clientProfile-innerMain2 {
+    width: 100%;
+    height: 150%;
+    display: flex;
+    justify-content: center;
+}
+
+.clientProfile-profile-pannel {
+    width: 85%;
+    height: 92%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.clientProfile-severing-border{
+    height: 80%;
+    border-left: solid #333 1px;
+}
+
+.clientProfile-profile-picture-change-outer-div {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clientProfile-profile-picture-change-div {
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+.clientProfile-profile-picture-change-title{
+    font-family: Poppins-Regular;
+    font-size: 30px;
+
+}
+
+.clientProfile-user-info-outer-div {
+    width: 65%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clientProfile-user-info-div {
+    width: 97.5%;
+    height: 95%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clientProfile-user-info-title{
+    font-family: Poppins-Regular;
+    font-size: 30px;
+}
+
+.clientProfile-user-info-inner-div{
+    margin-top: 30px;
+    width: 95%;
+    height: 75%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clientProfile-user-info-items-div{
+    width: 97.5%;
+    height: 95%;
+}
+
+.clientProfile-user-info-item{
+    height: 12.5%;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0,0.5);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.clientProfile-user-info-item-no-border{
+    height: 12.5%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.clientProfile-user-info-item-title{
+    font-family: Poppins-Regular;
+    font-size: 15px;
+}
+
+.clientProfile-user-info-item-text{
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    position: absolute;
+    left: 45%;
+}
+
+.clientProfile-user-info-item-icon{
+    font-size: 17px;
+    cursor: pointer;
+    color: #555;
+    position: absolute;
+    left: 97%;
+}
+
+.clientProfile-user-info-item-save-btn{
+    cursor: pointer;
+    background-color: lightgreen;
+    border-radius: 5px;
+    width: 50px;
+    height: 20px;
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    left: 87%;
+}
+
+.clientProfile-user-info-item-save-btn-text{
+    font-family: Poppins-Regular;
+    font-size: 10px;
+    color: white;
+}
+
+.edit-text {
+    font-family: Poppins-Medium;
+    position: absolute;
+    top: 40%;
+    left: 41%;
+    opacity: 0;
+    color: black;
+    font-size: 20px;
+    text-shadow: 2px 2px 5px black;
+    cursor: pointer;
+}
+
+.edit-icon{
+    font-family: Poppins-Medium;
+    position: absolute;
+    top: 47%;
+    left: 54%;
+    opacity: 0;
+    color: black;
+    font-size: 20px;
+    text-shadow: 2px 2px 5px black;
+    cursor: pointer;
+}
+
+.img__input[type="file"] {
+    display: none;
+}
+
+.img__wrap {
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    height: 350px;
+    width: 350px;
+    transition: .5s ease;
+}
+
+.img__wrap:hover .img-uplaoder{
+    opacity: 0.5;
+}
+
+.img__wrap:hover .edit-text{
+    opacity: 1;
+    z-index: 2;
+}
+
+.img__wrap:hover .edit-icon{
+    opacity: 1;
+    z-index: 2;
+}
+.img-uplaoder {
+    opacity: 1;
+    z-index: 0;
+    border-radius: 50%;
+    height: 350px;
+    width: 350px;
+    object-fit: cover;
+    transition: .5s ease;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.clientProfile-changepass-popup {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(81, 81, 81, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+
+.clientProfile-changepass-popup.is-visible2 {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.clientProfile-changepass-popup-container {
+    position: relative;
+    width: 50%;
+    height: 75%;
+    margin: 4em auto;
+    background: #FFF;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: translateY(-40px);
+    -moz-transform: translateY(-40px);
+    -ms-transform: translateY(-40px);
+    -o-transform: translateY(-40px);
+    transform: translateY(-40px);
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.is-visible2 .clientProfile-changepass-popup-container {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.clientProfile-changepass-popup-container .clientProfile-changepass-popup-close {
+    position: absolute;
+    top: 8px;
+    background-color: #515151;
+    color: white;
+    cursor: pointer;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+}
+
+.clientProfile-changepass-fields {
+    height: 85%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.clientProfile-changepass-field-item {
+    width: 80%;
+}
+
+.clientProfile-changepass-InputLabeldiv {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.clientProfile-changepass-label-input100 {
+    font-family: Poppins-Regular;
+    font-size: 14px;
+    color: #515151;
+    line-height: 1.5;
+}
+
+.clientProfile-changepass-input100 {
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: #515151;
+    outline: none;
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    border: transparent;
+}
+
+.clientProfile-changepass-Inputdiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.clientProfile-changepass-Inputandicondiv {
+    display: flex;
+    flex-direction: row;
+    border: 1px #515151 solid;
+}
+
+.clientProfile-changepass-Icon {
+    color: #515151;
+    font-size: 18px;
+}
+
+.clientProfile-changepass-Icondiv {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clientProfile-changepass-popup-buttons {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+}
+
+.clientProfile-changepass-popup-confirm-button {
+    width: 100%;
+    height: 100%;
+    background-color: darkred;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    font-family: Poppins-Regular;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}

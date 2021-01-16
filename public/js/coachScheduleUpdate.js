@@ -171,16 +171,7 @@ $(document).ready(async () => {
 	});
 
 	$('#add-exercise-popup-close').on('click', function () {
-		$('#muscleExerciseName').val('');
-		$('#numberOfsets').val('');
-		$('#RecommendedWeight').val('');
-		$('#muscleDes').val('');
-		$('#stretchesExerciseName').val('');
-		$('#stretchesDes').val('');
-		$('#cardioExerciseName').val('');
-		$('#cardioTime').val('');
-		$('#cardioDes').val('');
-		$('#add-exercise-popup').removeClass('is-visible');
+		clearAddPopupFields();
 	});
 
 	$('#muscle-building-choice-btn').on('click', function () {
@@ -362,6 +353,13 @@ $(document).ready(async () => {
 			});
 			if (otherREQ.status === 200) { $('#add-exercise-popup').removeClass('is-visible'); }
 		}
+		clearAddPopupFields();
+	});
+
+
+
+	//Fucntions
+	const clearAddPopupFields = () =>{
 		$('#muscleExerciseName').val('');
 		$('#numberOfsets').val('');
 		$('#RecommendedWeight').val('');
@@ -371,7 +369,10 @@ $(document).ready(async () => {
 		$('#cardioExerciseName').val('');
 		$('#cardioTime').val('');
 		$('#cardioDes').val('');
-	});
+		$('#add-exercise-popup').removeClass('is-visible');
+	};
+
+
 	const addExerciseHTML = (element) => {
 		var html = `<div id="${element._id}" class="CSU-exercise">
 		<div class="CSU-exercise-img-div">

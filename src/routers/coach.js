@@ -55,20 +55,20 @@ router.post('/coachsignup', upload.single('upload'), async (req, res) => {
 
 
 // Login
-router.post('/coachs/login', async (req, res) => {
-	try {
-		// Self Created findByCredntials() , generateAuthToken()
-		const coach = await Coach.findByCredentials(req.body.email, req.body.password);
-		const client = await Client.findByCredentials(req.body.email, req.body.password);
-		console.log('client:', client, 'coach is:', coach);
-		// const token = await coach.generateAuthToken();
-		// res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
-		res.send();
-	} catch (e) {
-		console.log(e);
-		res.status(400).send(e);
-	}
-});
+// router.post('/coachs/login', async (req, res) => {
+// 	try {
+// 		// Self Created findByCredntials() , generateAuthToken()
+// 		const coach = await Coach.findByCredentials(req.body.email, req.body.password);
+// 		const client = await Client.findByCredentials(req.body.email, req.body.password);
+// 		console.log('client:', client, 'coach is:', coach);
+// 		// const token = await coach.generateAuthToken();
+// 		// res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
+// 		res.send();
+// 	} catch (e) {
+// 		console.log(e);
+// 		res.status(400).send(e);
+// 	}
+// });
 
 //Single logout from specific login coach
 router.post('/coachs/logout', authCoach, async (req, res) => {
@@ -225,7 +225,7 @@ router.patch('/coachs/password', async (req, res) => {
 router.get('/coaches/myClients', authCoach, async (req, res) => {
 	//get array of id's of all clients that this coach is train
 	const match = {};
-	match.status = 'accepted';
+	match.status = 'Accepted';
 	await req.coach.populate({
 		path: 'myClients',
 		match,
@@ -241,7 +241,7 @@ router.get('/coaches/myClients', authCoach, async (req, res) => {
 router.get('/coaches/reqClients', authCoach, async (req, res) => {
 	//get array of id's of all clients that this coach is train
 	const match = {};
-	match.status = 'pending';
+	match.status = 'Pending';
 	await req.coach.populate({
 		path: 'myClients',
 		match

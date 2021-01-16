@@ -36,7 +36,7 @@ const clientSchema = new mongoose.Schema({
 	},
 	status: {
 		type: String,
-		default: 'pending'
+		default: 'Pending'
 	},
 	birthDate: {
 		type: Date,

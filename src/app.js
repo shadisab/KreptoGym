@@ -129,6 +129,10 @@ app.get('/coachLogin', (req , res) => {
 	});
 });
 
+app.get('/clientHome', (req , res) => {
+	res.render('clientHome');
+});
+
 app.get('/coachHome', authCoach, (req , res) => {
 	res.render('coachHome',{
 	});

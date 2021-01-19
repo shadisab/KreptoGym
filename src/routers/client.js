@@ -79,6 +79,12 @@ router.post('/usersLogin', async (req, res) => {
 	}
 });
 
+
+//User check valid room  TBD
+// router.get('/validroom', async(req, res) =>{
+// 	if()
+// });
+
 //Single logout from specific auth token
 router.post('/clients/logout', authClient, async (req, res) => {
 	try {
@@ -95,16 +101,13 @@ router.post('/clients/logout', authClient, async (req, res) => {
 
 // Get client profile data
 router.get('/clients/myProfile', authClient, async (req, res) => {
-	res.send(req.client);
+	return res.status(200).send(req.client);
 });
-// GET client nutrition data
-router.get('/clients/nutrition', authClient, async (req, res) => {
-	res.send(req.client.nutrition);
-});
-//Get client Training schedule
+
 router.get('/clients/training', authClient, async (req, res) => {
-	res.send(req.client.trainingSchedule);
+	return res.status(200).send(req.client.trainingSchedule);
 });
+
 // GET all coaches
 router.get('/clients/allCoachs', async (req, res) => {
 	const coachs = await Coach.find({ status: 'Accepted' });

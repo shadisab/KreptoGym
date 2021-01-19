@@ -1,6 +1,64 @@
+/* eslint-disable no-undef */
 $(document).ready(async () => {
+
+	var clientname = '';
+	var clientID = '';
+	var coachID = '';
+	const clientProfile = await fetch('/clients/myProfile',{
+		method: 'GET', 
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		credentials: 'same-origin', // include, *same-origin, omit
+		redirect: 'follow', // manual, *follow, error
+		referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+	});
+	if(clientProfile.status === 200){
+		clientProfile.json().then((data)=>{
+			clientID = data._id;
+			clientname = data.name;
+			coachID = data.coachID;
+
+			$('#name').text(data.name);
+			$('#email').text(data.email);
+			$('#gender').text(data.gender);
+			$('#birthDate').text(moment(data.birthDate).format('YYYY-MM-DD'));
+			$('#country').text(data.country);
+			$('#height').text(data.height);
+			$('#weight').text(data.weight);
+			$('#acc-settings-btn-icon').attr('src', `data:image/png;base64,${data.profilePic}`);
+			$('#image').attr('src', `data:image/png;base64,${data.profilePic}`);
+		});	
+	}
+
+	$('#edit').on('click', ()=> {
+		window.location.href = '/clientProfile';
+	});
+
+	$('#logout').on('click', async () => {
+		const logout = await fetch('/clients/logout', {
+			method: 'POST', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'same-origin', // include, *same-origin, omit
+			redirect: 'follow', // manual, *follow, error
+			referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+		});
+
+		if (logout.status === 200) {
+			window.location.replace('/');
+		}
+		if (logout.status === 500) {
+			console.log('Problem with log out.');
+		}
+	});
+
+
 	var numOfNotifications = $('#notification-dd-content').children().length;
 	$('#notifications-icon-numbers').text(numOfNotifications);
+
+	$('#chat').on('click', ()=> {
+		window.location.href = (`/chat?username=${clientname}&room=${clientID}+${coachID}`);
+	});
 	$('#sidebar-open-close').click(() => {
 		if ($('#Sidenav').width() == '0') {
 			$('#Sidenav').css('width', '250px');

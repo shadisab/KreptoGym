@@ -25,11 +25,11 @@
                 <div class="ClientNS-profile-custom-top-border"></div>
                 <div class="ClientNS-display-account-info">
                     <div class="ClientNS-profile-dropdown-image-div">
-                        <img class="ClientNS-profile-dropdown-image" src="images/default-pp.png" />
+                        <img id="image" class="ClientNS-profile-dropdown-image" src="images/default-pp.png" />
                     </div>
                     <div class="ClientNS-name-account-div">
-                        <div class="ClientNS-user-name-display">Knight Artorias</div>
-                        <div class="ClientNS-account-name-display">wisamwrh@gmail.com</div>
+                        <div id="name" class="ClientNS-user-name-display"></div>
+                        <div id="email" class="ClientNS-account-name-display"></div>
                     </div>
                 </div>
                 <div class="ClientNS-account-features">
@@ -38,7 +38,7 @@
                             <i class="ClientNS-profile-item-icon fas fa-restroom"></i>
                         </div>
                         <div class="ClientNS-profile-item-data-div">
-                            <div class="ClientNS-profile-item-data">Male</div>
+                            <div id="gender" class="ClientNS-profile-item-data"></div>
                         </div>
                     </div>
                     <div class="ClientNS-profile-item-display">
@@ -46,7 +46,7 @@
                             <i class="ClientNS-profile-item-icon fas fa-birthday-cake"></i>
                         </div>
                         <div class="ClientNS-profile-item-data-div">
-                            <div class="ClientNS-profile-item-data">29/09/1993</div>
+                            <div id="birthDate" class="ClientNS-profile-item-data"></div>
                         </div>
                     </div>
                     <div class="ClientNS-profile-item-display">
@@ -54,7 +54,7 @@
                             <i class="ClientNS-profile-item-icon fas fa-flag"></i>
                         </div>
                         <div class="ClientNS-profile-item-data-div">
-                            <div class="ClientNS-profile-item-data">Israel</div>
+                            <div id="country" class="ClientNS-profile-item-data"></div>
                         </div>
                     </div>
                     <div class="ClientNS-profile-item-display">
@@ -62,7 +62,7 @@
                             <i class="ClientNS-profile-item-icon fas fa-ruler-vertical"></i>
                         </div>
                         <div class="ClientNS-profile-item-data-div">
-                            <div class="ClientNS-profile-item-data">189</div>
+                            <div id="height" class="ClientNS-profile-item-data"></div>
                             <div class="ClientNS-profile-item-data-addtion">Cm</div>
                         </div>
                     </div>
@@ -71,13 +71,13 @@
                             <i class="ClientNS-profile-item-icon fas fa-weight-hanging"></i>
                         </div>
                         <div class="ClientNS-profile-item-data-div">
-                            <div class="ClientNS-profile-item-data">120</div>
+                            <div id="weight" class="ClientNS-profile-item-data"></div>
                             <div class="ClientNS-profile-item-data-addtion">Kg</div>
                         </div>
                     </div>
                 </div>
                 <div class="ClientNS-dropdown-footer">
-                    <div class="ClientNS-edit-profile-btn">
+                    <div id="edit" class="ClientNS-edit-profile-btn">
                         <div class="Client-edit-profile-btn-text">Edit Profile</div>
                         <i class="Client-edit-profile-btn-icon fas fa-user-edit"></i>
                     </div>
@@ -118,14 +118,15 @@
             <i class="ClientNS-sidenav-link-icon fas fa-utensils"></i>
             <div class="ClientNS-sidenav-link-text">Meals</div>
         </div>
-        <div class="ClientNS-sidenav-link">
+        <div id="chat" class="ClientNS-sidenav-link">
             <i class="ClientNS-sidenav-link-icon fas fa-comments"></i>
             <div class="ClientNS-sidenav-link-text">Chat</div>
         </div>
     </div>
-    <a href="/" class="ClientNS-sidenav-logout-link">
+    <a id="logout" class="ClientNS-sidenav-logout-link">
         <i class="ClientNS-sidenav-link-icon fas fa-sign-out-alt"></i>
         <div class="ClientNS-sidenav-link-text">LOG OUT</div>
     </a>
 </div>
 <script src="/js/clientNavbarSidebar.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>

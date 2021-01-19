@@ -1,7 +1,10 @@
+/* eslint-disable no-undef */
 $(document).ready(async () => {
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	const id = urlParams.get('id');
+	const socket = io();
+
 
 	/*GET Coach data */
 	const clientData = await fetch('/coachs/client/' + id, {
@@ -301,7 +304,12 @@ $(document).ready(async () => {
 					}
 				})
 			});
-			if (muscleREQ.status === 200) { $('#add-exercise-popup').removeClass('is-visible'); }
+			if (muscleREQ.status === 200) {
+				//Send refresh page to client
+				socket.emit('refreshPage', id);
+				$('#add-exercise-popup').removeClass('is-visible');
+				// document.location.reload();
+			}
 		} else if ($('#cardio-exercise-div').css('display') == 'flex') {
 			Exercise_name = $('#cardioExerciseName').val();
 			Exercise_time_in_minutes = $('#cardioTime').val();
@@ -327,7 +335,9 @@ $(document).ready(async () => {
 					}
 				})
 			});
-			if (cardioREQ.status === 200) { $('#add-exercise-popup').removeClass('is-visible'); }
+			if (cardioREQ.status === 200) {
+				socket.emit('refreshPage', id);
+				$('#add-exercise-popup').removeClass('is-visible'); }
 		} else {
 			Exercise_name = $('#stretchesExerciseName').val();
 			Description = $('#stretchesDes').val();
@@ -351,7 +361,10 @@ $(document).ready(async () => {
 					}
 				})
 			});
-			if (otherREQ.status === 200) { $('#add-exercise-popup').removeClass('is-visible'); }
+			if (otherREQ.status === 200) { 
+				socket.emit('refreshPage', id);
+				$('#add-exercise-popup').removeClass('is-visible');
+			}
 		}
 		clearAddPopupFields();
 	});
@@ -359,7 +372,7 @@ $(document).ready(async () => {
 
 
 	//Fucntions
-	const clearAddPopupFields = () =>{
+	const clearAddPopupFields = () => {
 		$('#muscleExerciseName').val('');
 		$('#numberOfsets').val('');
 		$('#RecommendedWeight').val('');

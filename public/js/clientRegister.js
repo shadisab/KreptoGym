@@ -379,7 +379,7 @@ $(document).ready(async () => {
 			formData.append('weight', $('#weight').val());
 			formData.append('height', $('#height').val());
 			formData.append('coachID', chosedCoachID);
-			formData.append('birthDate', $('#Birthdate').val());
+			formData.append('birthDate', moment($('#Birthdate').val()).format('YYYY-MM-DD'));
 
 			const regClient = await fetch('/clients/signup', {
 				method: 'POST', // *GET, POST, PUT, DELETE, etc.

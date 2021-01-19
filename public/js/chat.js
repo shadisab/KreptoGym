@@ -8,20 +8,21 @@ $(document).ready(async () => {
 	const username = urlParams.get('username');
 	const socket = io();
 
-	const autoscroll = () => {
+	
+	let autoscroll = () => {
 		// Height of the new message
 		const newMessageStyles = getComputedStyle(document.querySelector('#messages').lastElementChild);
-		const newMessageMargin = parseInt(newMessageStyles.marginBottom);
-		const newMessageHeight = document.querySelector('#messages').lastElementChild.offsetHeight + newMessageMargin;
+		var newMessageMargin = parseInt(newMessageStyles.marginBottom);
+		var newMessageHeight = document.querySelector('#messages').lastElementChild.offsetHeight + newMessageMargin;
 
 		//visable height
-		const visibleHeight = document.querySelector('#messages').offsetHeight;
+		var visibleHeight = document.querySelector('#messages').offsetHeight;
 
 		// Height of messages container
-		const containerHeight = document.querySelector('#messages').scrollHeight;
+		var containerHeight = document.querySelector('#messages').scrollHeight;
 
 		//How far have I scrolled?
-		const scrollOffset = document.querySelector('#messages').scrollTop + visibleHeight;
+		var scrollOffset = document.querySelector('#messages').scrollTop + visibleHeight;
 
 		if ((containerHeight - newMessageHeight <= scrollOffset)) { // if We wherein the bottom before the last message was added so we will auto-scroll, if not so will stay at the same view
 			document.querySelector('#messages').scrollTop = document.querySelector('#messages').scrollHeight;

@@ -35,6 +35,13 @@ io.on('connection', (socket) => { //This method will run for each Client that co
 		//socket.broadcast.to.emit -> This is sending an event to everyone except for the specific client but it's limiting it to a specific chat room.
 	});
 
+	socket.on('joinScheduale', (id)=>{
+		socket.join(id);	
+	});
+	
+	socket.on('refreshPage',(id)=>{
+		io.to(id).emit('refresh');
+	});
 
 	socket.on('sendMessage', ({text,username,room}, callback)=>{
 		const filter = new Filter();
@@ -49,14 +56,7 @@ io.on('connection', (socket) => { //This method will run for each Client that co
 		io.to(room).emit('locationMessage',generateMessage(`https://google.com/maps?q=${coords.latitude},${coords.longitude}`,username));
 		callback();
 	});
-
-	// socket.on('increment', ()=>{
-	// 	count++;
-	// 	//socket.emit('countUpdated', count); //Scoket.emit is emited to a single connection (emites and event to a specifc connection )
-	// 	io.emit('countUpdated', count); //emited event to every single connection thats currnelty avaible
-	// });
-	// Socket.emit is to send 
-
+	
 	socket.on('disconnect', ()=>{ //When ever a clint get disconnected
 		io.emit('message',generateMessage(`${user} has left`,'KryptoGym Service'));
 	});

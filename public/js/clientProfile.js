@@ -1,4 +1,35 @@
+/* eslint-disable no-undef */
 $(document).ready(async () => {
+
+	$('#cancle').on('click', ()=> {
+		if(document.referrer.indexOf('clientSchedule') > 0 || document.referrer.indexOf('clientHome') > 0 ){
+			parent.history.back();
+		} else {
+			window.location.href = '/clientHome';
+		}
+	});
+
+	const clientProfile = await fetch('/clients/myProfile',{
+		method: 'GET', 
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		credentials: 'same-origin', // include, *same-origin, omit
+		redirect: 'follow', // manual, *follow, error
+		referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+	});
+	if(clientProfile.status === 200){
+		clientProfile.json().then((data)=>{
+			$('#name').text(data.name);
+			$('#email').text(data.email);
+			$('#gender').text(data.gender);
+			$('#birthdate').text(moment(data.birthDate).format('YYYY-MM-DD'));
+			$('#country').text(data.country);
+			$('#height').text(data.height);
+			$('#weight').text(data.weight);
+			$('#profile-img').attr('src', `data:image/png;base64,${data.profilePic}`);
+		});	
+	}
+
 	$('#profile-img').click(async () => {
 		$('#img-upload').click();
 	});
@@ -478,6 +509,7 @@ $(document).ready(async () => {
 					$('#newPasswordREQ').css('opacity', 1).text('New password must not be the same as old password');
 					return;
 				}
+
 				updatePassword.json().then((body) => {
 					if (Object.keys(body).length === 0) {
 						$('#passwordREQ').css('opacity', 1).text('The old password you have entered is incorrect!');

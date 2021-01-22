@@ -409,7 +409,13 @@ $(document).ready(async () => {
 			</div>
 			<div class="CSU-exercise-info-row-div">
 				<div class="CSU-exercise-info-piece-title">Description:</div>
-				<div class="CSU-exercise-info-piece">${element.Description}</div>
+				<div class="CSU-exercise-info-piece-text">${element.Description}</div>
+				<div class="CSU-exercise-edit-btn">
+					<i class="CSU-exercise-edit-btn-icon fas fa-edit"></i>
+				</div>
+				<div class="CSU-exercise-delete-btn">
+					<i class="CSU-exercise-delete-btn-icon fas fa-trash-alt"></i>
+				</div>
 			</div>
 		</div>
 	</div>`;
@@ -434,7 +440,13 @@ $(document).ready(async () => {
 			</div>
 			<div class="CSU-exercise-info-row-div">
 				<div class="CSU-exercise-info-piece-title">Description:</div>
-				<div class="CSU-exercise-info-piece">${element.Description}</div>
+				<div class="CSU-exercise-info-piece-text">${element.Description}</div>
+				<div class="CSU-exercise-edit-btn">
+					<i class="CSU-exercise-edit-btn-icon fas fa-edit"></i>
+				</div>
+				<div class="CSU-exercise-delete-btn">
+					<i class="CSU-exercise-delete-btn-icon fas fa-trash-alt"></i>
+				</div>
 			</div>
 		</div>
 	</div>`;
@@ -455,12 +467,33 @@ $(document).ready(async () => {
 			</div>
 			<div class="CSU-exercise-info-row-div">
 				<div class="CSU-exercise-info-piece-title">Description:</div>
-				<div class="CSU-exercise-info-piece">${element.Description}</div>
+				<div class="CSU-exercise-info-piece-text">${element.Description}</div>
+				<div class="CSU-exercise-edit-btn">
+					<i class="CSU-exercise-edit-btn-icon fas fa-edit"></i>
+				</div>
+				<div class="CSU-exercise-delete-btn">
+					<i class="CSU-exercise-delete-btn-icon fas fa-trash-alt"></i>
+				</div>
 			</div>
 		</div>
 	</div>`;
 		return html;
 	};
+	$('.CSU-exercise-delete-btn-icon').on('click', function (event) {
+		event.preventDefault();
+		$('#cd-popup').addClass('is-visible');
+	});
+
+	$('#cd-popup-cancel-btn-close').on('click', function (event) {
+		event.preventDefault();
+		$('#cd-popup').removeClass('is-visible');
+	});
+
+	$(document).keyup(function (event) {
+		if (event.which == '27') {
+			$('#cd-popup').removeClass('is-visible');
+		}
+	});
 
 
 	function diff_years(dt2) {

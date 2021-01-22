@@ -1,0 +1,309 @@
+/***   Some custom font-families   ***/
+/**************************************************************************************************/
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('/fonts/poppins.regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('/fonts/poppins.medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('/fonts/poppins.bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('/fonts/poppins.semibold.ttf');
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    font-size: 14px;
+    user-select: none;
+}
+
+.CoachRV2-Main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.CoachRV2-register-outer-div {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CoachRV2-register-box {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CoachRV2-title {
+    font-family: Poppins-medium;
+    height: 18%;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    cursor: default;
+    user-select: none;
+}
+
+.CoachRV2-inputs-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+}
+/**************************************************************************************************/
+/***     Three inputs to allow the coach to change his name(if he wants) and get a password     ***/
+/**************************************************************************************************/
+.CoachRV2-new-password-setup-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 35%;
+    height: 100%;
+}
+
+.CoachRV2-input-box {
+    width: 80%;
+    height: 20%;
+    border: solid 2px black;
+}
+
+.CoachRV2-input-icon-div {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.CoachRV2-icon-div {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: solid 1px #515151;
+    height: 80%;
+    position: relative;
+}
+
+.CoachRV2-icon {
+    color: black;
+    font-size: 18px;
+}
+
+.CoachRV2-input-div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.CoachRV2-input {
+    font-family: Poppins-regular;
+    margin-left: 10px;
+    font-size: 16px;
+    color: black;
+    outline: none;
+    width: 90%;
+    height: 40px;
+    background: transparent;
+    border: transparent;
+}
+/**************************************************************************************************/
+/***               A textarea that the coach can enter a message for his clients.               ***/
+/**************************************************************************************************/
+.CoachRV2-message-to-clients-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 35%;
+    height: 100%;
+}
+
+.CoachRV2-message-box{
+    width: 90%;
+    height: 64%;
+    border: solid 2px black;
+}
+
+.CoachRV2-textarea-and-icon-div{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.CoachRV2-T-icon-div {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: solid 1px #515151;
+    height: 100%;
+    position: relative;
+}
+
+.CoachRV2-textarea-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.CoachRV2-textarea {
+    font-family: Poppins-regular;
+    margin-left: 10px;
+    font-size: 16px;
+    color: black;
+    outline: none;
+    resize: none;
+    width: 90%;
+    height: 90%;
+    background: transparent;
+    border: transparent;
+}
+
+/**************************************************************************************************/
+/***            A vertical line that divides between the inputs and the image upload            ***/
+/**************************************************************************************************/
+
+.CoachRV2-dividing-slash{
+    border-left: 1px solid rgba(0,0,0,0.6);
+    height: 60%;
+}
+
+/**************************************************************************************************/
+/***    A div located to the far right which allows the coach to upload his profile picture.    ***/
+/**************************************************************************************************/
+
+.CoachRV2-profile-picture-change-div{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.CoachRV2-upload-profile-img-div{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+    width: 300px;
+    transition: .5s ease;
+}
+
+.CoachRV2-upload-profile-img-div:hover .img-uplaoder{
+    opacity: 0.5;
+}
+
+.CoachRV2-upload-profile-img-div:hover .CoachRV2-edit-img-text{
+    opacity: 1;
+    z-index: 2;
+}
+
+.CoachRV2-upload-profile-img-div:hover .CoachRV2-edit-img-icon{
+    opacity: 1;
+    z-index: 2;
+}
+
+.CoachRV2-edit-img-text{
+    font-family: Poppins-Medium;
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    opacity: 0;
+    color: black;
+    font-size: 20px;
+    text-shadow: 2px 2px 5px black;
+    cursor: pointer;
+}
+
+.CoachRV2-edit-img-icon{
+    font-family: Poppins-Medium;
+    position: absolute;
+    top: 38.2%;
+    left: 54%;
+    opacity: 0;
+    color: black;
+    font-size: 20px;
+    text-shadow: 2px 2px 5px black;
+    cursor: pointer;
+}
+
+.CoachRV2-img-presentation{
+    opacity: 1;
+    z-index: 0;
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    transition: .5s ease;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.CoachRV2-img-input[type="file"] {
+    display: none;
+}
+/**************************************************************************************************/
+/***       Footer div that contains a next button which takes the coach to his home page.       ***/
+/**************************************************************************************************/
+.CoachRV2-footer {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CoachRV2-register-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 5px solid black;
+    border-radius: 10px;
+    transition: all 0.4s linear;
+    cursor: pointer;
+}
+
+.CoachRV2-register-btn-icon {
+    color: black;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.CoachRV2-register-btn:hover {
+    background-color: black;
+}
+
+.CoachRV2-register-btn:hover .CoachRV2-register-btn-icon {
+    color: white;
+}
+/********************************************************************************************/

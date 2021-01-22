@@ -307,6 +307,42 @@
     line-height: 1.2;
 }
 
+.CSU-exercise-info-piece-text{
+    color: white;
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    line-height: 1.2;
+    width: 70%;
+}
+
+.CSU-exercise-edit-btn{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CSU-exercise-edit-btn-icon{
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.CSU-exercise-delete-btn{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CSU-exercise-delete-btn-icon{
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
+}
+
 .CSU-add-exercise-popup {
     position: fixed;
     display: flex;
@@ -586,4 +622,102 @@ input::-webkit-inner-spin-button {
     align-items: center;
     justify-content: center;
     border-right: 1px solid #515151;
+}
+
+.CSU-Confirm-popup {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(81, 81, 81, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+
+.CSU-Confirm-popup.is-visible {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.CSU-popup-container {
+    position: relative;
+    width: 40%;
+    height: 40%;
+    margin: 4em auto;
+    background: #FFF;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: translateY(-40px);
+    -moz-transform: translateY(-40px);
+    -ms-transform: translateY(-40px);
+    -o-transform: translateY(-40px);
+    transform: translateY(-40px);
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.CSU-Confirm-popup-text {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #515151;
+    font-family: Poppins-Regular;
+}
+
+.CSU-Confirm-popup-buttons {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+}
+
+.CSU-Confirm-popup-confirm-button {
+    width: 50%;
+    height: 100%;
+    background-color: darkred;
+    border-bottom-left-radius: 16px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    font-family: Poppins-Regular;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.CSU-Confirm-popup-cancel-button {
+    width: 50%;
+    height: 100%;
+    background-color: #515151;
+    color: white;
+    cursor: pointer;
+    border-bottom-right-radius: 16px;
+    outline: none;
+    font-family: Poppins-Regular;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.is-visible .CSU-popup-container {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
 }

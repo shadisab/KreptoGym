@@ -1,50 +1,68 @@
-/* eslint-disable no-undef */
 $(document).ready(async () => {
+	const coachData = ['name', 'createdAt'];
 
-	$('#cancle').on('click', ()=> {
-		if(document.referrer.indexOf('clientSchedule') > 0 || document.referrer.indexOf('clientHome') > 0 ){
-			parent.history.back();
-		} else {
-			window.location.href = '/clientHome';
+	// GET client Profile data
+	const getCoachProfile = await fetch('/coachs/myProfile', {
+		method: 'GET', // *GET, POST, PUT, DELETE, etc.
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		credentials: 'same-origin', // include, *same-origin, omit
+		headers: {
+			'Content-Type': 'application/json'
+			// 'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		redirect: 'follow', // manual, *follow, error
+		referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+		// body data type must match "Content-Type" header
+	});
+
+	const getClients = await fetch('/coaches/myClients', {
+		method: 'GET', // *GET, POST, PUT, DELETE, etc.
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		credentials: 'same-origin', // include, *same-origin, omit
+		headers: {
+			'Content-Type': 'application/json'
+			// 'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		redirect: 'follow', // manual, *follow, error
+		referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+		// body data type must match "Content-Type" header
+	});
+	// Load Client nutrition
+	getCoachProfile.json().then((data) => {
+		coachData.forEach((elem) => {
+			if (elem === 'createdAt') $('#' + elem).append(' ' + data[elem].split('T')[0]);
+			else $('#' + elem).append(' ' + data[elem]);
+		});
+	});
+	getClients.json().then((data) => {
+		$('#myClients').append(' ' + data.length);
+	});
+
+	$('#logout').click(async () => {
+		const logout = await fetch('/coachs/logout', {
+			method: 'POST', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'same-origin', // include, *same-origin, omit
+			headers: {
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			redirect: 'follow', // manual, *follow, error
+			referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+			// body data type must match "Content-Type" header
+		});
+		if (logout.status === 200) {
+			logout.json().then(() => {
+				window.location.href = ('/');
+			});
 		}
 	});
 
-	$('#profile-img').click(async () => {
-		$('#img-upload').click();
-	});
-
-	$('#edit-text').click(async () => {
-		$('#img-upload').click();
-	});
-	// let temp = false;
-	$('#img-upload').change(function () {
-		$('#profile-img').attr('src', window.URL.createObjectURL(this.files[0]));
-	});
-    
-	$('#name-edit').click(async () => {
-		var input = $('<input />', {
-			'id':'name',
-			'type': 'text',
-			'class': 'clientProfile-user-info-item-text',
-			'value': $('#name').text()
-		});
-		$('#name').replaceWith(input);
-		$('#name-save-btn').css('display','flex');
-		$('#name-edit').css('display','none');
-	});
-    
-	$('#name-save-btn').click(async () => {
-		var mydiv = $('<div />', {
-			id: 'name',
-			class: 'clientProfile-user-info-item-text',
-			text: $('#name').val()
-		});
-		$('#name').replaceWith(mydiv);
-		$('#name-save-btn').css('display','none');
-		$('#name-edit').css('display','flex');
-	});
-    
-	$('#password-edit').on('click', function (event) {
+	/******** CHANGE PASSWORD POPUP *********/
+	$('#P-Change-pass-btn').on('click', function (event) {
 		event.preventDefault();
 		$('#cd-changepass-popup').addClass('is-visible2');
 	});
@@ -101,10 +119,8 @@ $(document).ready(async () => {
 			return;
 		}
 
-        
-
 		if (newPassword !== '' && newPassword === confirmPassword && password !== '') {
-			const updatePassword = await fetch('/clients/password', {
+			const updatePassword = await fetch('/coachs/password', {
 				method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
 				mode: 'cors', // no-cors, *cors, same-origin
 				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -125,9 +141,8 @@ $(document).ready(async () => {
 					$('#newPasswordREQ').css('opacity', 1).text('New password must not be the same as old password');
 					return;
 				}
-
 				updatePassword.json().then((body) => {
-					if (Object.keys(body).length === 0) {
+					if (Object.keys(body).length === 0){
 						$('#passwordREQ').css('opacity', 1).text('The old password you have entered is incorrect!');
 						return;
 					}

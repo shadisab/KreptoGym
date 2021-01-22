@@ -84,11 +84,30 @@
                 </div>
             </div>
             <div id="R-P2" class="R-register-div-outer-P2">
-                <div class="R-register-title">
+                <div id="reg-title2" class="R-register-title">
                     <div class="R-register-title-text">Tell us about you</div>
                 </div>
-                <p id="FillAll" style="color: red;  margin: 5; display: none;">Please fill all the data</p>
-                <p id="AgeValidation" style="color: red;  margin: 5; display: none;">Age most be > 18</p>
+                <div id="FillAll-errmsg" class="wrong-credentials-input-div">
+                    <p class="wrong-credentials-input-msg">Please fill all data.</p>
+                    <div class="little-arrow"></div>
+                </div>
+                <div id="invalid-name-errmsg" class="wrong-credentials-input-div">
+                    <p class="wrong-credentials-input-msg">Names usually have only characters , please try to provide
+                        that.</p>
+                    <div class="little-arrow"></div>
+                </div>
+                <div id="AgeValidation-errmsg" class="wrong-credentials-input-div">
+                    <p class="wrong-credentials-input-msg">Age must be between 15 and 120.</p>
+                    <div class="little-arrow"></div>
+                </div>
+                <div id="height-errmsg" class="wrong-credentials-input-div">
+                    <p class="wrong-credentials-input-msg">Height is invalid, please enter a reasonable height.</p>
+                    <div class="little-arrow"></div>
+                </div>
+                <div id="weight-errmsg" class="wrong-credentials-input-div">
+                    <p class="wrong-credentials-input-msg">weight is invalid, please enter a reasonable weight.</p>
+                    <div class="little-arrow"></div>
+                </div>
                 <div class="R-register-inner-box-P2">
                     <div class="R-register-inner-left">
                         <div class="R-input-box-P2">
@@ -424,12 +443,24 @@
                     <input id="img-upload" class="img__input" type="file" accept="image/*" />
                 </div>
             </div>
-            <div id="R-P4" class="R-register-div-outer-P2">
-                <div class="R-register-title">
+            <div id="R-P4" class="R-register-div-outer-P4">
+                <div id="CoachNotSelected-errmsg" class="wrong-credentials-input-div">
+                    <p class="wrong-credentials-input-msg">Please Select a coach!</p>
+                    <div class="little-arrow"></div>
+                </div>
+                <div id="reg-title4" class="R-register-title">
                     <div class="R-register-title-text">Choose your coach that you want to see your progress with </div>
                 </div>
-                <div id="CoachesList" style="overflow-y:auto">
-                </div>
+                    <div id="CoachesList" class="R-coach-list">
+                        <div id="1" class="R-coach">
+                            <img id="1" src="/images/f0a64e32194d341befecc80458707565.jpg" class="R-coach-profile-picture"/>
+                            <div id="1" class="R-coach-info-div">
+                                <div id="1" class="R-coach-name-div">Wisam Halabi</div>
+                                <div id="1" class="R-coach-mail-div">wisamwrh@gmail.com</div>
+                                <div id="1" class="R-coach-message-div">It wasn't quite yet time to panic. There was still time to salvage the situation. At least that is what she was telling himself. The reality was that it was time to panic and there wasn't time to salvage the situation, but he continued to delude himself into believing there was.</div>
+                            </div>
+                        </div>
+                    </div>
             </div>
             <div class="R-next-btn-div" style="margin-top: 5px;">
                 <div id="back-btn" class="R-back-btn-inner-div">

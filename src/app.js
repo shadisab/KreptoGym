@@ -124,6 +124,10 @@ app.get('/coachRegister' , (req , res) => {
 	res.render('coachRegister');
 });
 
+app.get('/coachRegisterV2' , (req , res) => {
+	res.render('coachRegisterV2');
+});
+
 app.get('/coachLogin', (req , res) => {
 	res.render('coachLogin',{
 	});
@@ -133,7 +137,7 @@ app.get('/clientHome', (req , res) => {
 	res.render('clientHome');
 });
 
-app.get('/coachHome', authCoach, (req , res) => {
+app.get('/coachHome', (req , res) => {
 	res.render('coachHome',{
 	});
 });
@@ -176,7 +180,7 @@ app.get('/clientSchedule', authClient, (req , res) => {
 	res.render('clientSchedule');
 });
 
-app.get('/coachClients', (req , res) => {
+app.get('/coachClients',authCoach , (req , res) => {
 	res.render('coachClients');
 });
 
@@ -184,7 +188,7 @@ app.get('/clientProfile', authClient , (req , res) => {
 	res.render('clientProfile');
 });
 
-app.get('/coachProfile', authCoach , (req , res) => {
+app.get('/coachProfile' , (req , res) => {
 	res.render('coachProfile');
 });
 

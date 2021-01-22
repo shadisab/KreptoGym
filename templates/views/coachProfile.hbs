@@ -2,117 +2,139 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="./css/Profile.css">
-    {{>links}}
+    <link rel="stylesheet" href="/css/coachProfile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
 </head>
 
-<body>
-    <div class="Masking-DIV">
-        <div class="Masking-DIV-2">
-            <header>
-                <div class="P-icon-div-logo">
-                    <img class="P-header-logo-icon-img" src="/images/header-logo-icon.png" />
-                    <p class="logo-title">Krepto Gym</p>
-                </div>
-                <div class="P-links-DIV">
-                    <a class="links" href="/coachClients">Clients</a>
-                </div>
-                <div class="logout-btn-div">
-                    <a id="logout" class="sign-log-btn-DIV">Log out</a>
-                </div>
-            </header>
-            <div class="P-Main-DIV">
-                <div class="P-Container-DIV">
-                    <div class="P-title-DIV">Profile</div>
-                    <div class="CoachP-info-DIV">
-                        <div class="P-item-DIV">
-                            <div class="CoachP-item-inner-DIV">
-                                <div class="P-item-title">Name</div>
-                                <div class="P-item" id="name"></div>
-                            </div>
-                        </div>
-                        <div class="P-item-DIV">
-                            <div class="CoachP-item-inner-DIV">
-                                <div class="P-item-title">Number of Clients</div>
-                                <div class="P-item" id="myClients"></div>
-                            </div>
-                        </div>
-                        <div class="P-item-DIV">
-                            <div class="CoachP-item-inner-DIV">
-                                <div class="P-item-title">Date Created</div>
-                                <div class="P-item" id="createdAt"></div>
-                            </div>
-                        </div>
+<body class="coachProfile-body">
+    <div class="coachProfile-mainWindow">
+        <div class="coachProfile-header">
+            <div class="coachProfile-header-cancel-option">
+                <a id="cancle" class="coachProfile-cancel-option-header-inner">
+                    <i class="fas fa-chevron-left" style="margin-right: 10px; height: 100%;"></i>
+                    <div class="coachProfile-cancel-option-header-text">Cancel</div>
+                </a>
+            </div>
+            <div class="coachProfile-header-filler"></div>
+            <div class="coachProfile-saveChanges-btn-option">
+                <a class="coachProfile-saveChanges-btn-option-inner">
+                    <div class="coachProfile-saveChanges-text">
+                        SAVE CHANGES
                     </div>
-                    <div id="P-Change-pass-btn" class="P-changepass-btn-DIV P-border-bottom-right-left-r">
-                        <i class="fas fa-edit P-changepass-icon"></i>
-                        <p class="P-changepass-msg">Change Password</p>
-                    </div>
-                    <div id="cd-changepass-popup" class="P-changepass-popup" role="alert">
-                        <div class="P-changepass-popup-container">
-                            <div class="P-changepass-fields">
-                                <div class="P-changepass-field-item">
-                                    <div class="P-changepass-InputLabeldiv">
-                                        <span class="P-changepass-label-input100">Current Password</span>
-                                    </div>
-                                    <div class="P-changepass-Inputandicondiv">
-                                        <div class="P-changepass-Icondiv">
-                                            <i class="P-changepass-Icon fas fa-lock"></i>
-                                        </div>
-                                        <div class="P-changepass-Inputdiv">
-                                            <input class="P-changepass-input100" type="password" id="old-password"
-                                                placeholder="Type your current password" />
-                                        </div>
-                                    </div>
-                                    <p id="passwordREQ" style="color: red; opacity: 1; margin: 0;"></p>
-                                </div>
-                                <div class="P-changepass-field-item">
-                                    <div class="P-changepass-InputLabeldiv">
-                                        <span class="P-changepass-label-input100">new Password</span>
-                                    </div>
-                                    <div class="P-changepass-Inputandicondiv">
-                                        <div class="P-changepass-Icondiv">
-                                            <i class="P-changepass-Icon fas fa-lock"></i>
-                                        </div>
-                                        <div class="P-changepass-Inputdiv">
-                                            <input class="P-changepass-input100" type="password" id="new-password"
-                                                placeholder="Type your new password" />
-                                        </div>
-                                    </div>
-                                    <p id="newPasswordREQ" style="color: red; opacity: 1; margin: 0;"></p>
-                                </div>
-                                <div class="P-changepass-field-item">
-                                    <div class="P-changepass-InputLabeldiv">
-                                        <span class="P-changepass-label-input100">Confirm New Password</span>
-                                    </div>
-                                    <div class="P-changepass-Inputandicondiv">
-                                        <div class="P-changepass-Icondiv">
-                                            <i class="P-changepass-Icon fas fa-lock"></i>
-                                        </div>
-                                        <div class="P-changepass-Inputdiv">
-                                            <input class="P-changepass-input100" type="password"
-                                                id="confirm-new-password" placeholder="Type your new password again" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <p id="successfullyREQ"
-                                    style="color: rgb(21, 219, 21); opacity: 0; margin: 2; font-weight: 900; font-family: Poppins-Regular;">
-                                    Password successfully changed</p>
+                    <i class="fas fa-chevron-right" style="margin-left: 10px; height: 100%;"></i>
+                </a>
 
+            </div>
+        </div>
+        <div class="coachProfile-innerMain">
+            <div class="coachProfile-profile-pannel">
+                <div class="coachProfile-profile-picture-change-outer-div">
+                    <div class="coachProfile-profile-picture-change-div">
+                        <div class="coachProfile-profile-picture-change-title">Profile Picture</div>
+                        <div class="img__wrap">
+                            <p id="edit-text" class="edit-text" data-symbol="&#xf206;">Edit</p>
+                            <i class="edit-icon fas fa-edit"></i>
+                            <img id="profile-img" class="img-uplaoder"
+                                src="/images/png-transparent-user-profile-computer-icons-login-user-avatars.png" />
+                            <input id="img-upload" class="img__input" type="file" accept="image/*" />
+                        </div>
+                    </div>
+                </div>
+                <div class="coachProfile-severing-border"></div>
+                <div class="coachProfile-user-info-outer-div">
+                    <div class="coachProfile-user-info-div">
+                        <div class="coachProfile-user-info-title">Profile Info</div>
+                        <div class="coachProfile-user-info-inner-div">
+                            <div class="coachProfile-user-info-items-div">
+                                <div class="coachProfile-user-info-item">
+                                    <div class="coachProfile-user-info-item-title">Email</div>
+                                    <div id="email" class="coachProfile-user-info-item-text">wisamwrh@gmail.com</div>
+                                </div>
+                                <div class="coachProfile-user-info-item">
+                                    <div class="coachProfile-user-info-item-title">Full Name</div>
+                                    <div id="name" class="coachProfile-user-info-item-text">Wisam Halabi</div>
+                                    <div id="name-save-btn" class="coachProfile-user-info-item-save-btn">
+                                        <div class="coachProfile-user-info-item-save-btn-text">Save</div>
+                                    </div>
+                                    <i id="name-edit" class="coachProfile-user-info-item-icon fas fa-edit"></i>
+                                </div>
+                                <div class="coachProfile-user-info-item-no-border">
+                                    <div class="coachProfile-user-info-item-title">Password</div>
+                                    <div class="coachProfile-user-info-item-text">************</div>
+                                    <i id="password-edit" class="coachProfile-user-info-item-icon fas fa-edit"></i>
+                                </div>
                             </div>
-                            <div class="P-changepass-popup-buttons">
-                                <button id="popupConfirmBTN" class="P-changepass-popup-confirm-button">Confirm</button>
-                            </div>
-                            <button id="cd-changepass-popup-close" class="P-changepass-popup-close">
-                                <i class="fas fa-times"></i>
-                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div id="cd-changepass-popup" class="coachProfile-changepass-popup" role="alert">
+            <div class="coachProfile-changepass-popup-container">
+                <div class="coachProfile-changepass-fields">
+                    <div class="coachProfile-changepass-field-item">
+                        <div class="coachProfile-changepass-InputLabeldiv">
+                            <span class="coachProfile-changepass-label-input100">Current Password</span>
+                        </div>
+                        <div class="coachProfile-changepass-Inputandicondiv">
+                            <div class="coachProfile-changepass-Icondiv">
+                                <i class="coachProfile-changepass-Icon fas fa-lock"></i>
+                            </div>
+                            <div class="coachProfile-changepass-Inputdiv">
+                                <input class="coachProfile-changepass-input100" type="password" id="old-password"
+                                    placeholder="Type your current password" />
+                            </div>
+                        </div>
+                        <p id="passwordREQ" style="color: red; opacity: 1; margin: 0;"></p>
+                    </div>
+                    <div class="coachProfile-changepass-field-item">
+                        <div class="coachProfile-changepass-InputLabeldiv">
+                            <span class="coachProfile-changepass-label-input100">new Password</span>
+                        </div>
+                        <div class="coachProfile-changepass-Inputandicondiv">
+                            <div class="coachProfile-changepass-Icondiv">
+                                <i class="coachProfile-changepass-Icon fas fa-lock"></i>
+                            </div>
+                            <div class="coachProfile-changepass-Inputdiv">
+                                <input class="coachProfile-changepass-input100" type="password" id="new-password"
+                                    placeholder="Type your new password" />
+                            </div>
+                        </div>
+                        <p id="newPasswordREQ" style="color: red; opacity: 1; margin: 0;"></p>
+                    </div>
+                    <div class="coachProfile-changepass-field-item">
+                        <div class="coachProfile-changepass-InputLabeldiv">
+                            <span class="coachProfile-changepass-label-input100">Confirm New Password</span>
+                        </div>
+                        <div class="coachProfile-changepass-Inputandicondiv">
+                            <div class="coachProfile-changepass-Icondiv">
+                                <i class="coachProfile-changepass-Icon fas fa-lock"></i>
+                            </div>
+                            <div class="coachProfile-changepass-Inputdiv">
+                                <input class="coachProfile-changepass-input100" type="password" id="confirm-new-password"
+                                    placeholder="Type your new password again" />
+                            </div>
+                        </div>
+                    </div>
+                    <p id="successfullyREQ"
+                        style="color: rgb(21, 219, 21); opacity: 0; margin: 2; font-weight: 900; font-family: Poppins-Regular;">
+                        Password successfully changed</p>
+                </div>
+                <div class="coachProfile-changepass-popup-buttons">
+                    <button id="popupConfirmBTN" class="coachProfile-changepass-popup-confirm-button">Confirm</button>
+                </div>
+                <button id="cd-changepass-popup-close" class="coachProfile-changepass-popup-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
     </div>
     <script src="/js/coachProfile.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
 </body>
 
 </html>

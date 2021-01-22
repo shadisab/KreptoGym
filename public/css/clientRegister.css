@@ -294,6 +294,93 @@ input::-webkit-inner-spin-button {
     width: 100%;
     height: 30%;
     border: solid 2px black;
+    position: relative;
+}
+
+.R-coach-list{
+    width: 95%;
+    height: 97%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0px -1px 18px 6px rgba(0,0,0,0.37);
+    overflow-y: auto;
+    background-color: white;
+    padding-bottom: 5px;
+}
+
+.R-coach-list::-webkit-scrollbar {
+    width: 12px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.R-coach-list:hover::-webkit-scrollbar {
+    opacity: 1;
+}
+
+.R-coach-list::-webkit-scrollbar-track {
+    background: transparent;
+    transition: 0.5s;
+}
+
+.R-coach-list::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 20px;
+}
+
+.R-coach-list:hover::-webkit-scrollbar-thumb {
+    background-color: rgb(51, 51, 51,0.4);
+}
+
+.R-coach{
+    margin-top: 5px;
+    width: 95%;
+    height: 50%;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+}
+
+.R-coach-profile-picture{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    background-size: cover;
+}
+
+.R-coach-info-div{
+    width: 80%;
+    height: 100%;
+    position: relative;
+}
+
+.R-coach-name-div{
+    position: absolute;
+    left: 30px;
+    top:10px;
+    font-size: 20px;
+    font-family: Poppins-Medium;
+}
+
+.R-coach-mail-div{
+    position: absolute;
+    left: 350px;
+    top:10px;
+    font-size: 20px;
+    font-family: Poppins-Regular;
+}
+
+.R-coach-message-div{
+    position: absolute;
+    font-family: Poppins-Regular;
+    left: 30px;
+    font-size: 15px;
+    top: 40px;
 }
 
 .R-input-box {
@@ -356,6 +443,16 @@ input::-webkit-inner-spin-button {
     flex-direction: column;
     align-items: center;
     width: 30%;
+    opacity: 0;
+    height: 90%;
+    transition: all 0.4s ease;
+}
+
+.R-register-div-outer-P4{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
     opacity: 0;
     height: 90%;
     transition: all 0.4s ease;

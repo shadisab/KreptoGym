@@ -57,11 +57,26 @@ $(document).ready(async () => {
 		data.forEach((clientReq) => {
 			$('#notification-dd-content').append(
 				`<div id=${clientReq.id} class="CNS-notifiction-div">
-                       <p style="color:white"> You have a new client request from ${clientReq.name}</p>
+					<div class="CNS-notification-client-profile-pic-div">
+						<img src="data:image/png;base64,${clientReq.profilePic}" class="CNS-notification-client-profile-pic"/>
+					</div>
+					<div class="CNS-notification-info">
+						<div class="CNS-notification-client-name">${clientReq.name}</div>
+						<div class="CNS-notification-message">${clientReq.name} has selected you as his coach , do you accept?</div>
+						<button class="CNS-notficiation-client-accept-btn">
+							<i class="CNS-notficiation-client-accept-btn-icon fas fa-check"></i>
+						</button>
+						<button class="CNS-notficiation-client-decline-btn">
+							<i class="CNS-notficiation-client-decline-btn-icon fas fa-times"></i>
+						</button>
+					</div>
 				</div>`
 			);
 		});
-		$('#notifications-icon-numbers').text(numOfrequests);
+		$('#notifications-icon-number').text(numOfrequests);
+		if(numOfrequests > 0){
+			$('#notifications-icon-number-div').css('display','flex');
+		}
 	});
 
 	authCoach.json().then((data) => {
@@ -70,7 +85,6 @@ $(document).ready(async () => {
 		$('#name').text(CoachName);
 		$('#email').text(CoachEmail);
 	});
-
 
 	$('#sidebar-open-close').click(() => {
 		if ($('#Sidenav').width() == '0') {
@@ -123,7 +137,7 @@ $(document).ready(async () => {
 			$('#notification-btn').css('border-top', '1px #666 solid');
 			$('#profile-dd-content').css('display', 'none');
 			$('#notification-dd-content-div').css('display', 'flex');
-			$('#notifications-icon-numbers').css('display', 'none');
+			$('#notifications-icon-number-div').css('display', 'none');
 		} else if ($('#acc-settings-btn-div').css('background-color') == 'rgb(39, 38, 38)') {
 			$('#notification-btn').css('background-color', 'rgb(39, 38, 38)');
 			$('#acc-settings-btn-div').css('background-color', '#333');
@@ -136,7 +150,7 @@ $(document).ready(async () => {
 			$('#notification-btn').css('border-top', '1px #666 solid');
 			$('#profile-dd-content').css('display', 'none');
 			$('#notification-dd-content-div').css('display', 'flex');
-			$('#notifications-icon-numbers').css('display', 'none');
+			$('#notifications-icon-number-div').css('display', 'none');
 		} else {
 			$('#notification-btn').css('background-color', '#333');
 			$('#account-dropdown-div').css('height', '0');

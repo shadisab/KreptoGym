@@ -13,6 +13,23 @@ $(document).ready(async () => {
 		// body data type must match "Content-Type" header
 	});
 
+	var today = new Date();
+	var minDate = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth() + 1; //January is 0!
+	var yyyy = today.getFullYear();
+	if (dd < 10) {
+		dd = '0' + dd;
+	}
+	if (mm < 10) {
+		mm = '0' + mm;
+	}
+
+	today = (yyyy - 18) + '-' + mm + '-' + dd;
+	minDate = (yyyy - 120) + '-' + mm + '-' + dd;
+	$('#Birthdate').attr('max', today);
+	$('#Birthdate').attr('min', minDate);
+
 	if ($('#R-P1').css('display') === 'flex') {
 		$('#back-btn').css('display', 'none');
 	}
@@ -214,29 +231,59 @@ $(document).ready(async () => {
 
 		} else if ($('#R-P2').css('display') === 'flex') {
 			// Check if all the inputs is filled
-			$('#AgeValidation').hide();
 			if (!$('#Fname').val() || !$('#Gender').val() || !$('#Birthdate').val() || !$('#height').val() || !$('#weight').val() || !$('#country-select').val()) {
-				$('#FillAll').show();
+				$('#FillAll-errmsg').css('opacity', '1');
+				$('#reg-title2').css('opacity', '0');
+				setTimeout(function () {
+					$('#FillAll-errmsg').css('opacity', '0');
+					$('#reg-title2').css('opacity', '1');
+				}, 3000);
+			}
+			else if(!allCharacters($('#Fname').val())){
+				$('#invalid-name-errmsg').css('opacity', '1');
+				$('#reg-title2').css('opacity', '0');
+				setTimeout(function () {
+					$('#invalid-name-errmsg').css('opacity', '0');
+					$('#reg-title2').css('opacity', '1');
+				}, 3000);
+			}
+			else if(diff_years($('#Birthdate').val()) < 18 || diff_years($('#Birthdate').val()) > 120) {
+				$('#AgeValidation-errmsg').css('opacity', '1');
+				$('#reg-title2').css('opacity', '0');
+				setTimeout(function () {
+					$('#AgeValidation-errmsg').css('opacity', '0');
+					$('#reg-title2').css('opacity', '1');
+				}, 3000);
+			}
+			else if($('#height').val() < 0 || $('#height').val() > 300) {
+				$('#height-errmsg').css('opacity', '1');
+				$('#reg-title2').css('opacity', '0');
+				setTimeout(function () {
+					$('#height-errmsg').css('opacity', '0');
+					$('#reg-title2').css('opacity', '1');
+				}, 3000);
+			}
+			else if($('#weight').val() < 0 || $('#weight').val() > 500) {
+				$('#weight-errmsg').css('opacity', '1');
+				$('#reg-title2').css('opacity', '0');
+				setTimeout(function () {
+					$('#weight-errmsg').css('opacity', '0');
+					$('#reg-title2').css('opacity', '1');
+				}, 3000);
 			}
 			else {
-				$('#FillAll').hide();
-				if (diff_years($('#Birthdate').val()) < parseInt(18)) {
-					$('#AgeValidation').show();
-				}
-				else {
-					$('#R-P2').css('width', '30%');
-					$('#R-P2').css('opacity', '0');
-					setTimeout(function () {
-						$('#R-P2').css('display', 'none');
-						$('#R-P3').css('display', 'flex');
-					}, 400);
-					setTimeout(function () {
-						$('#dot2').css('color', '#999');
-						$('#dot3').css('color', 'black');
-						$('#R-P3').css('opacity', '1');
-						$('#R-P3').css('width', '65%');
-					}, 420);
-				}
+				$('#R-P2').css('width', '30%');
+				$('#R-P2').css('opacity', '0');
+				setTimeout(function () {
+					$('#R-P2').css('display', 'none');
+					$('#R-P3').css('display', 'flex');
+				}, 400);
+				setTimeout(function () {
+					$('#dot2').css('color', '#999');
+					$('#dot3').css('color', 'black');
+					$('#R-P3').css('opacity', '1');
+					$('#R-P3').css('width', '65%');
+				}, 420);
 			}
 		} else if ($('#R-P3').css('display') === 'flex') {
 			$('#R-P3').css('width', '30%');
@@ -244,8 +291,8 @@ $(document).ready(async () => {
 			setTimeout(function () {
 				getCoachs.json().then((data) => {
 					data.forEach(coach => {
-						$('#CoachesList').append('<div style="opacity: 0.6;transition: 0.8s;" class="column" id="' + coach._id + '"><h2 id="' + coach._id + '">' + coach.name + '</h2><p id="' + coach._id + '">' + coach.email + '</p></div>');
-					});
+						$('#CoachesList').append( '<div class="R-coach" id="' + coach._id + '"><img src="/images/f0a64e32194d341befecc80458707565.jpg" class="R-coach-profile-picture"/><div class="R-coach-info-div"><div class="R-coach-name-div">' + coach.name + '</div><div class="R-coach-mail-div">'  + coach.email + '</div><div class="R-coach-message-div">It wasn\'t quite yet time to panic. There was still time to salvage the situation. At least that is what she was telling himself. The reality was that it was time to panic and there wasn\'t time to salvage the situation, but he continued to delude himself into believing there was.</div></div>');
+					});                                           
 				});
 				$('#R-P3').css('display', 'none');
 				$('#R-P4').css('display', 'flex');
@@ -271,21 +318,25 @@ $(document).ready(async () => {
 		}
 	});
 	let chosedCoachID = undefined;
-	$('#CoachesList').click(async function (e) {
-		if (chosedCoachID === undefined) {
-			chosedCoachID = e.target.id;
-			$('#' + e.target.id).css('opacity', '1');
-		} else if (chosedCoachID === e.target.id) {
-			$('#' + e.target.id).css('opacity', '0.6');
-			chosedCoachID = undefined;
-		}
-		else {
-			$('#' + chosedCoachID).css('opacity', '0.6');
-			chosedCoachID = e.target.id;
-			$('#' + e.target.id).css('opacity', '1');
-		}
+	$( '.R-coach' ).each(function() {
+		$(document).on('click','.R-coach', function(){
+			console.log(this.id);
+			if(chosedCoachID === undefined){
+				$('#' + this.id).css('border', '3px blue solid');
+				chosedCoachID = this.id;
+	
+			}
+			else if(chosedCoachID != this.id) {
+				$('#' + chosedCoachID).css('border', '1px black solid');
+				chosedCoachID = this.id;
+				$('#' + this.id).css('border', '3px blue solid');
+			}
+			else {
+				$('#' + this.id).css('border', '1px black solid');
+				chosedCoachID = undefined;
+			}
+		});
 	});
-
 
 	$('#back-btn').click(async () => {
 		if ($('#R-P2').css('display') === 'flex') {
@@ -347,7 +398,6 @@ $(document).ready(async () => {
 			}, 1200);
 		}
 	});
-
 	$('#profile-img').click(async () => {
 		$('#img-upload').click();
 	});
@@ -367,9 +417,14 @@ $(document).ready(async () => {
 	$('#finish-btn').click(async () => {
 
 		if (chosedCoachID === undefined) {
-			console.log('You must choose a coach!');
+			$('#CoachNotSelected-errmsg').css('opacity', '1');
+			$('#reg-title4').css('opacity', '0');
+			setTimeout(function () {
+				$('#CoachNotSelected-errmsg').css('opacity', '0');
+				$('#reg-title4').css('opacity', '1');
+			}, 3000);
 		} else {
-			
+
 			formData.append('upload', file);
 			formData.append('email', $('#email').val());
 			formData.append('password', $('#password').val());
@@ -401,11 +456,11 @@ $(document).ready(async () => {
 			formData.delete('coachID');
 			formData.delete('birthDate');
 
-			if(regClient.status === 201){
+			if (regClient.status === 201) {
 				window.location.replace('/');
 			} else {
 				console.log('Wrong REG');
-			}		
+			}
 			// console.log('email ' + $('#email').val() + '\n', 'password' + $('#password').val() + '\n', 'Full Name:' + $('#Fname').val() + '\n',
 			// 	'country: ' + $('#country-select').val() + '\n', 'Gender: ' + $('#Gender').val() + '\n', 'height: ' + $('#height').val() + '\n',
 			// 	'Birthdate:' + $('#Birthdate').val() + '\n', 'weight: ' + $('#weight').val() + '\n', 'file: ' + file + '\n',
@@ -432,6 +487,10 @@ $(document).ready(async () => {
 		let diff = (dt1.getTime() - dt3.getTime()) / 1000;
 		diff /= (60 * 60 * 24);
 		return Math.floor(((diff / 365.25)));
+	}
+
+	function allCharacters(myString) {
+		return /^[a-zA-Z]+$/.test(myString);
 	}
 });
 

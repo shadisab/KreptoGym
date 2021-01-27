@@ -1,12 +1,63 @@
 /* eslint-disable no-undef */
 $(document).ready(async () => {
 
-	$('#cancle').on('click', ()=> {
-		if(document.referrer.indexOf('clientSchedule') > 0 || document.referrer.indexOf('clientHome') > 0 ){
+	$('#cancle').on('click', () => {
+		if (document.referrer.indexOf('coachClients') > 0 || document.referrer.indexOf('coachHome') > 0) {
 			parent.history.back();
 		} else {
-			window.location.href = '/clientHome';
+			window.location.href = '/coachHome';
 		}
+	});
+
+	var authCoach = await fetch('/coachs/myProfile', {
+		method: 'GET', // *GET, POST, PUT, DELETE, etc.
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		credentials: 'same-origin', // include, *same-origin, omit
+		redirect: 'follow', // manual, *follow, error
+		referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+	});
+	if (authCoach.status === 200) {
+		authCoach.json().then((data) => {
+			$('#name').text(data.name);
+			$('#email').text(data.email);
+			if (data.profilePic) {
+				$('#profile-img').attr('src', `data:image/png;base64,${data.profilePic}`);
+			}
+		});
+	}
+
+	var formData = new FormData();
+	$('#SaveChanges').on('click', async () => {
+
+		console.log($('#name').text());
+		formData.append('upload', file);
+		formData.append('name', $('#name').text());
+			
+		var saveChanges = await fetch('/coachs/editProfile', {
+			method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'same-origin', // include, *same-origin, omit
+			redirect: 'follow', // manual, *follow, error
+			referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+			body: formData
+		});
+		if (saveChanges.status === 200) {
+			formData.delete('upload');
+			formData.delete('name');
+			if (document.referrer.indexOf('coachClients') > 0 || document.referrer.indexOf('coachHome') > 0) {
+				parent.history.back();
+			} else {
+				window.location.href = '/coachHome';
+			}
+		}
+		else {
+			saveChanges.json().then((data)=>{
+				console.log(data);
+			});
+		}
+		
 	});
 
 	$('#profile-img').click(async () => {
@@ -16,34 +67,36 @@ $(document).ready(async () => {
 	$('#edit-text').click(async () => {
 		$('#img-upload').click();
 	});
-	// let temp = false;
+
+	var file = undefined;
 	$('#img-upload').change(function () {
 		$('#profile-img').attr('src', window.URL.createObjectURL(this.files[0]));
+		file = this.files[0];
 	});
-    
+
 	$('#name-edit').click(async () => {
 		var input = $('<input />', {
-			'id':'name',
+			'id': 'name',
 			'type': 'text',
-			'class': 'clientProfile-user-info-item-text',
+			'class': 'coachProfile-user-info-item-text',
 			'value': $('#name').text()
 		});
 		$('#name').replaceWith(input);
-		$('#name-save-btn').css('display','flex');
-		$('#name-edit').css('display','none');
+		$('#name-save-btn').css('display', 'flex');
+		$('#name-edit').css('display', 'none');
 	});
-    
+
 	$('#name-save-btn').click(async () => {
 		var mydiv = $('<div />', {
 			id: 'name',
-			class: 'clientProfile-user-info-item-text',
+			class: 'coachProfile-user-info-item-text',
 			text: $('#name').val()
 		});
 		$('#name').replaceWith(mydiv);
-		$('#name-save-btn').css('display','none');
-		$('#name-edit').css('display','flex');
+		$('#name-save-btn').css('display', 'none');
+		$('#name-edit').css('display', 'flex');
 	});
-    
+
 	$('#password-edit').on('click', function (event) {
 		event.preventDefault();
 		$('#cd-changepass-popup').addClass('is-visible2');
@@ -101,10 +154,10 @@ $(document).ready(async () => {
 			return;
 		}
 
-        
+
 
 		if (newPassword !== '' && newPassword === confirmPassword && password !== '') {
-			const updatePassword = await fetch('/clients/password', {
+			const updatePassword = await fetch('/coachs/password', {
 				method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
 				mode: 'cors', // no-cors, *cors, same-origin
 				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -121,7 +174,7 @@ $(document).ready(async () => {
 				}) // body data type must match "Content-Type" header
 			});
 			if (updatePassword.status === 400) {
-				if(newPassword === password){
+				if (newPassword === password) {
 					$('#newPasswordREQ').css('opacity', 1).text('New password must not be the same as old password');
 					return;
 				}

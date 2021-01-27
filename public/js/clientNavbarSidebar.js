@@ -52,10 +52,6 @@ $(document).ready(async () => {
 		}
 	});
 
-
-	var numOfNotifications = $('#notification-dd-content').children().length;
-	$('#notifications-icon-numbers').text(numOfNotifications);
-
 	$('#chat').on('click', ()=> {
 		window.location.href = (`/chat?username=${clientname}&room=${clientID}+${coachID}`);
 	});
@@ -99,57 +95,17 @@ $(document).ready(async () => {
 			$('#account-dropdown-div').css('width', '0');
 		}
 	});
-	$('#notification-btn').click(() => {
-		if ($('#account-dropdown-div').height() == '0') {
-			$('#notification-btn').css('background-color', 'rgb(39, 38, 38)');
-			$('#account-dropdown-div').css('height', '500px');
-			$('#account-dropdown-div').css('width', '400px');
-			$('#account-dropdown-div').css('display', 'flex');
-			$('#notification-btn').css('border-left', '1px #666 solid');
-			$('#notification-btn').css('border-right', '1px #666 solid');
-			$('#notification-btn').css('border-top', '1px #666 solid');
-			$('#profile-dd-content').css('display','none');
-			$('#notification-dd-content-div').css('display','flex');
-			$('#notifications-icon-numbers').css('display','none');
-		} else if ($('#acc-settings-btn-div').css('background-color') == 'rgb(39, 38, 38)') {
-			$('#notification-btn').css('background-color', 'rgb(39, 38, 38)');
-			$('#acc-settings-btn-div').css('background-color', '#333');
-			$('#account-dropdown-div').css('width', '400px');
-			$('#acc-settings-btn-div').css('border-left', '');
-			$('#acc-settings-btn-div').css('border-right', '');
-			$('#acc-settings-btn-div').css('border-top', '');
-			$('#notification-btn').css('border-left', '1px #666 solid');
-			$('#notification-btn').css('border-right', '1px #666 solid');
-			$('#notification-btn').css('border-top', '1px #666 solid');
-			$('#profile-dd-content').css('display','none');
-			$('#notification-dd-content-div').css('display','flex');
-			$('#notifications-icon-numbers').css('display','none');
-		} else {
-			$('#notification-btn').css('background-color', '#333');
-			$('#account-dropdown-div').css('height', '0');
-			$('#notification-btn').css('border-left', '');
-			$('#notification-btn').css('border-right', '');
-			$('#notification-btn').css('border-top', '');
-			$('#account-dropdown-div').css('display', 'none');
-			$('#account-dropdown-div').css('width', '0');
-		}
-	});
 	$(document).mouseup(function(e)
 	{
-		var elements = [$('#notification-btn'),$('#acc-settings-btn-div'),$('#account-dropdown-div')];
+		var elements = [$('#acc-settings-btn-div'),$('#account-dropdown-div')];
 		if($('#account-dropdown-div').height() !== '0'){
-			if(!elements[0].is(e.target) && !elements[1].is(e.target) &&!elements[2].is(e.target) && 
-				elements[0].has(e.target).length === 0 && elements[1].has(e.target).length === 0 &&
-				elements[2].has(e.target).length === 0){
+			if(!elements[0].is(e.target) && !elements[1].is(e.target) && 
+				elements[0].has(e.target).length === 0 && elements[1].has(e.target).length === 0){
 				$('#account-dropdown-div').css('height','0');
-				$('#notification-btn').css('background-color', '#333');
 				$('#acc-settings-btn-div').css('background-color', '#333');
 				$('#acc-settings-btn-div').css('border-left', '');
 				$('#acc-settings-btn-div').css('border-right', '');
 				$('#acc-settings-btn-div').css('border-top', '');
-				$('#notification-btn').css('border-left', '');
-				$('#notification-btn').css('border-right', '');
-				$('#notification-btn').css('border-top', '');
 				$('#account-dropdown-div').css('display', 'none');
 				$('#account-dropdown-div').css('width', '0');
 			}

@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 $(document).ready(async () => {
-
+	var file = undefined;
 	$('#cancle').on('click', ()=> {
 		if(document.referrer.indexOf('clientSchedule') > 0 || document.referrer.indexOf('clientHome') > 0 ){
 			parent.history.back();
@@ -30,6 +30,47 @@ $(document).ready(async () => {
 		});	
 	}
 
+	var formData = new FormData();
+	$('#SaveChanges').on('click', async () => {
+		formData.append('upload', file);
+		formData.append('name', $('#name').text());
+		formData.append('country', $('#country').text());
+		formData.append('gender', $('#gender').text());
+		formData.append('weight', parseInt($('#weight').text()) );
+		formData.append('height', parseInt($('#height').text()));
+		formData.append('birthDate', moment($('#birthdate').text()).format('YYYY-MM-DD'));
+		
+		var saveChanges = await fetch('/client/editProfile', {
+			method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'same-origin', // include, *same-origin, omit
+			redirect: 'follow', // manual, *follow, error
+			referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+			body: formData
+		});
+		if (saveChanges.status === 200) {
+			formData.delete('upload');
+			formData.delete('name');
+			formData.delete('country');
+			formData.delete('gender');
+			formData.delete('weight');
+			formData.delete('height');
+			formData.delete('birthDate');
+			if (document.referrer.indexOf('clientSchedule') > 0 || document.referrer.indexOf('clientHome') > 0) {
+				parent.history.back();
+			} else {
+				window.location.href = '/coachHome';
+			}
+		}
+		else {
+			saveChanges.json().then((data)=>{
+				console.log(data);
+			});
+		}
+		
+	});
+
 	$('#profile-img').click(async () => {
 		$('#img-upload').click();
 	});
@@ -40,6 +81,7 @@ $(document).ready(async () => {
 	// let temp = false;
 	$('#img-upload').change(function () {
 		$('#profile-img').attr('src', window.URL.createObjectURL(this.files[0]));
+		file = this.files[0];
 	});
     
 	$('#name-edit').click(async () => {

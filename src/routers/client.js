@@ -7,6 +7,8 @@ const { sendmsg } = require('../db/Mails');
 const multer = require('multer');
 const sharp = require('sharp');
 
+const updates = ['name', 'birthDate', 'height', 'weight', 'country', 'gender'];
+
 const upload = multer({
 	limits: { fileSize: 2000000 },
 	fileFilter(req, file, cb) {
@@ -129,6 +131,44 @@ router.patch('/clients/password', authClient, async (req, res) => {
 		res.status(400).send(e);
 	}
 });
+
+// Updating Client details
+// router.patch('/client/editProfile', upload.single('upload'), authClient, async (req, res) => {
+	
+// 	const client = await Client.findById(req.client._id);
+	
+// 	if(req.file){
+// 		const buffer = await sharp(req.file.buffer).resize({ width:250 ,height:250 }).png().toBuffer(); //output from sharp
+// 		client.profilePic = buffer;
+// 	}
+// 	try {
+// 		req.body.forEach(element => {
+// 			console.log(element);
+// 		});
+// 		// await client.save();
+// 		res.status(200).send(client);
+// 	} catch (e) {
+// 		console.log(e);
+// 		res.status(400).send(e.message);
+// 	}
+// });
+
+// Updating client profile data
+router.patch('/client/editProfile', upload.single('upload'), authClient, async (req, res) => {
+	try {
+		if(req.file){
+			const buffer = await sharp(req.file.buffer).resize({ width:250 ,height:250 }).png().toBuffer(); //output from sharp
+			req.client.profilePic = buffer;
+		}
+		updates.forEach((update) => req.client[update] = req.body[update]);// Dynamic update  
+		await req.client.save();
+
+		res.send(req.client);
+	} catch (e) {
+		res.status(400).send(e);
+	}
+});
+
 
 // Delete client itself
 router.delete('/clients/myProfile', authClient, async (req, res) => {

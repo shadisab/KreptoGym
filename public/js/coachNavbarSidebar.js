@@ -4,6 +4,10 @@ $(document).ready(async () => {
 		window.location.href = ('/joinChat');
 	});
 
+	$('#edit').on('click', () => {
+		window.location.href = ('/coachProfile');
+	});
+
 	$('#logout').on('click', async () => {
 		const logout = await fetch('/coachs/logout', {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -22,10 +26,7 @@ $(document).ready(async () => {
 		}
 	});
 
-
-
-
-	const authCoach = await fetch('/coachs/myProfile', {
+	var authCoach = await fetch('/coachs/myProfile', {
 		method: 'GET', // *GET, POST, PUT, DELETE, etc.
 		mode: 'cors', // no-cors, *cors, same-origin
 		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -33,12 +34,37 @@ $(document).ready(async () => {
 		redirect: 'follow', // manual, *follow, error
 		referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
 		headers: {
-			'Content-Type': 'application/json'
-			// 'Content-Type': 'application/x-www-form-urlencoded',
-		},
+			'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmZiNzViOGM3MTc0NTRkYTQ2YTBkOWQiLCJpYXQiOjE2MTE1OTg3OTN9.QpP4iCDH1FYMLRWGoZYmbVsVhAzoxRM7u9_ykey3kPE',
+			'Cookie': 'Authorization=Bearer%20eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmZiNzViOGM3MTc0NTRkYTQ2YTBkOWQiLCJpYXQiOjE2MTE1OTg3OTN9.QpP4iCDH1FYMLRWGoZYmbVsVhAzoxRM7u9_ykey3kPE'
+		}
+	});
+	authCoach.json().then(async (data) => {
+		var CoachName = data.name;
+		var CoachEmail = data.email;
+		$('#name').text(CoachName);
+		$('#email').text(CoachEmail);
+		if(data.profilePic){
+			$('#acc-settings-btn-icon').attr('src', `data:image/png;base64,${data.profilePic}`);
+		}
+		var terCer = await fetch(`/coaches/${data._id}/TerminationCertificate`, {
+			method: 'GET', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'same-origin', // include, *same-origin, omit
+			headers: {
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			redirect: 'follow', // manual, *follow, error
+			referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+			// body data type must match "Content-Type" header
+		});
+		if (terCer.status === 200) {
+			$('#certificate').attr('src', terCer.url);
+		}
 	});
 
-	const newClientsReq = await fetch('/coaches/reqClients', {
+	var newClientsReq = await fetch('/coaches/reqClients', {
 		method: 'GET', // *GET, POST, PUT, DELETE, etc.
 		mode: 'cors', // no-cors, *cors, same-origin
 		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -54,37 +80,73 @@ $(document).ready(async () => {
 	newClientsReq.json().then((data) => {
 
 		var numOfrequests = data.length;
+		var profilePic = '';
 		data.forEach((clientReq) => {
+			if (clientReq.profilePic === undefined) {
+				profilePic = 'images/default-pp.png';
+			}
+			else {
+				profilePic = `data:image/png;base64,${clientReq.profilePic}`;
+			}
 			$('#notification-dd-content').append(
 				`<div id=${clientReq.id} class="CNS-notifiction-div">
 					<div class="CNS-notification-client-profile-pic-div">
-						<img src="data:image/png;base64,${clientReq.profilePic}" class="CNS-notification-client-profile-pic"/>
+						<img src="${profilePic}" class="CNS-notification-client-profile-pic"/>
 					</div>
 					<div class="CNS-notification-info">
 						<div class="CNS-notification-client-name">${clientReq.name}</div>
 						<div class="CNS-notification-message">${clientReq.name} has selected you as his coach , do you accept?</div>
-						<button class="CNS-notficiation-client-accept-btn">
-							<i class="CNS-notficiation-client-accept-btn-icon fas fa-check"></i>
+						<button id=${clientReq._id} class="CNS-notficiation-client-accept-btn">
+							<i id=${clientReq._id} class="CNS-notficiation-client-accept-btn-icon fas fa-check"></i>
 						</button>
-						<button class="CNS-notficiation-client-decline-btn">
-							<i class="CNS-notficiation-client-decline-btn-icon fas fa-times"></i>
+						<button id=${clientReq._id} class="CNS-notficiation-client-decline-btn">
+							<i id=${clientReq._id} class="CNS-notficiation-client-decline-btn-icon fas fa-times"></i>
 						</button>
 					</div>
 				</div>`
 			);
 		});
 		$('#notifications-icon-number').text(numOfrequests);
-		if(numOfrequests > 0){
-			$('#notifications-icon-number-div').css('display','flex');
+		if (numOfrequests > 0) {
+			$('#notifications-icon-number-div').css('display', 'flex');
 		}
 	});
 
-	authCoach.json().then((data) => {
-		var CoachName = data.name;
-		var CoachEmail = data.email;
-		$('#name').text(CoachName);
-		$('#email').text(CoachEmail);
+	$(document).on('click', 'button.CNS-notficiation-client-accept-btn', async (e) => {
+		let accepteClient = await fetch(`/coach/accepteClient/${e.target.id}`, {
+			method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'same-origin', // include, *same-origin, omit
+			redirect: 'follow', // manual, *follow, error
+			referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+		if(accepteClient.status===200){
+			location.reload();
+		}
 	});
+	$(document).on('click', 'button.CNS-notficiation-client-decline-btn', async (e) => {
+		
+		let deleteClient = await fetch(`/coach/deleteClient/${e.target.id}`, {
+			method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'same-origin', // include, *same-origin, omit
+			redirect: 'follow', // manual, *follow, error
+			referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+		if(deleteClient.status===200){
+			location.reload();
+		}
+
+	});
+
 
 	$('#sidebar-open-close').click(() => {
 		if ($('#Sidenav').width() == '0') {

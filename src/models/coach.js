@@ -31,6 +31,9 @@ const coachSchema = new mongoose.Schema({
 			}
 		}
 	},
+	profilePic: {
+		type: Buffer
+	},
 	status: {
 		type: String,
 		trim: true,

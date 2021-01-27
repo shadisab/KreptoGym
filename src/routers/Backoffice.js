@@ -81,9 +81,9 @@ router.get('/BOcoachView/:id/profile',authAdmin, async(req, res) => {
 });
 
 
-// Updating Coach From BackOffice
+// Accept Coach From BackOffice
 router.patch('/coachs/:id', authAdmin, async (req, res) => {
-	const firstPass = Math.floor(1000000 + Math.random() * 9999999);
+	const firstPass = Math.floor(1000000 + Math.random() * 9999999); //Generate coach first password
 	const update = 'status';
 	try {
 		const coach = await Coach.findById(req.params.id);

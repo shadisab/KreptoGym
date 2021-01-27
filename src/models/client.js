@@ -294,20 +294,6 @@ clientSchema.pre('save', async function (next) {
 	next();
 });
 
-// Before the client deleting itself -> Delete his ID from his coach
-clientSchema.pre('remove', async function (next) {
-	const client = this;
-	try {
-		const coach = await Coach.findById(client.coachID);
-		coach.myClients = await coach.myClients.filter(function (value) {
-			return !value.id.equals(client._id);
-		});
-		coach.save();
-	} catch (e) {
-		console.log(e);
-	}
-	next();
-});
 
 // Remove field from the profile respons
 clientSchema.methods.toJSON = function () {

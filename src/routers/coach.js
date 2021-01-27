@@ -6,6 +6,7 @@ const { authCoach } = require('../middleware/auth');
 const { Error } = require('mongoose');
 const { sendmsg } = require('../db/Mails');
 const router = new express.Router();
+const sharp = require('sharp');
 
 
 //Termination Certificate
@@ -93,7 +94,7 @@ router.get('/coachs/client/:id', authCoach, async (req, res) => {
 		const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
 		if (!client) {
 			throw new Error('Cant Find client');
-		}else{
+		} else {
 			res.status(200).send(client);
 		}
 	}
@@ -112,7 +113,6 @@ router.post('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) =
 		}
 		client.trainingSchedule[req.body.day][req.body.type].push(req.body.data);
 		await client.save();
-		
 		res.send(client);
 	} catch (e) {
 		console.log(e);
@@ -158,11 +158,30 @@ router.get('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) =>
 
 // GET Coach profile
 router.get('/coachs/myProfile', authCoach, async (req, res) => {
-	res.send(req.coach);
+	res.send(req.coach).status(200);
 
 });
+
+// Updating coach Profile
+router.patch('/coachs/editProfile', upload.single('upload'), authCoach, async (req, res) => {
+
+	try {
+		const coach = await Coach.findById(req.coach._id);
+		if (req.file) {
+			const buffer = await sharp(req.file.buffer).resize({ width: 250, height: 250 }).png().toBuffer(); //output from sharp
+			coach.profilePic = buffer;
+		}
+		coach.name = req.body.name;
+		await coach.save();
+		await res.status(200).send(coach);
+	} catch (e) {
+		res.status(400).send(e.message);
+	}
+});
+
+
 // Updating coach Password
-router.patch('/coachs/password', async (req, res) => {
+router.patch('/coachs/password', authCoach, async (req, res) => {
 	const allowerdUpdates = 'password';
 	try {
 		const coach = await Coach.findByCredentials(req.coach.email, req.body.password);
@@ -203,5 +222,34 @@ router.get('/coaches/reqClients', authCoach, async (req, res) => {
 		match
 	}).execPopulate();
 	res.send(req.coach.myClients);
+});
+
+//Reject Client
+router.delete('/coach/deleteClient/:id', authCoach, async (req, res) => {
+	console.log(req.params.id);
+	try {
+		const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
+		await client.remove();
+		sendmsg(client.email, `Updating status to ${client.name}`, `Hey ${client.name},\nYour coach just Rejected you.`);
+		res.status(200).send(client);
+	}
+	catch (e) {
+		res.status(404).send(e.message);
+	}
+});
+
+
+// Accept Client
+router.patch('/coach/accepteClient/:id', authCoach, async (req, res) => {
+	const update = 'status';
+	try {
+		const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
+		client[update] = 'Accepted';
+		await client.save();
+		sendmsg(client.email, `Updating status to ${client.name}`, `Hey ${client.name},\nYour coach just Accepted you.`);
+		res.status(200).send(client);
+	} catch (e) {
+		res.status(400).send(e);
+	}
 });
 module.exports = router;

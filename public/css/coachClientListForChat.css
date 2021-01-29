@@ -1,0 +1,130 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('/fonts/poppins.regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('/fonts/poppins.medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('/fonts/poppins.bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('/fonts/poppins.semibold.ttf');
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    font-size: 14px;
+    user-select: none;
+}
+
+.CCLFC-main-window {
+    height: 91.04%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.CCLFC-title{
+    font-size: 40px;
+    font-family: Poppins-Medium;
+    color: black;   
+}
+
+.CCLFC-client-list{
+    width: 60%;
+    height: 70%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0px -1px 18px 6px rgba(0,0,0,0.37);
+    overflow-y: auto;
+    background-color: white;
+    padding-bottom: 5px;
+}
+
+.CCLFC-client-list::-webkit-scrollbar {
+    width: 12px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.CCLFC-client-list:hover::-webkit-scrollbar {
+    opacity: 1;
+}
+
+.CCLFC-client-list::-webkit-scrollbar-track {
+    background: transparent;
+    transition: 0.5s;
+}
+
+.CCLFC-client-list::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 20px;
+}
+
+.CCLFC-client-list:hover::-webkit-scrollbar-thumb {
+    background-color: rgb(51, 51, 51,0.4);
+}
+
+.CCLFC-client{
+    margin-top: 5px;
+    width: 95%;
+    height: 15%;
+    border-radius: 20px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    position: relative;
+}
+
+.CCLFC-client-profile-picture{
+    width: 50px;
+    border-radius: 50%;
+    height: 50px;
+    display: flex;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    background-size: cover;
+    position: absolute;
+    top: 5px;
+    left: 20px;
+}
+
+.CCLFC-client-name-div{
+    position: absolute;
+    left: 30%;
+    top:15px;
+    font-size: 20px;
+    font-family: Poppins-Medium;
+}
+
+.CCLFC-client-chat-btn{
+    width: 20%;
+    height: 100%;
+    cursor: pointer;
+    font-family: Poppins-Regular;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: 20px;
+    color: white;
+    background-color: #555;
+    outline: none;
+    position: absolute;
+    right: 0;
+}

@@ -2,33 +2,109 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="./css/index.css">
-    <title>Krepto Gym</title>
-    {{>links}}
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
-    <div class="Masking-DIV">
-        <div class="Masking-DIV-2">
-            {{>header}}
-            <div class="main-DIV">
-                <div class="container-DIV">
-                    <div class="welcome-title-DIV">
-                        <div class="welcome-title">Welcome</div>
-                        <div class="welcome-title-sec">To Our Gym App.</div>
-                    </div>
-                    <div class="motive-text-DIV">
-                        <div class="motive-text">DO IT</div>
-                        <div class="motive-text-big"> NOW</div>
-                    </div>
-                    <div class="motive-text-DIV">
-                        <div class="motive-text">SOMETIMES LATER</div>
-                        <div class="motive-text-big">BECOMES NEVER.</div>
+    <div class="main">
+        <div class="header">
+            <div class="logo-div">
+                <i class="HP-logo-icon fab fa-korvue"></i>
+                <div class="logo-text-div">
+                    <div class="logo1">Krypto</div>
+                    <div class="logo2">GYM</div>
+                </div>
+            </div>
+            <div class="links-div">
+                <div class="link">
+                    <div id="home-btn" class="link-text">HOME</div>
+                </div>
+                <div class="link">
+                    <div id="about-btn" class="link-text">ABOUT</div>
+                </div>
+                <div class="link">
+                    <div id="Contact-us-btn" class="link-text">CONTACT US</div>
+                </div>
+            </div>
+            <div class="log-in-btn-div">
+                <a href="/clientLogin" class="log-in-btn-inner-div">
+                    <div class="log-in-btn-text">LOG IN</div>
+                    <i class="log-in-btn-icon fas fa-sign-in-alt"></i>
+                </a>
+            </div>
+            <div class="sign-up-btn-div">
+                <a href="/clientRegister" class="log-in-btn-inner-div">
+                    <div class="log-in-btn-text">SIGN UP</div>
+                    <i class="log-in-btn-icon fas fa-user-plus"></i>
+                </a>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="hero-banner">
+                <div class="Motivation-text-div">
+                    <div class="welcome-title">Welcome</div>
+                    <div class="welcome-title2">To Our Gym App.</div>
+                    <div class="motive-text1">DO IT</div>
+                    <div class="motive-text2"> NOW</div>
+                    <div class="motive-text3">SOMETIMES LATER</div>
+                    <div class="motive-text4">BECOMES NEVER.</div>
+                </div>
+                <div class="main-imgs">
+                    <img class="main-img-1" src="/images/2.png">
+                    <img class="main-img-2" src="/images/1.png">
+                </div>
+            </div>
+            <div class="abs-1">
+                <div class="card" style="border: none;">
+                    <img style="width: 100%; height: 100%; object-fit: cover;" src="/images/home1.jpg"/>
+                </div>
+                <div class="card">
+                    <img style="width: 100%; height: 100%; object-fit: cover;" src="/images/home2.jpg"/>
+                </div>
+                <div class="card">
+                    <img style="width: 100%; height: 100%; object-fit: cover;" src="/images/home3.jpg"/>
+                </div>
+                <div class="card">
+                    <img style="width: 100%; height: 100%; object-fit: cover;" src="/images/home4.jpg"/>
+                </div>
+            </div>
+            <div class="abs-filler">
+            </div>
+            <div id="about-div" class="about-section">
+                <img class="about-section-img" src="/images/running-pic-1.png" />
+                <div class="about-section-data">
+                    <div class="about-section-data-title">Train with ease!</div>
+                    <div class="about-section-data-text">Pick your favorite coach to help you reach your goal.</br>
+                        Access your weekly training schedule that your coach have put out
+                        for you with ease.</br>
+                        </div>
+                </div>
+            </div>
+            <div class="about-section">
+                <div class="help-section-data">
+                    <div class="about-section-data-title"> Nutritions are important!</div>
+                    <div class="about-section-data-text">Enjoy picking better meals for your training progress by accessing your coach's meal
+                        suggestions.</br>
+                        Chat with your coach about your trainging regime or your self.</div>
+                </div>
+                <img class="help-section-img" src="/images/help-section-pic.png" />
+            </div>
+            <div class="contact-us-section">
+                <img class="about-section-img" src="/images/contact-us-pic.png" />
+                <div class="about-section-data">
+                    <div class="about-section-data-title">Contact us!</div>
+                    <div class="about-section-data-text"> Phone: +123-456-7890</br>
+                                                          Email: Kreptogym@gmail.com</br>
+                                                          Addess: Apple St, New York NY 10012, USA
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="/js/index.js"></script>
 </body>
 
 </html>

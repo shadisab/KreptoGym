@@ -104,11 +104,11 @@ input::-webkit-inner-spin-button {
 
 .R-header-filler {
     height: 100%;
-    width: 80%;
+    width: 75%;
 }
 
 .R-log-in-btn-option {
-    width: 10%;
+    width: 15%;
     height: 100%;
     display: flex;
     align-items: center;

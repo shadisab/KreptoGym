@@ -180,6 +180,14 @@ app.get('/clientSchedule', authClient, (req , res) => {
 	res.render('clientSchedule');
 });
 
+app.get('/coachAfterSignUp', (req , res) => {
+	res.render('coachAfterSignUp');
+});
+
+app.get('/coachClientListForChat',authCoach , (req , res) => {
+	res.render('coachClientListForChat');
+});
+
 app.get('/coachClients',authCoach , (req , res) => {
 	res.render('coachClients');
 });

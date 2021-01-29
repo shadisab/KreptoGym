@@ -1,0 +1,73 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('/fonts/poppins.regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('/fonts/poppins.medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('/fonts/poppins.bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('/fonts/poppins.semibold.ttf');
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    font-size: 14px;
+    user-select: none;
+}
+
+.CASU-mainwindow{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CASU-message-box{
+    width: 70%;
+    height: 70%;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+}
+
+.CASU-message-title{
+    font-size: 30px;
+    font-family: Poppins-Regular;
+    color: white;
+    margin-top: 15px;
+}
+
+.CASU-message-text{
+    font-size: 15px;
+    font-family: Poppins-Regular;
+    margin-top: 30px;
+    color: rgb(211, 211, 211);
+}
+
+.CASU-back-home-btn{
+    width: 30%;
+    height: 20%;
+    outline: none;
+    margin-top: 80px;
+    font-size: 20px;
+    border-radius: 16px;
+    background-color: white;
+    color: black;
+    font-family: Poppins-Regular;
+    cursor: pointer;
+}

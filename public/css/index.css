@@ -1,57 +1,401 @@
-.main-DIV {
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('/fonts/poppins.regular.ttf');
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('/fonts/poppins.medium.ttf');
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('/fonts/poppins.bold.ttf');
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url('/fonts/poppins.semibold.ttf');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Poppins-Regular;
+  user-select: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  width: 90%;
+}
+
+.header {
+  position: absolute;
+  background-color: white;
+  display: flex;
+  flex-flow: row wrap;
   width: 100%;
-  height: 85%;
+  height: 120px;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.header.fixed {
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+  transform: translate(0, -200px);
+}
+
+.header.fixed nav a, header.fixed .logo a {
+  color: #333;
+}
+
+.header.in-view {
+  opacity: 1;
+  visibility: visible;
+  height: 70px;
+  transition: all 0.3s ease;
+  transform: translate(0, 0);
+}
+
+.header .container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.logo-text-div {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.logo1 {
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 0.10em;
+  color: #333;
+  text-decoration: none;
+  line-height: 30px;
+}
+
+.logo2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #CFB997;
+  letter-spacing: 1.65em;
+  text-decoration: none;
+  line-height: 30px;
+}
+
+.logo-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #CFB997;
+  margin-left: 80px;
+}
+
+.HP-logo-icon {
+  color: #CFB997;
+  font-size: 80px;
+}
+
+.links-div {
+  height: 100%;
+  width: 58%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.log-in-btn-div{
+  height: 100%;
+  width: 9.6%;
+  border-left: solid 1px #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sign-up-btn-div{
+  height: 100%;
+  border-left: 1px #333 solid;
+  width: 9.6%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.container-DIV {
-  width: 65%;
-  height: 100%;
+.log-in-btn-inner-div{
   display: flex;
-  flex-direction: column;
+  outline: none;
+  color: inherit;
+  text-decoration: none;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+
+.log-in-btn-inner-div:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 50%;
+  background: black;
+  position: absolute;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.log-in-btn-inner-div:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.log-in-btn-icon{
+  margin-left: 10px;
+  font-size: 20px;
+  color: #515151;
+}
+
+.link {
+  width: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.07em;
+}
+
+.link-text{
+  position: relative;
+  cursor: pointer;
+}
+
+.link-text:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 50%;
+  background: black;
+  position: absolute;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.link-text:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.hero-banner {
+  background-color: #333;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+}
+
+.home-motivating-sentence {
+  margin-left: 170px;
+  color: #fff;
+  font-size: 40px;
+  z-index: 1;
+}
+
+.abs-filler {
+  background-color: rgb(223, 223, 223);
+  width: 100%;
+  height: 30vh;
+}
+
+
+.main-imgs{
+  position: relative;
+  width:40%;
+  height: 60%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.main-img-1{
+  z-index: 1;
+  left: 270px;
+  position: absolute;
+}
+
+.main-img-2{
+  z-index: 1;
+  position: absolute;
+  left: 0px;
+}
+
+.abs-1{
+  width: 90%;
+  height: 270px;
+  left: 5%;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 490px;
+  z-index: 1;
+}
+.about-section{
+  background-color: white;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px rgba(51, 51, 51,0.3) solid;
+}
+
+.contact-us-section{
+  background-color: white;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.card{
+  border-left: 1px rgba(51, 51, 51,0.5) solid;
+  background-color: #999;
+  width: 25%;
+}
+.card:hover{
+  background-color: rgb(124, 123, 123);
 }
 
 .welcome-title {
   color: white;
-  font-size: 100px;
-  height: 80%;
+  font-size: 70px;
   font-family: Poppins-Regular;
+  position: absolute;
+  left: 40px;
+  top: 40px;
 }
 
-.welcome-title-sec {
+.welcome-title2{
   color: rgb(207, 185, 151);
-  font-size: 40px;
-  margin-left: 30px;
+  font-size: 30px;
+  position: absolute;
+  left: 250px;
+  top: 110px;
   font-family: Poppins-Regular;
 }
 
-.welcome-title-DIV {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
+.motive-text1{
+  color: white;
+  font-size: 40px;
+  position: absolute;
+  top: 140px;
+  left: 50px;
+  font-family: Poppins-Regular;
 }
 
-.motive-text-DIV {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.motive-text2{
+  display: inline-block;
+  color: rgb(207, 185, 151);
+  font-size: 70px;
+  font-family: Poppins-Regular;
+  left: 160px;
+  top: 140px;
+  position: absolute;
 }
 
-.motive-text {
+.motive-text3{
   color: white;
   font-size: 40px;
   font-family: Poppins-Regular;
+  position: absolute;
+  top: 220px;
+  left: 50px;
 }
 
-.motive-text-big {
-  margin-left: 30px;
-  display: inline-block;
+.motive-text4{
   line-height: 80%;
   color: rgb(207, 185, 151);
-  font-size: 100px;
-  height: 60%;
+  font-size: 70px;
   font-family: Poppins-Regular;
   padding: 0;
+  position: absolute;
+  top: 280px;
+  left: 160px;
+}
+
+.Motivation-text-div{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 60%;
+  height: 70%;
+  margin-left: 67px;
+}
+
+.about-section-img{
+  height: 100%;
+  width: 40%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.about-section-data{
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.help-section-data{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.help-section-img{
+  height: 100%;
+  width: 50%;
+  object-fit: cover;
+  object-position: left top;
+}
+
+.about-section-data-title{
+  font-family: Poppins-Regular;
+  font-size: 30px;
+  color: black;
+  position: absolute;
+  left: 150px;
+  top: 150px;
+}
+
+.about-section-data-text{
+  position: absolute;
+  font-family: Poppins-Regular;
+  font-size: 15px;
+  width: 60%;
+  color: #515151;
+  left: 150px;
+  top: 230px;
 }

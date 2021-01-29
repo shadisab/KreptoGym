@@ -60,6 +60,7 @@ $(document).ready(async () => {
 				formData.delete('email');
 				formData.delete('name');
 				if (regCoach.status === 201) {
+					window.location.href = '/coachAfterSignUp';
 					console.log('Success');
 				} else {
 					console.log('Return the error that the server is return.');

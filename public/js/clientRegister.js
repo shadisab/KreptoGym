@@ -291,7 +291,24 @@ $(document).ready(async () => {
 			setTimeout(function () {
 				getCoachs.json().then((data) => {
 					data.forEach(coach => {
-						$('#CoachesList').append( '<div class="R-coach" id="' + coach._id + '"><img src="/images/f0a64e32194d341befecc80458707565.jpg" class="R-coach-profile-picture"/><div class="R-coach-info-div"><div class="R-coach-name-div">' + coach.name + '</div><div class="R-coach-mail-div">'  + coach.email + '</div><div class="R-coach-message-div">It wasn\'t quite yet time to panic. There was still time to salvage the situation. At least that is what she was telling himself. The reality was that it was time to panic and there wasn\'t time to salvage the situation, but he continued to delude himself into believing there was.</div></div>');
+						if(coach.profilePic === undefined)
+						{
+							$('#CoachesList').append( `<div class="R-coach" id="${coach._id}">
+							<img value="${coach._id}" src="/images/f0a64e32194d341befecc80458707565.jpg"/>
+							<div value="${coach._id}" class="R-coach-info-div">
+							<div value="${coach._id}" class="R-coach-name-div"> ${coach.name}</div>
+							<div value="${coach._id}" class="R-coach-message-div">It wasn\t quite yet time to panic. There was still time to salvage the situation. At least that is what she was telling himself. The reality was that it was time to panic and there wasn\t time to salvage the situation, but he continued to delude himself into believing there was.</div>
+							</div>`);
+						
+						}
+						else {
+							$('#CoachesList').append( `<div class="R-coach" id="${coach._id}">
+						<img value="${coach._id}" src="data:image/png;base64,${coach.profilePic}"/>
+						<div value="${coach._id}" class="R-coach-info-div">
+						<div value="${coach._id}" class="R-coach-name-div"> ${coach.name}</div>
+						<div value="${coach._id}" class="R-coach-message-div">It wasn\t quite yet time to panic. There was still time to salvage the situation. At least that is what she was telling himself. The reality was that it was time to panic and there wasn\t time to salvage the situation, but he continued to delude himself into believing there was.</div>
+						</div>`);
+						}
 					});                                           
 				});
 				$('#R-P3').css('display', 'none');
@@ -317,25 +334,42 @@ $(document).ready(async () => {
 			}, 1200);
 		}
 	});
-	let chosedCoachID = undefined;
-	$( '.R-coach' ).each(function() {
-		$(document).on('click','.R-coach', function(){
-			console.log(this.id);
-			if(chosedCoachID === undefined){
-				$('#' + this.id).css('border', '3px blue solid');
-				chosedCoachID = this.id;
+	// let chosedCoachID = undefined;
+	// $( '.R-coach' ).each(function() {
+	// 	$(document).on('click','#CoachesList', function(){
+	// 		console.log(this.id);
+	// 		if(chosedCoachID === undefined){
+	// 			$('#' + this.id).css('border', '3px blue solid');
+	// 			chosedCoachID = this.id;
 	
-			}
-			else if(chosedCoachID != this.id) {
-				$('#' + chosedCoachID).css('border', '1px black solid');
-				chosedCoachID = this.id;
-				$('#' + this.id).css('border', '3px blue solid');
-			}
-			else {
-				$('#' + this.id).css('border', '1px black solid');
-				chosedCoachID = undefined;
-			}
-		});
+	// 		}
+	// 		else if(chosedCoachID != this.id) {
+	// 			$('#' + chosedCoachID).css('border', '1px black solid');
+	// 			chosedCoachID = this.id;
+	// 			$('#' + this.id).css('border', '3px blue solid');
+	// 		}
+	// 		else {
+	// 			$('#' + this.id).css('border', '1px black solid');
+	// 			chosedCoachID = undefined;
+	// 		}
+	// 	});
+	// });
+
+	let chosedCoachID = undefined;
+	$('#CoachesList').click(async function (e) {
+		if(chosedCoachID === undefined){
+			$('#' + e.target.getAttribute('value')).css('border', '3px blue solid');
+			chosedCoachID = e.target.getAttribute('value');
+		}
+		else if(chosedCoachID != e.target.getAttribute('value')) {
+			$('#' + chosedCoachID).css('border', '1px black solid');
+			chosedCoachID = e.target.getAttribute('value');
+			$('#' + e.target.getAttribute('value')).css('border', '3px blue solid');
+		}
+		else {
+			$('#' + e.target.getAttribute('value')).css('border', '1px black solid');
+			chosedCoachID = undefined;
+		}
 	});
 
 	$('#back-btn').click(async () => {

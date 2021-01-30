@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 $(document).ready(async () => {
 	const getCoachs = await fetch('/clients/allCoachs', {
 		method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -297,7 +298,7 @@ $(document).ready(async () => {
 							<img value="${coach._id}" src="/images/f0a64e32194d341befecc80458707565.jpg"/>
 							<div value="${coach._id}" class="R-coach-info-div">
 							<div value="${coach._id}" class="R-coach-name-div"> ${coach.name}</div>
-							<div value="${coach._id}" class="R-coach-message-div">It wasn\t quite yet time to panic. There was still time to salvage the situation. At least that is what she was telling himself. The reality was that it was time to panic and there wasn\t time to salvage the situation, but he continued to delude himself into believing there was.</div>
+							<div value="${coach._id}" class="R-coach-message-div">${coach.aboutMe}</div>
 							</div>`);
 						
 						}
@@ -306,7 +307,7 @@ $(document).ready(async () => {
 						<img value="${coach._id}" src="data:image/png;base64,${coach.profilePic}"/>
 						<div value="${coach._id}" class="R-coach-info-div">
 						<div value="${coach._id}" class="R-coach-name-div"> ${coach.name}</div>
-						<div value="${coach._id}" class="R-coach-message-div">It wasn\t quite yet time to panic. There was still time to salvage the situation. At least that is what she was telling himself. The reality was that it was time to panic and there wasn\t time to salvage the situation, but he continued to delude himself into believing there was.</div>
+						<div value="${coach._id}" class="R-coach-message-div">${coach.aboutMe}</div>
 						</div>`);
 						}
 					});                                           
@@ -491,7 +492,7 @@ $(document).ready(async () => {
 			formData.delete('birthDate');
 
 			if (regClient.status === 201) {
-				window.location.replace('/');
+				window.location.replace('/clientHome');
 			} else {
 				console.log('Wrong REG');
 			}

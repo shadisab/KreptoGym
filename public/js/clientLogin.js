@@ -7,7 +7,7 @@ $(document).ready(async () => {
 		if (email != '' && password != '') {
 			$('#loginBTN').removeClass('login-btn-off');
 			$('#loginBTN').addClass('login-btn');
-		} else{
+		} else {
 			$('#loginBTN').removeClass('login-btn');
 			$('#loginBTN').addClass('login-btn-off');
 		}
@@ -20,7 +20,7 @@ $(document).ready(async () => {
 		if (email != '' && password != '') {
 			$('#loginBTN').removeClass('login-btn-off');
 			$('#loginBTN').addClass('login-btn');
-		} else{
+		} else {
 			$('#loginBTN').removeClass('login-btn');
 			$('#loginBTN').addClass('login-btn-off');
 		}
@@ -29,7 +29,7 @@ $(document).ready(async () => {
 	$('#loginBTN').click(async () => {
 		var email = $('#email').val();
 		var password = $('#password').val();
-		const postClient = await fetch('usersLogin', {
+		const userlog = await fetch('/usersLogin', {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, *cors, same-origin
 			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -46,18 +46,31 @@ $(document).ready(async () => {
 			}) // body data type must match "Content-Type" header
 		});
 
-		if (postClient.status === 400 && password !== '' && email !== '') {
-			console.log(postClient);
+		if (userlog.status === 400 && password !== '' && email !== '') {
+			console.log(userlog);
 			$('#WLInfo').css('opacity', '1');
 			$('#L-title').css('opacity', '0');
 		}
 
-		if (postClient.status === 200) {
+		if (userlog.status === 200) {
 			var userType;
-			await postClient.json().then((data) => {
+			var firstLogin = false;
+			await userlog.json().then((data) => {
 				userType = (Object.keys(data)[0]);
+				if (userType === 'coach') {
+					if (data.coach.firstLogin === 'false') {
+						firstLogin = true;
+						console.log(firstLogin);
+					}
+				}
 			});
-			window.location.replace(`/${userType}Home`);
+			if (firstLogin === true) {
+				console.log(firstLogin);
+				window.location.replace('/coachRegisterV2');
+			}
+			else{
+				window.location.replace(`/${userType}Home`);
+			}
 
 		}
 	});

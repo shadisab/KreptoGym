@@ -34,6 +34,26 @@ router.post('/coachsignup', upload.single('upload'), async (req, res) => {
 
 });
 
+router.patch('/coachsignupV2', upload.single('upload'), authCoach, async (req, res) => {
+	
+	try {
+		const coach = await Coach.findById(req.coach._id);
+		if (req.file) {
+			const buffer = await sharp(req.file.buffer).resize({ width: 250, height: 250 }).png().toBuffer(); //output from sharp
+			coach.profilePic = buffer;
+		}
+		coach.name = req.body.name;
+		coach.password = req.body.password;
+		coach.aboutMe = req.body.aboutMe;
+		coach.firstLogin = 'true';
+		await coach.save();
+		await res.status(200).send(coach);
+	} catch (e) {
+		res.status(400).send(e.message);
+	}
+
+});
+
 
 // Login
 // router.post('/coachs/login', async (req, res) => {

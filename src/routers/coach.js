@@ -131,9 +131,11 @@ router.post('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) =
 		if (!client) {
 			return res.status(404).send('Cant Find client');
 		}
-		client.trainingSchedule[req.body.day][req.body.type].push(req.body.data);
+		let index = client.trainingSchedule[req.body.day][req.body.type].push(req.body.data);
 		await client.save();
-		res.send(client);
+		let exArrayDel = client.trainingSchedule[req.body.day][req.body.type]; //Return the Added index after it added to the DB
+		var objectFound = exArrayDel[index-1];
+		res.status(200).send(objectFound);
 	} catch (e) {
 		console.log(e);
 		res.status(400).send(e.message);
@@ -158,8 +160,6 @@ router.delete('/coachs/client/trainingSchedule/:id', authCoach, async (req, res)
 		if (!client) {
 			return res.status(404).send('Cant Find client');
 		}
-
-		console.log(req.body);
 		let exArrayDel = client.trainingSchedule[req.body.day][req.body.type];
 		let indexToDel = exArrayDel.map(function(x) {return x._id; }).indexOf(req.body.id);
 		client.trainingSchedule[req.body.day][req.body.type].splice(indexToDel, 1);

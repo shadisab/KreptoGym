@@ -307,8 +307,11 @@ $(document).ready(async () => {
 			if (muscleREQ.status === 200) {
 				//Send refresh page to client
 				socket.emit('refreshPage', id);
+				muscleREQ.json().then(async (data)=>{
+					$(`#${day}-exercises-div`).append(addExerciseHTML(data,'Muscle',day));
+				});
 				$('#add-exercise-popup').removeClass('is-visible');
-				// document.location.reload();
+				
 			}
 		} else if ($('#cardio-exercise-div').css('display') == 'flex') {
 			Exercise_name = $('#cardioExerciseName').val();
@@ -337,6 +340,9 @@ $(document).ready(async () => {
 			});
 			if (cardioREQ.status === 200) {
 				socket.emit('refreshPage', id);
+				cardioREQ.json().then(async (data)=>{
+					$(`#${day}-exercises-div`).append(addCardioHTML(data,'Cardio',day));
+				});
 				$('#add-exercise-popup').removeClass('is-visible'); }
 		} else {
 			Exercise_name = $('#stretchesExerciseName').val();
@@ -363,6 +369,9 @@ $(document).ready(async () => {
 			});
 			if (otherREQ.status === 200) { 
 				socket.emit('refreshPage', id);
+				otherREQ.json().then(async (data)=>{
+					$(`#${day}-exercises-div`).append(addStretchesHTML(data,'Stretches',day));
+				});
 				$('#add-exercise-popup').removeClass('is-visible');
 			}
 		}

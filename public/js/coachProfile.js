@@ -2,7 +2,7 @@
 $(document).ready(async () => {
 
 	$('#cancle').on('click', () => {
-		if (document.referrer.indexOf('coachClients') > 0 || document.referrer.indexOf('coachHome') > 0) {
+		if (document.referrer.indexOf('coachClients') > 0 || document.referrer.indexOf('coachHome') > 0 || document.referrer.indexOf('coachClientListForChat') > 0) {
 			parent.history.back();
 		} else {
 			window.location.href = '/coachHome';

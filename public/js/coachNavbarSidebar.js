@@ -1,9 +1,4 @@
 $(document).ready(async () => {
-
-	$('#chat').on('click', () => {
-		window.location.href = ('/joinChat');
-	});
-
 	$('#edit').on('click', () => {
 		window.location.href = ('/coachProfile');
 	});

@@ -151,29 +151,25 @@ router.get('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) =>
 
 
 // Updating TrainingSchedule for a client
-// router.patch('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) => {
+router.delete('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) => {
 
-// 	const updates = Object.keys(req.body);
-// 	const allowerdUpdates = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-// 	const isValidOperation = updates.every((update) => allowerdUpdates.includes(update));
-// 	if (!isValidOperation) {
-// 		return res.status(400).send({ error: 'Invalid updates!' });
-// 	}
+	try {
+		const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
+		if (!client) {
+			return res.status(404).send('Cant Find client');
+		}
 
-// 	try {
-// 		const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
-// 		if (!client) {
-// 			return res.status(404).send('Cant Find client');
-// 		}
-// 		updates.forEach((update) => client.trainingSchedule[update] = req.body[update]);// Dynamic update
-// 		await client.save();
-
-// 		res.send(client.nutrition);
-// 	} catch (e) {
-// 		console.log(e);
-// 		res.status(400).send(e);
-// 	}
-// });
+		console.log(req.body);
+		let exArrayDel = client.trainingSchedule[req.body.day][req.body.type];
+		let indexToDel = exArrayDel.map(function(x) {return x._id; }).indexOf(req.body.id);
+		client.trainingSchedule[req.body.day][req.body.type].splice(indexToDel, 1);
+		await client.save();
+		res.status(200).send(client.trainingSchedule);
+	} catch (e) {
+		console.log(e);
+		res.status(400).send(e);
+	}
+});
 
 
 // GET Coach profile

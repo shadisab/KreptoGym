@@ -38,10 +38,16 @@ $(document).ready(async () => {
 				profilePic = '/images/default-pp.png';
 			$('#clientslist').append(
 				`<div class="CCLFC-client">
-                <img src="${profilePic}" class="CCLFC-client-profile-picture"/>
-                <div class="CCLFC-client-name-div">${client.name}</div>
-                <button id="${client._id}" class="CCLFC-client-chat-btn">Chat</button>
-                </div>`
+                    <div class="CCLFC-client-profile-picture-div">
+                        <img src="${profilePic}" class="CCLFC-client-profile-picture" />
+                    </div>
+                    <div class="CCLFC-client-name-div">
+                        <div class="CCLFC-client-name">${client.name}</div>
+                    </div>
+                    <div id="${client._id}" class="CCLFC-client-chat-btn-div">
+                        <div id="${client._id}" class="CCLFC-client-chat-btn-text">Chat</div>
+                    </div>
+                </div>`		
 			);
 		});
 	});

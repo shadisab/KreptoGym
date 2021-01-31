@@ -45,6 +45,7 @@ body {
 .CCLFC-client-list{
     width: 60%;
     height: 70%;
+    border-radius: 6px;
     flex-direction: column;
     display: flex;
     align-items: center;
@@ -82,7 +83,7 @@ body {
     margin-top: 5px;
     width: 95%;
     height: 15%;
-    border-radius: 20px;
+    border-radius: 6px;
     flex: 0 0 auto;
     display: flex;
     flex-direction: row;
@@ -90,41 +91,63 @@ body {
     position: relative;
 }
 
-.CCLFC-client-profile-picture{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+.CCLFC-client-profile-picture-div{
+    width: 10%;
+    height: 100%;
     display: flex;
-    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.CCLFC-client-profile-picture{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: black 1px solid;
+    display: flex;
     align-items: center;
     justify-content: center;
     object-fit: cover;
     background-size: cover;
-    position: absolute;
-    top: 18%;
-    left: 20px;
 }
 
 .CCLFC-client-name-div{
-    position: absolute;
-    left: 30%;
-    top:15px;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CCLFC-client-name{
     font-size: 20px;
     font-family: Poppins-Medium;
 }
 
-.CCLFC-client-chat-btn{
+.CCLFC-client-chat-btn-div{
     width: 20%;
     height: 100%;
-    cursor: pointer;
-    font-family: Poppins-Regular;
+    display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
+    cursor: pointer;
+    background-color: #555;
+    border-left: 1px solid black;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    transition: 0.3s;
+}
+
+.CCLFC-client-chat-btn-div:hover{
+    background-color: white;
+}
+
+.CCLFC-client-chat-btn-div:hover .CCLFC-client-chat-btn-text{
+    color: black;
+}
+
+.CCLFC-client-chat-btn-text{
+    font-family: Poppins-Regular;
     font-size: 20px;
     color: white;
-    background-color: #555;
-    outline: none;
-    position: absolute;
-    right: 0;
 }

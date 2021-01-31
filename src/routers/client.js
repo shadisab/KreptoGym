@@ -132,27 +132,6 @@ router.patch('/clients/password', authClient, async (req, res) => {
 	}
 });
 
-// Updating Client details
-// router.patch('/client/editProfile', upload.single('upload'), authClient, async (req, res) => {
-	
-// 	const client = await Client.findById(req.client._id);
-	
-// 	if(req.file){
-// 		const buffer = await sharp(req.file.buffer).resize({ width:250 ,height:250 }).png().toBuffer(); //output from sharp
-// 		client.profilePic = buffer;
-// 	}
-// 	try {
-// 		req.body.forEach(element => {
-// 			console.log(element);
-// 		});
-// 		// await client.save();
-// 		res.status(200).send(client);
-// 	} catch (e) {
-// 		console.log(e);
-// 		res.status(400).send(e.message);
-// 	}
-// });
-
 // Updating client profile data
 router.patch('/client/editProfile', upload.single('upload'), authClient, async (req, res) => {
 	try {

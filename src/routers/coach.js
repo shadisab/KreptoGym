@@ -54,23 +54,6 @@ router.patch('/coachsignupV2', upload.single('upload'), authCoach, async (req, r
 
 });
 
-
-// Login
-// router.post('/coachs/login', async (req, res) => {
-// 	try {
-// 		// Self Created findByCredntials() , generateAuthToken()
-// 		const coach = await Coach.findByCredentials(req.body.email, req.body.password);
-// 		const client = await Client.findByCredentials(req.body.email, req.body.password);
-// 		console.log('client:', client, 'coach is:', coach);
-// 		// const token = await coach.generateAuthToken();
-// 		// res.cookie('Authorization', `Bearer ${token}`); // Save the token to cookies
-// 		res.send();
-// 	} catch (e) {
-// 		console.log(e);
-// 		res.status(400).send(e);
-// 	}
-// });
-
 //Single logout from specific login coach
 router.post('/coachs/logout', authCoach, async (req, res) => {
 	try {

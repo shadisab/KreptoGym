@@ -27,7 +27,7 @@ $(document).ready(async () => {
 				$('#image').attr('src', `data:image/png;base64,${client.profilePic}`);
 			}
 			else{
-				$('#image').attr('src', '/images/png-transparent-user-profile-computer-icons-login-user-avatars.png');
+				$('#image').attr('src', '/images/default-pp.png');
 			}
 			$('#age').text(diff_years(`${client.birthDate}`));
 			$('#height').text(`${client.height}`);

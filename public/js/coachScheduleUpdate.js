@@ -48,17 +48,17 @@ $(document).ready(async () => {
 			Object.keys(data).forEach(key => {
 				if (data[key].Muscle.length !== 0) {
 					data[key].Muscle.forEach(element => {
-						$(`#${key}-exercises-div`).append(addExerciseHTML(element,'Muscle',key));
+						$(`#${key}-exercises-div`).append(addExerciseHTML(element, 'Muscle', key));
 					});
 				}
 				if (data[key].Cardio.length !== 0) {
 					data[key].Cardio.forEach(element => {
-						$(`#${key}-exercises-div`).append(addCardioHTML(element,'Cardio',key));
+						$(`#${key}-exercises-div`).append(addCardioHTML(element, 'Cardio', key));
 					});
 				}
 				if (data[key].Stretches.length !== 0) {
 					data[key].Stretches.forEach(element => {
-						$(`#${key}-exercises-div`).append(addStretchesHTML(element,'Stretches',key));
+						$(`#${key}-exercises-div`).append(addStretchesHTML(element, 'Stretches', key));
 					});
 				}
 			});
@@ -307,11 +307,11 @@ $(document).ready(async () => {
 			if (muscleREQ.status === 200) {
 				//Send refresh page to client
 				socket.emit('refreshPage', id);
-				muscleREQ.json().then(async (data)=>{
-					$(`#${day}-exercises-div`).append(addExerciseHTML(data,'Muscle',day));
+				muscleREQ.json().then(async (data) => {
+					$(`#${day}-exercises-div`).append(addExerciseHTML(data, 'Muscle', day));
 				});
 				$('#add-exercise-popup').removeClass('is-visible');
-				
+
 			}
 		} else if ($('#cardio-exercise-div').css('display') == 'flex') {
 			Exercise_name = $('#cardioExerciseName').val();
@@ -340,10 +340,11 @@ $(document).ready(async () => {
 			});
 			if (cardioREQ.status === 200) {
 				socket.emit('refreshPage', id);
-				cardioREQ.json().then(async (data)=>{
-					$(`#${day}-exercises-div`).append(addCardioHTML(data,'Cardio',day));
+				cardioREQ.json().then(async (data) => {
+					$(`#${day}-exercises-div`).append(addCardioHTML(data, 'Cardio', day));
 				});
-				$('#add-exercise-popup').removeClass('is-visible'); }
+				$('#add-exercise-popup').removeClass('is-visible');
+			}
 		} else {
 			Exercise_name = $('#stretchesExerciseName').val();
 			Description = $('#stretchesDes').val();
@@ -367,10 +368,10 @@ $(document).ready(async () => {
 					}
 				})
 			});
-			if (otherREQ.status === 200) { 
+			if (otherREQ.status === 200) {
 				socket.emit('refreshPage', id);
-				otherREQ.json().then(async (data)=>{
-					$(`#${day}-exercises-div`).append(addStretchesHTML(data,'Stretches',day));
+				otherREQ.json().then(async (data) => {
+					$(`#${day}-exercises-div`).append(addStretchesHTML(data, 'Stretches', day));
 				});
 				$('#add-exercise-popup').removeClass('is-visible');
 			}
@@ -378,10 +379,130 @@ $(document).ready(async () => {
 		clearAddPopupFields();
 	});
 
-
 	let exID = '';
 	let exType = '';
 	let exDay = '';
+	let getEx = '';
+	//***************************        Update Exercise          *********************************
+	$(document).on('click', 'i.CSU-exercise-edit-btn-icon', async (e) => {
+		exID = e.target.getAttribute('id');
+		exType = e.target.getAttribute('name');
+		exDay = e.target.getAttribute('value');
+		// GET data of the clicked Exercise to update
+		getEx = await fetch(`/coachs/client/exercise/${id}/${exID}/${exType}/${exDay}`, {
+			method: 'GET', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'same-origin', // include, *same-origin, omit
+			redirect: 'follow', // manual, *follow, error
+			referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+		if (getEx.status === 200) {
+			$('#add-exercise-popup').addClass('is-visible');
+			getEx.json().then((data)=>{
+				switch (exType) {
+				case 'Muscle':
+					$('#muscleExerciseName').val(data.Exercise_name);
+					$('#numberOfsets').val(data.Number_of_reps);
+					$('#RecommendedWeight').val(data.Recommended_weight);
+					$('#muscleDes').val(data.Description);
+					if ($('#cardio-exercise-div').css('display') == 'flex') {
+						$('#cardio-exercise-div-inner').css('width', '50%');
+						$('#cardio-exercise-div-inner').css('opacity', '0');
+						$('.CSU-add-exercise-buttons-border').css('left', '0');
+						setTimeout(() => {
+							$('#cardio-exercise-div').css('display', 'none');
+							$('#muscle-building-exercise-div').css('display', 'flex');
+						}, 200);
+						setTimeout(() => {
+							$('#muscle-building-exercise-div-inner').css('width', '80%');
+							$('#muscle-building-exercise-div-inner').css('opacity', '1');
+						}, 250);
+					} else if ($('#other-exercises-div').css('display') == 'flex') {
+						$('#other-exercises-div-inner').css('width', '50%');
+						$('#other-exercises-div-inner').css('opacity', '0');
+						$('.CSU-add-exercise-buttons-border').css('left', '0');
+						setTimeout(() => {
+							$('#other-exercises-div').css('display', 'none');
+							$('#muscle-building-exercise-div').css('display', 'flex');
+						}, 200);
+						setTimeout(() => {
+							$('#muscle-building-exercise-div-inner').css('width', '80%');
+							$('#muscle-building-exercise-div-inner').css('opacity', '1');
+						}, 250);
+					}
+					break;
+				case 'Stretches':	
+					$('#stretchesExerciseName').val(data.Exercise_name);
+					$('#stretchesDes').val(data.Description);
+					if ($('#muscle-building-exercise-div').css('display') == 'flex') {
+						$('#muscle-building-exercise-div-inner').css('width', '50%');
+						$('#muscle-building-exercise-div-inner').css('opacity', '0');
+						$('.CSU-add-exercise-buttons-border').css('left', '66.666%');
+						setTimeout(() => {
+							$('#muscle-building-exercise-div').css('display', 'none');
+							$('#other-exercises-div').css('display', 'flex');
+						}, 200);
+						setTimeout(() => {
+							$('#other-exercises-div-inner').css('width', '80%');
+							$('#other-exercises-div-inner').css('opacity', '1');
+						}, 250);
+					} else if ($('#cardio-exercise-div').css('display') == 'flex') {
+						$('#cardio-exercise-div-inner').css('width', '50%');
+						$('#cardio-exercise-div-inner').css('opacity', '0');
+						$('.CSU-add-exercise-buttons-border').css('left', '66.666%');
+						setTimeout(() => {
+							$('#cardio-exercise-div').css('display', 'none');
+							$('#other-exercises-div').css('display', 'flex');
+						}, 200);
+						setTimeout(() => {
+							$('#other-exercises-div-inner').css('width', '80%');
+							$('#other-exercises-div-inner').css('opacity', '1');
+						}, 250);
+					}
+					break;
+				case 'Cardio':
+					$('#cardioExerciseName').val(data.Exercise_name);
+					$('#cardioTime').val(data.Exercise_time_in_minutes);
+					$('#cardioDes').val(data.Description);
+					if ($('#muscle-building-exercise-div').css('display') == 'flex') {
+						$('#muscle-building-exercise-div-inner').css('width', '50%');
+						$('#muscle-building-exercise-div-inner').css('opacity', '0');
+						$('.CSU-add-exercise-buttons-border').css('left', '33.333%');
+						setTimeout(() => {
+							$('#muscle-building-exercise-div').css('display', 'none');
+							$('#cardio-exercise-div').css('display', 'flex');
+						}, 200);
+						setTimeout(() => {
+							$('#cardio-exercise-div-inner').css('width', '80%');
+							$('#cardio-exercise-div-inner').css('opacity', '1');
+						}, 250);
+					} else if ($('#other-exercises-div').css('display') == 'flex') {
+						$('#other-exercises-div-inner').css('width', '50%');
+						$('#other-exercises-div-inner').css('opacity', '0');
+						$('.CSU-add-exercise-buttons-border').css('left', '33.333%');
+						setTimeout(() => {
+							$('#other-exercises-div').css('display', 'none');
+							$('#cardio-exercise-div').css('display', 'flex');
+						}, 200);
+						setTimeout(() => {
+							$('#cardio-exercise-div-inner').css('width', '80%');
+							$('#cardio-exercise-div-inner').css('opacity', '1');
+						}, 250);
+					}
+					break;
+				}
+			});			
+		}
+	});
+	//*************************************************************************************************************************** */
+
+
+	//***************************        Delete Exercise          *********************************
+
 	$(document).on('click', 'i.CSU-exercise-delete-btn-icon', async (e) => {
 		exID = e.target.getAttribute('id');
 		exType = e.target.getAttribute('name');
@@ -390,7 +511,7 @@ $(document).ready(async () => {
 	});
 
 	var updateREQ;
-	$('#deleteBTN').on('click', async ()=> {
+	$('#deleteBTN').on('click', async () => {
 		updateREQ = await fetch('/coachs/client/trainingSchedule/' + id, {
 			method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, *cors, same-origin
@@ -404,11 +525,11 @@ $(document).ready(async () => {
 			},
 			body: JSON.stringify({
 				'id': exID,
-				'type':exType,
-				'day':exDay
+				'type': exType,
+				'day': exDay
 			})
 		});
-		if(updateREQ.status === 200){
+		if (updateREQ.status === 200) {
 			$('#cd-popup').removeClass('is-visible');
 			$(`div#${exID}.CSU-exercise`).remove();
 			exID = '';
@@ -416,13 +537,15 @@ $(document).ready(async () => {
 			exDay = '';
 		}
 	});
-
 	$('#cd-popup-cancel-btn-close').on('click', function () {
 		exID = '';
 		exType = '';
 		exDay = '';
 		$('#cd-popup').removeClass('is-visible');
 	});
+	//*************************************************************************************************************************** */
+
+
 
 	// *****************************************       Fucntions          *********************************************
 	const clearAddPopupFields = () => {
@@ -464,7 +587,7 @@ $(document).ready(async () => {
 				<div class="CSU-exercise-info-piece-title">Description:</div>
 				<div class="CSU-exercise-info-piece-text">${element.Description}</div>
 				<div class="CSU-exercise-edit-btn">
-					<i class="CSU-exercise-edit-btn-icon fas fa-edit"></i>
+					<i id="${element._id}" name="${type}" value="${key}" class="CSU-exercise-edit-btn-icon fas fa-edit"></i>
 				</div>
 				<div class="CSU-exercise-delete-btn">
 					<i id="${element._id}" name="${type}" value="${key}" class="CSU-exercise-delete-btn-icon fas fa-trash-alt"></i>
@@ -495,7 +618,7 @@ $(document).ready(async () => {
 				<div class="CSU-exercise-info-piece-title">Description:</div>
 				<div class="CSU-exercise-info-piece-text">${element.Description}</div>
 				<div class="CSU-exercise-edit-btn">
-					<i class="CSU-exercise-edit-btn-icon fas fa-edit"></i>
+					<i id="${element._id}" name="${type}" value="${key}" class="CSU-exercise-edit-btn-icon fas fa-edit"></i>
 				</div>
 				<div class="CSU-exercise-delete-btn">
 					<i id="${element._id}" name="${type}" value="${key}" class="CSU-exercise-delete-btn-icon fas fa-trash-alt"></i>
@@ -522,7 +645,7 @@ $(document).ready(async () => {
 				<div class="CSU-exercise-info-piece-title">Description:</div>
 				<div class="CSU-exercise-info-piece-text">${element.Description}</div>
 				<div class="CSU-exercise-edit-btn">
-					<i class="CSU-exercise-edit-btn-icon fas fa-edit"></i>
+					<i id="${element._id}" name="${type}" value="${key}" class="CSU-exercise-edit-btn-icon fas fa-edit"></i>
 				</div>
 				<div class="CSU-exercise-delete-btn">
 					<i id="${element._id}" name="${type}" value="${key}" class="CSU-exercise-delete-btn-icon fas fa-trash-alt"></i>

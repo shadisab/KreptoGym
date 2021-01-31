@@ -112,7 +112,7 @@ router.get('/clients/training', authClient, async (req, res) => {
 
 // GET all coaches
 router.get('/clients/allCoachs', async (req, res) => {
-	const coachs = await Coach.find({ status: 'Accepted' });
+	const coachs = await Coach.find({ status: 'Accepted', firstLogin: 'true' });
 	res.send(coachs);
 });
 

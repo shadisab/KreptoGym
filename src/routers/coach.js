@@ -151,6 +151,25 @@ router.get('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) =>
 	}
 });
 
+// Get specific exercise for a client
+router.get('/coachs/client/exercise/:id/:exID/:exType/:exDay', authCoach, async (req, res) => {
+	let exID = req.params.exID;
+	let exType = req.params.exType;
+	let exDay = req.params.exDay;
+	try {
+		const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
+		if (!client) {
+			return res.status(404).send('Cant Find client');
+		}
+		let exArrayDel = client.trainingSchedule[exDay][exType];
+		let indexToDel = exArrayDel.map(function(x) {return x._id; }).indexOf(exID);
+		
+		res.status(200).send(exArrayDel[indexToDel]);
+	} catch (e) {
+		console.log(e);
+		res.status(400).send(e);
+	}
+});
 
 // Updating TrainingSchedule for a client
 router.delete('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) => {

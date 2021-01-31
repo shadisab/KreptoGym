@@ -594,6 +594,7 @@ input::-webkit-inner-spin-button {
   .img-uplaoder{
     opacity: 1;
     border-radius: 50%;
+    border: 1px solid black;
     height: 250px;
     width: 250px;
     object-fit: cover;

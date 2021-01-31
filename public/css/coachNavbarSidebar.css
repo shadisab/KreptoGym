@@ -150,6 +150,7 @@
     object-fit: cover;
     background-size: cover;
     border-radius: 50%;
+    border: 1px solid #666;
     width: 40px;
     height: 40px;
 }
@@ -479,6 +480,8 @@
 .CNS-profile-dropdown-image{
     width: 50px;
     height: 50px;
+    border-radius: 50%;
+    border: 1px solid #666;
 }
 
 .CNS-name-account-div{

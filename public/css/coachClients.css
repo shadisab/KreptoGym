@@ -17,7 +17,6 @@
     font-family: Poppins-SemiBold;
     src: url('/fonts/poppins.semibold.ttf');
 }
-
 .body {
     background-color: white;
     margin: 0;
@@ -36,7 +35,7 @@
 .CC-search-DIV {
     width: 100%;
     height: 20%;
-    background-color: #222;
+    object-fit: cover;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -81,8 +80,18 @@
 .CC-sortClients-div {
     width: 100%;
     height: 10%;
-    background-color: #888;
+    background-color: teal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.CC-coach-clients-title{
+    color: white;
+    font-family: Poppins-Regular;
+    font-size: 30px;
+}
+
 
 .CC-clients-DIV {
     width: 100%;
@@ -94,13 +103,17 @@
 }
 
 .CC-footer {
-    border-top: 1px rgba(85, 85, 85,0.8) solid;
+    border-top: 1px rgba(85, 85, 85, 0.8) solid;
     width: 100%;
     height: 13%;
     background-color: teal;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
 }
 
-.CC-client-card{
+.CC-client-card {
     background-color: transparent;
     width: 90%;
     height: 90%;
@@ -138,23 +151,23 @@
 }
 
 .CC-client-card-back {
-    background-color: #333;
-    color: white;
+    background-color: aquamarine;
+    color: darkcyan;
     display: flex;
     align-items: center;
     justify-content: center;
     transform: rotateY(180deg);
 }
 
-.CC-client-card-back-info-text{
-    color: white;
+.CC-client-card-back-info-text {
+    color: darkcyan;
     font-size: 17px;
     font-family: Poppins-Regular;
 }
 
-.CC-client-card-photo{
-    width:100%;
-    height:100%;
+.CC-client-card-photo {
+    width: 100%;
+    height: 100%;
     background-size: cover;
     object-fit: cover;
 }
@@ -170,7 +183,8 @@
     justify-content: center;
 }
 
-.CC-client-name{
+
+.CC-client-name {
     color: white;
     font-size: 17px;
     font-family: Poppins-Regular;
@@ -180,18 +194,56 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-  }
-  
-  .pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-  }
-  
-  .pagination a.active {
-    background-color: #4CAF50;
+    align-items: center;
+    position: relative;
+    height: 50px;
+    width: 100%;
+}
+
+.CC-page-back-btn {
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 28%;
+    left: 44%;
+}
+
+.CC-page-number{
+    font-family: Poppins-Regular;
+    font-size: 20px;
+    position: absolute;
+    top: 20%;
+    left: 49%;
+}
+
+.CC-page-next-btn {
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 28%;
+    left: 54%;
+}
+
+.CC-help-msg{
+    font-family: Poppins-Regular;
+    font-size: 20px;
     color: white;
-  }
-  
-  .pagination a:hover:not(.active) {background-color: #ddd;}
+    left: 10px;
+    position: absolute;
+}
+
+.CC-help-email{
+    font-family: Poppins-Regular;
+    font-size: 20px;
+    color: white;
+    left: 540px;
+    position: absolute;
+}
+
+.CC-help-phone{
+    font-family: Poppins-Regular;
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    left: 1130px;
+}

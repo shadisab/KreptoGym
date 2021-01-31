@@ -40,6 +40,7 @@ $(document).ready(async () => {
 		$('#email').text(CoachEmail);
 		if(data.profilePic){
 			$('#acc-settings-btn-icon').attr('src', `data:image/png;base64,${data.profilePic}`);
+			$('#profile-pic-in-dropdown').attr('src', `data:image/png;base64,${data.profilePic}`);
 		}
 		var terCer = await fetch(`/coaches/${data._id}/TerminationCertificate`, {
 			method: 'GET', // *GET, POST, PUT, DELETE, etc.

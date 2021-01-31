@@ -525,7 +525,7 @@ $(document).ready(async () => {
 	}
 
 	function allCharacters(myString) {
-		return /^[a-zA-Z]+$/.test(myString);
+		return /^[ a-zA-Z]+$/.test(myString);
 	}
 });
 

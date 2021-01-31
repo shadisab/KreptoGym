@@ -12,23 +12,23 @@
 <body class="body">
     {{>coachNavbarSidebar}}
     <div class="CC-main-window">
-        <div class="CC-search-DIV">
-            <input class="CC-search-input" placeholder="Search" />
-            <div class="CC-search-btn">
-                <i class="CC-search-icon fas fa-search"></i>
-            </div>
-        </div>
+        <img src="/images/coach-clients-wide-bg.jpg" class="CC-search-DIV">
         <div class="CC-sortClients-div">
+            <div class="CC-coach-clients-title">Your Clients</div>
         </div>
         <div class="CC-clients-DIV">
 
         </div>
         <div class="pagination">
-            <a id="back" href="#">&laquo;</a>
-            <a id="paginationNumber" href="#">1</a>
-            <a id="next" href="#">&raquo;</a>
+            <i id="back" class="CC-page-back-btn fas fa-chevron-left"></i>
+            <div id="paginationNumber" class="CC-page-number">1</div>
+            <i id="next" class="CC-page-next-btn fas fa-chevron-right"></i>
         </div>
-        <div class="CC-footer"></div>
+        <div class="CC-footer">
+            <div class="CC-help-msg">You need help? Contact US</div>
+            <div class="CC-help-email">Email: KreptoGym@gmail.com</div>
+            <div class="CC-help-phone">Phone: 123-456-789+</div>
+        </div>
     </div>
     <script src="/js/coachClients.js"></script>
 </body>

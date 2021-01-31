@@ -6,10 +6,6 @@ const generator = require('generate-password');
 const {sendmsg} = require('../db/Mails');
 const {authAdmin} = require('../middleware/auth');
 
-
-// Allowed updates for coach
-const CoachallowedUpdates = ['name', 'email', 'status'];
-
 router.post('/admin/signup', async (req, res) => {
 	const admin = new Admin(req.body);
 	try {

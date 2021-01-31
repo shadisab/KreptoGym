@@ -23,7 +23,12 @@ $(document).ready(async () => {
 
 	if (clientData.status === 200) {
 		clientData.json().then((client) => {
-			$('#image').attr('src', `data:image/png;base64,${client.profilePic}`);
+			if(client.profilePic != undefined){
+				$('#image').attr('src', `data:image/png;base64,${client.profilePic}`);
+			}
+			else{
+				$('#image').attr('src', '/images/png-transparent-user-profile-computer-icons-login-user-avatars.png');
+			}
 			$('#age').text(diff_years(`${client.birthDate}`));
 			$('#height').text(`${client.height}`);
 			$('#weight').text(`${client.weight}`);

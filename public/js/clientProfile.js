@@ -26,7 +26,10 @@ $(document).ready(async () => {
 			$('#country').text(data.country);
 			$('#height').text(data.height);
 			$('#weight').text(data.weight);
-			$('#profile-img').attr('src', `data:image/png;base64,${data.profilePic}`);
+			if(data.profilePic != undefined)
+				$('#profile-img').attr('src', `data:image/png;base64,${data.profilePic}`);
+			else 
+				$('#profile-img').attr('src', '/images/default-pp.png');
 		});	
 	}
 

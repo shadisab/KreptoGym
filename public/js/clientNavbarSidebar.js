@@ -25,8 +25,14 @@ $(document).ready(async () => {
 			$('#country').text(data.country);
 			$('#height').text(data.height);
 			$('#weight').text(data.weight);
-			$('#acc-settings-btn-icon').attr('src', `data:image/png;base64,${data.profilePic}`);
-			$('#image').attr('src', `data:image/png;base64,${data.profilePic}`);
+			if(data.profilePic != undefined){
+				$('#acc-settings-btn-icon').attr('src', `data:image/png;base64,${data.profilePic}`);
+				$('#image').attr('src', `data:image/png;base64,${data.profilePic}`);
+			}
+			else{
+				$('#acc-settings-btn-icon').attr('src', '/images/default-pp.png');
+				$('#image').attr('src', '/images/default-pp.png');
+			}
 		});	
 	}
 

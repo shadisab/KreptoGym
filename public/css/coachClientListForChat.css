@@ -91,9 +91,9 @@ body {
 }
 
 .CCLFC-client-profile-picture{
-    width: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    height: 50px;
     display: flex;
     border-radius: 20px;
     align-items: center;
@@ -101,7 +101,7 @@ body {
     object-fit: cover;
     background-size: cover;
     position: absolute;
-    top: 5px;
+    top: 18%;
     left: 20px;
 }
 

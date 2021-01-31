@@ -18,7 +18,6 @@ $(document).ready(async () => {
 			CoachName = data.name;
 			coachID = data._id;
 		});
-		console.log(CoachName, coachID);
 	}
     
 	var MyClients = await fetch('/coaches/myClients', {
@@ -31,10 +30,15 @@ $(document).ready(async () => {
 	});
 	MyClients.json().then((data) => {
 		$('#back').hide();
+		let profilePic = '';
 		data.forEach((client) => {
+			if(client.profilePic != undefined)
+				profilePic = `data:image/png;base64,${client.profilePic}`;
+			else 
+				profilePic = '/images/default-pp.png';
 			$('#clientslist').append(
 				`<div class="CCLFC-client">
-                <img src="/images/f0a64e32194d341befecc80458707565.jpg" class="CCLFC-client-profile-picture" />
+                <img src="${profilePic}" class="CCLFC-client-profile-picture"/>
                 <div class="CCLFC-client-name-div">${client.name}</div>
                 <button id="${client._id}" class="CCLFC-client-chat-btn">Chat</button>
                 </div>`

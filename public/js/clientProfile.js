@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 $(document).ready(async () => {
 	var file = undefined;
-	$('#cancle').on('click', ()=> {
+	$('#cancel').on('click', ()=> {
 		if(document.referrer.indexOf('clientSchedule') > 0 || document.referrer.indexOf('clientHome') > 0 ){
 			parent.history.back();
 		} else {
@@ -583,5 +583,29 @@ $(document).ready(async () => {
 				}, 1500);
 			}
 		}
+	});
+	$('#deleteaccount').on('click',() => {
+		$('#cd-popup').addClass('is-visible');
+	});
+	$('#deleteBTN').on('click', async () => {
+		updateREQ = await fetch('/coachs/client/trainingSchedule/' + id, {
+			method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'same-origin', // include, *same-origin, omit
+			redirect: 'follow', // manual, *follow, error
+			referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+			headers: {
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded',
+			}
+		});
+		if (updateREQ.status === 200) {
+			$('#cd-popup').removeClass('is-visible');
+			$(`div#${exID}.CSU-exercise`).remove();
+		}
+	});
+	$('#cd-popup-cancel-btn-close').on('click',() => {
+		$('#cd-popup').removeClass('is-visible');
 	});
 });

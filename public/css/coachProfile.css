@@ -41,98 +41,165 @@
     width: 100%;
 }
 
-.coachProfile-header-cancel-option {
-    width: 10%;
+.coachProfile-cancel-btn-option {
+    width: 13%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
-.coachProfile-cancel-option-header-text {
-    font-size: 14px;
+.coachProfile-cancel-btn-option-inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+    position: relative;
+    cursor: pointer;
+}
+
+.coachProfile-cancel-text{
+    color: black;
     font-family: Poppins-Regular;
+    font-size: 14px;
+    transition: all 0.5s;
     letter-spacing: 0.10em;
 }
 
-.coachProfile-cancel-option-header-inner {
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
+.coachProfile-cancel-icon{
     color: black;
-    text-decoration: none;
-}
-
-.coachProfile-cancel-option-header-inner:after {
-    background: none repeat scroll 0 0 transparent;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 1px;
-    left: 50%;
-    background: black;
+    font-size: 17px;
     position: absolute;
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
-    width: 0;
+    left: 10%;
+    top: 35%;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: translate(20%, -50%);
+    transition: all 0.5s;
 }
 
-.coachProfile-cancel-option-header-inner:hover:after {
-    width: 100%;
-    left: 0;
+.coachProfile-cancel-btn-option-inner:hover .coachProfile-cancel-icon{
+    opacity: 1;
+    transition: all 0.5s;
+    color: black;
+    transform: translate(-20%, -50%);
+}
+
+.coachProfile-cancel-btn-option-inner:hover .coachProfile-cancel-text{
+    transform: translate(20%, 0%);
+    transition: all 0.5s;
+    color: black;
 }
 
 .coachProfile-header-filler {
     height: 100%;
-    width: 80%;
+    width: 67%;
 }
 
-.coachProfile-saveChanges-btn-option {
-    width: 15%;
+.coachProfile-save-changes-btn-option {
+    width: 13%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
-.coachProfile-saveChanges-btn-option-inner {
-    cursor: pointer;
+.coachProfile-save-changes-btn-option-inner{
     display: flex;
-    flex-direction: row;
     align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
     position: relative;
-    color: black;
-    text-decoration: none;
-}
-
-.coachProfile-saveChanges-btn-option-inner:after {
-    background: none repeat scroll 0 0 transparent;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 1px;
-    left: 50%;
-    background: black;
-    position: absolute;
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
-    width: 0;
-}
-
-.coachProfile-saveChanges-btn-option-inner:hover:after {
-    width: 100%;
-    left: 0;
-}
-
-.coachProfile-saveChanges-text {
-    font-size: 14px;
-    font-family: Poppins-Regular;
     cursor: pointer;
-    letter-spacing: 0.10em;
-    display: inline-block;
-    position: relative;
+}
+
+.coachProfile-save-changes-text{
     color: black;
-    text-decoration: none;
+    font-family: Poppins-Regular;
+    font-size: 14px;
+    transition: all 0.5s;
+    letter-spacing: 0.10em;
+}
+
+.coachProfile-save-changes-icon{
+    color: black;
+    font-size: 17px;
+    position: absolute;
+    left: 90%;
+    top: 35%;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: translate(-90%, -50%);
+    transition: all 0.5s;
+}
+
+.coachProfile-save-changes-btn-option-inner:hover .coachProfile-save-changes-icon{
+    opacity: 1;
+    transition: all 0.5s;
+    color: black;
+    transform: translate(-40%, -50%);
+}
+
+.coachProfile-save-changes-btn-option-inner:hover .coachProfile-save-changes-text{
+    transform: translate(-20%, 0%);
+    transition: all 0.5s;
+    color: black;
+}
+
+.coachProfile-delete-account-btn-option {
+    width: 13%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.coachProfile-delete-account-btn-option-inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+    position: relative;
+    cursor: pointer;
+}
+
+.coachProfile-delete-account-text{
+    color: darkred;
+    font-family: Poppins-Regular;
+    font-size: 14px;
+    transition: all 0.5s;
+    letter-spacing: 0.10em;
+}
+
+.coachProfile-delete-account-icon{
+    color: darkred;
+    font-size: 17px;
+    position: absolute;
+    left: 90%;
+    top: 35%;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: translate(-90%, -50%);
+    transition: all 0.5s;
+}
+
+.coachProfile-delete-account-btn-option-inner:hover .coachProfile-delete-account-icon{
+    opacity: 1;
+    transition: all 0.5s;
+    color: darkred;
+    transform: translate(-40%, -50%);
+}
+
+.coachProfile-delete-account-btn-option-inner:hover .coachProfile-delete-account-text{
+    transform: translate(-20%, 0%);
+    transition: all 0.5s;
+    color: darkred;
 }
 
 .coachProfile-innerMain {
@@ -494,4 +561,104 @@
     outline: none;
     font-family: Poppins-Regular;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+
+.coachProfile-Confirm-popup {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(81, 81, 81, 0.7);
+    opacity: 0;
+    z-index: 12;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+
+.coachProfile-Confirm-popup.is-visible {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.coachProfile-popup-container {
+    position: relative;
+    width: 40%;
+    height: 40%;
+    margin: 4em auto;
+    background: #FFF;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: translateY(-40px);
+    -moz-transform: translateY(-40px);
+    -ms-transform: translateY(-40px);
+    -o-transform: translateY(-40px);
+    transform: translateY(-40px);
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.coachProfile-Confirm-popup-text {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #515151;
+    font-family: Poppins-Regular;
+}
+
+.coachProfile-Confirm-popup-buttons {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+}
+
+.coachProfile-Confirm-popup-confirm-button {
+    width: 50%;
+    height: 100%;
+    background-color: darkred;
+    border-bottom-left-radius: 16px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    font-family: Poppins-Regular;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.coachProfile-Confirm-popup-cancel-button {
+    width: 50%;
+    height: 100%;
+    background-color: #515151;
+    color: white;
+    cursor: pointer;
+    border-bottom-right-radius: 16px;
+    outline: none;
+    font-family: Poppins-Regular;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.is-visible .coachProfile-popup-container {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
 }

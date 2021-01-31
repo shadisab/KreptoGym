@@ -10,22 +10,42 @@
 
 <body class="coachProfile-body">
     <div class="coachProfile-mainWindow">
+        <div id="cd-popup" class="coachProfile-Confirm-popup" role="alert">
+            <div class="coachProfile-popup-container">
+                <div class="coachProfile-Confirm-popup-text">
+                    <p>Are you sure you want to delete your account?</p>
+                </div>
+                <div class="coachProfile-Confirm-popup-buttons">
+                    <button id="deleteBTN" class="coachProfile-Confirm-popup-confirm-button">Yes</button>
+                    <button id="cd-popup-cancel-btn-close" class="coachProfile-Confirm-popup-cancel-button">No</button>
+                </div>
+            </div>
+        </div>
         <div class="coachProfile-header">
-            <div class="coachProfile-header-cancel-option">
-                <a id="cancle" class="coachProfile-cancel-option-header-inner">
-                    <i class="fas fa-chevron-left" style="margin-right: 10px; height: 100%;"></i>
-                    <div class="coachProfile-cancel-option-header-text">Cancel</div>
+            <div class="coachProfile-cancel-btn-option">
+                <a id="cancel" class="coachProfile-cancel-btn-option-inner">
+                    <i class="coachProfile-cancel-icon fas fa-chevron-left"></i>
+                    <div class="coachProfile-cancel-text">
+                        CANCEL
+                    </div>
                 </a>
             </div>
             <div class="coachProfile-header-filler"></div>
-            <div class="coachProfile-saveChanges-btn-option">
-                <a id="SaveChanges" class="coachProfile-saveChanges-btn-option-inner">
-                    <div class="coachProfile-saveChanges-text">
+            <div class="coachProfile-delete-account-btn-option">
+                <a id="deleteaccount" class="coachProfile-delete-account-btn-option-inner">
+                    <div class="coachProfile-delete-account-text">
+                        DELETE ACCOUNT
+                    </div>
+                    <i class="coachProfile-delete-account-icon fas fa-trash"></i>
+                </a>
+            </div>
+            <div class="coachProfile-save-changes-btn-option">
+                <a id="SaveChanges" class="coachProfile-save-changes-btn-option-inner">
+                    <div class="coachProfile-save-changes-text">
                         SAVE CHANGES
                     </div>
-                    <i class="fas fa-chevron-right" style="margin-left: 10px; height: 100%;"></i>
+                    <i class="coachProfile-save-changes-icon fas fa-chevron-right"></i>
                 </a>
-
             </div>
         </div>
         <div class="coachProfile-innerMain">
@@ -113,8 +133,8 @@
                                 <i class="coachProfile-changepass-Icon fas fa-lock"></i>
                             </div>
                             <div class="coachProfile-changepass-Inputdiv">
-                                <input class="coachProfile-changepass-input100" type="password" id="confirm-new-password"
-                                    placeholder="Type your new password again" />
+                                <input class="coachProfile-changepass-input100" type="password"
+                                    id="confirm-new-password" placeholder="Type your new password again" />
                             </div>
                         </div>
                     </div>

@@ -267,8 +267,8 @@ $(document).ready(async () => {
 	let Recommended_weight = 0;
 	let Description = '';
 	let Exercise_time_in_minutes = 0;
-	$('.CSU-day-add-exercise-icon').on('click', function (event) {
-		//event.preventDefault();
+	$('.CSU-day-add-exercise-icon').on('click', async (event) => {
+		$('.CSU-add-exercise-popup-confirm-button').attr('id', 'add-exercise-popup-btn');
 		day = event.target.id;
 		$('#add-exercise-popup').addClass('is-visible');
 	});
@@ -276,104 +276,111 @@ $(document).ready(async () => {
 	let muscleREQ;
 	let cardioREQ;
 	let otherREQ;
-	$('#add-exercise-popup-btn').on('click', async () => {
+	// 
+	$(document).on('click', 'button#add-exercise-popup-btn', async () => {
 		if ($('#muscle-building-exercise-div').css('display') == 'flex') {
 			Exercise_name = $('#muscleExerciseName').val();
 			Number_of_reps = $('#numberOfsets').val();
 			Recommended_weight = $('#RecommendedWeight').val();
 			Description = $('#muscleDes').val();
-			muscleREQ = await fetch('/coachs/client/trainingSchedule/' + id, {
-				method: 'POST', // *GET, POST, PUT, DELETE, etc.
-				mode: 'cors', // no-cors, *cors, same-origin
-				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-				credentials: 'same-origin', // include, *same-origin, omit
-				redirect: 'follow', // manual, *follow, error
-				referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-				headers: {
-					'Content-Type': 'application/json'
-					// 'Content-Type': 'application/x-www-form-urlencoded',
-				},
-				body: JSON.stringify({
-					day,
-					'type': 'Muscle',
-					data: {
-						Exercise_name,
-						Number_of_reps,
-						Recommended_weight,
-						Description
-					}
-				})
-			});
-			if (muscleREQ.status === 200) {
-				//Send refresh page to client
-				socket.emit('refreshPage', id);
-				muscleREQ.json().then(async (data) => {
-					$(`#${day}-exercises-div`).append(addExerciseHTML(data, 'Muscle', day));
+			if (Exercise_name != '' && Number_of_reps != '' && Recommended_weight != '' && Description != '') {
+				muscleREQ = await fetch('/coachs/client/trainingSchedule/' + id, {
+					method: 'POST', // *GET, POST, PUT, DELETE, etc.
+					mode: 'cors', // no-cors, *cors, same-origin
+					cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+					credentials: 'same-origin', // include, *same-origin, omit
+					redirect: 'follow', // manual, *follow, error
+					referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+					headers: {
+						'Content-Type': 'application/json'
+						// 'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: JSON.stringify({
+						day,
+						'type': 'Muscle',
+						data: {
+							Exercise_name,
+							Number_of_reps,
+							Recommended_weight,
+							Description
+						}
+					})
 				});
-				$('#add-exercise-popup').removeClass('is-visible');
+				if (muscleREQ.status === 200) {
+					//Send refresh page to client
+					socket.emit('refreshPage', id);
+					muscleREQ.json().then(async (data) => {
+						$(`#${day}-exercises-div`).append(addExerciseHTML(data, 'Muscle', day));
+					});
+					$('#add-exercise-popup').removeClass('is-visible');
 
+				}
 			}
 		} else if ($('#cardio-exercise-div').css('display') == 'flex') {
 			Exercise_name = $('#cardioExerciseName').val();
 			Exercise_time_in_minutes = $('#cardioTime').val();
 			Description = $('#cardioDes').val();
-			cardioREQ = await fetch('/coachs/client/trainingSchedule/' + id, {
-				method: 'POST', // *GET, POST, PUT, DELETE, etc.
-				mode: 'cors', // no-cors, *cors, same-origin
-				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-				credentials: 'same-origin', // include, *same-origin, omit
-				redirect: 'follow', // manual, *follow, error
-				referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-				headers: {
-					'Content-Type': 'application/json'
-					// 'Content-Type': 'application/x-www-form-urlencoded',
-				},
-				body: JSON.stringify({
-					day,
-					'type': 'Cardio',
-					data: {
-						Exercise_name,
-						Exercise_time_in_minutes,
-						Description
-					}
-				})
-			});
-			if (cardioREQ.status === 200) {
-				socket.emit('refreshPage', id);
-				cardioREQ.json().then(async (data) => {
-					$(`#${day}-exercises-div`).append(addCardioHTML(data, 'Cardio', day));
+			if (Exercise_name != '' && Exercise_time_in_minutes != '' && Description != '') {
+				cardioREQ = await fetch('/coachs/client/trainingSchedule/' + id, {
+					method: 'POST', // *GET, POST, PUT, DELETE, etc.
+					mode: 'cors', // no-cors, *cors, same-origin
+					cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+					credentials: 'same-origin', // include, *same-origin, omit
+					redirect: 'follow', // manual, *follow, error
+					referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+					headers: {
+						'Content-Type': 'application/json'
+						// 'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: JSON.stringify({
+						day,
+						'type': 'Cardio',
+						data: {
+							Exercise_name,
+							Exercise_time_in_minutes,
+							Description
+						}
+					})
 				});
-				$('#add-exercise-popup').removeClass('is-visible');
+				if (cardioREQ.status === 200) {
+					socket.emit('refreshPage', id);
+					cardioREQ.json().then(async (data) => {
+						$(`#${day}-exercises-div`).append(addCardioHTML(data, 'Cardio', day));
+					});
+					$('#add-exercise-popup').removeClass('is-visible');
+				}
 			}
 		} else {
 			Exercise_name = $('#stretchesExerciseName').val();
 			Description = $('#stretchesDes').val();
-			otherREQ = await fetch('/coachs/client/trainingSchedule/' + id, {
-				method: 'POST', // *GET, POST, PUT, DELETE, etc.
-				mode: 'cors', // no-cors, *cors, same-origin
-				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-				credentials: 'same-origin', // include, *same-origin, omit
-				redirect: 'follow', // manual, *follow, error
-				referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-				headers: {
-					'Content-Type': 'application/json'
-					// 'Content-Type': 'application/x-www-form-urlencoded',
-				},
-				body: JSON.stringify({
-					day,
-					'type': 'Stretches',
-					data: {
-						Exercise_name,
-						Description
-					}
-				})
-			});
-			if (otherREQ.status === 200) {
-				socket.emit('refreshPage', id);
-				otherREQ.json().then(async (data) => {
-					$(`#${day}-exercises-div`).append(addStretchesHTML(data, 'Stretches', day));
+			if (Exercise_name != '' && Description != '') {
+				otherREQ = await fetch('/coachs/client/trainingSchedule/' + id, {
+					method: 'POST', // *GET, POST, PUT, DELETE, etc.
+					mode: 'cors', // no-cors, *cors, same-origin
+					cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+					credentials: 'same-origin', // include, *same-origin, omit
+					redirect: 'follow', // manual, *follow, error
+					referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+					headers: {
+						'Content-Type': 'application/json'
+						// 'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: JSON.stringify({
+						day,
+						'type': 'Stretches',
+						data: {
+							Exercise_name,
+							Description
+						}
+					})
 				});
-				$('#add-exercise-popup').removeClass('is-visible');
+				if (otherREQ.status === 200) {
+					socket.emit('refreshPage', id);
+					otherREQ.json().then(async (data) => {
+						$(`#${day}-exercises-div`).append(addStretchesHTML(data, 'Stretches', day));
+					});
+					$('#add-exercise-popup').removeClass('is-visible');
+				}
 			}
 		}
 		clearAddPopupFields();
@@ -385,6 +392,7 @@ $(document).ready(async () => {
 	let getEx = '';
 	//***************************        Update Exercise          *********************************
 	$(document).on('click', 'i.CSU-exercise-edit-btn-icon', async (e) => {
+		$('.CSU-add-exercise-popup-confirm-button').attr('id', 'edit-exercise-popup-btn');
 		exID = e.target.getAttribute('id');
 		exType = e.target.getAttribute('name');
 		exDay = e.target.getAttribute('value');
@@ -402,7 +410,7 @@ $(document).ready(async () => {
 		});
 		if (getEx.status === 200) {
 			$('#add-exercise-popup').addClass('is-visible');
-			getEx.json().then((data)=>{
+			getEx.json().then((data) => {
 				switch (exType) {
 				case 'Muscle':
 					$('#muscleExerciseName').val(data.Exercise_name);
@@ -435,7 +443,7 @@ $(document).ready(async () => {
 						}, 250);
 					}
 					break;
-				case 'Stretches':	
+				case 'Stretches':
 					$('#stretchesExerciseName').val(data.Exercise_name);
 					$('#stretchesDes').val(data.Description);
 					if ($('#muscle-building-exercise-div').css('display') == 'flex') {
@@ -495,8 +503,118 @@ $(document).ready(async () => {
 					}
 					break;
 				}
-			});			
+			});
 		}
+	});
+
+	$(document).on('click', 'button#edit-exercise-popup-btn', async () => {
+
+		if ($('#muscle-building-exercise-div').css('display') == 'flex') {
+			Exercise_name = $('#muscleExerciseName').val();
+			Number_of_reps = $('#numberOfsets').val();
+			Recommended_weight = $('#RecommendedWeight').val();
+			Description = $('#muscleDes').val();
+			if (Exercise_name != '' && Number_of_reps != '' && Recommended_weight != '' && Description != '') {
+				muscleREQ = await fetch(`/coachs/client/trainingSchedule/${id}/${exID}/${exType}/${exDay}`, {
+					method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
+					mode: 'cors', // no-cors, *cors, same-origin
+					cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+					credentials: 'same-origin', // include, *same-origin, omit
+					redirect: 'follow', // manual, *follow, error
+					referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+					headers: {
+						'Content-Type': 'application/json'
+						// 'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: JSON.stringify({
+						'type': 'Muscle',
+						data: {
+							Exercise_name,
+							Number_of_reps,
+							Recommended_weight,
+							Description
+						}
+					})
+				});
+				if (muscleREQ.status === 200) {
+					//Send refresh page to client
+					socket.emit('refreshPage', id);
+					muscleREQ.json().then(async (data) => {
+						console.log(data);
+						editExerciseHTML(data, 'Muscle', exDay, exID);
+					});
+					$('#add-exercise-popup').removeClass('is-visible');
+
+				}
+			}
+		} else if ($('#cardio-exercise-div').css('display') == 'flex') {
+			Exercise_name = $('#cardioExerciseName').val();
+			Exercise_time_in_minutes = $('#cardioTime').val();
+			Description = $('#cardioDes').val();
+			editCardioHTML(exID, 'Cardio', day);
+
+			if(Exercise_name != '' && Exercise_time_in_minutes!= '' && Description != ''){
+				cardioREQ = await fetch(`/coachs/client/trainingSchedule/${id}/${exID}/${exType}/${exDay}`, {
+					method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
+					mode: 'cors', // no-cors, *cors, same-origin
+					cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+					credentials: 'same-origin', // include, *same-origin, omit
+					redirect: 'follow', // manual, *follow, error
+					referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+					headers: {
+						'Content-Type': 'application/json'
+					// 'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: JSON.stringify({
+						'type': 'Cardio',
+						data: {
+							Exercise_name,
+							Exercise_time_in_minutes,
+							Description
+						}
+					})
+				});
+				if (cardioREQ.status === 200) {
+					socket.emit('refreshPage', id);
+					cardioREQ.json().then(async (data) => {
+						editCardioHTML(data, 'Cardio', exDay, exID);
+					});
+					$('#add-exercise-popup').removeClass('is-visible');
+				}
+			}
+		} else {
+			Exercise_name = $('#stretchesExerciseName').val();
+			Description = $('#stretchesDes').val();
+			if (Exercise_name != '' && Description != '') {
+				otherREQ = await fetch(`/coachs/client/trainingSchedule/${id}/${exID}/${exType}/${exDay}`, {
+					method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
+					mode: 'cors', // no-cors, *cors, same-origin
+					cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+					credentials: 'same-origin', // include, *same-origin, omit
+					redirect: 'follow', // manual, *follow, error
+					referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+					headers: {
+						'Content-Type': 'application/json'
+						// 'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: JSON.stringify({
+						'type': 'Stretches',
+						data: {
+							Exercise_name,
+							Description
+						}
+					})
+				});
+				if (otherREQ.status === 200) {
+					socket.emit('refreshPage', id);
+					otherREQ.json().then(async (data) => {
+						editStretchesHTML(data, 'Stretches', exDay, exID);
+					});
+					$('#add-exercise-popup').removeClass('is-visible');
+				}
+			}
+		}
+		clearAddPopupFields();
 	});
 	//*************************************************************************************************************************** */
 
@@ -521,7 +639,7 @@ $(document).ready(async () => {
 			referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
 			headers: {
 				'Content-Type': 'application/json'
-			// 'Content-Type': 'application/x-www-form-urlencoded',
+				// 'Content-Type': 'application/x-www-form-urlencoded',
 			},
 			body: JSON.stringify({
 				'id': exID,
@@ -561,6 +679,102 @@ $(document).ready(async () => {
 		$('#add-exercise-popup').removeClass('is-visible');
 	};
 
+	const editCardioHTML = (element, type, key, exID) => {
+		$(`div#${exID}`).empty();
+		$(`div#${exID}`).append(`	
+		<div class="CSU-exercise-img-div">
+			<img class="CSU-exercise-img" src="/images/treadmill.png" />
+		</div>
+		<div class="CSU-exercise-info">
+			<div class="CSU-exercise-info-row-div">
+				<div class="CSU-exercise-info-piece-div">
+					<div class="CSU-exercise-info-piece-title">Exercise:</div>
+					<div class="CSU-exercise-info-piece">${element.Exercise_name}</div>
+				</div>
+			<div class="CSU-exercise-info-piece-div" style="left: 40%;">
+				<div class="CSU-exercise-info-piece-title">Exercise time:</div>
+				<div class="CSU-exercise-info-piece">${element.Exercise_time_in_minutes}</div>
+				<div class="CSU-exercise-info-piece" style="margin-left: 5px;">Minutes</div>
+			</div>
+		</div>
+		<div class="CSU-exercise-info-row-div">
+			<div class="CSU-exercise-info-piece-title">Description:</div>
+			<div class="CSU-exercise-info-piece-text">${element.Description}</div>
+			<div class="CSU-exercise-edit-btn">
+				<i id="${element._id}" name="${type}" value="${key}" class="CSU-exercise-edit-btn-icon fas fa-edit"></i>
+			</div>
+			<div class="CSU-exercise-delete-btn">
+				<i id="${element._id}" name="${type}" value="${key}" class="CSU-exercise-delete-btn-icon fas fa-trash-alt"></i>
+			</div>
+		</div>`);
+		$(`div#${exID}`).attr('id', exID);
+		return;
+	};
+
+	const editExerciseHTML = (element, type, key, exID) => {
+		$(`div#${exID}`).empty();
+		$(`div#${exID}`).append(`	
+		<div class="CSU-exercise-img-div">
+			<img class="CSU-exercise-img" src="/images/weight.png" />
+		</div>
+		<div class="CSU-exercise-info">
+			<div class="CSU-exercise-info-row-div">
+				<div class="CSU-exercise-info-piece-div">
+					<div class="CSU-exercise-info-piece-title">Exercise:</div>
+					<div class="CSU-exercise-info-piece">${element.Exercise_name}</div>
+				</div>
+				<div class="CSU-exercise-info-piece-div" style="left: 40%;">
+					<div class="CSU-exercise-info-piece-title">Sets:</div>
+					<div class="CSU-exercise-info-piece">${element.Number_of_reps}</div>
+				</div>
+				<div class="CSU-exercise-info-piece-div" style="right: 10px;">
+					<div class="CSU-exercise-info-piece-title">Recommended weight:</div>
+					<div class="CSU-exercise-info-piece">${element.Recommended_weight}</div>
+					<div class="CSU-exercise-info-piece">Kg</div>
+				</div>
+			</div>
+			<div class="CSU-exercise-info-row-div">
+				<div class="CSU-exercise-info-piece-title">Description:</div>
+				<div class="CSU-exercise-info-piece-text">${element.Description}</div>
+				<div class="CSU-exercise-edit-btn">
+					<i id="${element._id}" name="${type}" value="${key}" class="CSU-exercise-edit-btn-icon fas fa-edit"></i>
+				</div>
+				<div class="CSU-exercise-delete-btn">
+					<i id="${element._id}" name="${type}" value="${key}" class="CSU-exercise-delete-btn-icon fas fa-trash-alt"></i>
+				</div>
+			</div>
+		</div>`);
+		$(`div#${exID}`).attr('id', element._id);
+		return;
+	};
+
+	const editStretchesHTML = (element, type, key, exID) => {
+		$(`div#${exID}`).empty();
+		$(`div#${exID}`).append(`
+		<div class="CSU-exercise-img-div">
+			<i class="CSU-exercise-img-icon fas fa-walking"></i>
+		</div>
+		<div class="CSU-exercise-info">
+			<div class="CSU-exercise-info-row-div">
+				<div class="CSU-exercise-info-piece-div">
+					<div class="CSU-exercise-info-piece-title">Exercise:</div>
+					<div class="CSU-exercise-info-piece">${element.Exercise_name}</div>
+				</div>
+			</div>
+			<div class="CSU-exercise-info-row-div">
+				<div class="CSU-exercise-info-piece-title">Description:</div>
+				<div class="CSU-exercise-info-piece-text">${element.Description}</div>
+				<div class="CSU-exercise-edit-btn">
+					<i id="${element._id}" name="${type}" value="${key}" class="CSU-exercise-edit-btn-icon fas fa-edit"></i>
+				</div>
+				<div class="CSU-exercise-delete-btn">
+					<i id="${element._id}" name="${type}" value="${key}" class="CSU-exercise-delete-btn-icon fas fa-trash-alt"></i>
+				</div>
+			</div>
+		</div>`);
+		$(`div#${exID}`).attr('id', element._id);
+		return;
+	};
 
 	const addExerciseHTML = (element, type, key) => {
 		var html = `<div id="${element._id}" class="CSU-exercise">
@@ -597,6 +811,7 @@ $(document).ready(async () => {
 	</div>`;
 		return html;
 	};
+
 	const addCardioHTML = (element, type, key) => {
 		var html = `<div id="${element._id}" class="CSU-exercise">
 		<div class="CSU-exercise-img-div">

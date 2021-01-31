@@ -133,8 +133,8 @@ router.post('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) =
 		}
 		let index = client.trainingSchedule[req.body.day][req.body.type].push(req.body.data);
 		await client.save();
-		let exArrayDel = client.trainingSchedule[req.body.day][req.body.type]; //Return the Added index after it added to the DB
-		var objectFound = exArrayDel[index-1];
+		let exArrayAdded = client.trainingSchedule[req.body.day][req.body.type]; //Return the Added index after it added to the DB
+		var objectFound = exArrayAdded[index-1];
 		res.status(200).send(objectFound);
 	} catch (e) {
 		console.log(e);
@@ -171,7 +171,36 @@ router.get('/coachs/client/exercise/:id/:exID/:exType/:exDay', authCoach, async 
 	}
 });
 
-// Updating TrainingSchedule for a client
+// Updating specific exercise for a client
+router.patch('/coachs/client/trainingSchedule/:id/:exID/:exType/:exDay', authCoach, async (req, res) => {
+	let exID = req.params.exID;
+	let exType = req.params.exType;
+	let exDay = req.params.exDay;
+	try {
+		const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
+		if (!client) {
+			return res.status(404).send('Cant Find client');
+		}
+		/*Deleting the Updated Exc */
+		let exArrayDel = client.trainingSchedule[exDay][exType];
+		let indexToDel = exArrayDel.map(function(x) {return x._id; }).indexOf(exID);
+		client.trainingSchedule[exDay][exType].splice(indexToDel, 1);
+
+		/**Adding the new Exc */
+		let index = client.trainingSchedule[exDay][req.body.type].push(req.body.data);
+
+		await client.save();
+		let exArrayupdate = client.trainingSchedule[exDay][req.body.type]; //Return the Added index after it added to the DB
+		var objectFound = exArrayupdate[index-1];
+		
+		res.status(200).send(objectFound);
+	} catch (e) {
+		console.log(e);
+		res.status(400).send(e.message);
+	}
+});
+
+// Deleteing TrainingSchedule for a client
 router.delete('/coachs/client/trainingSchedule/:id', authCoach, async (req, res) => {
 
 	try {

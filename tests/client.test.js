@@ -1,14 +1,14 @@
 const request = require('supertest');
 const app = require('../src/app');
 const Client = require('../src/models/client');
-// const Coach = require('../src/models/coach');
+//const Coach = require('../src/models/coach');
 // const bcrypt = require('bcryptjs');
 
 const {
-	// coachOneID,
-	clientOne,
+	coachOneID,
+	//clientOne,
 	// clientTwo,
-	clientOneID,
+	//clientOneID,
 	// clientTwoID,
 	setupDatabase
 } = require('./fixtures/db');
@@ -16,59 +16,38 @@ const {
 beforeEach(setupDatabase); /* this function runs before each test case in this test suite.  */
 
 
-// test('Should signup a new client', async () => {
-// 	const response = await request(app).post('/clients/signup').send({
-// 		name: 'clientsignup',
-// 		email: 'clientsign@example.com',
-// 		password: 'MyPass123123',
-// 		birthDate: 2002-2-6,
-// 		height: 180,
-// 		weight: 50,
-// 		coachID: coachOneID
-// 	}).expect(201);
-// 	// Assert that the DB was changed correctly
-// 	const client = await Client.findById(response.body.client._id);
-// 	expect(client).not.toBeNull();
-
-// 	// Assertions about the response
-// 	expect(response.body).toMatchObject({
-// 		client: {
-// 			name: 'clientsignup',
-// 			email: 'clientsign@example.com',
-// 			age: 15,
-// 			height: 180,
-// 			weight: 50
-// 		},
-// 		token: client.tokens[0].token
-// 	});
-// 	// Checking the hashing
-// 	expect(client.password).not.toBe('MyPass123123');
-
-// 	// Checking if the client was added to his coach's clients list
-// 	const coach = await Coach.findById(coachOneID);
-// 	let temp = false;
-
-// 	coach.myClients.forEach((client) => {
-// 		if (client.id.toString() === response.body.client._id.toString()){
-// 			temp = true;
-// 		}
-// 	});
-// 	expect(temp).toBe(true);
-// });
+test('Should signup a new client', async () => {
+	const response = await request(app).post('/clients/signup').send({
+		name: 'clientsignup',
+		email: 'clientsign@example.com',
+		password: 'MyPass123123',
+		birthDate: 2002-2-6,
+		height: 180,
+		weight: 50,
+		coachID: coachOneID,
+		country:'Albania',
+		gender: 'Male'
+	}).expect(201);
+	// Assert that the DB was changed correctly
+	const client = await Client.findById(response.body.client._id);
+	expect(client).not.toBeNull();
+	// Checking the hashing
+	expect(client.password).not.toBe('MyPass123123');
+});
 
 
 
 // Login Test
-test('Should login existing client', async () => {
-	const response = await request(app).post('/usersLogin').send({
-		email: clientOne.email,
-		password: clientOne.password
-	}).expect(200);
+// test('Should login existing client', async () => {
+// 	const response = await request(app).post('/usersLogin').send({
+// 		email: clientOne.email,
+// 		password: clientOne.password
+// 	}).expect(200);
 
-	// Assertions
-	const client = await Client.findById(clientOneID);
-	expect(response.body.token).toBe(client.tokens[1].token);
-});
+// 	// Assertions
+// 	const client = await Client.findById(clientOneID);
+// 	expect(response.body.token).toBe(client.tokens[1].token);
+// });
 
 // Testing change password
 // test('Should update valid user Password', async () => {

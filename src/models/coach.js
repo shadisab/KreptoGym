@@ -61,16 +61,7 @@ const coachSchema = new mongoose.Schema({
 	}],
 	TerminationCertificate: {
 		type: Buffer,
-		// required: true
 	},
-	// myClients: [{ //Clients ID's with this
-	// 	id: { type: mongoose.Schema.Types.ObjectId }
-	// }],
-	// NewClientsREQ: [{ //Clients ID's with this
-	// 	id: { type: mongoose.Schema.Types.ObjectId },
-	// 	name: { type: String },
-	// 	email: { type: String }
-	// }]
 }, {
 	timestamps: true
 });

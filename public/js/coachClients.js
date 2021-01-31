@@ -10,6 +10,7 @@ $(document).ready(async () => {
 	MyClients.json().then((data) => {
 		$('#back').hide();
 		let profilePic = '';
+		console.log(data);
 		data.forEach((client) => {
 			if(client.profilePic != undefined)
 				profilePic = `data:image/png;base64,${client.profilePic}`;

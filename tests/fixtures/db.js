@@ -15,14 +15,6 @@ const coachOne = {
 	name: 'Shadi',
 	email: 'Shadi@example.com',
 	password: 'MyPass123123',
-	myClients: [{ //Clients ID's with this
-		id: clientOneID,
-	}, {
-		id: clientTwoID,
-	},
-	{
-		id: clientThirdID,
-	}],
 	tokens: [{
 		token: jwt.sign({ _id: coachOneID }, process.env.JWT_SECRET)
 	}]
@@ -39,7 +31,9 @@ const clientOne = {
 	coachID: coachOneID,
 	tokens: [{
 		token: jwt.sign({ _id: clientOneID }, process.env.JWT_SECRET)
-	}]
+	}],
+	country:'Albania',
+	gender: 'Male'
 };
 const clientTwo = {
 	_id: clientTwoID,
@@ -52,7 +46,9 @@ const clientTwo = {
 	coachID: coachOneID,
 	tokens: [{
 		token: jwt.sign({ _id: clientTwoID }, process.env.JWT_SECRET)
-	}]
+	}],
+	country:'Albania',
+	gender: 'Male'
 };
 const clientThird = {
 	_id: clientThirdID,
@@ -65,7 +61,9 @@ const clientThird = {
 	coachID: coachOneID,
 	tokens: [{
 		token: jwt.sign({ _id: clientThirdID }, process.env.JWT_SECRET)
-	}]
+	}],
+	country:'Albania',
+	gender: 'Male'
 };
 
 

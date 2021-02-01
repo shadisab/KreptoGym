@@ -167,7 +167,7 @@ router.patch('/client/editProfile', upload.single('upload'), authClient, async (
 
 
 // Delete client itself
-router.delete('/clients/myProfile', authClient, async (req, res) => {
+router.delete('/client/delmyProfile', authClient, async (req, res) => {
 	try {
 		await req.client.remove();
 		await res.clearCookie('Authorization');

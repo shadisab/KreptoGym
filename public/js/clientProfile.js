@@ -8,7 +8,7 @@ $(document).ready(async () => {
 			window.location.href = '/clientHome';
 		}
 	});
-
+	
 	const clientProfile = await fetch('/clients/myProfile',{
 		method: 'GET', 
 		mode: 'cors', // no-cors, *cors, same-origin
@@ -530,6 +530,7 @@ $(document).ready(async () => {
 			return;
 		}
 
+
         
 
 		if (newPassword !== '' && newPassword === confirmPassword && password !== '') {
@@ -588,7 +589,7 @@ $(document).ready(async () => {
 		$('#cd-popup').addClass('is-visible');
 	});
 	$('#deleteBTN').on('click', async () => {
-		updateREQ = await fetch('/coachs/client/trainingSchedule/' + id, {
+		const DeleteAccountReq = await fetch('/client/delmyProfile', {
 			method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, *cors, same-origin
 			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -600,9 +601,9 @@ $(document).ready(async () => {
 				// 'Content-Type': 'application/x-www-form-urlencoded',
 			}
 		});
-		if (updateREQ.status === 200) {
+		if (DeleteAccountReq.status === 200) {
 			$('#cd-popup').removeClass('is-visible');
-			$(`div#${exID}.CSU-exercise`).remove();
+			window.location.replace('/');
 		}
 	});
 	$('#cd-popup-cancel-btn-close').on('click',() => {

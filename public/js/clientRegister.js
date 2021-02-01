@@ -71,22 +71,22 @@ $(document).ready(async () => {
 		if (password == '') {
 			$('#password-validation-icon').css('opacity', '0');
 			$('#password-wrong-msg-div').css('opacity', '0');
-		} else if (password.length >= 6 && password.match(number) && password.match(alphabets) && password.match(special_characters)) {
+		} else if (password.length >= 7 && password.match(number) && password.match(alphabets) && password.match(special_characters)) {
 			$('#password-wrong-msg-div').css('opacity', '0');
 			$('#password-validation-icon').removeClass('fa-times');
 			$('#password-validation-icon').addClass('fa-check');
 			$('#password-validation-icon').css('color', 'green');
-		} else if (password.length >= 6 && password.match(number) && password.match(alphabets)) {
+		} else if (password.length >= 7 && password.match(number) && password.match(alphabets)) {
 			$('#password-wrong-msg-div').css('opacity', '0');
 			$('#password-validation-icon').removeClass('fa-times');
 			$('#password-validation-icon').addClass('fa-check');
 			$('#password-validation-icon').css('color', 'green');
-		} else if (password.length >= 6 && password.match(special_characters) && password.match(alphabets)) {
+		} else if (password.length >= 7 && password.match(special_characters) && password.match(alphabets)) {
 			$('#password-wrong-msg-div').css('opacity', '0');
 			$('#password-validation-icon').removeClass('fa-times');
 			$('#password-validation-icon').addClass('fa-check');
 			$('#password-validation-icon').css('color', 'green');
-		} else if (password.length < 6) {
+		} else if (password.length < 7) {
 			$('#password-wrong-msg-div').css('opacity', '1');
 			var obj = $('#password-wrong-msg').text('Password too short! \n Length must be 6 or above.');
 			obj.html(obj.html().replace(/\n/g, '<br/>'));

@@ -1,4 +1,5 @@
 $(document).ready(async () => {
+	let profilePic = '';
 	var MyClients = await fetch('/coaches/myClients', {
 		method: 'GET', // *GET, POST, PUT, DELETE, etc.
 		mode: 'cors', // no-cors, *cors, same-origin
@@ -9,7 +10,6 @@ $(document).ready(async () => {
 	});
 	MyClients.json().then((data) => {
 		$('#back').hide();
-		let profilePic = '';
 		console.log(data);
 		data.forEach((client) => {
 			if(client.profilePic != undefined)
@@ -63,6 +63,10 @@ $(document).ready(async () => {
 					}
 					$('.CC-clients-DIV').empty();
 					data.forEach((client) => {
+						if(client.profilePic != undefined)
+							profilePic = `data:image/png;base64,${client.profilePic}`;
+						else 
+							profilePic = '/images/default-pp.png';
 						$('.CC-clients-DIV').append(
 							`<div class="CC-client-card" id="${client._id}">
 							<div class="CC-client-card-inner" id="${client._id}">
@@ -70,7 +74,7 @@ $(document).ready(async () => {
 									<div class="CC-client-name-div" id="${client._id}">
 										<div class="CC-client-name">${client.name}</div >
 									</div>
-									<img src="data:image/png;base64,${client.profilePic}" class="CC-client-card-photo" id="${client._id}">
+									<img src="${profilePic}" class="CC-client-card-photo" id="${client._id}">
 								</div>
 								<div name="CC-client-card-back" class="CC-client-card-back" id="${client._id}">
 									<div class="CC-client-card-back-info-text" id="${client._id}">Go to client schedule</div>
@@ -101,6 +105,10 @@ $(document).ready(async () => {
 					data.json().then((data) => {
 						$('.CC-clients-DIV').empty();
 						data.forEach((client) => {
+							if(client.profilePic != undefined)
+								profilePic = `data:image/png;base64,${client.profilePic}`;
+							else 
+								profilePic = '/images/default-pp.png';
 							$('.CC-clients-DIV').append(
 								`<div class="CC-client-card" id="${client._id}">
 								<div class="CC-client-card-inner" id="${client._id}">
@@ -108,7 +116,7 @@ $(document).ready(async () => {
 										<div class="CC-client-name-div" id="${client._id}">
 											<div class="CC-client-name">${client.name}</div >
 										</div>
-										<img src="data:image/png;base64,${client.profilePic}" class="CC-client-card-photo" id="${client._id}">
+										<img src="${profilePic}" class="CC-client-card-photo" id="${client._id}">
 									</div>
 									<div name="CC-client-card-back" class="CC-client-card-back" id="${client._id}">
 										<div class="CC-client-card-back-info-text" id="${client._id}">Go to client schedule</div>

@@ -81,12 +81,6 @@ router.post('/usersLogin', async (req, res) => {
 	}
 });
 
-
-//User check valid room  TBD
-// router.get('/validroom', async(req, res) =>{
-// 	if()
-// });
-
 //Single logout from specific auth token
 router.post('/clients/logout', authClient, async (req, res) => {
 	try {

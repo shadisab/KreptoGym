@@ -20,7 +20,7 @@ $(document).ready(async () => {
 		});
 	}
     
-	var MyClients = await fetch('/coaches/myClients', {
+	var MyClients = await fetch('/coaches/myAllClients', {
 		method: 'GET', // *GET, POST, PUT, DELETE, etc.
 		mode: 'cors', // no-cors, *cors, same-origin
 		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -51,8 +51,10 @@ $(document).ready(async () => {
 			);
 		});
 	});
-    
-	$('#clientslist').on('click', (e)=> {
+	
+	$(document).on('click', 'div.CCLFC-client-chat-btn-div', async (e) => {
 		window.location.href = (`/chat?username=${CoachName}&room=${e.target.id}+${coachID}`);
 	});
+	
+
 });

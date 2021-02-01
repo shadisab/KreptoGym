@@ -82,15 +82,6 @@ router.get('/coaches/:id/TerminationCertificate', async (req, res) => {
 	}
 });
 
-// GET client Nutrition
-router.get('/coachs/client/nutrition/:id', authCoach, async (req, res) => {
-	const client = await Client.findOne({ _id: req.params.id, coachID: req.coach._id });
-	res.status(200).send(client.nutrition);
-	if (!client) {
-		return res.status(404).send('Cant Find client');
-	}
-});
-
 // GET specific client TrainingSchedule
 router.get('/coachs/client/:id', authCoach, async (req, res) => {
 	try {
@@ -255,6 +246,18 @@ router.get('/coaches/myClients', authCoach, async (req, res) => {
 			limit: 6,
 			skip: parseInt(req.query.skip)
 		}
+	}).execPopulate();
+	res.send(req.coach.myClients);
+});
+
+// GET all Clients of this coach
+router.get('/coaches/myAllClients', authCoach, async (req, res) => {
+	//get array of id's of all clients that this coach is train
+	const match = {};
+	match.status = 'Accepted';
+	await req.coach.populate({
+		path: 'myClients',
+		match
 	}).execPopulate();
 	res.send(req.coach.myClients);
 });

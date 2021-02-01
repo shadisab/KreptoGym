@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const Coach = require('../models/coach');
 
 const clientSchema = new mongoose.Schema({
 	name: {
@@ -219,30 +218,6 @@ const clientSchema = new mongoose.Schema({
 			}]
 		}
 	},
-	// nutrition: {
-	// 	protine: {
-	// 		type: Number,
-	// 		default: 0
-	// 	},
-	// 	carbs: {
-	// 		type: Number,
-	// 		default: 0
-
-	// 	},
-	// 	fats: {
-	// 		type: Number,
-	// 		default: 0
-	// 	},
-	// 	calories: {
-	// 		type: Number,
-	// 		default: 0
-	// 	},
-	// 	notes: {
-	// 		type: String,
-	// 		trim: true,
-	// 		default: 'Still dont have notes ...'
-	// 	}
-	// },
 	tokens: [{  //value always provided by the server
 		token: {
 			type: String,

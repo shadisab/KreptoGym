@@ -26,6 +26,49 @@ $(document).ready(async () => {
 		}
 	});
 
+	$('#forgotPASS').click(async () => {
+		const email = $('#email').val();
+		/*********** Testing if the email exist in the DB  **********/
+		const CheckEmailAddress = await fetch('/ClientsCoachesCheck', {
+			method: 'POST', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'same-origin', // include, *same-origin, omit
+			redirect: 'follow', // manual, *follow, error
+			referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+			headers: {
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body: JSON.stringify(
+				{
+					email
+				})
+		});
+		if (CheckEmailAddress.status === 200) {
+			$('#WLInfo').css('opacity', '1');
+		}
+		if(CheckEmailAddress.status === 409){
+			const CheckEmailAddress = await fetch('/UserforgotPassword', {
+				method: 'POST', // *GET, POST, PUT, DELETE, etc.
+				mode: 'cors', // no-cors, *cors, same-origin
+				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+				credentials: 'same-origin', // include, *same-origin, omit
+				redirect: 'follow', // manual, *follow, error
+				referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+				headers: {
+					'Content-Type': 'application/json'
+					// 'Content-Type': 'application/x-www-form-urlencoded',
+				},
+				body: JSON.stringify(
+					{
+						email
+					})
+			});
+		}
+
+	});
+
 	$('#loginBTN').click(async () => {
 		var email = $('#email').val();
 		var password = $('#password').val();
@@ -46,7 +89,7 @@ $(document).ready(async () => {
 			}) // body data type must match "Content-Type" header
 		});
 
-		if (userlog.status === 400 && password !== '' && email !== '') {
+		if (userlog.status === 400 || password !== '' || email !== '') {
 			console.log(userlog);
 			$('#WLInfo').css('opacity', '1');
 			$('#L-title').css('opacity', '0');
@@ -68,7 +111,7 @@ $(document).ready(async () => {
 				console.log(firstLogin);
 				window.location.replace('/coachRegisterV2');
 			}
-			else{
+			else {
 				window.location.replace(`/${userType}Home`);
 			}
 

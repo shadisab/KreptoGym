@@ -29,6 +29,30 @@ router.post('/ClientsCoachesCheck', async (req, res) => {
 		res.status(409).send(error.message); // Email already exists
 	}
 });
+
+router.post('/UserforgotPassword', async (req, res) => {
+	var password = Math.floor(1000000 + Math.random() * 9999999);
+	try {
+		let client = await Client.findOne({ email: req.body.email });
+		let coach = await Coach.findOne({  email: req.body.email });
+		if(client){
+			client.password = password;
+			await client.save();
+			sendmsg(client.email, `Hey ${client.name}`, `Your temporary password is ${password}, Please login and change it`);
+			res.status(200).send('Email Sent');
+
+		} else if(coach){
+			coach.password = password;
+			await coach.save();
+			sendmsg(coach.email, `Hey ${coach.name}`, `Your temporary password is ${password}, Please login and change it`);
+			res.status(200).send('Email Sent');
+		} 
+		else throw new Error('Wrong login');
+	} catch (e) {
+		console.log(e);
+		res.status(400).send(e.message);
+	}
+});
 // Sign up
 router.post('/clients/signup', upload.single('upload'), async (req, res) => {
 	const client = new Client(req.body);
@@ -57,7 +81,6 @@ router.post('/clients/signup', upload.single('upload'), async (req, res) => {
 // Login
 router.post('/usersLogin', async (req, res) => {
 	try {
-		// Self Created findByCredntials() , generateAuthToken()
 		let token = undefined;
 		let client = await Client.findOne({ email: req.body.email });
 		let coach = await Coach.findOne({  email: req.body.email });
